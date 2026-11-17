@@ -254,8 +254,8 @@ header .header-top{justify-content:center}
 header .brand-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:center;justify-items:center;width:max-content;max-width:100%;margin-inline:auto}
 header .brand-head .brand-mark{grid-column:1;grid-row:1 / span 3;align-self:center}
 header .brand-head h1{grid-column:2;grid-row:1;text-align:center;margin:0}
-header .brand-head .mba-maker-credit{grid-column:2;grid-row:2;justify-self:center;display:block;width:100%;max-width:100%;text-align:center;margin:3px 0 5px;font-size:clamp(10px,1.7vw,12px);font-weight:500;line-height:1.4;letter-spacing:.035em}
-header .brand-head p{grid-column:2;grid-row:3;text-align:center}
+header .brand-head .mba-maker-credit{grid-column:2;grid-row:3;justify-self:center;display:block;width:100%;max-width:100%;text-align:center;margin:3px 0 5px;font-size:clamp(10px,1.7vw,12px);font-weight:500;line-height:1.4;letter-spacing:.035em}
+header .brand-head p{grid-column:2;grid-row:2;text-align:center}
 :root[data-mba-theme="light"] header .brand-head .mba-maker-credit{color:#355477}
 :root[data-mba-theme="navy"] header .brand-head .mba-maker-credit{color:#dfc37c}
 :root[data-mba-theme="dark"] header .brand-head .mba-maker-credit{color:#b9cce7}
@@ -269,8 +269,85 @@ header .brand-head p{grid-column:2;grid-row:3;text-align:center}
 :root[data-mba-theme="dark"] .mba-bulk-access select{background:#101b2d;color:#e7edf6;border-color:#526c8d}
 :root[data-mba-theme="dark"] .mba-bulk-note{color:#b4c6de}
 @media print{.mba-maker-credit,.mba-bulk-access{display:none!important}}
+
+/* MBA_COMPACT_USERS_V1 — mobile friendly collapsible account rows */
+.mba-user-list{display:grid;gap:7px;margin:10px 0 3px}
+.mba-user-item{min-width:0;display:grid;grid-template-columns:38px minmax(0,1fr);align-items:start;border:1px solid #cfdae8;border-radius:12px;background:#fbfdff;overflow:hidden}
+.mba-user-item:has(.mba-user-details[open]){border-color:#809cbd}
+.mba-user-details{min-width:0}
+.mba-user-summary{display:grid;grid-template-columns:minmax(0,1fr) 18px;align-items:center;gap:10px;min-height:64px;padding:10px 12px 10px 0;cursor:pointer;list-style:none}
+.mba-user-summary::-webkit-details-marker{display:none}.mba-user-summary::marker{content:''}
+.mba-user-check{padding:22px 0 0 12px}.mba-user-check input{width:18px;height:18px;cursor:pointer;accent-color:#205ca1;margin:0}
+.mba-user-identity{min-width:0;display:flex;flex-direction:column;gap:3px}
+.mba-user-email{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#173859;font-size:14px}
+.mba-user-subline{font-size:12px;color:#66778e;line-height:1.3}
+.mba-user-arrow{color:#526987;font-size:23px;line-height:1;transform:rotate(0);transition:transform .18s}
+.mba-user-details[open] .mba-user-arrow{transform:rotate(180deg)}
+.mba-user-expanded{padding:8px 14px 14px 0;border-top:1px solid #e3eaf3;color:#23415f;font-size:13px;overflow-wrap:anywhere}
+.mba-user-expanded p{margin:7px 0;line-height:1.5}.mba-user-expanded .btn{margin:7px 0 0}
+.mba-user-uid{font-family:monospace;font-size:11px;color:#657991}
+.mba-control-help{margin:9px 0 11px;font-size:12px;line-height:1.48}
+.mba-control-help summary{cursor:pointer;color:#2b5888;font-weight:700;padding:5px 0}.mba-control-help p{margin:5px 0}
+:root[data-mba-theme="dark"] .mba-user-item{background:#192c45;border-color:#425c7a}
+:root[data-mba-theme="dark"] .mba-user-email,:root[data-mba-theme="dark"] .mba-user-expanded{color:#eaf2ff}
+:root[data-mba-theme="dark"] .mba-user-subline,:root[data-mba-theme="dark"] .mba-user-uid{color:#bdcde0}
+:root[data-mba-theme="dark"] .mba-user-expanded{border-color:#415779}
+:root[data-mba-theme="dark"] .mba-control-help summary{color:#b5d6ff}
+@media(max-width:420px){.mba-user-summary{gap:7px;padding:9px 9px 9px 0}.mba-user-expanded{padding-left:0}.mba-user-email{font-size:13px}}
+@media print{.mba-user-list,.mba-control-help{display:none!important}}
+
+/* MBA User Roles — clean one-column workflow */
+.mba-roles-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:9px 0}
+.mba-user-editor,.mba-bulk-panel,.mba-pending-requests{margin:12px 0;border:1px solid #cdd9e9;border-radius:13px;background:#f8fbff;padding:11px 13px}
+.mba-user-editor>summary,.mba-bulk-panel>summary,.mba-pending-requests>summary{font-size:14px;font-weight:800;cursor:pointer;padding:7px 3px}
+.mba-user-editor .access-panel{border:0;margin:10px 0 0;padding:10px;background:transparent}
+.mba-bulk-panel>.mba-bulk-access{margin:10px 0 0}
+.mba-bulk-panel .mba-bulk-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.mba-bulk-panel .mba-bulk-tools .btn,.mba-bulk-panel .mba-bulk-tools select{width:100%;max-width:none;min-height:44px}
+.mba-roles-top .btn{min-height:42px}
+:root[data-mba-theme=dark] .mba-user-editor,:root[data-mba-theme=dark] .mba-bulk-panel,:root[data-mba-theme=dark] .mba-pending-requests{background:#172338;border-color:#49627f;color:#e7edf6}
+@media(max-width:500px){.mba-user-editor,.mba-bulk-panel,.mba-pending-requests{padding:9px}.mba-bulk-panel .mba-bulk-tools{grid-template-columns:1fr 1fr}.mba-bulk-panel .mba-bulk-tools select{grid-column:span 2}}
+@media print{.mba-user-editor,.mba-bulk-panel,.mba-pending-requests{display:none!important}}
+
+/* MBA_ALL_IN_ONE_FREE_FEATURES_V1 — Announcements, free Gallery and Umpire */
+.mba-announcement{border:1px solid #bfd2eb;background:#f2f7ff;border-radius:13px;padding:13px 15px;margin:10px 0;color:#1f3d62;line-height:1.55}
+.mba-announcement.mba-important{border-left:5px solid #e89c2d;background:#fff7e7;color:#553c19}
+.mba-ann-top,.mba-ann-bottom,.mba-notice-heading{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.mba-announcement p{white-space:normal;overflow-wrap:anywhere;margin:9px 0}.mba-announcement small{font-size:11px}
+.mba-ann-bottom .btn{padding:5px 8px;font-size:11px}.mba-notice-heading{margin:5px 0;font-size:15px}.mba-notice-count{font-size:12px;color:#647b95}
+.mba-no-ann{font-size:12px;color:#7b8da4;margin:5px 0 10px}.mba-sound-toggle{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:inherit;padding:5px 0}
+.mba-announce-compose{border:1px solid #c5d4e7;border-radius:12px;margin:12px 0;padding:12px;background:#fff;color:#1d3859}.mba-announce-compose summary{cursor:pointer;font-weight:750}
+.mba-announce-form{display:grid;gap:12px;padding:14px 2px 4px}.mba-ann-actions{display:flex;align-items:end;flex-wrap:wrap;gap:9px}.mba-expire-field{min-width:120px;max-width:150px}.mba-expire-field select{min-height:42px}
+.mba-gallery-upload{margin:15px 0;padding:15px;border:1px dashed #bdcfe7;border-radius:13px;display:grid;gap:12px}.mba-gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:13px}
+.mba-gallery-item{border:1px solid #d7e1ef;border-radius:12px;overflow:hidden;min-width:0;background:#fbfdff}.mba-gallery-item img{width:100%;height:190px;object-fit:contain;background:#eaf0f7;display:block}.mba-gallery-meta{padding:11px;display:grid;gap:6px}.mba-gallery-meta small{color:#687994;font-size:11px}.mba-gallery-meta .btn{justify-self:start}
+.mba-umpire-launch{margin-top:7px!important;font-size:12px!important;padding:7px 10px!important;display:block}.mba-umpire-card{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(98vw,880px);max-height:94dvh;overflow:auto;background:#fff;color:#172d48;z-index:1001;padding:17px;border-radius:17px;box-shadow:0 12px 45px #0006}
+.mba-umpire-backdrop{position:fixed;inset:0;background:#03142bd4;z-index:1000}.mba-umpire-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.mba-umpire-head h2{font-size:20px;margin:0}.mba-umpire-head p{font-size:12px;color:#62748b}
+.mba-point-teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mba-point-team{border:1px solid #d5e0ef;border-radius:12px;padding:11px;min-width:0}.mba-point-team h4{font-size:14px;margin:0 0 7px;overflow-wrap:anywhere}.mba-point-score{font-size:36px;font-weight:850;text-align:center;color:#174e8b;font-variant-numeric:tabular-nums}.mba-point-actions{display:flex;justify-content:center;gap:8px;margin:8px 0}.mba-point-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px}.mba-point{min-height:37px;border:1px solid #bfcfdf;background:#fff;color:#27425e;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;padding:0}.mba-point.is-marked{background:#167044;border-color:#167044;color:#fff}.mba-point:disabled{cursor:not-allowed;opacity:.55}.mba-point.is-marked:disabled{opacity:1}
+.mba-umpire-footer{margin-top:15px;display:grid;gap:9px}.mba-umpire-footer b{font-size:15px}.mba-umpire-footer .btn{justify-self:start}.mba-umpire-footer .helper{line-height:1.5}
+:root[data-mba-theme=dark] .mba-announce-compose,:root[data-mba-theme=dark] .mba-gallery-upload{background:#172338;color:#e7edf6;border-color:#45617d}
+:root[data-mba-theme=dark] .mba-gallery-item{background:#172338;border-color:#45617d;color:#e7edf6}
+@media(max-width:600px){.mba-point-teams{grid-template-columns:1fr}.mba-point-grid{grid-template-columns:repeat(10,minmax(0,1fr))}.mba-point{min-height:32px;font-size:11px}.mba-umpire-card{padding:10px}.mba-gallery-item img{height:175px}}
+@media print{#mba-important-notices,#mba-umpire-overlay,.mba-gallery-upload{display:none!important}}
+
+/* MBA_PRINT_SHARE_V2: export menus with tidy mobile controls */
+.mba-share-dock{display:inline-flex;vertical-align:middle;margin:5px 0 11px}.mba-share-mini{display:flex;justify-content:flex-end;margin:6px 0}.mba-share-menu{position:relative;display:inline-block;z-index:15;max-width:100%}.mba-share-menu>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:7px 12px;border:1px solid #9fb5d0;border-radius:9px;color:#1c4d83;background:#eef5ff;font-size:12px;font-weight:800}.mba-share-menu>summary::-webkit-details-marker{display:none}
+.mba-share-choices{display:flex;gap:6px;flex-wrap:wrap;padding:9px 0;max-width:320px;min-width:230px}.mba-share-choices button{border:1px solid #c5d4e4;background:#fff;color:#214a77;border-radius:8px;font-size:12px;padding:8px 10px;cursor:pointer;min-height:38px;font-weight:650}
+.mba-share-choices button:disabled{opacity:.5}.mba-share-fixture-cell{min-width:125px}.mba-share-print-actions{display:grid;align-items:end;gap:4px;font-size:13px;color:#526b87}.mba-global-share-link{grid-column:1/-1;justify-self:center;width:max-content;font-size:12px!important;padding:7px 12px!important;min-height:36px!important;opacity:.92}
+.mba-export-mount{position:absolute;top:0;left:-4000px;z-index:-99;box-sizing:border-box;overflow:visible;pointer-events:none;background:#fff!important;color:#1c314a!important;padding:25px;font-family:Arial,'Noto Sans Malayalam',sans-serif!important;font-size:19px;line-height:1.45}
+.mba-export-mount *{color:#1c314a!important;background-color:transparent!important;border-color:#bac9d8!important;box-shadow:none!important;max-width:100%;box-sizing:border-box}.mba-export-mount table{width:100%!important;table-layout:fixed;border-collapse:collapse!important;font-size:16px!important}.mba-export-mount th,.mba-export-mount td{padding:10px 11px!important;border:1px solid #ced9e6!important;overflow-wrap:anywhere}.mba-export-mount h2{font-size:26px!important;margin-bottom:12px}.mba-export-mount .score-line,.mba-export-mount .pair-row{font-size:22px!important}.mba-export-mount .fin-table{font-size:15px!important}
+/* Readable A4 page: body is allowed to use natural row height rather than stretching few records across the sheet */
+.print-sheet .print-table{height:auto!important}.print-sheet .print-body{overflow:hidden;display:block}.print-sheet .print-table td{line-height:1.3!important;padding:2.0mm 2.4mm!important}.print-sheet .print-table th{padding:2mm!important}
+@media print{.mba-share-menu,.mba-share-dock,.mba-share-mini,.mba-share-fixture-cell,.mba-share-print-actions,.mba-global-share-link,.mba-export-mount{display:none!important}}
+@media(max-width:640px){.mba-share-choices{min-width:210px}.mba-share-fixture-cell{min-width:110px}}
+:root[data-mba-theme=dark] .mba-share-menu>summary{background:#1d3555;border-color:#446185;color:#e0edff}:root[data-mba-theme=dark] .mba-share-choices button{background:#1d3555;border-color:#446185;color:#e0edff}
+
+
+.mba-voice-recorder{border:1px solid #d0dfec;border-radius:12px;background:#f2f7fd;padding:13px;display:grid;gap:8px}
+.mba-voice-recorder audio,.mba-voice-message audio{display:block;width:100%;max-width:450px}.mba-voice-recorder audio[hidden]{display:none!important}.mba-voice-message{background:#edf5ff;border-radius:10px;padding:10px;margin:9px 0}.mba-voice-message b{display:block;margin-bottom:7px;font-size:12px}
+:root[data-mba-theme=dark] .mba-voice-recorder,:root[data-mba-theme=dark] .mba-voice-message{background:#203a5a;color:#edf5ff;border-color:#4c6785}
+@media print{.mba-voice-recorder,.mba-voice-message{display:none!important}}
 </style><style id="print-rule"></style></head>
-<body><header><div class="container header-top"><div class="brand-head"><span class="brand-mark" aria-hidden="true">🏸</span><h1>MBA Tournaments</h1><span class="mba-maker-credit">App created by <strong>Usthad</strong></span><p>Badminton Tournament Manager</p></div></div>
+<body><header><div class="container header-top"><div class="brand-head"><span class="brand-mark" aria-hidden="true">🏸</span><h1>MBA Tournaments</h1><p>Badminton Tournament Manager</p><span class="mba-maker-credit">App created by <strong>Usthad</strong></span></div></div>
 <div class="container mba-header-controls noprint" aria-label="Display preferences and time"><label class="mba-ui-control"><span>🎨 Color Theme</span><select id="mba-theme-select" aria-label="Color Theme"><option value="classic">Classic Blue</option><option value="light">Light</option><option value="dark">Dark</option><option value="navy">Navy &amp; Gold</option></select></label><label class="mba-ui-control"><span>🌐 Language</span><select id="mba-lang-select" aria-label="Language"><option value="en">English</option><option value="ml">മലയാളം</option></select></label><div class="mba-clock" role="timer" aria-label="Current time"><span class="mba-clock-label">🕒 Time</span><strong id="mba-clock-time">--:--:--</strong></div></div></header>
 <main class="container">
 <section class="card noprint" id="v2-auth-panel" style="margin:0 0 14px"><h2>🔐 MBA Tournaments Account</h2><div id="auth-status" class="helper">Checking login…</div>
@@ -279,15 +356,15 @@ header .brand-head p{grid-column:2;grid-row:3;text-align:center}
  <div id="auth-account" hidden><button class="btn" id="copy-uid">Copy my User UID</button><button class="btn danger-outline" id="logout">Logout</button>
 </div>
  <div id="auth-message" class="helper" role="status"></div></section>
-<section id="global-tour-control" class="global-tournament-switcher noprint" hidden aria-label="Active tournament switcher"></section>
+<section id="global-tour-control" class="global-tournament-switcher noprint" hidden aria-label="Active tournament switcher"></section><section id="mba-important-notices" class="noprint" aria-label="Important tournament notices" hidden></section>
 <div class="toolbar noprint" style="justify-content:flex-end"><span class="actions"><button id="print-page" class="btn">🖨 Print A4</button></span></div>
-<nav class="noprint" aria-label="Tournament management"><button data-page="tournaments" class="selected">🏆<span class="mba-nav-text" data-short-en="Events" data-short-ml="ടൂർണി">Tournaments</span></button><button data-page="teams">👥<span class="mba-nav-text" data-short-en="Teams" data-short-ml="ടീം">Teams</span></button><button data-page="categories">🗂<span class="mba-nav-text" data-short-en="Cats" data-short-ml="വിഭാഗം">Categories</span></button><button data-page="groups">🧩<span class="mba-nav-text" data-short-en="Groups" data-short-ml="ഗ്രൂപ്പ്">Groups</span></button><button data-page="fixtures">🔀<span class="mba-nav-text" data-short-en="Fixtures" data-short-ml="ക്രമം">Fixtures</span></button><button data-page="results">✅<span class="mba-nav-text" data-short-en="Results" data-short-ml="ഫലം">Results</span></button><button data-page="standings">📊<span class="mba-nav-text" data-short-en="Table" data-short-ml="പട്ടിക">Standings</span></button><button data-page="settings">⚙<span class="mba-nav-text" data-short-en="Settings" data-short-ml="സെറ്റിംഗ്">Settings</span></button><button data-page="finance">💰<span class="mba-nav-text" data-short-en="Finance" data-short-ml="ഫിനാൻസ്">Finance</span></button><button data-page="access">🛡<span class="mba-nav-text" data-short-en="Roles" data-short-ml="റോളുകൾ">User Roles</span></button><button data-page="print">🖨<span class="mba-nav-text" data-short-en="Print" data-short-ml="പ്രിന്റ്">Print Center</span></button></nav>
+<nav class="noprint" aria-label="Tournament management"><button data-page="tournaments" class="selected">🏆<span class="mba-nav-text" data-short-en="Events" data-short-ml="ടൂർണി">Tournaments</span></button><button data-page="teams">👥<span class="mba-nav-text" data-short-en="Teams" data-short-ml="ടീം">Teams</span></button><button data-page="categories">🗂<span class="mba-nav-text" data-short-en="Cats" data-short-ml="വിഭാഗം">Categories</span></button><button data-page="groups">🧩<span class="mba-nav-text" data-short-en="Groups" data-short-ml="ഗ്രൂപ്പ്">Groups</span></button><button data-page="fixtures">🔀<span class="mba-nav-text" data-short-en="Fixtures" data-short-ml="ക്രമം">Fixtures</span></button><button data-page="results">✅<span class="mba-nav-text" data-short-en="Results" data-short-ml="ഫലം">Results</span></button><button data-page="standings">📊<span class="mba-nav-text" data-short-en="Table" data-short-ml="പട്ടിക">Standings</span></button><button data-page="settings">⚙<span class="mba-nav-text" data-short-en="Settings" data-short-ml="സെറ്റിംഗ്">Settings</span></button><button data-page="finance">💰<span class="mba-nav-text" data-short-en="Finance" data-short-ml="ഫിനാൻസ്">Finance</span></button><button data-page="access">🛡<span class="mba-nav-text" data-short-en="Roles" data-short-ml="റോളുകൾ">User Roles</span></button><button data-page="print">🖨<span class="mba-nav-text" data-short-en="Print" data-short-ml="പ്രിന്റ്">Print Center</span></button><button data-page="gallery">📷<span class="mba-nav-text" data-short-en="Photos" data-short-ml="ഫോട്ടോ">Gallery</span></button></nav>
 <div id="connection-status" class="banner noprint" hidden>📡 Internet connection lost. Live scores, payments, permissions and changes require internet. Please reconnect before editing.</div><div id="venue-public" class="venue-strip noprint"></div><div id="notice"></div><div id="view"></div></main>
 <section class="container noprint" aria-label="Access information"><details class="mba-permission-details"><summary>ℹ️ Access information</summary><div class="mba-permission-inside"><p class="helper">Only Super Admin-published tournaments appear to viewers. The Super Admin assigns separate View / Edit access per tournament. Finance remains private.</p></div></details></section>
-<div id="profile-layer"></div><footer>MBA Tournaments • Tournament Management</footer>
+<div id="profile-layer"></div><div id="mba-umpire-overlay" hidden></div><footer>MBA Tournaments • Tournament Management</footer>
 <button id="pwa-install" class="btn mba-install-float noprint" type="button" aria-label="Install MBA Tournaments app">📲 Install App</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script type="module">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import { getAuth,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { getDatabase,ref,onValue,get,update,runTransaction,set } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js';
@@ -299,7 +376,7 @@ const firebaseConfig={
  messagingSenderId:'1072532890274',appId:'1:1072532890274:web:8687524cc30f473361adfb'
 };
 const fapp=initializeApp(firebaseConfig),auth=getAuth(fapp),db=getDatabase(fapp);
-const VERSION='3.1.0-final-ui';
+const VERSION='3.3.0-free-announcements-voice-a4-share';
 const deep=x=>JSON.parse(JSON.stringify(x));
 const clean=s=>String(s??'').trim();
 const need=(v,msg)=>{if(!v)throw Error(msg)};
@@ -895,7 +972,7 @@ function beginSession(user){
  financeFor='';lastTournamentSource='';publicTournaments={};userTournamentScopes={};unsavedFormChanges=false;
  authUser=user;legacySuper=false;accessRecord=null;accessList={};accessRequests={};readError='';remoteReady=false;
  rawTournamentData={};store={tournaments:[],selected:null,playerLibrary:[]};page='tournaments';editor=null;profile=null;notice='';
- authState();render();if(!user)return;
+ authState();render();if(!user){mbaStartNoticeWatch(null,gen);if(mbaGalleryOff){try{mbaGalleryOff()}catch{}mbaGalleryOff=null}mbaGalleryTournament='';mbaGalleryItems={};mbaUmpire=null;mbaRenderUmpire();return;}
  ownRequestUnsubscribe=onValue(ref(db,'v3/accessRequests/'+user.uid),snap=>{
   if(gen!==authGeneration)return;
   ownEditingRequest=snap.val();ownRequestLoaded=true;updateOwnRequestUi();mbaApplyLanguage();
@@ -907,8 +984,8 @@ function beginSession(user){
  });
  const on=(path,cb)=>{stopListeners.push(onValue(ref(db,path),s=>{if(gen===authGeneration)cb(s.val())},e=>{if(gen!==authGeneration)return;readError=errText(e);render();document.getElementById('auth-message').textContent='Database error: '+readError}))};
  on('admins/'+user.uid,v=>{legacySuper=v?.active===true&&v?.role==='super';authState();syncTournamentListeners();watchFinance();render();if(isSuper())watchAccess();else clearAccess()});
- on('v3/access/'+user.uid,v=>{accessRecord=v||null;authState();syncTournamentListeners();financeFor='';watchFinance();render();if(isSuper())watchAccess();else clearAccess()});
- watchCatalog(gen);
+ on('v3/access/'+user.uid,v=>{accessRecord=v||null;authState();syncTournamentListeners();financeFor='';watchFinance();render();if(isSuper())watchAccess();else clearAccess();mbaRenderNotices()});
+ watchCatalog(gen);mbaStartNoticeWatch(user,gen);
  // The shared player library includes names from PRIVATE tournaments: Super Admin only.
  // Other users derive names from their visible tournament rosters.
  // Player library deliberately not subscribed for non-Super users.
@@ -1068,7 +1145,24 @@ function financeView(t){
  return `${full?`<section class="card"><h2>💰 Full Finance Dashboard · ${esc(t.name)}</h2><p class="helper">Super Admin has specifically granted the full finance view. Projected surplus is not cash already available.</p>${cards}</section>`:`<section class="card"><h2>💰 Finance · Limited Access</h2><p class="helper">You can access only the specific payment or expense functions granted by the Super Admin. Full income, expenditure, profit, collector balances and aggregate dashboard are private.</p></section>`}${config}${playerTable}${canPay?card('Record Payment',receiptForm(t)):''}${receiptsTable}${canFin?card('Record Expense',expenseForm()):''}${expenseTable}${categoryTotals}${collector}${transfer}${transferRegister}`;
 }
 function accessView(){if(!isSuper())return card('User Roles','<p>Only Super Admin can manage user permissions. To request access, share your User UID with the organizer, who can grant permissions manually.</p>');
- const list=Object.entries(accessList).sort((a,b)=>String(a[1].email||'').localeCompare(String(b[1].email||''))).map(([id,x])=>`<tr><td><label class="choice"><input name="bulkUser" class="mba-bulk-select" type="checkbox" value="${esc(id)}" ${id===authUser?.uid||x.role==='super'?'disabled title="Protected Super Admin"':''}> ${esc(x.email||id)}</label><small>${esc(id)}</small></td><td>${esc(x.role||'viewer')}</td><td>${x.active?'Active':'Disabled'}</td><td>${Object.entries(x.permissions||{}).filter(([,v])=>v).map(([k])=>esc(k)).join(', ')||'View only'}<small>Assigned tournaments: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.view||v.edit).length} · Edit: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.edit).length} · Finance: ${x.permissions?.financeDashboardRead?'FULL':x.permissions?.paymentsRead||x.permissions?.financeRead?'LIMITED':'NONE'}</small></td><td><button class="btn" type="button" data-action="manage-user" data-id="${esc(id)}">Edit</button></td></tr>`).join('');
+ const list=Object.entries(accessList).sort((a,b)=>String(a[1].email||'').localeCompare(String(b[1].email||''))).map(([id,x])=>{
+   const protectedUser=id===authUser?.uid||x.role==='super';
+   const scopes=Object.values(accessScopesByUid[id]||{});
+   const assigned=scopes.filter(v=>v?.view||v?.edit).length;
+   const editable=scopes.filter(v=>v?.edit).length;
+   const rights=Object.entries(x.permissions||{}).filter(([,yes])=>yes).map(([key])=>permissionsList.find(([k])=>k===key)?.[1]||(key==='printView'?'A4 Print':key));
+   const roleText=String(x.role||'viewer').replace(/_/g,' ').replace(/\b\w/g,letter=>letter.toUpperCase());
+   const userName=esc(x.email||id),userId=esc(id);
+   const finance=x.permissions?.financeDashboardRead?'FULL':x.permissions?.paymentsRead||x.permissions?.financeRead?'LIMITED':'NONE';
+   return `<div class="mba-user-item"><span class="mba-user-check"><input type="checkbox" name="bulkUser" class="mba-bulk-select" value="${userId}" aria-label="Select ${userName}" ${protectedUser?'disabled title="Protected Super Admin"':''}></span><details class="mba-user-details"><summary class="mba-user-summary">
+    <span class="mba-user-identity"><b class="mba-user-email">${userName}</b><span class="mba-user-subline">${esc(roleText)} · ${x.active?'Active':'Disabled'}${protectedUser?' · Protected':''}</span></span>
+    <span class="mba-user-arrow" aria-hidden="true">⌄</span></summary>
+    <div class="mba-user-expanded"><p><b>Role:</b> ${esc(roleText)} · <b>Status:</b> ${x.active?'Active':'Disabled'}</p>
+    <p><b>Permissions:</b> ${rights.length?rights.map(esc).join(', '):'View only'}</p>
+    <p><b>Tournaments:</b> ${assigned} View · ${editable} Edit · <b>Finance:</b> ${finance}</p>
+    <p class="mba-user-uid"><b>UID:</b> ${userId}</p>
+    <button class="btn primary" type="button" data-action="manage-user" data-id="${userId}">✏ Edit User Role &amp; Rights</button></div></details></div>`;
+ }).join('');
  const req=Object.entries(accessRequests).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(x.name||'')} · ${esc(x.note||'')}</small></td><td><button class="btn" data-action="manage-user" data-id="${esc(id)}" type="button">Set Rights</button></td></tr>`).join('');
  const selected=editor?.kind==='access'?editor.id:'';const existing=accessList[selected]||{};const selectedScopes=selected?(accessScopesByUid[selected]||{}):{};
  const editingExisting=!!selected;
@@ -1084,10 +1178,10 @@ function accessView(){if(!isSuper())return card('User Roles','<p>Only Super Admi
  <div class="checklist">${permissionsList.map(([key,label])=>`<label class="choice"><input name="perm" type="checkbox" value="${esc(key)}" ${existing.permissions?.[key]?'checked':''}> ${esc(label)}</label>`).join('')}</div>
  <section class="full"><h4>🏆 Per-Tournament View / Edit Access</h4><p class="scope-help"><b>IMPORTANT:</b> For each permitted tournament, tick View to see it and Edit to change scores, teams or finance entries. Selecting Admin or Finance Manager alone will NOT grant tournament access. Only Super Admin can change this. Changes update online after Save.</p>
  <div class="scope-grid">${store.tournaments.map(t=>{const scope=selectedScopes[t.id]||{};return `<div class="scope-line"><b>${esc(t.name)}</b><label class="choice"><input type="checkbox" name="scopeView" value="${esc(t.id)}" ${scope.view||scope.edit?'checked':''}> View</label><label class="choice"><input type="checkbox" name="scopeEdit" value="${esc(t.id)}" ${scope.edit?'checked':''}> Edit</label></div>`}).join('')||'<p>No tournaments yet</p>'}</div></section>
- <div class="actions"><button type="button" data-action="new-access-user" class="btn">➕ Assign Different User</button><button type="button" data-action="apply-role-preset" class="btn">Reset Rights to Selected Role</button><button class="btn primary" type="submit">Save Only This User</button></div>
+ <div class="actions"><button type="button" data-action="new-access-user" class="btn">➕ Assign Different User</button><button type="button" data-action="apply-role-preset" class="btn">Reset Rights to Selected Role</button><button class="btn primary" type="submit">Save Only This User</button></div><details class="mba-control-help"><summary>ℹ️ How do these buttons work? / ഉപയോഗം</summary><p><b>Assign Different User:</b> Clear the editor and enter another person's UID.</p><p><b>Reset Rights:</b> Fill the checkboxes from the selected Role Preset; this is not saved until you press Save.</p><p><b>Save Only This User:</b> Update only the UID currently being edited.</p></details>
  <p class="helper">Original Super Admin access under admins/&lt;uid&gt; is preserved. Grant Super Admin rights only to trusted committee owners.</p></form>`;
- const bulkPanel=`<section class="mba-bulk-access noprint"><h3>👥 Bulk User Management</h3><p class="mba-bulk-note">Select the checkboxes in the Users table below. The original Super Admin and Super roles are protected. Changes affect only access records, not Firebase Authentication accounts.</p><div class="mba-bulk-tools"><button type="button" class="btn" data-action="mba-bulk-select-all">☑ Select / Clear All</button><select id="mba-bulk-perm" aria-label="Permission to add or remove">${permissionsList.filter(([key])=>!['usersWrite','tournamentWrite'].includes(key)).map(([key,label])=>`<option value="${esc(key)}">${esc(label)}</option>`).join('')}<option value="printView">Allow A4 Print / Print Center</option></select><button type="button" class="btn primary" data-action="mba-bulk-add">+ Add Permission</button><button type="button" class="btn" data-action="mba-bulk-remove">− Remove Permission</button></div><div class="mba-bulk-tools"><button type="button" class="btn danger-outline" data-action="mba-bulk-delete">Delete Selected Access</button><button type="button" class="btn danger-outline" data-action="mba-bulk-delete-all">Delete All Non-Super Access</button></div><p class="mba-bulk-note">Role and tournament View/Edit scopes can still be set per user. Granting an edit permission to a Viewer automatically switches their role to Custom, but does not assign tournament scope. Deletion removes managed access and tournament scope, not login accounts.</p></section>`;
- return card('Super Admin · User & Roles Dashboard',`<p class="helper"><b>One UID = one account.</b> Saving the selected UID must never change another person’s permissions. Use <b>Assign Different User</b> before entering the next person.</p><h3>Pending Access Requests</h3><div class="scroll"><table><tbody>${req||'<tr><td>No pending requests</td></tr>'}</tbody></table></div>${form}${bulkPanel}<h3>Users with Explicit Permissions</h3><div class="scroll"><table><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Permissions</th><th>Actions</th></tr></thead><tbody>${list||'<tr><td colspan="5">No managed users yet</td></tr>'}</tbody></table></div>`);
+ const bulkPanel=`<section class="mba-bulk-access noprint"><h3>👥 Bulk User Management</h3><details class="mba-control-help"><summary>ℹ️ What do these buttons do? / ബട്ടണുകളുടെ ഉപയോഗം</summary><p><b>Select / Clear All:</b> Mark or unmark non-Super users.</p><p><b>Add / Remove Permission:</b> Give or revoke the selected right for checked users. Tournament View/Edit scope is managed separately under Edit User.</p><p><b>Delete Selected Access:</b> Revoke access for checked users only.</p><p><b>Delete All Non-Super Access:</b> Revoke managed access for every non-Super user, after two confirmations. It does not delete Firebase login accounts.</p></details><p class="mba-bulk-note">Select the checkboxes in the Users table below. The original Super Admin and Super roles are protected. Changes affect only access records, not Firebase Authentication accounts.</p><div class="mba-bulk-tools"><button type="button" class="btn" data-action="mba-bulk-select-all">☑ Select / Clear All</button><select id="mba-bulk-perm" aria-label="Permission to add or remove">${permissionsList.filter(([key])=>!['usersWrite','tournamentWrite'].includes(key)).map(([key,label])=>`<option value="${esc(key)}">${esc(label)}</option>`).join('')}<option value="printView">Allow A4 Print / Print Center</option></select><button type="button" class="btn primary" data-action="mba-bulk-add">+ Add Permission</button><button type="button" class="btn" data-action="mba-bulk-remove">− Remove Permission</button></div><div class="mba-bulk-tools"><button type="button" class="btn danger-outline" data-action="mba-bulk-delete">Delete Selected Access</button><button type="button" class="btn danger-outline" data-action="mba-bulk-delete-all">Delete All Non-Super Access</button></div><p class="mba-bulk-note">Role and tournament View/Edit scopes can still be set per user. Granting an edit permission to a Viewer automatically switches their role to Custom, but does not assign tournament scope. Deletion removes managed access and tournament scope, not login accounts.</p></section>`;
+ return card('Super Admin · User & Roles Dashboard',`<p class="helper"><b>One UID = one account.</b> Saving the selected UID must never change another person’s permissions. Use <b>Assign Different User</b> before entering the next person.</p><details class="mba-pending-requests"><summary>📨 Pending Access Requests</summary><div class="scroll"><table><tbody>${req||'<tr><td>No pending requests</td></tr>'}</tbody></table></div></details><div class="mba-roles-top"><h3>Users with Explicit Permissions</h3><button class="btn primary" type="button" data-action="new-access-user">＋ Add User</button></div><p class="helper">Tap a user to expand Role, Permissions, Tournament Access and Edit. Use the checkbox for bulk actions.</p><div class="mba-user-list">${list||'<p class="helper">No managed users yet</p>'}</div><details class="mba-user-editor" id="mba-user-editor" ${editingExisting?'open':''}><summary>✍️ Add / Edit a User</summary>${form}</details><details class="mba-bulk-panel"><summary>⚙ Bulk Actions · Multiple Users</summary>${bulkPanel}</details>`);
 }
 
 async function mbaRunBulkAccessAction(action){
@@ -1318,7 +1412,7 @@ function render(){
    '<section class="card"><h2>No tournaments available to this account</h2><p>Super Admin must publish a tournament or grant you private View access. Hidden tournaments cannot be opened directly.</p></section>';
    document.getElementById('profile-layer').innerHTML='';return;
  }
- const views={tournaments:tournamentView,teams:teamView,categories:categoryView,groups:groupView,fixtures:fixtureView,results:resultView,standings:standingsView,settings:settingsView,finance:financeView,access:accessView,print:printView};
+ const views={tournaments:tournamentView,teams:teamView,categories:categoryView,groups:groupView,fixtures:fixtureView,results:resultView,standings:standingsView,settings:settingsView,finance:financeView,access:accessView,print:printView,gallery:mbaGalleryView};
  content.innerHTML=page==='access'?accessView():((views[page]?.(t)||'')+(page==='tournaments'&&isSuper()?tournamentVisibilityPanel():''));
  document.getElementById('profile-layer').innerHTML=t?detailModal(t):'';
  if(t)document.getElementById('print-rule').textContent=`@page{size:A4 ${t.settings?.printOrientation==='portrait'?'portrait':'landscape'};margin:0}@media print{.print-sheet{font-size:${t.settings?.printFontSize||17}px}}`;
@@ -1330,6 +1424,7 @@ function render(){
   if(k&&!can(k))form.querySelectorAll('button[type=submit],input,select,textarea').forEach(el=>el.disabled=true);
  });
  if(writePending)document.querySelectorAll('form[data-form] button[type="submit"]').forEach(el=>el.disabled=true);
+ mbaEnhanceShares();
 }
 function tournamentSummary(t){
  const total=t.fixtures?.length||0,played=(t.fixtures||[]).filter(m=>{const c=lookup(t,m.categoryId);return c&&scoreWinner(t.results[m.id],effectiveRules(t,c))}).length;
@@ -1493,7 +1588,7 @@ function fixtureEntryPaymentStatus(t,cat,entryId){
 }
 function fixtureView(t){
  const checked=fixturesCheck(t),league=t.fixtures.filter(m=>m.stage==='league').sort((a,b)=>a.slot-b.slot||a.court-b.court);
- const rows=league.map(m=>{const c=lookup(t,m.categoryId);return `<tr><td>${m.slot}</td><td>Court ${m.court}</td><td>${c?categoryLink(c):''}<small>${esc(groupLabel(c,m.groupId))}</small></td><td>${linkedEntry(t,c,m.a)}${fixtureEntryPaymentStatus(t,c,m.a)} <span class="vs"> VS </span>${linkedEntry(t,c,m.b)}${fixtureEntryPaymentStatus(t,c,m.b)}</td></tr>`}).join('');
+ const rows=league.map(m=>{const c=lookup(t,m.categoryId);return `<tr><td>${m.slot}</td><td>Court ${m.court}</td><td>${c?categoryLink(c):''}<small>${esc(groupLabel(c,m.groupId))}</small></td><td>${linkedEntry(t,c,m.a)}${fixtureEntryPaymentStatus(t,c,m.a)} <span class="vs"> VS </span>${linkedEntry(t,c,m.b)}${fixtureEntryPaymentStatus(t,c,m.b)}${m.a&&m.b?`<button type="button" class="btn mba-umpire-launch" data-mba-score-match="${esc(m.id)}" ${can('scoresWrite')&&editScope(t.id)?'':'hidden'}>🏸 Umpire Score</button>`:''}</td></tr>`}).join('');
  const ko=t.fixtures.filter(m=>m.stage==='knockout').sort((a,b)=>a.slot-b.slot||a.court-b.court);
  const privatePaymentToggle=canSeePayments()?`<label class="choice noprint fixture-payment-control"><input type="checkbox" id="fixture-payment-toggle" ${showFixturePaymentStatus?'checked':''}> Show Player Payment Status (Private)</label>${showFixturePaymentStatus&&!financesReady()?'<p class="helper noprint">Ground fee is not configured yet; set it in Finance to show paid/unpaid statuses.</p>':''}`:'';
  return card('Fixtures & Shuffle',`<div class="metrics"><div><b>${league.length}</b><span>League matches</span></div><div><b>${new Set(league.map(x=>x.slot)).size}</b><span>Slots</span></div><div><b>${t.courts}</b><span>Courts</span></div></div>
@@ -1504,7 +1599,7 @@ function fixtureView(t){
   ${checked.problems.length?`<div class="helper">${checked.problems.slice(0,5).map(esc).join('; ')}</div>`:''}
   ${checked.restAlerts.length?`<details><summary>Rest-gap warnings</summary>${checked.restAlerts.slice(0,12).map(x=>`<p class="helper">${esc(x)}</p>`).join('')}</details>`:''}
   <div class="scroll"><table><thead><tr><th>Slot</th><th>Court</th><th>Category / Group</th><th>Match</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Generate fixtures to start.</td></tr>'}</tbody></table></div>
-  ${ko.length?`<h3>Knockout Bracket — Semis & Finals</h3><div class="scroll"><table><tbody>${ko.map(m=>`<tr><td>${esc(lookup(t,m.categoryId)?.name)}</td><td>${esc(koRoundLabel(t,m))}</td><td>${linkedEntry(t,lookup(t,m.categoryId),m.a)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.a)} <span class="vs">VS</span> ${linkedEntry(t,lookup(t,m.categoryId),m.b)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.b)}</td></tr>`).join('')}</tbody></table></div>`:''}`);
+  ${ko.length?`<h3>Knockout Bracket — Semis & Finals</h3><div class="scroll"><table><tbody>${ko.map(m=>`<tr><td>${esc(lookup(t,m.categoryId)?.name)}</td><td>${esc(koRoundLabel(t,m))}</td><td>${linkedEntry(t,lookup(t,m.categoryId),m.a)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.a)} <span class="vs">VS</span> ${linkedEntry(t,lookup(t,m.categoryId),m.b)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.b)}${m.a&&m.b?`<button type="button" class="btn mba-umpire-launch" data-mba-score-match="${esc(m.id)}" ${can('scoresWrite')&&editScope(t.id)?'':'hidden'}>🏸 Umpire Score</button>`:''}</td></tr>`).join('')}</tbody></table></div>`:''}`);
 }
 function koRoundLabel(t,m){const max=Math.max(...t.fixtures.filter(x=>x.stage==='knockout'&&x.categoryId===m.categoryId).map(x=>x.round));return m.round===max?'Final':m.round===max-1?'Semi-final':m.round===max-2?'Quarter-final':`Knockout Round ${m.round}`;}
 function resultView(t){
@@ -1534,6 +1629,10 @@ function reportData(t,kind,catId='all',groupId='all'){
  const cats=t.categories.filter(c=>catId==='all'||c.id===catId),rows=[];
  const hasGroup=(c,e)=>groupId==='all'||(e?.groupId||'general')===groupId;
  if(kind==='payments'&&canSeePayments()){for(const team of t.teams)for(const p of team.players){const v=paymentStatus(p.id);rows.push([team.name,p.name,v.fee===null?'Not set':money(v.fee),money(v.paid),v.due===null?'—':money(v.due),v.text])}return {head:['Team','Player','Fee','Received','Due','Status'],rows}}
+
+ if(kind==="finance"&&canFullFinance()){const f=financeTotals(t);return {head:["Finance Item","Amount / Value"],rows:[["Players",String(f.players)],["Expected ground fees",f.expected===null?"Not configured":money(f.expected)],["Collected (net)",money(f.paid)],["Outstanding player balances",f.owed===null?"Not configured":money(f.owed)],["Expenses paid",money(f.expensesPaid)],["Bills still due",money(f.unpaidBills)],["Cash / bank balance",money(f.cashBalance)],["Projected final surplus",f.projected===null?"Not configured":money(f.projected)]]}}
+ if(kind==="expenses"&&canSeeExpenses()){const expenses=expenseEvents().sort((a,b)=>(a.date||"").localeCompare(b.date||""));return {head:["Date","Category","Description","Amount","Status"],rows:expenses.map(e=>[e.date||"",e.category||"",e.description||"",money(e.amount),e.status||""])}}
+
  if(kind==='payments')return reportData(t,'fixtures',catId,groupId); // No finance headings even for a stale viewer print selection.
  if(kind==='teams'){
   for(const team of t.teams)for(const p of team.players)rows.push([team.name,p.name,`${t.categories.filter(c=>c.entrants.some(e=>e.teamId===team.id&&e.playerIds.includes(p.id))).map(c=>c.name).join(', ')||'—'}`]);
@@ -1559,24 +1658,35 @@ function reportData(t,kind,catId='all',groupId='all'){
  }
  return kind==='fixtures'?{head:['Slot','Court','Category','Group','Match / Players'],rows}:{head:['Slot','Category','Group','Match / Players','Score / Winner'],rows};
 }
+/* MBA_A4_READABLE_PRINT_V2: content-aware A4 pages, readable names, repeating report header. */
 function printSheets(t,kind,catId='all',groupId='all'){
- const {head,rows}=reportData(t,kind,catId,groupId),orientation=t.settings?.printOrientation||'landscape';
- const size=Math.min(24,Math.max(11,+t.settings?.printFontSize||17)),max=Math.max(5,Math.floor((orientation==='landscape'?200:275)/(size*.50+2.0)));
- const pageCount=Math.max(1,Math.ceil(rows.length/max)),perPage=Math.ceil(rows.length/pageCount);
+ const {head,rows}=reportData(t,kind,catId,groupId),orientation=t.settings?.printOrientation==='portrait'?'portrait':'landscape';
+ const size=Math.min(24,Math.max(14,+t.settings?.printFontSize||17));
+ const widths=kind==='fixtures'?[8,10,15,14,53]:kind==='results'?[8,15,13,43,21]:kind==='standings'?[14,12,38,9,9,9,9]:kind==='payments'?[19,27,13,13,13,15]:kind==='expenses'?[16,19,29,15,21]:kind==='finance'?[56,44]:[27,38,35];
+ const totalW=orientation==='landscape'?275:189,usableH=orientation==='landscape'?151:232;
+ const perCell=(cell,w)=>{
+  const chars=[...String(cell??'')].length;
+  const avgMm=size*.132, available=Math.max(7,totalW*w/100-6);
+  return Math.max(1,Math.ceil(chars*avgMm/available));
+ };
+ const rowHeight=row=>Math.max(8.0,4.8+Math.max(1,...row.map((cell,i)=>perCell(cell,widths[i]||12)))*size*.33);
+ const pages=[];let batch=[],consumed=0;
+ for(const row of rows){const h=rowHeight(row);if(batch.length&&consumed+h>usableH){pages.push(batch);batch=[];consumed=0}batch.push(row);consumed+=h}
+ if(batch.length||!pages.length)pages.push(batch);
  let html='';
- for(let n=0;n<pageCount;n++){
-  const chunk=rows.slice(n*perPage,(n+1)*perPage);
-  const widths=kind==='fixtures'?[8,10,15,14,53]:kind==='results'?[8,15,13,43,21]:kind==='standings'?[14,12,38,9,9,9,9]:kind==='payments'?[19,27,13,13,13,15]:[27,38,35];
-  html+=`<article class="print-sheet ${orientation}" style="--p-font:${size}px"><div class="print-head"><div><strong>MBA TOURNAMENTS</strong><h2>${esc(t.name)}</h2><p>📅 ${esc(dateShow(t.date))} · ${esc(kind.toUpperCase())}${catId==='all'?'':' · '+esc(lookup(t,catId)?.name||'')}${groupId==='all'?'':' · '+esc(groupId==='general'?'General':lookup(t,catId)?.groups?.find(g=>g.id===groupId)?.name||'Group')}</p></div><span class="print-mark">${esc(orientation==='portrait'?'A4 PORTRAIT':'A4 LANDSCAPE')}</span></div><div class="print-body"><table class="print-table"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${chunk.map((row,i)=>`<tr>${row.map((cell,j)=>`<td class="${j===(kind==='fixtures'?4:kind==='results'?3:kind==='standings'?2:1)?'print-main':''}">${esc(cell)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${head.length}">No records for this selection</td></tr>`}</tbody></table></div><div class="print-foot"><span>${esc(t.name)} · ${esc(dateShow(t.date))}</span><span>Page ${n+1} / ${pageCount} · ${rows.length} records</span></div></article>`;
+ for(let n=0;n<pages.length;n++){
+  const chunk=pages[n];
+  html+=`<article class="print-sheet ${orientation}" style="--p-font:${size}px"><div class="print-head"><div><strong>MBA TOURNAMENTS</strong><h2>${esc(t.name)}</h2><p>📅 ${esc(dateShow(t.date))} · ${esc(kind.toUpperCase())}${catId==='all'?'':' · '+esc(lookup(t,catId)?.name||'')}${groupId==='all'?'':' · '+esc(groupId==='general'?'General':lookup(t,catId)?.groups?.find(g=>g.id===groupId)?.name||'Group')}</p></div><span class="print-mark">${esc(orientation==='portrait'?'A4 PORTRAIT':'A4 LANDSCAPE')}</span></div><div class="print-body"><table class="print-table"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${head.map(label=>`<th>${esc(label)}</th>`).join('')}</tr></thead><tbody>${chunk.map(row=>`<tr>${row.map((cell,j)=>`<td class="${j===(kind==='fixtures'?4:kind==='results'?3:kind==='standings'?2:kind==='finance'?0:1)?'print-main':''}">${esc(cell)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${head.length}">No records for this selection</td></tr>`}</tbody></table></div><div class="print-foot"><span>${esc(t.name)} · ${esc(dateShow(t.date))}</span><span>Page ${n+1} / ${pages.length} · ${rows.length} records</span></div></article>`;
  }
  return html;
 }
+
 function printView(t){
  if(!canPrint())return card('Print Center','<p>You do not have print access. Ask Super Admin if printing is needed.</p>');
  if(printCategory!=='all'&&!t.categories.some(c=>c.id===printCategory)){printCategory='all';printGroup='all'}
- const options=[['fixtures','Fixtures'],['results','Results & Scores'],['standings','Points Tables'],['teams','Teams & Players'],...(canSeePayments()?[['payments','Players Fee & Paid Status']]:[])];
+ const options=[['fixtures','Fixtures'],['results','Results & Scores'],['standings','Points Tables'],['teams','Teams & Players'],...(canSeePayments()?[['payments','Players Fee & Paid Status']]:[]),...(canSeeExpenses()?[['expenses','Expense Register']]:[]),...(canFullFinance()?[['finance','Full Finance Summary']]:[])];
  const groups=printCategory==='all'?[]:lookup(t,printCategory)?.groups||[];
- return card('A4 Print Center',`<div class="print-controls noprint">${selectField('Report','printType',options,printReport)}${selectField('Category','printCat',[['all','All Categories'],...t.categories.map(c=>[c.id,c.name])],printCategory)}${selectField('Group','printGroup',[['all','All Groups'],['general','General'],...groups.map(g=>[g.id,g.name])],printGroup)}${selectField('Orientation','printOrientation',[['landscape','A4 Landscape'],['portrait','A4 Portrait']],t.settings?.printOrientation||'landscape')}${field('Font size (11–24 px)','printSize',t.settings?.printFontSize||17,'number','min="11" max="24"')}<button class="btn primary" type="button" data-action="print-now">🖨 Print All Pages</button></div><p class="helper noprint">Preview pages use the complete A4 paper area with moderate, legible names and repeating headers. Use Chrome's Print settings → Paper A4 / Scale 100% / Margins None, and disable browser headers and footers if they appear.</p><div id="print-preview" class="print-preview">${printSheets(t,printReport,printCategory,printGroup)}</div>`);
+ return card('A4 Print Center',`<div class="print-controls noprint">${selectField('Report','printType',options,printReport)}${selectField('Category','printCat',[['all','All Categories'],...t.categories.map(c=>[c.id,c.name])],printCategory)}${selectField('Group','printGroup',[['all','All Groups'],['general','General'],...groups.map(g=>[g.id,g.name])],printGroup)}${selectField('Orientation','printOrientation',[['landscape','A4 Landscape'],['portrait','A4 Portrait']],t.settings?.printOrientation||'landscape')}${field('Font size (14–24 px)','printSize',t.settings?.printFontSize||17,'number','min="14" max="24"')}<button class="btn primary" type="button" data-action="print-now">🖨 Print All Pages</button></div><p class="helper noprint">Preview pages use the complete A4 paper area with moderate, legible names and repeating headers. Use Chrome's Print settings → Paper A4 / Scale 100% / Margins None, and disable browser headers and footers if they appear.</p><div id="print-preview" class="print-preview">${printSheets(t,printReport,printCategory,printGroup)}</div>`);
 }
 function settingsView(t){const r=t.rules,s=t.settings||{};return card('Tournament Settings',`<form data-form="settings" class="form-grid">
  ${field('Target score (any positive number)','target',r.target,'number','min="1" required')}
@@ -1612,7 +1722,7 @@ document.addEventListener('click',async ev=>{
   return;
  }
  if(action==='manage-user'){if(!isSuper())return;editor={kind:'access',id};page='access';render();return}
- if(action==='new-access-user'){if(!isSuper())return;editor=null;page='access';render();return}
+ if(action==='new-access-user'){if(!isSuper())return;editor=null;page='access';render();const details=document.getElementById('mba-user-editor');if(details){details.open=true;details.scrollIntoView({behavior:'smooth',block:'start'})}return}
  if(action==='apply-role-preset'){if(!isSuper())return;fillRolePermissions(b.closest('form'));return}
  if(['mba-bulk-select-all','mba-bulk-add','mba-bulk-remove','mba-bulk-delete','mba-bulk-delete-all'].includes(action)){
   try{await mbaRunBulkAccessAction(action)}catch(error){alert('Bulk access update failed: '+errText(error));render()}
@@ -1667,7 +1777,7 @@ document.addEventListener('change',async e=>{
    if(e.target.name==='printCat'){printCategory=v;printGroup='all'}
    if(e.target.name==='printGroup')printGroup=v;
    if(e.target.name==='printOrientation'){active().settings.printOrientation=v;remember()}
-   if(e.target.name==='printSize'){active().settings.printFontSize=Math.min(24,Math.max(11,Number(v)||17));remember()}
+   if(e.target.name==='printSize'){active().settings.printFontSize=Math.min(24,Math.max(14,Number(v)||17));remember()}
    render();return;
  }
  if(e.target.name==='copyFrom'&&e.target.closest('form[data-form="tournament"]')){sourceTeamPicker();return}
@@ -1830,6 +1940,345 @@ function mbaInitUi(){
  observer.observe(document.body,{subtree:true,childList:true,characterData:true});
  mbaApplyLanguage();
 }
+
+/* MBA_ALL_IN_ONE_FREE_FEATURES_V2
+   Free in-app announcements (not push/SMS), small posters in Realtime Database,
+   and a local umpire point counter that saves ONLY confirmed final results. */
+let mbaAnnouncementOff=null,mbaAnnouncementItems={},mbaAnnouncementInitial=false;
+let mbaVoiceRecorder=null,mbaVoiceStream=null,mbaVoiceChunks=[],mbaVoiceData='',mbaVoicePreviewUrl=null,mbaVoiceStopTimeout=null;
+function mbaVoiceIsSafe(s){return typeof s==='string'&&s.length<=110000&&/^data:audio\/(webm|mp4|ogg)(?:;codecs=[\w.-]+)?;base64,[A-Za-z0-9+/=]{200,100000}$/.test(s)}
+function mbaVoiceStatus(msg){const box=document.getElementById('mba-voice-status');if(box)box.textContent=msg}
+function mbaResetVoice(){if(mbaVoiceRecorder?.state==='recording')mbaVoiceRecorder.stop();if(mbaVoiceStream){mbaVoiceStream.getTracks().forEach(t=>t.stop());mbaVoiceStream=null}if(mbaVoiceStopTimeout){clearTimeout(mbaVoiceStopTimeout);mbaVoiceStopTimeout=null}if(mbaVoicePreviewUrl){URL.revokeObjectURL(mbaVoicePreviewUrl);mbaVoicePreviewUrl=null}mbaVoiceData='';mbaVoiceRecorder=null;mbaVoiceChunks=[]}
+function mbaUpdateVoicePreview(){const a=document.getElementById('mba-voice-preview');if(a){a.hidden=!mbaVoiceData;if(mbaVoiceData)a.src=mbaVoiceData}mbaVoiceStatus(mbaVoiceData?'✅ Voice note ready to publish. You may also type a message.':'No voice note recorded yet.')}
+async function mbaStartVoice(){
+ if(!mbaMakerCanNotice())throw Error('Admin rights required.');
+ if(!navigator.mediaDevices?.getUserMedia||typeof MediaRecorder==='undefined')throw Error('Microphone recording requires HTTPS and a supported browser. Use text notice instead.');
+ mbaResetVoice();
+ const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});mbaVoiceStream=stream;
+ const types=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg'];let mime='';for(const t of types){if(MediaRecorder.isTypeSupported(t)){mime=t;break}}
+ let recorder;try{recorder=new MediaRecorder(stream,mime?{mimeType:mime,audioBitsPerSecond:24000}:{audioBitsPerSecond:24000})}catch{recorder=new MediaRecorder(stream)}
+ mbaVoiceRecorder=recorder;mbaVoiceChunks=[];
+ recorder.ondataavailable=e=>{if(e.data?.size)mbaVoiceChunks.push(e.data)};
+ recorder.onerror=e=>mbaVoiceStatus('Recording error: '+(e.error?.message||'unknown'));
+ recorder.onstop=async()=>{
+  if(mbaVoiceStopTimeout){clearTimeout(mbaVoiceStopTimeout);mbaVoiceStopTimeout=null}
+  stream.getTracks().forEach(track=>track.stop());if(mbaVoiceStream===stream)mbaVoiceStream=null;
+  try{const mimeType=recorder.mimeType?.split(';')[0]||'audio/webm',blob=new Blob(mbaVoiceChunks,{type:recorder.mimeType||mimeType});
+   if(!blob.size||blob.size>73000)throw Error('Voice note exceeds the free size limit (73 KB). Record a shorter note.');
+   const data=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(Error('Could not read voice note'));reader.readAsDataURL(blob)});
+   if(!mbaVoiceIsSafe(data))throw Error('Audio format cannot be stored. Use Chrome / WebM and record again.');
+   mbaVoiceData=data;mbaUpdateVoicePreview();
+  }catch(error){mbaVoiceData='';mbaVoiceStatus('❌ '+error.message)}
+ };
+ recorder.start(250);mbaVoiceStatus('🔴 Recording… up to 18 seconds. Press Stop when finished.');
+ mbaVoiceStopTimeout=setTimeout(()=>{if(mbaVoiceRecorder===recorder&&recorder.state==='recording')recorder.stop()},18000);
+}
+function mbaStopVoice(){if(!mbaVoiceRecorder||mbaVoiceRecorder.state!=='recording')return;mbaVoiceRecorder.stop();mbaVoiceStatus('Processing voice note…')}
+
+let mbaGalleryOff=null,mbaGalleryTournament='',mbaGalleryItems={},mbaGalleryError='';
+let mbaUmpire=null;
+const mbaMakerCanNotice=()=>!!authUser&&(isSuper()||(accessRecord?.active===true&&accessRecord?.role==='admin'&&accessRecord?.permissions?.settingsWrite===true));
+const mbaMakerCanGallery=()=>!!authUser&&!!active()&&(isSuper()||(can('settingsWrite')&&editScope(active().id)));
+const mbaNoticesSorted=()=>Object.entries(mbaAnnouncementItems).map(([id,v])=>({id,...(v||{})})).filter(v=>v&&v.expiresAt>Date.now()&&v.createdAt<=Date.now()+300000).sort((a,b)=>b.createdAt-a.createdAt);
+function mbaNoticeClock(stamp){return new Date(stamp).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short',hour12:true});}
+function mbaSoundEnabled(){try{return localStorage.getItem('mba-notice-sound-enabled')==='yes'}catch{return false}}
+function mbaPlayAlert(){if(!mbaSoundEnabled())return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;const ctx=new Audio(),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=640;gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.05,ctx.currentTime+.025);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.25);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.26);osc.onended=()=>ctx.close().catch(()=>{})}catch(err){console.debug('Audio not available',err)}}
+function mbaRenderNotices(){
+ const host=document.getElementById('mba-important-notices');if(!host)return;
+ if(!authUser){host.hidden=true;host.innerHTML='';return}
+ const entries=mbaNoticesSorted().slice(0,15),canPost=mbaMakerCanNotice();host.hidden=false;
+ const visible=entries.map((n,i)=>`<article class="mba-announcement ${n.important?'mba-important':''}"><div class="mba-ann-top"><b>${n.important?'📢 IMPORTANT NOTICE':'📣 Announcement'} · ${esc(n.title||'Update')}</b><small>${esc(mbaNoticeClock(n.createdAt))}</small></div><p>${esc(n.body||'').replace(/\n/g,'<br>')}</p>${mbaVoiceIsSafe(n.voiceData)?`<div class="mba-voice-message"><b>🎙 Voice Note</b><audio controls preload="none" src="${esc(n.voiceData)}"></audio></div>`:''}<div class="mba-ann-bottom"><small>Valid until ${esc(mbaNoticeClock(n.expiresAt))}</small>${canPost&&(isSuper()||n.createdBy===authUser.uid)?`<button type="button" class="btn danger-outline" data-mba-ann-delete="${esc(n.id)}">Remove</button>`:''}</div></article>`).join('');
+ const composer=canPost?`<details class="mba-announce-compose" id="mba-announce-compose"><summary>📣 Admin · Important Announcement</summary><div class="mba-announce-form"><label class="field"><span>Notice heading</span><input id="mba-announce-title" maxlength="80" value="Match Reminder" placeholder="Match Reminder"></label><label class="field"><span>✍️ Text Notice (optional if Voice Note is recorded)</span><textarea id="mba-announce-body" rows="3" maxlength="300" placeholder="Matches start at 6:30 PM. All players please arrive on time."></textarea></label><div class="mba-voice-recorder"><b>🎙 Voice Note — record actual audio (not voice-to-text)</b><div class="mba-ann-actions"><button type="button" class="btn primary" id="mba-voice-start">● Start Recording</button><button type="button" class="btn" id="mba-voice-stop">■ Stop</button><button type="button" class="btn" id="mba-voice-clear">Clear Voice</button></div><small id="mba-voice-status">${mbaVoiceData?'✅ Voice note ready to publish.':'No voice note recorded yet.'}</small><audio id="mba-voice-preview" controls ${mbaVoiceData?'':'hidden'} src="${mbaVoiceData?esc(mbaVoiceData):''}"></audio><p class="helper">Voice note max 18 seconds / 73 KB. Text and Voice may be sent together or separately. Microphone permission and HTTPS required. This is free in-app playback only, NOT a mobile push message.</p></div><div class="mba-ann-actions"><label class="choice"><input id="mba-ann-important" type="checkbox" checked> Important Notice</label><label class="field mba-expire-field"><span>Show for</span><select id="mba-announce-expiry"><option value="2">2 hours</option><option value="6">6 hours</option><option value="24" selected>24 hours</option><option value="72">3 days</option></select></label><button type="button" class="btn primary" id="mba-ann-publish">📢 Publish Notice</button></div><p class="helper">Signed-in app users see this free real-time notice while the app is open. No paid plan, SMS, background push or speech-to-text.</p></div></details>`:'';
+ const sound=`<label class="mba-sound-toggle"><input type="checkbox" id="mba-ann-sound" ${mbaSoundEnabled()?'checked':''}> 🔔 Play sound for new notices while app is open</label>`;
+ const oldForm=document.getElementById('mba-announce-compose');
+ const previousDraft=oldForm?{open:oldForm.open,title:document.getElementById('mba-announce-title')?.value,body:document.getElementById('mba-announce-body')?.value,important:document.getElementById('mba-ann-important')?.checked,expiry:document.getElementById('mba-announce-expiry')?.value}:null;
+ host.innerHTML=`<div class="mba-notice-heading"><strong>📣 Important Notices</strong><span class="mba-notice-count">${entries.length} active</span></div>${entries.length?visible:'<p class="mba-no-ann">No active announcements</p>'}${sound}${composer}`;
+ if(previousDraft){const det=document.getElementById('mba-announce-compose');if(det){det.open=previousDraft.open;for(const [id,value] of [['mba-announce-title',previousDraft.title],['mba-announce-body',previousDraft.body],['mba-announce-expiry',previousDraft.expiry]]){const element=document.getElementById(id);if(element&&value!=null)element.value=value}const important=document.getElementById('mba-ann-important');if(important&&previousDraft.important!=null)important.checked=previousDraft.important}}
+}
+function mbaStartNoticeWatch(user,gen){
+ if(mbaAnnouncementOff){try{mbaAnnouncementOff()}catch{}mbaAnnouncementOff=null}mbaAnnouncementItems={};mbaAnnouncementInitial=false;mbaRenderNotices();if(!user)return;
+ mbaAnnouncementOff=onValue(ref(db,'v3/announcements'),snap=>{
+  if(gen!==authGeneration)return;
+  const incoming=snap.val()||{},previous=mbaAnnouncementItems;
+  if(mbaAnnouncementInitial){const newest=Object.keys(incoming).some(key=>!previous[key]&&incoming[key]?.expiresAt>Date.now());if(newest)mbaPlayAlert()}
+  mbaAnnouncementInitial=true;mbaAnnouncementItems=incoming;mbaRenderNotices();
+ },error=>{if(gen!==authGeneration)return;mbaAnnouncementItems={};mbaAnnouncementInitial=false;mbaRenderNotices();if(mbaMakerCanNotice()){const x=document.getElementById('mba-important-notices');if(x)x.insertAdjacentHTML('beforeend',`<p class="helper">Announcements unavailable: ${esc(errText(error))}. Check the optional Firebase Rules before posting.</p>`)}});
+}
+async function mbaPublishNotice(){
+ if(!mbaMakerCanNotice())throw Error('Only an authorized Admin or Super Admin can announce.');
+ if(mbaVoiceRecorder?.state==='recording')throw Error('Stop recording before publishing.');
+ const title=document.getElementById('mba-announce-title')?.value.trim()||'Important Notice';
+ const body=document.getElementById('mba-announce-body')?.value.trim()||'';
+ if(title.length<3||title.length>80)throw Error('Heading must be 3–80 characters.');
+ if(body.length>300||(!mbaVoiceIsSafe(mbaVoiceData)&&body.length<3))throw Error('Enter text (at least 3 characters) OR record a Voice Note.');
+ if(Object.keys(mbaAnnouncementItems).length>60)throw Error('Announcement history is full; remove expired notices first.');
+ const now=Date.now(),hours=Number(document.getElementById('mba-announce-expiry')?.value)||24;
+ const rec={title,body,important:!!document.getElementById('mba-ann-important')?.checked,createdAt:now,expiresAt:now+hours*3600000,createdBy:authUser.uid,createdByEmail:authUser.email||''};
+ if(mbaVoiceIsSafe(mbaVoiceData)){rec.voiceData=mbaVoiceData;rec.voiceMime=mbaVoiceData.slice(5,mbaVoiceData.indexOf(';base64,'));}
+ const id=uid('notice');await set(ref(db,'v3/announcements/'+id),rec);mbaResetVoice();mbaRenderNotices();alert('Notice published online. Signed-in users will see text and/or a playable voice note in the app.');
+}
+function mbaGalleryView(t){
+ mbaWatchGallery(t);
+ const canEdit=mbaMakerCanGallery(),rows=Object.entries(mbaGalleryItems||{}).sort((a,b)=>(b[1]?.createdAt||0)-(a[1]?.createdAt||0));
+ const upload=canEdit?`<div class="mba-gallery-upload"><h3>📤 Add Tournament Poster / Photo</h3><label class="field"><span>Title</span><input id="mba-poster-title" maxlength="80" placeholder="Winners Poster"></label><label class="field"><span>Choose photo (automatically compressed; max 8 photos per tournament)</span><input type="file" id="mba-poster-file" accept="image/jpeg,image/png,image/webp,image/*"></label><button class="btn primary" type="button" id="mba-poster-upload">Upload Poster</button><p class="helper">Free small-image gallery stored in Realtime Database. Images are resized to about 100 KB; not suitable for high-resolution printable posters. Keep your original photo separately.</p></div>`:'';
+ const html=rows.map(([id,p])=>{const image=typeof p?.imageData==='string'&&/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(p.imageData)&&p.imageData.length<190000?p.imageData:'';
+ return `<div class="mba-gallery-item"><img loading="lazy" src="${esc(image)}" alt="${esc(p?.title||'Tournament poster')}"/><div class="mba-gallery-meta"><b>${esc(p?.title||'Tournament Photo')}</b><small>${esc(mbaNoticeClock(p?.createdAt||Date.now()))}</small>${canEdit?`<button class="btn danger-outline" type="button" data-mba-poster-delete="${esc(id)}">Delete</button>`:''}</div></div>`}).join('');
+ return card('📷 Tournament Gallery',`<p class="helper">${esc(t.name)} · Posters, team photos, winners and highlights. Photos appear for authorized tournament viewers.</p>${upload}${mbaGalleryError?`<p class="banner">Gallery: ${esc(mbaGalleryError)}. Check Firebase Rules.</p>`:''}<div class="mba-gallery-grid">${html||'<p class="helper">No photos uploaded yet.</p>'}</div>`);
+}
+function mbaWatchGallery(t){
+ if(!t||mbaGalleryTournament===t.id)return;
+ if(mbaGalleryOff){try{mbaGalleryOff()}catch{}mbaGalleryOff=null}
+ mbaGalleryTournament=t.id;mbaGalleryItems={};mbaGalleryError='';
+ mbaGalleryOff=onValue(ref(db,'v3/posters/'+t.id),snap=>{mbaGalleryItems=snap.val()||{};mbaGalleryError='';if(page==='gallery'&&active()?.id===t.id)render()},err=>{mbaGalleryError=errText(err);if(page==='gallery'&&active()?.id===t.id)render()});
+}
+async function mbaCompressPoster(file){
+ if(!file||!file.type.startsWith('image/'))throw Error('Please select a JPG/PNG/WebP image.');
+ if(file.size>15000000)throw Error('Original file is too large (maximum 15 MB).');
+ const url=URL.createObjectURL(file),im=new Image();
+ try{await new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=()=>reject(Error('Could not read this photo'));im.src=url});
+  let maxSide=1000,quality=.74;
+  for(let j=0;j<7;j++){
+   const factor=Math.min(1,maxSide/Math.max(im.naturalWidth,im.naturalHeight)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(im.naturalWidth*factor));canvas.height=Math.max(1,Math.round(im.naturalHeight*factor));
+   const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(im,0,0,canvas.width,canvas.height);
+   const data=canvas.toDataURL('image/jpeg',quality);if(data.length<140000)return data;
+   quality=Math.max(.4,quality-.07);if(j%2===1)maxSide=Math.round(maxSide*.78);
+  }
+  throw Error('Photo cannot be compressed enough. Try a smaller original image.');
+ }finally{URL.revokeObjectURL(url)}
+}
+async function mbaUploadPoster(){
+ if(!mbaMakerCanGallery())throw Error('You need Tournament Edit + Settings permission to upload.');
+ const t=active(),file=document.getElementById('mba-poster-file')?.files?.[0],title=document.getElementById('mba-poster-title')?.value.trim()||'Tournament Photo';
+ if(!file)throw Error('Choose a photo first.');
+ if(Object.keys(mbaGalleryItems).length>=8)throw Error('Maximum 8 gallery images per tournament. Remove an old image to add another.');
+ if(title.length>80)throw Error('Title is too long.');
+ const data=await mbaCompressPoster(file),record={title,imageData:data,createdAt:Date.now(),createdBy:authUser.uid};
+ await set(ref(db,'v3/posters/'+t.id+'/'+uid('poster')),record);alert('Photo uploaded. It will appear in this tournament gallery.');
+}
+function mbaDraftKey(tid,mid){return 'mba-umpire-draft-'+tid+'-'+mid}
+function mbaLoadDraft(tid,mid){try{const v=JSON.parse(sessionStorage.getItem(mbaDraftKey(tid,mid))||'null');return v&&Number.isSafeInteger(v.a)&&Number.isSafeInteger(v.b)?v:null}catch{return null}}
+function mbaSaveDraft(){if(!mbaUmpire)return;try{sessionStorage.setItem(mbaDraftKey(mbaUmpire.tournamentId,mbaUmpire.matchId),JSON.stringify({a:mbaUmpire.a,b:mbaUmpire.b}))}catch{}}
+function mbaOpenUmpire(mid){
+ const t=active();if(!t||!authUser||!can('scoresWrite')||!editScope(t.id))throw Error('Umpire needs Score Edit access to this tournament.');
+ const m=t.fixtures.find(x=>x.id===mid);if(!m||!m.a||!m.b)throw Error('This match is not ready.');
+ const res=t.results[mid],draft=mbaLoadDraft(t.id,mid);
+ if(res&&res.mode==='winner'&&!confirm('A Win/Loss-only result already exists. Convert it to a numeric result?'))return;
+ if(res&&res.mode!=='winner'&&!confirm('This match already has a saved score. Open umpire editor to review/change it?'))return;
+ mbaUmpire={tournamentId:t.id,matchId:mid,a:res?.mode==='winner'?(draft?.a||0):res?Number(res.a):draft?.a||0,b:res?.mode==='winner'?(draft?.b||0):res?Number(res.b):draft?.b||0};mbaRenderUmpire();
+}
+function mbaRenderUmpire(){
+ const host=document.getElementById('mba-umpire-overlay');if(!host)return;
+ if(!mbaUmpire){host.hidden=true;host.innerHTML='';return}
+ const t=active(),m=t?.fixtures.find(x=>x.id===mbaUmpire.matchId);if(!m||t.id!==mbaUmpire.tournamentId){mbaUmpire=null;host.hidden=true;return}
+ const c=lookup(t,m.categoryId),r=effectiveRules(t,c),names=participants(t,m);
+ const cap=r.cutoff==null?Math.max(r.target+6,Math.max(mbaUmpire.a,mbaUmpire.b)+3):Number(r.cutoff);
+ const count=Math.min(70,Math.max(r.target,cap)),winner=scoreWinner({a:mbaUmpire.a,b:mbaUmpire.b},r);
+ const grid=(key,name)=>{const current=mbaUmpire[key];return `<div class="mba-point-team"><h4>${esc(name)}</h4><div class="mba-point-score">${current}</div><div class="mba-point-actions"><button type="button" class="btn" data-mba-point="${key}:-1">− Undo</button><button type="button" class="btn primary" data-mba-point="${key}:1" ${winner?'disabled':''}>+ Point</button></div><div class="mba-point-grid">${Array.from({length:count},(_,i)=>`<button type="button" class="mba-point ${i<current?'is-marked':''}" data-mba-check="${key}:${i+1}" aria-label="${esc(name)} point ${i+1}" ${i>current||winner&&i>=current?'disabled':''}>${i+1}</button>`).join('')}</div></div>`};
+ host.hidden=false;host.innerHTML=`<div class="mba-umpire-backdrop" role="presentation"></div><section class="mba-umpire-card" role="dialog" aria-modal="true" aria-label="Umpire Score"><div class="mba-umpire-head"><div><h2>🏸 Umpire Score · Court ${esc(m.court)}</h2><p>Target ${esc(r.target)} · ${r.winByTwo?'Win by 2':'No win-by-2'} · Cap ${r.cutoff??'none'}</p></div><button class="btn" type="button" id="mba-umpire-close">✕ Close</button></div><div class="mba-point-teams">${grid('a',names[0])}${grid('b',names[1])}</div><div class="mba-umpire-footer"><b>${winner?'🏆 '+esc(names[winner==='a'?0:1])+' WON':'Match in progress · not yet a valid final result'}</b><button type="button" class="btn primary" id="mba-umpire-final" ${winner?'':'disabled'}>✅ Finish Match &amp; Save Result</button><p class="helper">Each tick records one point on this device. Undo is available. Only after Finish & Save will the confirmed score be sent to Firebase and update Results/Standings. Manual Score or Win/Loss in Results remains available.</p></div></section>`;
+}
+function mbaUmpirePoint(key,change,point){
+ if(!mbaUmpire||!['a','b'].includes(key))return;
+ const t=active(),m=t?.fixtures.find(x=>x.id===mbaUmpire.matchId);if(!m)return;
+ const rules=effectiveRules(t,lookup(t,m.categoryId));
+ if(change>0&&scoreWinner({a:mbaUmpire.a,b:mbaUmpire.b},rules))return;
+ if(point!==undefined){if(point===mbaUmpire[key]+1)mbaUmpire[key]++;else if(point<=mbaUmpire[key])mbaUmpire[key]=point-1;else return}
+ else mbaUmpire[key]=Math.max(0,mbaUmpire[key]+change);
+ const limit=rules.cutoff==null?70:Number(rules.cutoff);
+ mbaUmpire[key]=Math.min(limit,mbaUmpire[key]);mbaSaveDraft();mbaRenderUmpire();
+}
+async function mbaFinishUmpire(){
+ if(!mbaUmpire)throw Error('Umpire score not open.');
+ const u={...mbaUmpire},t=active(),m=t?.fixtures.find(x=>x.id===u.matchId);if(!m||t.id!==u.tournamentId)throw Error('The tournament or match changed.');
+ const w=scoreWinner({a:u.a,b:u.b},effectiveRules(t,lookup(t,m.categoryId)));
+ if(!w)throw Error('Finish the match according to its scoring rules.');
+ if(!confirm('Save '+u.a+' – '+u.b+' as the FINAL result? Points Table will update automatically.'))return;
+ const btn=document.getElementById('mba-umpire-final');if(btn)btn.disabled=true;
+ await op(()=>{const current=active();if(current?.id!==u.tournamentId)throw Error('Tournament changed');recordResult(current,u.matchId,{a:u.a,b:u.b});notice='Final Umpire Result saved to Production Firebase.'});
+ if(notice==='Saved online to Production Firebase.'){
+  try{sessionStorage.removeItem(mbaDraftKey(u.tournamentId,u.matchId))}catch{}
+  mbaUmpire=null;mbaRenderUmpire();
+ }else mbaRenderUmpire();
+}
+document.addEventListener('click',async e=>{
+ const button=e.target.closest('button');if(!button)return;
+ try{
+  if(button.id==='mba-ann-publish'){button.disabled=true;try{await mbaPublishNotice()}finally{button.disabled=false}return}
+  if(button.id==='mba-voice-start'){await mbaStartVoice();return}
+  if(button.id==='mba-voice-stop'){mbaStopVoice();return}
+  if(button.id==='mba-voice-clear'){mbaResetVoice();mbaUpdateVoicePreview();return}
+  if(button.dataset.mbaAnnDelete){if(!mbaMakerCanNotice())throw Error('No permission');if(!confirm('Remove this announcement?'))return;await set(ref(db,'v3/announcements/'+button.dataset.mbaAnnDelete),null);return}
+  if(button.id==='mba-poster-upload'){button.disabled=true;try{await mbaUploadPoster()}finally{button.disabled=false}return}
+  if(button.dataset.mbaPosterDelete){if(!mbaMakerCanGallery())throw Error('No permission');if(!confirm('Delete this photo from the Gallery?'))return;await set(ref(db,'v3/posters/'+active().id+'/'+button.dataset.mbaPosterDelete),null);return}
+  if(button.dataset.mbaScoreMatch){mbaOpenUmpire(button.dataset.mbaScoreMatch);return}
+  if(button.id==='mba-umpire-close'){mbaUmpire=null;mbaRenderUmpire();return}
+  if(button.id==='mba-umpire-final'){await mbaFinishUmpire();return}
+  if(button.dataset.mbaPoint){const [k,d]=button.dataset.mbaPoint.split(':');mbaUmpirePoint(k,Number(d));return}
+  if(button.dataset.mbaCheck){const [k,num]=button.dataset.mbaCheck.split(':');mbaUmpirePoint(k,0,Number(num));return}
+ }catch(err){alert('MBA Tournaments: '+errText(err))}
+});
+document.addEventListener('change',e=>{if(e.target?.id==='mba-ann-sound'){try{localStorage.setItem('mba-notice-sound-enabled',e.target.checked?'yes':'no')}catch{}if(e.target.checked)mbaPlayAlert()}});
+
+/* MBA_PRINT_SHARE_V2 — explicit, on-device PDF/PNG/A4 report export; no paid APIs */
+let mbaShareBusy=false,mbaShareCount=0;
+const mbaExportScriptReady=()=>typeof window.html2canvas==='function'&&!!window.jspdf?.jsPDF;
+function mbaShareMenu(){
+ return `<details class="mba-share-menu noprint"><summary>↗ Share</summary><div class="mba-share-choices"><button type="button" data-mba-export="pdf">📄 PDF</button><button type="button" data-mba-export="png">🖼 PNG</button><button type="button" data-mba-export="whatsapp">🟢 WhatsApp</button><button type="button" data-mba-export="link">🔗 Copy Link</button></div></details>`;
+}
+function mbaEnhanceShares(){
+ if(!authUser||!canPrint()||page==='access')return;
+ const view=document.getElementById('view');if(!view)return;
+ const cards=[...view.querySelectorAll('.card')];
+ for(const card of cards){
+  if(card.closest('.print-sheet')||card.dataset.mbaShareTarget)continue;
+  card.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
+  const h=card.querySelector(':scope > h2,:scope > .section-head h2');
+  if(!h)continue;
+  const control=document.createElement('div');control.className='mba-share-dock';control.innerHTML=mbaShareMenu();
+  h.insertAdjacentElement('afterend',control);
+ }
+ if(page==='results')for(const item of view.querySelectorAll('.match-row')){
+  if(item.dataset.mbaShareTarget)continue;
+  item.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
+  const control=document.createElement('div');control.className='mba-share-mini';control.innerHTML=mbaShareMenu();item.appendChild(control);
+ }
+ if(page==='teams')for(const item of view.querySelectorAll('.team-box')){
+  if(item.dataset.mbaShareTarget)continue;
+  item.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
+  const control=document.createElement('div');control.className='mba-share-mini';control.innerHTML=mbaShareMenu();item.appendChild(control);
+ }
+ if(page==='fixtures')for(const item of view.querySelectorAll('table tbody tr')){
+  if(item.dataset.mbaShareTarget)continue;
+  item.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
+  const cell=document.createElement('td');cell.className='mba-share-fixture-cell noprint';cell.innerHTML=mbaShareMenu();item.appendChild(cell);
+ }
+ const modal=document.querySelector('#profile-layer .profile-dialog');if(modal&&!modal.dataset.mbaShareTarget){
+  modal.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
+  const c=document.createElement('div');c.innerHTML=mbaShareMenu();modal.querySelector('.profile-head')?.appendChild(c);
+ }
+ if(page==='print'){
+  const controls=view.querySelector('.print-controls');if(controls&&!controls.querySelector('.mba-share-print-actions')){
+   const box=document.createElement('div');box.className='mba-share-print-actions noprint';box.innerHTML='<b>Export A4</b> '+mbaShareMenu();controls.appendChild(box);
+  }
+ }
+ if(!document.getElementById('mba-global-share-link')){
+  const header=document.querySelector('.mba-header-controls');if(header){const a=document.createElement('button');a.id='mba-global-share-link';a.type='button';a.className='btn mba-global-share-link';a.textContent='↗ Share App Link';header.appendChild(a)}
+ }
+}
+const mbaFileStem=s=>String(s||'MBA-Tournaments').normalize('NFKD').replace(/[^A-Za-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,75)||'MBA-Tournaments';
+async function mbaDownloadBlob(blob,name){
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function mbaCanvasBlob(canvas,type='image/png',quality=.95){return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(Error('Could not create image file')),type,quality))}
+function mbaPrintPaper(){const v=active()?.settings?.printOrientation;return v==='portrait'?'portrait':'landscape'}
+function mbaA4PagePixels(orientation){return orientation==='portrait'?[1191,1684]:[1684,1191]}
+function mbaClearExportClone(node){
+ for(const el of node.querySelectorAll('.noprint,.mba-share-menu,.mba-share-dock,.mba-share-mini,button,input,select,textarea,script,.mba-bulk-access,.mba-announce-compose,.mba-gallery-upload,.mba-umpire-launch'))el.remove();
+ for(const el of node.querySelectorAll('details'))el.open=true;
+ for(const el of node.querySelectorAll('[hidden]'))el.remove();
+ for(const el of node.querySelectorAll('[id]'))el.removeAttribute('id');
+ return node;
+}
+function mbaTrimPage(canvas,limit){
+ if(limit>=canvas.height)return canvas.height;
+ // Prefer a near-white horizontal gap to avoid breaking text mid-line.
+ const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)return limit;
+ const top=Math.max(0,limit-72),bottom=Math.min(canvas.height,limit+12),wid=canvas.width;
+ try{
+  const sample=ctx.getImageData(0,top,wid,bottom-top).data;let best=limit,bestVal=Infinity;
+  for(let y=top;y<bottom;y+=2){let ink=0;for(let x=25;x<wid-25;x+=7){const k=((y-top)*wid+x)*4;const d=sample[k]+sample[k+1]+sample[k+2];if(d<718&&sample[k+3]>50)ink++}if(ink<bestVal){bestVal=ink;best=y}}
+  return best>top+10?best:limit;
+ }catch{return limit}
+}
+async function mbaCanvasForElement(element,orient){
+ const [pageW,pageH]=mbaA4PagePixels(orient);
+ const mount=document.createElement('div');mount.className='mba-export-mount';mount.setAttribute('aria-hidden','true');
+ mount.style.width=(orient==='portrait'?'720px':'1070px');
+ const clone=mbaClearExportClone(element.cloneNode(true));
+ mount.appendChild(clone);document.body.appendChild(mount);
+ let raw;
+ try{raw=await window.html2canvas(mount,{scale:1.35,backgroundColor:'#ffffff',useCORS:true,logging:false,removeContainer:true})}
+ finally{mount.remove()}
+ if(raw.width<100||raw.height<10)throw Error('This section could not be captured. Try Print Center.');
+ if(raw.height>32000)throw Error('This report is too long. Export it from Print Center in smaller sections.');
+ const margin=58,header=158,footer=48,bodyW=pageW-2*margin,bodyH=pageH-header-footer-18;
+ const scale=Math.min(1,bodyW/raw.width),sourcePageH=Math.floor(bodyH/scale),pages=[];
+ let start=0;
+ while(start<raw.height){
+  let end=mbaTrimPage(raw,Math.min(raw.height,start+sourcePageH));if(end<=start+15)end=Math.min(raw.height,start+sourcePageH);
+  const p=document.createElement('canvas');p.width=pageW;p.height=pageH;const c=p.getContext('2d');c.fillStyle='#ffffff';c.fillRect(0,0,pageW,pageH);
+  c.fillStyle='#122f54';c.font='bold 30px Arial,sans-serif';c.fillText('MBA Tournaments',margin,53);
+  c.font='16px Arial,sans-serif';c.fillStyle='#3d5b7f';c.fillText('Badminton Tournament Manager',margin,80);
+  c.font='14px Arial,sans-serif';c.fillText('App created by Usthad',margin,103);
+  c.fillStyle='#d4dfed';c.fillRect(margin,117,pageW-2*margin,2);
+  c.fillStyle='#203d5e';c.font='bold 17px Arial,sans-serif';c.fillText(String(active()?.name||'Tournament report').slice(0,75),margin,142);
+  const sectionH=end-start;c.drawImage(raw,0,start,raw.width,sectionH,margin,header,raw.width*scale,sectionH*scale);
+  c.fillStyle='#71859b';c.font='14px Arial,sans-serif';c.fillText('MBA Tournaments · A4 '+orient.toUpperCase(),margin,pageH-23);
+  pages.push(p);start=end;
+  if(pages.length>30)throw Error('Report has more than 30 pages. Choose a smaller report.');
+ }
+ pages.forEach((p,i)=>{let c=p.getContext('2d');c.fillStyle='#71859b';c.font='14px Arial,sans-serif';c.textAlign='right';c.fillText(`Page ${i+1} / ${pages.length}`,p.width-margin,p.height-23);c.textAlign='left'});
+ return pages;
+}
+async function mbaCaptureReport(target){
+ const orient=mbaPrintPaper();
+ if(page==='print'&&target.closest('.card')?.querySelector('#print-preview')){
+  const existing=[...document.querySelectorAll('#print-preview .print-sheet')];if(!existing.length)throw Error('No A4 pages in this report.');
+  const canvases=[];for(const element of existing){
+   const raw=await window.html2canvas(element,{scale:1.5,backgroundColor:'#fff',useCORS:true,logging:false});
+   const [width,height]=mbaA4PagePixels(orient),canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+   const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,width,height);c.drawImage(raw,0,0,width,height);canvases.push(canvas);
+  }return canvases;
+ }
+ return mbaCanvasForElement(target,orient);
+}
+function mbaPdfFromCanvases(pages,orient){
+ const {jsPDF}=window.jspdf;
+ const pdf=new jsPDF({orientation:orient,unit:'mm',format:'a4',compress:true});
+ const w=orient==='portrait'?210:297,h=orient==='portrait'?297:210;
+ pages.forEach((canvas,i)=>{if(i)pdf.addPage('a4',orient);pdf.addImage(canvas.toDataURL('image/jpeg',.88),'JPEG',0,0,w,h,undefined,'FAST')});
+ return pdf.output('blob');
+}
+async function mbaFilesFromCanvases(canvases,format){
+ if(format==='pdf'){return [new File([mbaPdfFromCanvases(canvases,mbaPrintPaper())],mbaFileStem(active()?.name)+'-Report.pdf',{type:'application/pdf'})]}
+ const out=[];for(let i=0;i<canvases.length;i++)out.push(new File([await mbaCanvasBlob(canvases[i])],mbaFileStem(active()?.name)+`-A4-page-${i+1}.png`,{type:'image/png'}));return out;
+}
+async function mbaSaveFiles(files){
+ if(files.length===1){await mbaDownloadBlob(files[0],files[0].name);return}
+ if(typeof window.JSZip==='function'){
+  const zip=new window.JSZip();for(const f of files)zip.file(f.name,f);
+  await mbaDownloadBlob(await zip.generateAsync({type:'blob'}),mbaFileStem(active()?.name)+'-A4-PNG-Pages.zip');return;
+ }
+ for(const f of files)await mbaDownloadBlob(f,f.name);
+}
+async function mbaExportClicked(button){
+ if(mbaShareBusy)throw Error('Another report is being created.');
+ if(!authUser||!canPrint())throw Error('Your account needs Print access.');
+ const kind=button.dataset.mbaExport;
+ if(kind==='link'){const url=window.location.href;try{await navigator.clipboard.writeText(url);alert('App link copied. You can paste it in WhatsApp. Private tournament/finance details still need login permission.')}catch{prompt('Copy this app link:',url)}return}
+ if(page==='finance'&&!confirm('This finance report may contain private amounts and payment details. Continue exporting or sharing it?'))return;
+ if(!mbaExportScriptReady())throw Error('PDF/image libraries did not load. Connect to the internet, refresh and try again, or use Chrome Print → Save as PDF.');
+ const menu=button.closest('.mba-share-menu'),target=menu?.closest('[data-mba-share-target]');if(!target)throw Error('Share target not found. Refresh the page.');
+ mbaShareBusy=true;const txt=button.textContent;button.disabled=true;button.textContent='Preparing…';
+ try{
+  const pages=await mbaCaptureReport(target),format=kind==='png'?'png':'pdf';const files=await mbaFilesFromCanvases(pages,format);
+  if(kind==='whatsapp'){
+   const text=`MBA Tournaments — ${active()?.name||'Tournament'} report`;
+   try{if(navigator.canShare?.({files})&&navigator.share){await navigator.share({files,title:'MBA Tournaments',text});return}}catch(e){if(e.name==='AbortError')return;console.warn('Native share failed:',e)}
+   await mbaSaveFiles(files);alert('The report file was downloaded. Open WhatsApp and attach the PDF/PNG from Downloads. Direct file sharing is not supported in this browser.');
+   return;
+  }
+  if(navigator.canShare?.({files})&&navigator.share){try{await navigator.share({files,title:'MBA Tournaments report'});return}catch(e){if(e.name==='AbortError')return}}
+  await mbaSaveFiles(files);alert(files.length>1?'A4 PNG pages saved. Share the downloaded ZIP / images in WhatsApp.':'File downloaded. Open WhatsApp and attach it from Downloads.');
+ }finally{mbaShareBusy=false;button.disabled=false;button.textContent=txt}
+}
+document.addEventListener('click',async ev=>{
+ if(ev.target.closest('#mba-global-share-link')){
+  try{await navigator.clipboard.writeText(location.href);alert('App link copied for WhatsApp.')}catch{prompt('Copy this app link:',location.href)}return;
+ }
+ const b=ev.target.closest('[data-mba-export]');if(!b)return;
+ ev.preventDefault();
+ try{await mbaExportClicked(b)}catch(error){alert('Share / Export: '+(error?.message||String(error)))}
+});
 
 mbaInitUi();
 wireAuth();
