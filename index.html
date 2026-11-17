@@ -889,13 +889,13 @@ function beginSession(user){
  // Other users derive names from their visible tournament rosters.
  // Player library deliberately not subscribed for non-Super users.
 }
-let stopAccess=[];let accessScopesByUid={};
+let stopAccess=[];let accessScopesByUid={};let accessListReady=false;let accessScopesReady=false;
 function watchAccess(){if(!isSuper()||stopAccess.length)return;
- stopAccess.push(onValue(ref(db,'v3/access'),s=>{accessList=s.val()||{};if(page==='access')render()},()=>{}));
+ stopAccess.push(onValue(ref(db,'v3/access'),s=>{accessList=s.val()||{};accessListReady=true;if(page==='access')render()},e=>{accessListReady=false;document.getElementById('auth-message').textContent='Cannot load User Roles: '+errText(e)}));
  stopAccess.push(onValue(ref(db,'v3/accessRequests'),s=>{accessRequests=s.val()||{};if(page==='access')render()},()=>{}));
- stopAccess.push(onValue(ref(db,'v3/tournamentAccess'),s=>{accessScopesByUid=s.val()||{};if(page==='access')render()},()=>{}));
+ stopAccess.push(onValue(ref(db,'v3/tournamentAccess'),s=>{accessScopesByUid=s.val()||{};accessScopesReady=true;if(page==='access')render()},e=>{accessScopesReady=false;document.getElementById('auth-message').textContent='Cannot load Tournament Permissions: '+errText(e)}));
 }
-function clearAccess(){clearListeners(stopAccess);accessScopesByUid={}}
+function clearAccess(){clearListeners(stopAccess);accessScopesByUid={};accessListReady=false;accessScopesReady=false}
 const roleLabel=()=>isSuper()?'Super Admin':accessRecord?.active?accessRecord.role:'Viewer';
 function eq(a,b){return JSON.stringify(a)===JSON.stringify(b)}
 function patchesForMutation(before,after){
@@ -1044,22 +1044,34 @@ function financeView(t){
  return `${full?`<section class="card"><h2>💰 Full Finance Dashboard · ${esc(t.name)}</h2><p class="helper">Super Admin has specifically granted the full finance view. Projected surplus is not cash already available.</p>${cards}</section>`:`<section class="card"><h2>💰 Finance · Limited Access</h2><p class="helper">You can access only the specific payment or expense functions granted by the Super Admin. Full income, expenditure, profit, collector balances and aggregate dashboard are private.</p></section>`}${config}${playerTable}${canPay?card('Record Payment',receiptForm(t)):''}${receiptsTable}${canFin?card('Record Expense',expenseForm()):''}${expenseTable}${categoryTotals}${collector}${transfer}${transferRegister}`;
 }
 function accessView(){if(!isSuper())return card('User Roles','<p>Only Super Admin can manage user permissions. To request access, share your User UID with the organizer, who can grant permissions manually.</p>');
- const list=Object.entries(accessList).sort((a,b)=>String(a[1].email||'').localeCompare(String(b[1].email||''))).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(id)}</small></td><td>${esc(x.role||'viewer')}</td><td>${x.active?'Active':'Disabled'}</td><td>${Object.entries(x.permissions||{}).filter(([,v])=>v).map(([k])=>esc(k)).join(', ')||'View only'}<small>Assigned tournaments: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.view||v.edit).length}</small></td><td><button class="btn" type="button" data-action="manage-user" data-id="${esc(id)}">Edit</button></td></tr>`).join('');
+ const list=Object.entries(accessList).sort((a,b)=>String(a[1].email||'').localeCompare(String(b[1].email||''))).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(id)}</small></td><td>${esc(x.role||'viewer')}</td><td>${x.active?'Active':'Disabled'}</td><td>${Object.entries(x.permissions||{}).filter(([,v])=>v).map(([k])=>esc(k)).join(', ')||'View only'}<small>Assigned tournaments: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.view||v.edit).length} · Edit: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.edit).length} · Finance: ${x.permissions?.financeDashboardRead?'FULL':x.permissions?.paymentsRead||x.permissions?.financeRead?'LIMITED':'NONE'}</small></td><td><button class="btn" type="button" data-action="manage-user" data-id="${esc(id)}">Edit</button></td></tr>`).join('');
  const req=Object.entries(accessRequests).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(x.name||'')} · ${esc(x.note||'')}</small></td><td><button class="btn" data-action="manage-user" data-id="${esc(id)}" type="button">Set Rights</button></td></tr>`).join('');
  const selected=editor?.kind==='access'?editor.id:'';const existing=accessList[selected]||{};const selectedScopes=selected?(accessScopesByUid[selected]||{}):{};
+ const editingExisting=!!selected;
+ const activePermissions=Object.entries(existing.permissions||{}).filter(([,v])=>v).map(([k])=>k);
+ const userFormIntro=editingExisting?`<div class="notice"><b>Editing existing account:</b> ${esc(existing.email||selected)}<br><small>UID: ${esc(selected)} — locked to protect this user's role.</small></div>`:`<div class="notice"><b>Adding a different account</b><br><small>Paste that person's own Firebase UID. An email address is only a label; it does not identify the account.</small></div>`;
  const form=`<form data-form="access" class="sub-form access-panel"><h3>Assign or Revoke User Permissions</h3>
- ${field('Firebase User UID (from their Copy UID button)','userUid',selected,'text','required maxlength="128"')}
+ ${userFormIntro}
+ ${field('Firebase User UID (from their Copy UID button)','userUid',selected,'text',editingExisting?'required readonly maxlength="128"':'required maxlength="128" autocapitalize="off" spellcheck="false"')}
  ${field('User email (label)','userEmail',existing.email||accessRequests[selected]?.email||'','email','maxlength="160"')}
- <label class="field"><span>Role Preset (then customize individual rights below)</span><select name="role" id="role-preset">${Object.keys(rolePresets).map(role=>`<option value="${esc(role)}" ${existing.role===role?'selected':''}>${esc(role)}</option>`).join('')}</select></label>
+ <label class="field"><span>Role Preset (automatically fills rights; you can customize them)</span><select name="role" id="role-preset">${Object.keys(rolePresets).map(role=>`<option value="${esc(role)}" ${existing.role===role?'selected':''}>${esc(role)}</option>`).join('')}</select></label>
  <label class="choice"><input name="active" type="checkbox" ${existing.active===false?'':'checked'}> Account role active</label>
  <label class="field"><span>🖨 A4 Print / Print Center — Show or Hide for this user</span><select name="printAccess"><option value="hide" ${existing.permissions?.printView===true?'':'selected'}>HIDE — default (no print menu)</option><option value="show" ${existing.permissions?.printView===true?'selected':''}>SHOW — allow printing</option></select><small class="helper">This affects only this user's print buttons and menu. Super Admin always has Print access. Viewers cannot access private data through printing.</small></label>
  <div class="checklist">${permissionsList.map(([key,label])=>`<label class="choice"><input name="perm" type="checkbox" value="${esc(key)}" ${existing.permissions?.[key]?'checked':''}> ${esc(label)}</label>`).join('')}</div>
- <section class="full"><h4>🏆 Per-Tournament View / Edit Access</h4><p class="scope-help">Super Admin chooses exactly which tournaments this account can see, and which it can change. A role alone cannot edit any tournament unless Edit is granted here. Published tournaments are visible to all signed-in viewers regardless of private assignment.</p>
+ <section class="full"><h4>🏆 Per-Tournament View / Edit Access</h4><p class="scope-help"><b>IMPORTANT:</b> For each permitted tournament, tick View to see it and Edit to change scores, teams or finance entries. Selecting Admin or Finance Manager alone will NOT grant tournament access. Only Super Admin can change this. Changes update online after Save.</p>
  <div class="scope-grid">${store.tournaments.map(t=>{const scope=selectedScopes[t.id]||{};return `<div class="scope-line"><b>${esc(t.name)}</b><label class="choice"><input type="checkbox" name="scopeView" value="${esc(t.id)}" ${scope.view||scope.edit?'checked':''}> View</label><label class="choice"><input type="checkbox" name="scopeEdit" value="${esc(t.id)}" ${scope.edit?'checked':''}> Edit</label></div>`}).join('')||'<p>No tournaments yet</p>'}</div></section>
- <div class="actions"><button type="button" data-action="apply-role-preset" class="btn">Fill Permissions from Role</button><button class="btn primary" type="submit">Save User Permissions & Tournament Access</button></div>
+ <div class="actions"><button type="button" data-action="new-access-user" class="btn">➕ Assign Different User</button><button type="button" data-action="apply-role-preset" class="btn">Reset Rights to Selected Role</button><button class="btn primary" type="submit">Save Only This User</button></div>
  <p class="helper">Original Super Admin access under admins/&lt;uid&gt; is preserved. Grant Super Admin rights only to trusted committee owners.</p></form>`;
- return card('Super Admin · User & Roles Dashboard',`<h3>Pending Access Requests</h3><div class="scroll"><table><tbody>${req||'<tr><td>No pending requests</td></tr>'}</tbody></table></div>${form}<h3>Users with Explicit Permissions</h3><div class="scroll"><table><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Permissions</th><th>Actions</th></tr></thead><tbody>${list||'<tr><td colspan="5">No managed users yet</td></tr>'}</tbody></table></div>`);
+ return card('Super Admin · User & Roles Dashboard',`<p class="helper"><b>One UID = one account.</b> Saving the selected UID must never change another person’s permissions. Use <b>Assign Different User</b> before entering the next person.</p><h3>Pending Access Requests</h3><div class="scroll"><table><tbody>${req||'<tr><td>No pending requests</td></tr>'}</tbody></table></div>${form}<h3>Users with Explicit Permissions</h3><div class="scroll"><table><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Permissions</th><th>Actions</th></tr></thead><tbody>${list||'<tr><td colspan="5">No managed users yet</td></tr>'}</tbody></table></div>`);
 }
+function fillRolePermissions(form){
+ if(!form)return;
+ const role=form.querySelector('[name=role]')?.value||'viewer';
+ const preset=rolePresets[role]||{};
+ form.querySelectorAll('[name=perm]').forEach(el=>el.checked=!!preset[el.value]);
+ const print=form.querySelector('[name=printAccess]');if(print)print.value=role==='super'?'show':'hide';
+}
+
 async function createFinanceEvent(kind,payload,forcedId=null){
  if(!authUser||!active()||!editScope(active().id))throw Error('You need tournament-specific Edit access to save payments.');
  const p=`v3/finance/${active().id}`;
@@ -1103,23 +1115,39 @@ async function financeSubmit(kind,data){
 }
 async function accessSubmit(data){
  if(!isSuper())throw Error('Super Admin only');
+ if(!accessListReady||!accessScopesReady)throw Error('User Roles or tournament permissions are still loading. Try again after the existing users and scope list have loaded.');
  const uidString=String(data.get('userUid')||'').trim(),role=String(data.get('role')||'viewer');
- if(!/^[A-Za-z0-9_-]{8,128}$/.test(uidString))throw Error('Invalid Firebase User UID');
+ if(!/^[A-Za-z0-9_-]{8,128}$/.test(uidString))throw Error('Invalid Firebase User UID. Copy the UID from this user using Google login.');
  if(!(role in rolePresets))throw Error('Unknown role');
+ // Critical: editing user A must never silently change user B or overwrite another UID.
+ const editingUid=editor?.kind==='access'?String(editor.id||''):'';
+ if(editingUid && uidString!==editingUid)throw Error('You are editing a different user. Use Assign Different User to start a clean form.');
+ if(!editingUid && accessList[uidString])throw Error('This UID already has a saved role. Use the Edit button in Users with Explicit Permissions to change it.');
+ const email=String(data.get('userEmail')||'').trim().toLowerCase();
+ if(email && Object.entries(accessList).some(([otherUid,rec])=>otherUid!==uidString&&String(rec?.email||'').trim().toLowerCase()===email))
+   throw Error('This email label already belongs to a different UID. Check which Google account was used; no role was changed.');
  const permitted=new Set(data.getAll('perm').map(String));
- if(permitted.has('paymentsRead')&&permitted.has('financeRead')&&!permitted.has('financeDashboardRead'))throw Error('Full accounts would be reconstructable from both ledgers. Grant the explicit Full Finance Dashboard permission or choose one ledger only.');
+ if(permitted.has('paymentsRead')&&permitted.has('financeRead')&&!permitted.has('financeDashboardRead'))throw Error('Full accounts could be reconstructed by combining ledgers. Choose Full Finance Dashboard explicitly, or only one ledger.');
  const permissions=Object.fromEntries(permissionsList.map(([key])=>[key,permitted.has(key)]));
  permissions.printView=String(data.get('printAccess')||'hide')==='show';
- if(role==='super'&&!confirm('Give this person FULL Super Admin control, including finance and user permissions?'))return;
+ if(role==='viewer'&&(data.getAll('scopeEdit').length||permitted.size))throw Error('Viewer Only cannot have edit or finance permissions. Choose a different role first.');
+ if(role==='super'&&!confirm('Give this person FULL Super Admin control, including Finance and all user permissions?')){render();return}
  const views=new Set(data.getAll('scopeView').map(String)),edits=new Set(data.getAll('scopeEdit').map(String));
- if(role==='viewer'&&(edits.size||permitted.size))throw Error('Viewer Only must have no editing or finance permissions. Select a different role first.');
+ for(const tid of edits)views.add(tid);
+ if(role!=='viewer'&&role!=='super'&&data.has('active')&&!views.size)
+   throw Error('No tournament selected. Tick View and, if editing is needed, Edit for at least one tournament. The role alone cannot open a private tournament.');
  const userScopes=Object.fromEntries(store.tournaments.filter(t=>views.has(t.id)||edits.has(t.id)).map(t=>[t.id,{view:true,edit:edits.has(t.id)}]));
- const updates={['v3/access/'+uidString]:{role,active:data.has('active'),permissions,email:String(data.get('userEmail')||'').trim(),updatedBy:authUser.uid,updatedAt:Date.now()},['v3/accessRequests/'+uidString]:null};
- // A single multi-path update makes the assigned role and its tournament scopes consistent.
  const oldScopes=dataObj(accessScopesByUid[uidString]);
+ const stamp=Date.now();
+ const record={role,active:data.has('active'),permissions,email,updatedBy:authUser.uid,updatedAt:stamp};
+ // Firebase multi-path updates are atomic. EVERY path is scoped to this one UID.
+ const updates={['v3/access/'+uidString]:record,['v3/accessRequests/'+uidString]:null};
  for(const id of new Set([...Object.keys(oldScopes),...Object.keys(userScopes)]))updates['v3/tournamentAccess/'+uidString+'/'+id]=userScopes[id]||null;
  await update(ref(db),updates);
- editor=null;notice='User permissions saved to V3 Firebase.';render();
+ const saved=await get(ref(db,'v3/access/'+uidString));
+ if(!saved.exists()||saved.val().updatedAt!==stamp)throw Error('Save could not be verified. Refresh User Roles before trying again.');
+ accessList[uidString]=saved.val();accessScopesByUid[uidString]=userScopes;
+ editor=null;notice='Saved & verified for '+(email||uidString)+'. Other user accounts were not changed.';render();
 }
 
 function playerPicker(){const names=libraryNames();return names.length?`<div class="reusable-picker"><p class="helper">Choose saved player names. These are copied as new, independent tournament players.</p><div class="reuse-grid">${names.map(name=>`<label class="choice"><input type="checkbox" name="reusePlayer" value="${esc(name)}"> ${esc(name)}</label>`).join('')}</div></div>`:'<p class="helper">No saved players yet. Add players to a team first.</p>'}
@@ -1195,7 +1223,7 @@ function switchTournament(id){
  unsavedFormChanges=false;store.selected=id;remember();editor=null;profile=null;printCategory='all';printGroup='all';
  financeFor='';watchFinance();render();
 }
-const viewerActions=new Set(['open-tournament','tournament-section','close-profile','view-player','view-team','view-category','print-now','export','cancel','manage-user','apply-role-preset']);
+const viewerActions=new Set(['open-tournament','tournament-section','close-profile','view-player','view-team','view-category','print-now','export','cancel','manage-user','apply-role-preset','new-access-user']);
 function render(){
  authState();
  const nav=document.querySelector('nav[aria-label="Tournament management"]'),content=document.getElementById('view');
@@ -1513,7 +1541,8 @@ document.addEventListener('click',async ev=>{
   return;
  }
  if(action==='manage-user'){if(!isSuper())return;editor={kind:'access',id};page='access';render();return}
- if(action==='apply-role-preset'){if(!isSuper())return;const form=b.closest('form'),role=form?.querySelector('[name=role]')?.value||'viewer',preset=rolePresets[role]||{};form?.querySelectorAll('[name=perm]').forEach(el=>el.checked=!!preset[el.value]);const print=form?.querySelector('[name=printAccess]');if(print)print.value=role==='super'?'show':'hide';return}
+ if(action==='new-access-user'){if(!isSuper())return;editor=null;page='access';render();return}
+ if(action==='apply-role-preset'){if(!isSuper())return;fillRolePermissions(b.closest('form'));return}
  if(!authorized(action)){alert('Your role does not allow this action.');return}
  if(writePending&&!viewerActions.has(action)){alert('Previous change is still saving.');return}
  if(action==='use-provided-venue'){const input=document.querySelector('form[data-form="tournament"] [name="venueUrl"]');if(input){input.value=PROVIDED_VENUE_URL;input.focus()}return}
@@ -1548,6 +1577,7 @@ document.addEventListener('click',async ev=>{
 });
 document.addEventListener('input',e=>{if(e.target.closest('#view form[data-form]'))unsavedFormChanges=true});
 document.addEventListener('change',async e=>{
+ if(e.target.id==='role-preset'&&e.target.closest('form[data-form="access"]')){fillRolePermissions(e.target.closest('form'));return}
  if(e.target.id==='tournament-switcher'){switchTournament(e.target.value);return}
  if(e.target.id==='fixture-payment-toggle'){if(!canSeePayments())return;showFixturePaymentStatus=!!e.target.checked;render();return}
  if(e.target.name==='scopeEdit'&&e.target.checked){const form=e.target.closest('form');const linked=[...form.querySelectorAll('[name=scopeView]')].find(x=>x.value===e.target.value);if(linked)linked.checked=true}
@@ -1575,7 +1605,7 @@ document.addEventListener('submit',async ev=>{
  const data=new FormData(form),kind=form.dataset.form,t=active();unsavedFormChanges=false;
  if(kind.startsWith('fin-')||kind==='access'){
   const btn=form.querySelector('button[type="submit"]');if(btn)btn.disabled=true;
-  try{if(kind==='access')await accessSubmit(data);else await financeSubmit(kind,data);notice='Saved online to Production Firebase.';render()}
+  try{if(kind==='access')await accessSubmit(data);else{await financeSubmit(kind,data);notice='Saved online to Production Firebase.';render()}}
   catch(e){alert('Not saved: '+errText(e));if(btn)btn.disabled=false}return;
  }
  if(!allowedToEdit()){alert('Viewer is read-only.');return}
