@@ -1,5 +1,5 @@
 /* MBA Tournaments Production install shell — no user/auth/finance data is cached. */
-const CACHE_NAME='mba-prod-pwa-shell-20261117-v1';
+const CACHE_NAME='mba-prod-pwa-shell-20261117-final-ui-v2';
 const OFFLINE='./offline.html';
 const SHELL=['./offline.html','./manifest.webmanifest','./mba-icon-192.png','./mba-icon-512.png','./mba-icon-maskable-512.png','./venue-location-qr.png'];
 self.addEventListener('install',event=>{
