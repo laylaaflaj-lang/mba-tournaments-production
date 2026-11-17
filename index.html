@@ -346,6 +346,80 @@ header .brand-head p{grid-column:2;grid-row:2;text-align:center}
 .mba-voice-recorder audio,.mba-voice-message audio{display:block;width:100%;max-width:450px}.mba-voice-recorder audio[hidden]{display:none!important}.mba-voice-message{background:#edf5ff;border-radius:10px;padding:10px;margin:9px 0}.mba-voice-message b{display:block;margin-bottom:7px;font-size:12px}
 :root[data-mba-theme=dark] .mba-voice-recorder,:root[data-mba-theme=dark] .mba-voice-message{background:#203a5a;color:#edf5ff;border-color:#4c6785}
 @media print{.mba-voice-recorder,.mba-voice-message{display:none!important}}
+/* MBA_V34_MOBILE_LAYOUT */
+#v2-auth-panel{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px!important;align-items:center!important;padding:8px 11px!important;margin:0 0 6px!important;box-shadow:none!important}
+#v2-auth-panel h2{grid-column:1;font-size:12px!important;margin:0!important;line-height:1.4!important}
+#auth-status{grid-row:2;grid-column:1/-1;margin:0!important;font-size:11px!important;line-height:1.35;min-width:0;overflow-wrap:anywhere}
+#auth-account{grid-row:1;grid-column:2;display:flex!important;justify-content:space-between;gap:7px;align-items:center}
+#auth-account[hidden]{display:none!important}
+#auth-account .btn{font-size:11px!important;padding:6px 8px!important;min-height:29px!important}
+#auth-message{grid-column:1/-1;font-size:11px!important;margin:0!important}
+#auth-login:not([hidden]){grid-column:1/-1}
+.global-tournament-switcher{position:relative!important;top:auto!important;padding:8px 11px!important;margin:0 0 8px!important;gap:6px!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;box-shadow:none!important}
+.global-tournament-switcher[hidden]{display:none!important}
+.global-tournament-switcher .switch-copy{grid-column:1/-1;min-width:0!important}
+.global-tournament-switcher .switch-copy small{display:none!important}
+.global-tournament-switcher select{grid-column:1;min-width:0;max-width:100%;height:auto;min-height:36px!important;font-size:13px!important}
+.global-tournament-switcher .scope-label{display:none!important}
+.mba-default-button{grid-column:2;font-size:11px!important;min-height:35px!important;padding:5px 8px!important;white-space:nowrap}
+.mba-fixture-summary{font-size:13px;color:#53667d;margin-bottom:10px}
+.mba-fixture-list{display:grid;gap:9px;margin:12px 0}
+.mba-fixture-item{border:1px solid #d4e1ee;background:#fff;border-radius:12px;padding:10px 12px;min-width:0;box-shadow:0 2px 6px #253b5710}
+.mba-fixture-meta{display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0 0 7px;border-bottom:1px solid #e7eef5;color:#506783;font-size:12px}
+.mba-fixture-pairs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;padding:10px 0;font-size:clamp(13px,3.2vw,17px);font-weight:650}
+.mba-fixture-pairs>.vs{font-size:12px;color:#71849d;font-weight:800}
+.mba-fixture-side{min-width:0;line-height:1.4;overflow-wrap:normal;word-break:normal}
+.mba-fixture-side .name-link{display:inline!important;min-width:0!important;font-size:inherit!important;text-align:left!important;white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;line-height:inherit!important;padding:0!important}
+.mba-fixture-side.mba-winning .name-link{color:#15804c!important;font-weight:850!important}
+.mba-fixture-side .and{margin:0 3px}
+.mba-fixture-bottom{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:13px}
+.mba-fixture-bottom .btn{font-size:12px!important;padding:7px 10px!important;min-height:35px!important}
+.mba-fixture-pay{font-size:11px;margin:0 0 8px;display:flex;gap:7px;flex-wrap:wrap}
+.mba-fixture-pay .fixture-payment-status{margin:0;display:inline-flex;gap:3px}
+.mba-fixture-pay .fixture-pay-pill{font-size:10px;padding:3px 5px}
+.mba-fixture-help{font-size:12px;color:#64718a;margin:6px 0 12px}
+.mba-fixture-help>summary{cursor:pointer}
+.mba-fixture-item .mba-share-menu{margin-top:4px;display:inline-block}
+.mba-share-mini{margin:6px 0 0}
+.mba-announce-compose,.mba-ann-manage{margin-top:8px!important}
+.mba-announce-compose .mba-voice-recorder{padding:6px 10px!important;margin:4px 0}
+.mba-announce-compose .mba-voice-recorder>summary{font-size:13px;font-weight:750;cursor:pointer}
+.mba-ann-manage-list{display:grid;gap:7px;margin:9px 0}
+.mba-ann-manage-list>div{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px solid #dce7f3;padding:7px 0}
+.mba-ann-manage-list b{flex:1;min-width:100px;font-size:12px}
+.mba-ann-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;align-items:end}
+.mba-ann-options .field{margin:0}
+.mba-ann-options input[type=date]{max-width:100%;min-height:40px}
+.print-table{height:auto!important}
+.print-table td{padding:2.1mm 2.5mm!important;line-height:1.35!important;vertical-align:top!important}
+.print-table tr{height:auto!important}
+.print-head h2{font-size:calc(var(--p-font)*1.3)!important}
+.print-body{align-content:start!important;overflow:hidden!important}
+@media print{#v2-auth-panel,.mba-ann-manage,.mba-default-button{display:none!important}.print-sheet{break-after:page;page-break-after:always}}
+@media(max-width:430px){#v2-auth-panel{padding:7px!important}.mba-fixture-pairs{gap:5px}.mba-fixture-item{padding:9px}.global-tournament-switcher{padding:8px!important}.mba-default-button{font-size:10px!important}}
+:root[data-mba-theme=dark] .mba-fixture-item{background:#182944;border-color:#375575;color:#e7edf6}
+:root[data-mba-theme=dark] .mba-fixture-meta{border-color:#375575;color:#b8cce0}
+
+/* MBA_V35_STYLE: clear league setup and compact team standings */
+.mba-v35-fixture-setup{background:#eef6ff;border:1px solid #9ec4ec;border-radius:13px;padding:13px;margin:12px 0 15px;color:#193e69}
+.mba-v35-fixture-setup h3{margin:0 0 7px;font-size:18px}
+.mba-v35-fixture-setup p{margin:7px 0 10px}
+.mba-v35-category-status{background:#fff;border:1px solid #d5e5f7;border-radius:10px;padding:11px;display:flex;align-items:flex-start;flex-wrap:wrap;gap:9px;margin:9px 0;color:#1c3757}
+.mba-v35-category-status>div{flex:1 1 100%}
+.mba-v35-category-status .btn{font-size:13px;white-space:normal}
+.mba-v35-fixture-actions{margin:7px 0 14px;position:relative}
+.mba-v35-overall-scroll{overflow-x:auto}
+.mba-v35-overall-table{width:100%;table-layout:auto}
+.mba-v35-overall-table th:not(:nth-child(2)),.mba-v35-overall-table td:not(:nth-child(2)){text-align:center;width:12%}
+.mba-v35-overall-table th:nth-child(2),.mba-v35-overall-table td:nth-child(2){min-width:125px}
+.mba-v35-category-tables{border:1px solid #d1dcec;background:#f4f8fe;border-radius:12px;padding:13px;margin:15px 0}
+.mba-v35-category-tables>summary{font-size:16px;font-weight:750;color:#244c7e;cursor:pointer}
+.mba-v35-category-tables .card{margin:15px 0 0}
+:root[data-mba-theme="dark"] .mba-v35-category-tables,:root[data-mba-theme="dark"] .mba-v35-fixture-setup{background:#1b2c46;color:#e7edf8;border-color:#45668d}
+:root[data-mba-theme="dark"] .mba-v35-category-status{background:#17253b;color:#e7edf8;border-color:#45668d}
+@media(max-width:480px){.mba-v35-fixture-actions .btn{width:100%;max-width:100%;font-size:14px}.mba-v35-category-status .btn{width:100%}}
+@media print{.mba-v35-fixture-setup,.mba-v35-category-tables{display:none!important}}
+
 </style><style id="print-rule"></style></head>
 <body><header><div class="container header-top"><div class="brand-head"><span class="brand-mark" aria-hidden="true">🏸</span><h1>MBA Tournaments</h1><p>Badminton Tournament Manager</p><span class="mba-maker-credit">App created by <strong>Usthad</strong></span></div></div>
 <div class="container mba-header-controls noprint" aria-label="Display preferences and time"><label class="mba-ui-control"><span>🎨 Color Theme</span><select id="mba-theme-select" aria-label="Color Theme"><option value="classic">Classic Blue</option><option value="light">Light</option><option value="dark">Dark</option><option value="navy">Navy &amp; Gold</option></select></label><label class="mba-ui-control"><span>🌐 Language</span><select id="mba-lang-select" aria-label="Language"><option value="en">English</option><option value="ml">മലയാളം</option></select></label><div class="mba-clock" role="timer" aria-label="Current time"><span class="mba-clock-label">🕒 Time</span><strong id="mba-clock-time">--:--:--</strong></div></div></header>
@@ -364,7 +438,7 @@ header .brand-head p{grid-column:2;grid-row:2;text-align:center}
 <div id="profile-layer"></div><div id="mba-umpire-overlay" hidden></div><footer>MBA Tournaments • Tournament Management</footer>
 <button id="pwa-install" class="btn mba-install-float noprint" type="button" aria-label="Install MBA Tournaments app">📲 Install App</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script><script type="module">
+<script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import { getAuth,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { getDatabase,ref,onValue,get,update,runTransaction,set } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js';
@@ -376,7 +450,7 @@ const firebaseConfig={
  messagingSenderId:'1072532890274',appId:'1:1072532890274:web:8687524cc30f473361adfb'
 };
 const fapp=initializeApp(firebaseConfig),auth=getAuth(fapp),db=getDatabase(fapp);
-const VERSION='3.3.0-free-announcements-voice-a4-share';
+const VERSION='3.5.0-overall-team-fixture-wizard';
 const deep=x=>JSON.parse(JSON.stringify(x));
 const clean=s=>String(s??'').trim();
 const need=(v,msg)=>{if(!v)throw Error(msg)};
@@ -876,7 +950,7 @@ function dbToTournament(rec,id){
 function cloudToStore(raw){
  const list=Object.entries(dataObj(raw)).map(([id,rec])=>dbToTournament(rec,id));
  let saved=null;try{saved=localStorage.getItem('mba-v3-selected-'+authUser.uid)}catch{}
- const selected=list.some(x=>x.id===store.selected)?store.selected:list.some(x=>x.id===saved)?saved:list[0]?.id||null;
+ const def=localStorage.getItem('mba-default-tournament-'+authUser.uid);const selected=list.some(x=>x.id===store.selected)?store.selected:list.some(x=>x.id===def)?def:list.some(x=>x.id===saved)?saved:list[0]?.id||null;
  return {tournaments:list,selected,playerLibrary:store.playerLibrary||[]};
 }
 let rawTournamentData={};
@@ -972,7 +1046,7 @@ function beginSession(user){
  financeFor='';lastTournamentSource='';publicTournaments={};userTournamentScopes={};unsavedFormChanges=false;
  authUser=user;legacySuper=false;accessRecord=null;accessList={};accessRequests={};readError='';remoteReady=false;
  rawTournamentData={};store={tournaments:[],selected:null,playerLibrary:[]};page='tournaments';editor=null;profile=null;notice='';
- authState();render();if(!user){mbaStartNoticeWatch(null,gen);if(mbaGalleryOff){try{mbaGalleryOff()}catch{}mbaGalleryOff=null}mbaGalleryTournament='';mbaGalleryItems={};mbaUmpire=null;mbaRenderUmpire();return;}
+ authState();render();if(!user){mbaStartNoticeWatch(null,gen);mbaV34InitVisibility(null,gen);if(mbaGalleryOff){try{mbaGalleryOff()}catch{}mbaGalleryOff=null}mbaGalleryTournament='';mbaGalleryItems={};mbaUmpire=null;mbaRenderUmpire();return;}
  ownRequestUnsubscribe=onValue(ref(db,'v3/accessRequests/'+user.uid),snap=>{
   if(gen!==authGeneration)return;
   ownEditingRequest=snap.val();ownRequestLoaded=true;updateOwnRequestUi();mbaApplyLanguage();
@@ -985,7 +1059,7 @@ function beginSession(user){
  const on=(path,cb)=>{stopListeners.push(onValue(ref(db,path),s=>{if(gen===authGeneration)cb(s.val())},e=>{if(gen!==authGeneration)return;readError=errText(e);render();document.getElementById('auth-message').textContent='Database error: '+readError}))};
  on('admins/'+user.uid,v=>{legacySuper=v?.active===true&&v?.role==='super';authState();syncTournamentListeners();watchFinance();render();if(isSuper())watchAccess();else clearAccess()});
  on('v3/access/'+user.uid,v=>{accessRecord=v||null;authState();syncTournamentListeners();financeFor='';watchFinance();render();if(isSuper())watchAccess();else clearAccess();mbaRenderNotices()});
- watchCatalog(gen);mbaStartNoticeWatch(user,gen);
+ watchCatalog(gen);mbaStartNoticeWatch(user,gen);mbaV34InitVisibility(user,gen);
  // The shared player library includes names from PRIVATE tournaments: Super Admin only.
  // Other users derive names from their visible tournament rosters.
  // Player library deliberately not subscribed for non-Super users.
@@ -1379,7 +1453,7 @@ function renderTournamentSwitcher(){
  const t=active();
  root.innerHTML=`<div class="switch-copy"><strong>🏆 ACTIVE TOURNAMENT</strong><small>Switch anywhere — current tab stays open</small></div>
  <select id="tournament-switcher" aria-label="Choose active tournament">${store.tournaments.map(x=>`<option value="${esc(x.id)}" ${x.id===t?.id?'selected':''}>${esc(x.name)} · ${esc(dateShow(x.date))}</option>`).join('')}</select>
- <span class="scope-label">${isSuper()?'SUPER ADMIN':editScope(t?.id)?'EDIT ACCESS':'VIEW ONLY'}</span>`;
+ <button type="button" class="btn mba-default-button" id="mba-set-default-tournament">☆ Set Default</button><span class="scope-label">${isSuper()?'SUPER ADMIN':editScope(t?.id)?'EDIT ACCESS':'VIEW ONLY'}</span>`;
 }
 function switchTournament(id){
  if(!store.tournaments.some(t=>t.id===id)||id===store.selected)return;
@@ -1572,7 +1646,7 @@ function groupView(t){
 }
 
 /* Private fixture payment badges. Never render for Viewer-only accounts. */
-let showFixturePaymentStatus=true;
+let showFixturePaymentStatus=false;
 function fixtureEntryPaymentStatus(t,cat,entryId){
  if(!showFixturePaymentStatus||!canSeePayments()||!financesReady())return '';
  const entry=cat?.entrants?.find(e=>e.id===entryId);
@@ -1586,21 +1660,49 @@ function fixtureEntryPaymentStatus(t,cat,entryId){
  }).filter(Boolean).join('');
  return rows?`<div class="fixture-payment-status">${rows}</div>`:'';
 }
+/* MBA_V34_FIXTURES: one match per card, fixed readable names & private status on demand */
+/* MBA_V35_FIXTURE_GUIDE: readable cards, actionable setup hints, safe one-click league generation */
 function fixtureView(t){
- const checked=fixturesCheck(t),league=t.fixtures.filter(m=>m.stage==='league').sort((a,b)=>a.slot-b.slot||a.court-b.court);
- const rows=league.map(m=>{const c=lookup(t,m.categoryId);return `<tr><td>${m.slot}</td><td>Court ${m.court}</td><td>${c?categoryLink(c):''}<small>${esc(groupLabel(c,m.groupId))}</small></td><td>${linkedEntry(t,c,m.a)}${fixtureEntryPaymentStatus(t,c,m.a)} <span class="vs"> VS </span>${linkedEntry(t,c,m.b)}${fixtureEntryPaymentStatus(t,c,m.b)}${m.a&&m.b?`<button type="button" class="btn mba-umpire-launch" data-mba-score-match="${esc(m.id)}" ${can('scoresWrite')&&editScope(t.id)?'':'hidden'}>🏸 Umpire Score</button>`:''}</td></tr>`}).join('');
- const ko=t.fixtures.filter(m=>m.stage==='knockout').sort((a,b)=>a.slot-b.slot||a.court-b.court);
- const privatePaymentToggle=canSeePayments()?`<label class="choice noprint fixture-payment-control"><input type="checkbox" id="fixture-payment-toggle" ${showFixturePaymentStatus?'checked':''}> Show Player Payment Status (Private)</label>${showFixturePaymentStatus&&!financesReady()?'<p class="helper noprint">Ground fee is not configured yet; set it in Finance to show paid/unpaid statuses.</p>':''}`:'';
- return card('Fixtures & Shuffle',`<div class="metrics"><div><b>${league.length}</b><span>League matches</span></div><div><b>${new Set(league.map(x=>x.slot)).size}</b><span>Slots</span></div><div><b>${t.courts}</b><span>Courts</span></div></div>
-  <p class="helper">Shuffle changes only the order, preserves match identities, and enforces <strong>${t.settings?.minRestSlots??1} rest slot(s)</strong> between matches for the same player, including across categories. Shuffle is blocked after results. Knockout brackets must be cleared before league reshuffling.</p>
-  <div class="actions noprint">${button('Generate / Shuffle Fixtures','shuffle','','primary')}${t.categories.filter(c=>['knockout','combined'].includes(effectiveFormat(t,c))).map(c=>button(`Generate ${esc(c.name)} Knockout Bracket`,'knockout',`data-id="${esc(c.id)}"`)).join('')}${ko.length?button('Clear Unplayed Knockout Brackets','clear-knockout','','danger-outline'):''}</div>
-  ${privatePaymentToggle}
-  <div class="validation ${checked.valid?'ok':'bad'}">${checked.valid?'✓ No missing, duplicate, or simultaneous player-clash matches':'⚠ '+checked.problems.length+' fixture problems'}${checked.restAlerts.length?` • ${checked.restAlerts.length} rest-gap warnings`:''}</div>
-  ${checked.problems.length?`<div class="helper">${checked.problems.slice(0,5).map(esc).join('; ')}</div>`:''}
-  ${checked.restAlerts.length?`<details><summary>Rest-gap warnings</summary>${checked.restAlerts.slice(0,12).map(x=>`<p class="helper">${esc(x)}</p>`).join('')}</details>`:''}
-  <div class="scroll"><table><thead><tr><th>Slot</th><th>Court</th><th>Category / Group</th><th>Match</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Generate fixtures to start.</td></tr>'}</tbody></table></div>
-  ${ko.length?`<h3>Knockout Bracket — Semis & Finals</h3><div class="scroll"><table><tbody>${ko.map(m=>`<tr><td>${esc(lookup(t,m.categoryId)?.name)}</td><td>${esc(koRoundLabel(t,m))}</td><td>${linkedEntry(t,lookup(t,m.categoryId),m.a)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.a)} <span class="vs">VS</span> ${linkedEntry(t,lookup(t,m.categoryId),m.b)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.b)}${m.a&&m.b?`<button type="button" class="btn mba-umpire-launch" data-mba-score-match="${esc(m.id)}" ${can('scoresWrite')&&editScope(t.id)?'':'hidden'}>🏸 Umpire Score</button>`:''}</td></tr>`).join('')}</tbody></table></div>`:''}`);
+ const checked=fixturesCheck(t),league=t.fixtures.filter(m=>m.stage==='league').sort((a,b)=>a.slot-b.slot||a.court-b.court),ko=t.fixtures.filter(m=>m.stage==='knockout').sort((a,b)=>a.slot-b.slot||a.court-b.court);
+ const leagueCategories=t.categories.filter(c=>['league','combined'].includes(effectiveFormat(t,c)));
+ const totalExpected=leagueCategories.reduce((n,c)=>n+makeRoundRobin(c).length,0);
+ const matchCard=m=>{const c=lookup(t,m.categoryId),rule=effectiveRules(t,c),w=scoreWinner(t.results[m.id],rule),result=t.results[m.id];
+  const payment=showFixturePaymentStatus?`<div class="mba-fixture-pay">${fixtureEntryPaymentStatus(t,c,m.a)}${fixtureEntryPaymentStatus(t,c,m.b)}</div>`:'';
+  const score=result?(result.mode==='winner'?'Win/Loss recorded':`${result.a} – ${result.b}`):'Pending';
+  return `<article class="mba-fixture-item"><div class="mba-fixture-meta"><span><b>Slot ${esc(m.slot||'—')}</b> · Court ${esc(m.court||'—')}</span><span>${esc(c?.name||'')}${m.stage==='knockout'?' · '+esc(koRoundLabel(t,m)):''}</span></div><div class="mba-fixture-pairs"><div class="mba-fixture-side ${w==='a'?'mba-winning':''}">${linkedEntry(t,c,m.a)}</div><span class="vs">VS</span><div class="mba-fixture-side ${w==='b'?'mba-winning':''}">${linkedEntry(t,c,m.b)}</div></div>${payment}<div class="mba-fixture-bottom"><span class="mba-fixture-result">${esc(score)}${w?' · 🏆 '+esc(participants(t,m)[w==='a'?0:1]):''}</span>${m.a&&m.b&&can('scoresWrite')&&editScope(t.id)?`<button type="button" class="btn mba-umpire-launch" data-mba-score-match="${esc(m.id)}">🏸 Umpire Score</button>`:''}</div></article>`;
+ };
+ const privatePaymentToggle=canSeePayments()?`<label class="choice noprint fixture-payment-control"><input type="checkbox" id="fixture-payment-toggle" ${showFixturePaymentStatus?'checked':''}> Show private payment status</label>`:'';
+ const categoryAdvice=leagueCategories.map(c=>{
+  const groups=new Map();for(const entry of c.entrants){const key=entry.groupId||'general';groups.set(key,(groups.get(key)||0)+1)}
+  const expected=makeRoundRobin(c).length;
+  const candidates=t.teams.filter(team=>team.players.length>=1&&team.players.length<=2);
+  const canAuto=c.entrants.length===0&&!(c.groups||[]).length&&candidates.length>=2&&can('categoriesWrite')&&can('fixturesWrite')&&editScope(t.id);
+  const groupMessage=c.entrants.length>=2&&expected===0?'Entries are split into separate groups. At least 2 entries must be in the SAME group.':'';
+  return `<div class="mba-v35-category-status"><div><b>${esc(c.name)}</b> · ${c.entrants.length} entries · ${expected} possible matches</div>
+   ${groupMessage?`<p class="helper">${esc(groupMessage)}</p>`:''}
+   ${can('categoriesWrite')?button('＋ Add Players / Pair','add-entry',`data-id="${esc(c.id)}"`):''}
+   ${canAuto?`<button type="button" class="btn primary" data-mba-v35-autofill="${esc(c.id)}">⚡ Add ${candidates.length} teams & Generate Fixtures</button>`:''}
+   ${c.entrants.length===0&&t.teams.some(team=>team.players.length>2)?'<small>For teams with 3+ players, select the exact pair yourself using Add Players / Pair.</small>':''}
+  </div>`;
+ }).join('');
+ const setupNotice=!league.length?`<section class="mba-v35-fixture-setup"><h3>🏸 No fixtures yet — Quick Setup</h3>
+  ${!t.teams.length?'<p>Step 1: Open Teams and add your teams and players.</p>':''}
+  ${!leagueCategories.length?'<p>Step 2: Open Categories, create a League or League + Knockout category.</p>':''}
+  ${leagueCategories.length&&totalExpected===0?'<p><b>Important:</b> Teams and Categories alone do not create fixtures. Each category/group needs at least TWO playing entries. Add players/pairs below, then tap Generate / Shuffle.</p>':''}
+  ${leagueCategories.length&&totalExpected>0?`<p>${totalExpected} fixtures are ready to generate. Tap the blue <b>Generate / Shuffle Fixtures</b> button above.</p>`:''}
+  ${categoryAdvice||'<p class="helper">Once teams and league categories are available, entry setup will appear here.</p>'}
+ </section>`:'';
+ const shuffleAllowed=can('fixturesWrite')&&editScope(t.id);
+ return card('Fixtures & Matches',`<div class="mba-fixture-summary"><b>${league.length}</b> League matches · <b>${t.courts}</b> Courts · <b>${new Set(league.map(x=>x.slot)).size}</b> Slots</div>
+  <div class="actions noprint mba-v35-fixture-actions">${shuffleAllowed?button(league.length?'🔀 Shuffle League Fixtures':'🏸 Generate League Fixtures','shuffle','','primary'):'<p class="helper">Fixture generation needs Super Admin permission (Fixtures Edit and Tournament Edit).</p>'}${t.categories.filter(c=>['knockout','combined'].includes(effectiveFormat(t,c))).map(c=>button('Generate '+esc(c.name)+' Knockout','knockout',`data-id="${esc(c.id)}"`)).join('')}${ko.length?button('Clear Unplayed Knockout Brackets','clear-knockout','','danger-outline'):''}</div>
+  ${setupNotice}${privatePaymentToggle}
+  <div class="validation ${checked.valid?'ok':'bad'}">${checked.valid?'✓ No missing or duplicate matches':'⚠ '+checked.problems.length+' fixture problems'}${checked.restAlerts.length?` · ${checked.restAlerts.length} rest warnings`:''}</div>
+  ${checked.problems.length||checked.restAlerts.length?`<details class="mba-fixture-help"><summary>Fixture checks & rest alerts</summary>${checked.problems.slice(0,10).concat(checked.restAlerts.slice(0,10)).map(x=>`<p>${esc(x)}</p>`).join('')}</details>`:''}
+  <div class="mba-fixture-list">${league.map(matchCard).join('')||'<p class="helper">No fixtures generated yet.</p>'}</div>
+  ${ko.length?`<h3>Knockout Matches</h3><div class="mba-fixture-list">${ko.map(matchCard).join('')}</div>`:''}
+  <details class="mba-fixture-help"><summary>How rest / shuffle works</summary>Shuffle preserves match identity and gives ${esc(t.settings?.minRestSlots??1)} rest slot(s) between the same player’s matches. Results prevent reshuffling.</details>`);
 }
+
 function koRoundLabel(t,m){const max=Math.max(...t.fixtures.filter(x=>x.stage==='knockout'&&x.categoryId===m.categoryId).map(x=>x.round));return m.round===max?'Final':m.round===max-1?'Semi-final':m.round===max-2?'Quarter-final':`Knockout Round ${m.round}`;}
 function resultView(t){
  const list=[...t.fixtures].sort((a,b)=>a.slot-b.slot||a.court-b.court);
@@ -1616,75 +1718,92 @@ function resultView(t){
  return `<div class="match-row"><span class="helper">Slot ${m.slot} • Court ${m.court} • ${categoryLink(c)} • ${esc(groupLabel(c,m.groupId))} ${m.stage==='knockout'?'• '+esc(koRoundLabel(t,m)):''}</span><div class="pair-row"><span class="${w==='a'?'winner':w==='b'?'loser':''}">${linkedEntry(t,c,m.a)}</span><span class="vs">VS</span><span class="${w==='b'?'winner':w==='a'?'loser':''}">${linkedEntry(t,c,m.b)}</span></div><div class="score-line"><b>${esc(score)}</b><span>${w?`🏆 ${esc(names[w==='a'?0:1])} WON`:''}</span>${m.a&&m.b?button(result?'✏ Edit Result':'＋ Enter Result','edit-result',`data-id="${esc(m.id)}"`):'<span class="helper">Awaiting previous round</span>'}</div>${form}</div>`;
  }).join('')||'<p class="helper">Generate a league fixture first.</p>');
 }
-function standingsView(t){return t.categories.map(c=>{
- if(!['league','combined'].includes(effectiveFormat(t,c)))return card(c.name,`<p>${categoryLink(c)}</p><p class="helper">Knockout categories do not have a league standings table.</p>`);
- const groups=c.groups?.length?[{id:null,name:'General / Ungrouped'},...c.groups]:[{id:undefined,name:'All Entries'}];
- return groups.map(g=>{
-  const rows=standings(t,c.id,g.id);
-  if(!rows.length)return '';
-  return card(`${c.name} · ${g.name} — Points Table`,`<p class="helper">Category: ${categoryLink(c)}</p><div class="scroll"><table><thead><tr><th>#</th><th>Entry / Players</th><th>P</th><th>W</th><th>L</th><th>PTS</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><b>${linkedEntry(t,c,r.id)}</b></td><td>${r.p}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}</tbody></table></div>`);
+/* MBA_V35_TEAM_STANDINGS: aggregate played League matches in all categories per team */
+function mbaTeamOverallData(t){
+ const teams=new Map((t.teams||[]).map(team=>[team.id,{id:team.id,name:team.name,p:0,w:0,l:0,pts:0,for:0,against:0}]));
+ for(const c of t.categories||[]){
+  if(!['league','combined'].includes(effectiveFormat(t,c)))continue;
+  const entryTeam=new Map(c.entrants.map(e=>[e.id,e.teamId]));
+  for(const score of standings(t,c.id)){
+   const row=teams.get(entryTeam.get(score.id));if(!row)continue;
+   row.p+=Number(score.p)||0;row.w+=Number(score.w)||0;row.l+=Number(score.l)||0;row.pts+=Number(score.pts)||0;row.for+=Number(score.for)||0;row.against+=Number(score.against)||0;
+  }
+ }
+ return [...teams.values()].sort((a,b)=>b.pts-a.pts||b.w-a.w||(b.for-b.against)-(a.for-a.against)||a.name.localeCompare(b.name));
+}
+function standingsView(t){
+ const overall=mbaTeamOverallData(t);
+ const teamTable=card('🏆 Overall Team Points Table',`<p class="helper">One table combining League results from ALL categories. Every completed entry match is counted once for each participating team. Knockout matches are excluded.</p>
+  <div class="scroll mba-v35-overall-scroll"><table class="mba-v35-overall-table"><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>PTS</th></tr></thead><tbody>${overall.map((r,i)=>`<tr><td>${i+1}</td><td><b>${esc(r.name)}</b></td><td>${r.p}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td></tr>`).join('')||'<tr><td colspan="6">Add teams to this tournament.</td></tr>'}</tbody></table></div>`);
+ const categoryTables=t.categories.map(c=>{
+  if(!['league','combined'].includes(effectiveFormat(t,c)))return '';
+  const groups=c.groups?.length?[{id:null,name:'General / Ungrouped'},...c.groups]:[{id:undefined,name:'All Entries'}];
+  return groups.map(g=>{const rows=standings(t,c.id,g.id);if(!rows.length)return '';
+   return card(`${c.name} · ${g.name} — Category Points`, `<div class="scroll"><table><thead><tr><th>#</th><th>Entry / Players</th><th>P</th><th>W</th><th>L</th><th>PTS</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><b>${linkedEntry(t,c,r.id)}</b></td><td>${r.p}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}</tbody></table></div>`);
+  }).join('');
  }).join('');
- }).join('')||card('Standings','<p>No categories configured.</p>')}
+ return teamTable+`<details class="mba-v35-category-tables"><summary>📊 Category-wise Points Tables (tap to expand)</summary>${categoryTables||'<p class="helper">No categories yet.</p>'}</details>`;
+}
+
 function reportData(t,kind,catId='all',groupId='all'){
  const cats=t.categories.filter(c=>catId==='all'||c.id===catId),rows=[];
  const hasGroup=(c,e)=>groupId==='all'||(e?.groupId||'general')===groupId;
- if(kind==='payments'&&canSeePayments()){for(const team of t.teams)for(const p of team.players){const v=paymentStatus(p.id);rows.push([team.name,p.name,v.fee===null?'Not set':money(v.fee),money(v.paid),v.due===null?'—':money(v.due),v.text])}return {head:['Team','Player','Fee','Received','Due','Status'],rows}}
-
- if(kind==="finance"&&canFullFinance()){const f=financeTotals(t);return {head:["Finance Item","Amount / Value"],rows:[["Players",String(f.players)],["Expected ground fees",f.expected===null?"Not configured":money(f.expected)],["Collected (net)",money(f.paid)],["Outstanding player balances",f.owed===null?"Not configured":money(f.owed)],["Expenses paid",money(f.expensesPaid)],["Bills still due",money(f.unpaidBills)],["Cash / bank balance",money(f.cashBalance)],["Projected final surplus",f.projected===null?"Not configured":money(f.projected)]]}}
- if(kind==="expenses"&&canSeeExpenses()){const expenses=expenseEvents().sort((a,b)=>(a.date||"").localeCompare(b.date||""));return {head:["Date","Category","Description","Amount","Status"],rows:expenses.map(e=>[e.date||"",e.category||"",e.description||"",money(e.amount),e.status||""])}}
-
- if(kind==='payments')return reportData(t,'fixtures',catId,groupId); // No finance headings even for a stale viewer print selection.
+ if(kind==='payments'&&canSeePayments()){
+  for(const team of t.teams)for(const p of team.players){const v=paymentStatus(p.id);rows.push([team.name,p.name,v.fee===null?'Not set':money(v.fee),money(v.paid),v.due===null?'—':money(v.due),v.text])}
+  return {head:['Team','Player','Fee','Received','Due','Status'],rows};
+ }
+ if(kind==='finance'&&canFullFinance()){
+  const f=financeTotals(t);return {head:['Finance Item','Amount / Value'],rows:[['Players',String(f.players)],['Expected ground fees',f.expected===null?'Not configured':money(f.expected)],['Collected (net)',money(f.paid)],['Outstanding player balances',f.owed===null?'Not configured':money(f.owed)],['Expenses paid',money(f.expensesPaid)],['Bills still due',money(f.unpaidBills)],['Cash / bank balance',money(f.cashBalance)],['Projected final surplus',f.projected===null?'Not configured':money(f.projected)]]};
+ }
+ if(kind==='expenses'&&canSeeExpenses()){
+  const ex=expenseEvents().sort((a,b)=>(a.date||'').localeCompare(b.date||''));return {head:['Date','Category','Description','Amount','Status'],rows:ex.map(e=>[e.date||'',e.category||'',e.description||'',money(e.amount),e.status||''])};
+ }
+ if(kind==='payments'||kind==='finance'||kind==='expenses')return {head:['Information'],rows:[['Access restricted']]};
  if(kind==='teams'){
-  for(const team of t.teams)for(const p of team.players)rows.push([team.name,p.name,`${t.categories.filter(c=>c.entrants.some(e=>e.teamId===team.id&&e.playerIds.includes(p.id))).map(c=>c.name).join(', ')||'—'}`]);
+  for(const team of t.teams)for(const p of team.players)rows.push([team.name,p.name,t.categories.filter(c=>c.entrants.some(e=>e.teamId===team.id&&e.playerIds.includes(p.id))).map(c=>c.name).join(', ')||'—']);
   return {head:['Team','Player','Categories'],rows};
  }
+ if(kind==='team-overall'){return {head:['Rank','Team','Played','Won','Lost','Points'],rows:mbaTeamOverallData(t).map((r,i)=>[String(i+1),r.name,String(r.p),String(r.w),String(r.l),String(r.pts)])}}
  if(kind==='standings'){
-  for(const c of cats){
-   const members=standings(t,c.id).filter(r=>{const e=c.entrants.find(e=>e.id===r.id);return hasGroup(c,e)});
-   for(const r of members){const e=c.entrants.find(e=>e.id===r.id);
-    rows.push([c.name,groupLabel(c,e?.groupId),r.name,String(r.p),String(r.w),String(r.l),String(r.pts)]);
+  const hasGroups=cats.some(c=>c.groups?.length);
+  for(const c of cats){const members=standings(t,c.id).filter(r=>{const e=c.entrants.find(e=>e.id===r.id);return hasGroup(c,e)});
+   for(const r of members){const e=c.entrants.find(e=>e.id===r.id);const name=groupLabel(c,e?.groupId);
+    rows.push([c.name,...(hasGroups?[name]:[]),r.name,String(r.p),String(r.w),String(r.l),String(r.pts)]);
    }
   }
-  return {head:['Category','Group','Player(s)','P','W','L','PTS'],rows};
+  return {head:['Category',...(hasGroups?['Group']:[]),'Players','P','W','L','PTS'],rows};
  }
+ const grouped=cats.some(c=>c.groups?.length);
  for(const m of [...t.fixtures].sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court)){
-  const c=lookup(t,m.categoryId);if(!cats.includes(c))continue;
-  const e=c.entrants.find(e=>e.id===m.a);
-  if(!hasGroup(c,e)&&!(m.stage==='knockout'&&groupId==='all'))continue;
-  const names=participants(t,m),r=t.results[m.id],win=scoreWinner(r,effectiveRules(t,c));
-  const match=names.join('   VS   '),result=!r?'Pending':r.mode==='winner'?`WIN: ${names[win==='a'?0:1]}`:`${r.a} – ${r.b}`;
-  if(kind==='fixtures')rows.push([`#${m.slot||'—'}`,String(m.court||'—'),c.name,groupLabel(c,m.groupId),match]);
-  else rows.push([`#${m.slot||'—'}`,c.name,groupLabel(c,m.groupId),match,result]);
+  const c=lookup(t,m.categoryId);if(!cats.includes(c))continue;const entrant=c.entrants.find(e=>e.id===m.a);
+  if(!hasGroup(c,entrant)&&!(m.stage==='knockout'&&groupId==='all'))continue;
+  const names=participants(t,m),res=t.results[m.id],win=scoreWinner(res,effectiveRules(t,c));
+  const match=names.join('  VS  '),score=!res?'Pending':res.mode==='winner'?'Not recorded':`${res.a} – ${res.b}`;
+  const winner=win?names[win==='a'?0:1]:'—';
+  if(kind==='fixtures')rows.push(['#'+(m.slot||'—'),String(m.court||'—'),c.name,...(grouped?[groupLabel(c,m.groupId)]:[]),match]);
+  else rows.push(['#'+(m.slot||'—'),c.name,...(grouped?[groupLabel(c,m.groupId)]:[]),match,score,winner]);
  }
- return kind==='fixtures'?{head:['Slot','Court','Category','Group','Match / Players'],rows}:{head:['Slot','Category','Group','Match / Players','Score / Winner'],rows};
+ return kind==='fixtures'?{head:['Slot','Court','Category',...(grouped?['Group']:[]),'Match / Players'],rows}:{head:['Slot','Category',...(grouped?['Group']:[]),'Match / Players','Score','WINNER'],rows};
 }
-/* MBA_A4_READABLE_PRINT_V2: content-aware A4 pages, readable names, repeating report header. */
+
 function printSheets(t,kind,catId='all',groupId='all'){
  const {head,rows}=reportData(t,kind,catId,groupId),orientation=t.settings?.printOrientation==='portrait'?'portrait':'landscape';
  const size=Math.min(24,Math.max(14,+t.settings?.printFontSize||17));
- const widths=kind==='fixtures'?[8,10,15,14,53]:kind==='results'?[8,15,13,43,21]:kind==='standings'?[14,12,38,9,9,9,9]:kind==='payments'?[19,27,13,13,13,15]:kind==='expenses'?[16,19,29,15,21]:kind==='finance'?[56,44]:[27,38,35];
- const totalW=orientation==='landscape'?275:189,usableH=orientation==='landscape'?151:232;
- const perCell=(cell,w)=>{
-  const chars=[...String(cell??'')].length;
-  const avgMm=size*.132, available=Math.max(7,totalW*w/100-6);
-  return Math.max(1,Math.ceil(chars*avgMm/available));
- };
- const rowHeight=row=>Math.max(8.0,4.8+Math.max(1,...row.map((cell,i)=>perCell(cell,widths[i]||12)))*size*.33);
- const pages=[];let batch=[],consumed=0;
- for(const row of rows){const h=rowHeight(row);if(batch.length&&consumed+h>usableH){pages.push(batch);batch=[];consumed=0}batch.push(row);consumed+=h}
+ const widths=head.map((h,i)=>h==='Match / Players'?42:h==='WINNER'?22:h==='Players'?34:h==='Player'?30:h==='Team'?36:h==='Description'?30:h==='Category'?16:h==='Group'?10:h==='Score'?12:h==='Slot'?8:h==='Court'?8:Math.max(12,Math.round(100/head.length)));
+ const sum=widths.reduce((a,b)=>a+b,0),pct=widths.map(n=>100*n/sum);
+ const totalW=orientation==='portrait'?190:276,usableH=orientation==='portrait'?226:148;
+ const perCell=(cell,w)=>Math.max(1,Math.ceil(([...String(cell??'')].length*size*.14)/(Math.max(9,totalW*w/100-6))));
+ const rowHeight=row=>Math.max(8,3+Math.max(1,...row.map((c,i)=>perCell(c,pct[i]||12)))*size*.37);
+ const pages=[],max=orientation==='portrait'?24:15;let batch=[],h=0;
+ for(const row of rows){const rh=rowHeight(row);if(batch.length&&(h+rh>usableH||batch.length>=max)){pages.push(batch);batch=[];h=0}batch.push(row);h+=rh}
  if(batch.length||!pages.length)pages.push(batch);
- let html='';
- for(let n=0;n<pages.length;n++){
-  const chunk=pages[n];
-  html+=`<article class="print-sheet ${orientation}" style="--p-font:${size}px"><div class="print-head"><div><strong>MBA TOURNAMENTS</strong><h2>${esc(t.name)}</h2><p>📅 ${esc(dateShow(t.date))} · ${esc(kind.toUpperCase())}${catId==='all'?'':' · '+esc(lookup(t,catId)?.name||'')}${groupId==='all'?'':' · '+esc(groupId==='general'?'General':lookup(t,catId)?.groups?.find(g=>g.id===groupId)?.name||'Group')}</p></div><span class="print-mark">${esc(orientation==='portrait'?'A4 PORTRAIT':'A4 LANDSCAPE')}</span></div><div class="print-body"><table class="print-table"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${head.map(label=>`<th>${esc(label)}</th>`).join('')}</tr></thead><tbody>${chunk.map(row=>`<tr>${row.map((cell,j)=>`<td class="${j===(kind==='fixtures'?4:kind==='results'?3:kind==='standings'?2:kind==='finance'?0:1)?'print-main':''}">${esc(cell)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${head.length}">No records for this selection</td></tr>`}</tbody></table></div><div class="print-foot"><span>${esc(t.name)} · ${esc(dateShow(t.date))}</span><span>Page ${n+1} / ${pages.length} · ${rows.length} records</span></div></article>`;
- }
- return html;
+ return pages.map((chunk,n)=>`<article class="print-sheet ${orientation}" style="--p-font:${size}px"><div class="print-head"><div><strong>MBA TOURNAMENTS</strong><h2>${esc(t.name)}</h2><p>📅 ${esc(dateShow(t.date))} · ${esc(kind.toUpperCase())}${catId==='all'?'':' · '+esc(lookup(t,catId)?.name||'')}</p></div><span class="print-mark">${esc(orientation==='portrait'?'A4 PORTRAIT':'A4 LANDSCAPE')}</span></div><div class="print-body"><table class="print-table"><colgroup>${pct.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${chunk.map(row=>`<tr>${row.map((cell,j)=>`<td class="${head[j]==='Match / Players'||head[j]==='Players'||head[j]==='WINNER'?'print-main':''}">${esc(cell)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${head.length}">No records</td></tr>`}</tbody></table></div><div class="print-foot"><span>${esc(t.name)} · ${esc(dateShow(t.date))}</span><span>Page ${n+1} / ${pages.length}</span></div></article>`).join('');
 }
 
 function printView(t){
  if(!canPrint())return card('Print Center','<p>You do not have print access. Ask Super Admin if printing is needed.</p>');
  if(printCategory!=='all'&&!t.categories.some(c=>c.id===printCategory)){printCategory='all';printGroup='all'}
- const options=[['fixtures','Fixtures'],['results','Results & Scores'],['standings','Points Tables'],['teams','Teams & Players'],...(canSeePayments()?[['payments','Players Fee & Paid Status']]:[]),...(canSeeExpenses()?[['expenses','Expense Register']]:[]),...(canFullFinance()?[['finance','Full Finance Summary']]:[])];
+ const options=[['team-overall','Overall Team Points'],['fixtures','Fixtures'],['results','Results & Scores'],['standings','Points Tables'],['teams','Teams & Players'],...(canSeePayments()?[['payments','Players Fee & Paid Status']]:[]),...(canSeeExpenses()?[['expenses','Expense Register']]:[]),...(canFullFinance()?[['finance','Full Finance Summary']]:[])];
  const groups=printCategory==='all'?[]:lookup(t,printCategory)?.groups||[];
  return card('A4 Print Center',`<div class="print-controls noprint">${selectField('Report','printType',options,printReport)}${selectField('Category','printCat',[['all','All Categories'],...t.categories.map(c=>[c.id,c.name])],printCategory)}${selectField('Group','printGroup',[['all','All Groups'],['general','General'],...groups.map(g=>[g.id,g.name])],printGroup)}${selectField('Orientation','printOrientation',[['landscape','A4 Landscape'],['portrait','A4 Portrait']],t.settings?.printOrientation||'landscape')}${field('Font size (14–24 px)','printSize',t.settings?.printFontSize||17,'number','min="14" max="24"')}<button class="btn primary" type="button" data-action="print-now">🖨 Print All Pages</button></div><p class="helper noprint">Preview pages use the complete A4 paper area with moderate, legible names and repeating headers. Use Chrome's Print settings → Paper A4 / Scale 100% / Margins None, and disable browser headers and footers if they appear.</p><div id="print-preview" class="print-preview">${printSheets(t,printReport,printCategory,printGroup)}</div>`);
 }
@@ -1750,7 +1869,7 @@ document.addEventListener('click',async ev=>{
  if(action==='remove-team')return safe(()=>{const team=t.teams.find(x=>x.id===id);if(!confirm(`Remove ${team?.name}? Existing results will be protected.`))return;removeTeam(t,id);notice='Team removed from Production.'});
  if(action==='remove-category')return safe(()=>{const cat=lookup(t,id);if(!confirm(`Remove category ${cat?.name}?`))return;removeCategory(t,id)});
  if(action==='remove-entry')return safe(()=>{if(!confirm('Remove this category entry?'))return;removeEntry(t,catId,id)});
- if(action==='shuffle')return safe(()=>{scheduleLeague(t,{seed:Date.now(),minimumRestSlots:t.settings?.minRestSlots??1});const check=fixturesCheck(t);need(check.valid,check.problems.join(', '));notice=`Generated ${t.fixtures.filter(m=>m.stage==='league').length} league matches. ${check.restAlerts.length} rest warnings.`});
+ if(action==='shuffle')return safe(()=>{need(t.categories.filter(cat=>['league','combined'].includes(effectiveFormat(t,cat))).flatMap(makeRoundRobin).length>0,'No league matches possible: open Categories and add at least two pairs/entries in the same category and group.');scheduleLeague(t,{seed:Date.now(),minimumRestSlots:t.settings?.minRestSlots??1});const check=fixturesCheck(t);need(check.valid,check.problems.join(', '));notice=`Generated ${t.fixtures.filter(m=>m.stage==='league').length} league matches. ${check.restAlerts.length} rest warnings.`});
  if(action==='clear-knockout')return safe(()=>{const kos=t.fixtures.filter(m=>m.stage==='knockout');need(!kos.some(m=>t.results[m.id]),'Recorded knockout results: cannot clear the bracket');if(!confirm('Clear all unplayed knockout brackets in this tournament? League scores stay untouched.'))return;t.fixtures=t.fixtures.filter(m=>m.stage!=='knockout');notice='Unplayed knockout brackets cleared in Production.'});
  if(action==='knockout')return safe(()=>{const out=generateKnockout(t,id);notice=`Knockout bracket created: ${out.allMatches.length} matches across ${out.rounds.length} rounds, ${out.byes} byes. Winners advance automatically.`});
  if(action==='edit-result'){editor={kind:'result',id};mode=t.results[id]?.mode==='winner'?'winner':'score';render();return}
@@ -1946,7 +2065,7 @@ function mbaInitUi(){
    and a local umpire point counter that saves ONLY confirmed final results. */
 let mbaAnnouncementOff=null,mbaAnnouncementItems={},mbaAnnouncementInitial=false;
 let mbaVoiceRecorder=null,mbaVoiceStream=null,mbaVoiceChunks=[],mbaVoiceData='',mbaVoicePreviewUrl=null,mbaVoiceStopTimeout=null;
-function mbaVoiceIsSafe(s){return typeof s==='string'&&s.length<=110000&&/^data:audio\/(webm|mp4|ogg)(?:;codecs=[\w.-]+)?;base64,[A-Za-z0-9+/=]{200,100000}$/.test(s)}
+function mbaVoiceIsSafe(s){return typeof s==='string'&&s.length<=110000&&/^data:audio\/(webm|mp4|ogg|mpeg|x-m4a)(?:;codecs=[\w.-]+)?;base64,[A-Za-z0-9+/=]{200,100000}$/.test(s)}
 function mbaVoiceStatus(msg){const box=document.getElementById('mba-voice-status');if(box)box.textContent=msg}
 function mbaResetVoice(){if(mbaVoiceRecorder?.state==='recording')mbaVoiceRecorder.stop();if(mbaVoiceStream){mbaVoiceStream.getTracks().forEach(t=>t.stop());mbaVoiceStream=null}if(mbaVoiceStopTimeout){clearTimeout(mbaVoiceStopTimeout);mbaVoiceStopTimeout=null}if(mbaVoicePreviewUrl){URL.revokeObjectURL(mbaVoicePreviewUrl);mbaVoicePreviewUrl=null}mbaVoiceData='';mbaVoiceRecorder=null;mbaVoiceChunks=[]}
 function mbaUpdateVoicePreview(){const a=document.getElementById('mba-voice-preview');if(a){a.hidden=!mbaVoiceData;if(mbaVoiceData)a.src=mbaVoiceData}mbaVoiceStatus(mbaVoiceData?'✅ Voice note ready to publish. You may also type a message.':'No voice note recorded yet.')}
@@ -1970,8 +2089,7 @@ async function mbaStartVoice(){
    mbaVoiceData=data;mbaUpdateVoicePreview();
   }catch(error){mbaVoiceData='';mbaVoiceStatus('❌ '+error.message)}
  };
- recorder.start(250);mbaVoiceStatus('🔴 Recording… up to 18 seconds. Press Stop when finished.');
- mbaVoiceStopTimeout=setTimeout(()=>{if(mbaVoiceRecorder===recorder&&recorder.state==='recording')recorder.stop()},18000);
+ recorder.start(250);mbaVoiceStatus('🔴 Recording… press Stop when finished.');
 }
 function mbaStopVoice(){if(!mbaVoiceRecorder||mbaVoiceRecorder.state!=='recording')return;mbaVoiceRecorder.stop();mbaVoiceStatus('Processing voice note…')}
 
@@ -1983,18 +2101,49 @@ const mbaNoticesSorted=()=>Object.entries(mbaAnnouncementItems).map(([id,v])=>({
 function mbaNoticeClock(stamp){return new Date(stamp).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short',hour12:true});}
 function mbaSoundEnabled(){try{return localStorage.getItem('mba-notice-sound-enabled')==='yes'}catch{return false}}
 function mbaPlayAlert(){if(!mbaSoundEnabled())return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;const ctx=new Audio(),osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=640;gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.05,ctx.currentTime+.025);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.25);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.26);osc.onended=()=>ctx.close().catch(()=>{})}catch(err){console.debug('Audio not available',err)}}
+/* MBA_V34_NOTICE: audience display filter + user-visible Notice controls; non-confidential announcements only */
+let mbaVisibilityOff=null,mbaVisibilityMap={};
+const mbaNoticeAudienceAllowed=n=>{
+ const audience=n.audience||'all';
+ if(audience==='all'||isSuper())return true;
+ if(audience==='admins')return !!accessRecord?.active&&accessRecord?.role!=='viewer';
+ if(audience==='tournament'){
+  const tid=n.tournamentId;
+  return !!tid&&(!!publicTournaments[tid]||userTournamentScopes[tid]?.view===true||userTournamentScopes[tid]?.edit===true);
+ }
+ return false;
+};
+function mbaV34InitVisibility(user,gen){
+ if(mbaVisibilityOff){try{mbaVisibilityOff()}catch{}mbaVisibilityOff=null}
+ mbaVisibilityMap={};if(!user)return;
+ mbaVisibilityOff=onValue(ref(db,'v3/noticeVisibility'),snap=>{
+  if(gen!==authGeneration)return;
+  mbaVisibilityMap=snap.val()||{};mbaRenderNotices();
+ },e=>console.warn('Notice visibility unavailable: '+errText(e)));
+}
+
 function mbaRenderNotices(){
  const host=document.getElementById('mba-important-notices');if(!host)return;
  if(!authUser){host.hidden=true;host.innerHTML='';return}
- const entries=mbaNoticesSorted().slice(0,15),canPost=mbaMakerCanNotice();host.hidden=false;
- const visible=entries.map((n,i)=>`<article class="mba-announcement ${n.important?'mba-important':''}"><div class="mba-ann-top"><b>${n.important?'📢 IMPORTANT NOTICE':'📣 Announcement'} · ${esc(n.title||'Update')}</b><small>${esc(mbaNoticeClock(n.createdAt))}</small></div><p>${esc(n.body||'').replace(/\n/g,'<br>')}</p>${mbaVoiceIsSafe(n.voiceData)?`<div class="mba-voice-message"><b>🎙 Voice Note</b><audio controls preload="none" src="${esc(n.voiceData)}"></audio></div>`:''}<div class="mba-ann-bottom"><small>Valid until ${esc(mbaNoticeClock(n.expiresAt))}</small>${canPost&&(isSuper()||n.createdBy===authUser.uid)?`<button type="button" class="btn danger-outline" data-mba-ann-delete="${esc(n.id)}">Remove</button>`:''}</div></article>`).join('');
- const composer=canPost?`<details class="mba-announce-compose" id="mba-announce-compose"><summary>📣 Admin · Important Announcement</summary><div class="mba-announce-form"><label class="field"><span>Notice heading</span><input id="mba-announce-title" maxlength="80" value="Match Reminder" placeholder="Match Reminder"></label><label class="field"><span>✍️ Text Notice (optional if Voice Note is recorded)</span><textarea id="mba-announce-body" rows="3" maxlength="300" placeholder="Matches start at 6:30 PM. All players please arrive on time."></textarea></label><div class="mba-voice-recorder"><b>🎙 Voice Note — record actual audio (not voice-to-text)</b><div class="mba-ann-actions"><button type="button" class="btn primary" id="mba-voice-start">● Start Recording</button><button type="button" class="btn" id="mba-voice-stop">■ Stop</button><button type="button" class="btn" id="mba-voice-clear">Clear Voice</button></div><small id="mba-voice-status">${mbaVoiceData?'✅ Voice note ready to publish.':'No voice note recorded yet.'}</small><audio id="mba-voice-preview" controls ${mbaVoiceData?'':'hidden'} src="${mbaVoiceData?esc(mbaVoiceData):''}"></audio><p class="helper">Voice note max 18 seconds / 73 KB. Text and Voice may be sent together or separately. Microphone permission and HTTPS required. This is free in-app playback only, NOT a mobile push message.</p></div><div class="mba-ann-actions"><label class="choice"><input id="mba-ann-important" type="checkbox" checked> Important Notice</label><label class="field mba-expire-field"><span>Show for</span><select id="mba-announce-expiry"><option value="2">2 hours</option><option value="6">6 hours</option><option value="24" selected>24 hours</option><option value="72">3 days</option></select></label><button type="button" class="btn primary" id="mba-ann-publish">📢 Publish Notice</button></div><p class="helper">Signed-in app users see this free real-time notice while the app is open. No paid plan, SMS, background push or speech-to-text.</p></div></details>`:'';
- const sound=`<label class="mba-sound-toggle"><input type="checkbox" id="mba-ann-sound" ${mbaSoundEnabled()?'checked':''}> 🔔 Play sound for new notices while app is open</label>`;
- const oldForm=document.getElementById('mba-announce-compose');
- const previousDraft=oldForm?{open:oldForm.open,title:document.getElementById('mba-announce-title')?.value,body:document.getElementById('mba-announce-body')?.value,important:document.getElementById('mba-ann-important')?.checked,expiry:document.getElementById('mba-announce-expiry')?.value}:null;
- host.innerHTML=`<div class="mba-notice-heading"><strong>📣 Important Notices</strong><span class="mba-notice-count">${entries.length} active</span></div>${entries.length?visible:'<p class="mba-no-ann">No active announcements</p>'}${sound}${composer}`;
- if(previousDraft){const det=document.getElementById('mba-announce-compose');if(det){det.open=previousDraft.open;for(const [id,value] of [['mba-announce-title',previousDraft.title],['mba-announce-body',previousDraft.body],['mba-announce-expiry',previousDraft.expiry]]){const element=document.getElementById(id);if(element&&value!=null)element.value=value}const important=document.getElementById('mba-ann-important');if(important&&previousDraft.important!=null)important.checked=previousDraft.important}}
+ const all=mbaNoticesSorted().slice(0,50),canPost=mbaMakerCanNotice();
+ const visible=all.filter(n=>mbaNoticeAudienceAllowed(n)&&mbaVisibilityMap[n.id]?.hidden!==true);
+ const manageable=isSuper()?all:visible.filter(n=>n.createdBy===authUser.uid);
+ const views=visible.slice(0,8).map(n=>`<article class="mba-announcement ${n.important?'mba-important':''}"><div class="mba-ann-top"><b>${n.important?'📢 IMPORTANT NOTICE':'📣 Announcement'} · ${esc(n.title||'Update')}</b><small>${esc(mbaNoticeClock(n.createdAt))}</small></div><p>${esc(n.body||'').replace(/\n/g,'<br>')}</p>${mbaVoiceIsSafe(n.voiceData)?`<div class="mba-voice-message"><b>🎙 Voice Note</b><audio controls preload="none" src="${esc(n.voiceData)}"></audio></div>`:''}<div class="mba-ann-bottom"><small>${n.expiresAt>8000000000000?'No expiry':'Until '+esc(mbaNoticeClock(n.expiresAt))}</small>${canPost&&(isSuper()||n.createdBy===authUser.uid)?`<button class="btn danger-outline" type="button" data-mba-ann-delete="${esc(n.id)}">Remove</button>`:''}</div></article>`).join('');
+ const draft={};const oldForm=document.getElementById('mba-announce-compose');
+ if(oldForm){draft.open=oldForm.open;for(const id of ['mba-announce-title','mba-announce-body','mba-ann-expiry-date','mba-ann-audience','mba-ann-important','mba-ann-no-expiry']){const el=document.getElementById(id);if(el)draft[id]=el.type==='checkbox'?el.checked:el.value}}
+ const noticeSelector=isSuper()?`<details class="mba-ann-manage"><summary>⚙ Show / Hide Existing Notices (${manageable.length})</summary><div class="mba-ann-manage-list">${manageable.map(n=>`<div><b>${esc(n.title)}</b><span>${mbaVisibilityMap[n.id]?.hidden?'Hidden':'Shown'}</span><button type="button" class="btn" data-mba-ann-toggle="${esc(n.id)}">${mbaVisibilityMap[n.id]?.hidden?'Show':'Hide'}</button></div>`).join('')||'No notices'}</div></details>`:'';
+ const composer=canPost?`<details id="mba-announce-compose" class="mba-announce-compose"><summary>📣 Create Important Notice</summary><div class="mba-announce-form">
+  <label class="field">Title<input id="mba-announce-title" maxlength="80" value="Match Reminder"></label>
+  <label class="field">Text Notice<textarea id="mba-announce-body" rows="2" maxlength="300" placeholder="Matches start at 6:30 PM. Please arrive early."></textarea></label>
+  <details class="mba-voice-recorder"><summary>🎙 Add Voice Note (optional)</summary><div class="mba-ann-actions"><button type="button" class="btn primary" id="mba-voice-start">● Record</button><button type="button" class="btn" id="mba-voice-stop">■ Stop</button><button type="button" class="btn" id="mba-voice-clear">Clear</button></div><label class="field">Or upload an existing audio file<input id="mba-voice-upload" type="file" accept="audio/webm,audio/ogg,audio/mp4,audio/mpeg,audio/*"></label><small id="mba-voice-status">${mbaVoiceData?'Voice ready':'No voice attached'}</small><audio id="mba-voice-preview" controls ${mbaVoiceData?'':'hidden'} src="${mbaVoiceData?esc(mbaVoiceData):''}"></audio><small>Free storage has a small audio-file size limit. No fixed recording-duration timer.</small></details>
+  <div class="mba-ann-options"><label class="field">Show to<select id="mba-ann-audience"><option value="all">All signed-in users</option><option value="admins">Admins & Super Admin</option><option value="tournament">Current tournament viewers</option></select></label><label class="field">Visible until<input type="date" id="mba-ann-expiry-date"></label><label class="choice"><input type="checkbox" id="mba-ann-no-expiry"> No expiry</label><label class="choice"><input type="checkbox" id="mba-ann-important" checked> Important Notice</label></div>
+  <button id="mba-ann-publish" class="btn primary" type="button">📢 Publish Notice</button><p class="helper">Audience controls filter the in-app display; announcements are not confidential (signed-in users could still query the database). Hide/Show is controlled only by Super Admin. No SMS, paid push, or external voice message.</p>
+  </div></details>`:'';
+ const sound=`<label class="mba-sound-toggle"><input type="checkbox" id="mba-ann-sound" ${mbaSoundEnabled()?'checked':''}> 🔔 Notice sound while app is open</label>`;
+ host.hidden=false;host.innerHTML=`<div class="mba-notice-heading"><strong>📣 Important Notices</strong><span class="mba-notice-count">${visible.length} active</span></div>${views||'<p class="mba-no-ann">No active notices</p>'}${sound}${noticeSelector}${composer}`;
+ if(oldForm){let d=document.getElementById('mba-announce-compose');if(d){d.open=!!draft.open;for(const [id,v] of Object.entries(draft)){const el=document.getElementById(id);if(el&&id!=='open'){if(el.type==='checkbox')el.checked=!!v;else el.value=v}}}}
 }
+
 function mbaStartNoticeWatch(user,gen){
  if(mbaAnnouncementOff){try{mbaAnnouncementOff()}catch{}mbaAnnouncementOff=null}mbaAnnouncementItems={};mbaAnnouncementInitial=false;mbaRenderNotices();if(!user)return;
  mbaAnnouncementOff=onValue(ref(db,'v3/announcements'),snap=>{
@@ -2005,18 +2154,25 @@ function mbaStartNoticeWatch(user,gen){
  },error=>{if(gen!==authGeneration)return;mbaAnnouncementItems={};mbaAnnouncementInitial=false;mbaRenderNotices();if(mbaMakerCanNotice()){const x=document.getElementById('mba-important-notices');if(x)x.insertAdjacentHTML('beforeend',`<p class="helper">Announcements unavailable: ${esc(errText(error))}. Check the optional Firebase Rules before posting.</p>`)}});
 }
 async function mbaPublishNotice(){
- if(!mbaMakerCanNotice())throw Error('Only an authorized Admin or Super Admin can announce.');
- if(mbaVoiceRecorder?.state==='recording')throw Error('Stop recording before publishing.');
+ if(!mbaMakerCanNotice())throw Error('An authorized Admin is required.');
+ if(mbaVoiceRecorder?.state==='recording')throw Error('Stop recording first.');
  const title=document.getElementById('mba-announce-title')?.value.trim()||'Important Notice';
  const body=document.getElementById('mba-announce-body')?.value.trim()||'';
- if(title.length<3||title.length>80)throw Error('Heading must be 3–80 characters.');
- if(body.length>300||(!mbaVoiceIsSafe(mbaVoiceData)&&body.length<3))throw Error('Enter text (at least 3 characters) OR record a Voice Note.');
- if(Object.keys(mbaAnnouncementItems).length>60)throw Error('Announcement history is full; remove expired notices first.');
- const now=Date.now(),hours=Number(document.getElementById('mba-announce-expiry')?.value)||24;
- const rec={title,body,important:!!document.getElementById('mba-ann-important')?.checked,createdAt:now,expiresAt:now+hours*3600000,createdBy:authUser.uid,createdByEmail:authUser.email||''};
+ if(title.length<3||title.length>80)throw Error('Title must be 3–80 characters.');
+ if(body.length>300||(!mbaVoiceIsSafe(mbaVoiceData)&&body.length<3))throw Error('Add text or a short voice note.');
+ const now=Date.now(),noExpiry=!!document.getElementById('mba-ann-no-expiry')?.checked;
+ const dateStr=document.getElementById('mba-ann-expiry-date')?.value;
+ const expiresAt=noExpiry?8640000000000000:(dateStr?new Date(dateStr+'T23:59:59').getTime():now+86400000);
+ if(!Number.isFinite(expiresAt)||expiresAt<=now||expiresAt>8640000000000000)throw Error('Choose a future date or No expiry.');
+ const audience=document.getElementById('mba-ann-audience')?.value||'all';
+ if(!['all','admins','tournament'].includes(audience))throw Error('Invalid audience.');
+ if(audience==='tournament'&&!active()?.id)throw Error('Select the tournament first.');
+ if(Object.keys(mbaAnnouncementItems).length>100)throw Error('Too many stored notices. Delete old notices first.');
+ const rec={title,body,important:!!document.getElementById('mba-ann-important')?.checked,createdAt:now,expiresAt,createdBy:authUser.uid,createdByEmail:authUser.email||'',audience,tournamentId:audience==='tournament'?active().id:''};
  if(mbaVoiceIsSafe(mbaVoiceData)){rec.voiceData=mbaVoiceData;rec.voiceMime=mbaVoiceData.slice(5,mbaVoiceData.indexOf(';base64,'));}
- const id=uid('notice');await set(ref(db,'v3/announcements/'+id),rec);mbaResetVoice();mbaRenderNotices();alert('Notice published online. Signed-in users will see text and/or a playable voice note in the app.');
+ await set(ref(db,'v3/announcements/'+uid('notice')),rec);mbaResetVoice();mbaRenderNotices();alert('Notice published.');
 }
+
 function mbaGalleryView(t){
  mbaWatchGallery(t);
  const canEdit=mbaMakerCanGallery(),rows=Object.entries(mbaGalleryItems||{}).sort((a,b)=>(b[1]?.createdAt||0)-(a[1]?.createdAt||0));
@@ -2120,7 +2276,48 @@ document.addEventListener('change',e=>{if(e.target?.id==='mba-ann-sound'){try{lo
 
 /* MBA_PRINT_SHARE_V2 — explicit, on-device PDF/PNG/A4 report export; no paid APIs */
 let mbaShareBusy=false,mbaShareCount=0;
-const mbaExportScriptReady=()=>typeof window.html2canvas==='function'&&!!window.jspdf?.jsPDF;
+/* MBA_V34_OFFLINE_SHARE */
+const mbaV34Widths={portrait:[1191,1684],landscape:[1684,1191]};
+function mbaV34Wrap(ctx,value,limit){
+ const text=String(value??'').replace(/\s+/g,' ').trim(),parts=text.split(' '),lines=[];let line='';
+ for(const word of parts){const next=line?line+' '+word:word;if(ctx.measureText(next).width>limit&&line){lines.push(line);line=word}else line=next;
+  if(ctx.measureText(line).width>limit){const chars=[...line];line='';for(const ch of chars){if(ctx.measureText(line+ch).width>limit&&line){lines.push(line);line=''}line+=ch}}
+ }
+ if(line)lines.push(line);return lines.length?lines:[''];
+}
+function mbaV34Page(w,h,title,subtitle){
+ const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d');
+ ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.fillStyle='#193759';ctx.font='bold 31px Arial,sans-serif';ctx.fillText('MBA TOURNAMENTS',44,64);
+ ctx.font='20px Arial,sans-serif';ctx.fillStyle='#405d79';ctx.fillText('Badminton Tournament Manager',44,95);
+ ctx.font='bold 24px Arial,sans-serif';ctx.fillStyle='#18314d';ctx.fillText(String(title||'Tournament report').slice(0,92),44,140);
+ ctx.font='19px Arial,sans-serif';ctx.fillStyle='#47637f';ctx.fillText(String(subtitle||'').slice(0,120),44,173);
+ ctx.fillStyle='#c5d5e5';ctx.fillRect(44,190,w-88,2);return {canvas,ctx,y:216};
+}
+function mbaV34RasterReport(head,rows,title,subtitle){
+ const orient=mbaPrintPaper(),[w,h]=mbaV34Widths[orient],gap=6,left=44,right=w-44,bottom=h-70;
+ const weights=head.map(x=>x==='Match / Players'?42:x==='WINNER'?22:x==='Players'?35:x==='Player'?26:x==='Description'?33:x==='Category'?15:x==='Group'?12:x==='Score'?12:x==='Slot'?8:x==='Court'?8:Math.round(100/head.length));
+ const total=weights.reduce((a,b)=>a+b,0),cw=weights.map(n=>n/total*(right-left)),x=[left];for(let i=0;i<cw.length;i++)x.push(x[i]+cw[i]);
+ const pages=[];let p=null;function begin(){p=mbaV34Page(w,h,title,subtitle);pages.push(p.canvas);p.ctx.font='bold 18px Arial,sans-serif';p.ctx.fillStyle='#e9f0f8';p.ctx.fillRect(left,p.y,right-left,37);p.ctx.fillStyle='#244765';for(let j=0;j<head.length;j++)p.ctx.fillText(String(head[j]).slice(0,23),x[j]+5,p.y+24,Math.max(12,cw[j]-10));p.y+=43}
+ begin();const limitRows=Math.min(rows.length,550);for(let ri=0;ri<limitRows;ri++){
+  const row=rows[ri];const c=p.ctx;c.font='19px Arial,sans-serif';const cells=row.map((val,i)=>mbaV34Wrap(c,val,Math.max(22,cw[i]-12))),rh=Math.max(39,...cells.map(lines=>lines.length*26+14));
+  if(p.y+rh>bottom){if(pages.length>=30)throw Error('Too many report pages. Select a smaller report.');begin()}
+  const yy=p.y;c.fillStyle=ri%2?'#f3f7fb':'#fff';c.fillRect(left,yy,right-left,rh);c.strokeStyle='#d8e4f0';c.beginPath();c.moveTo(left,yy+rh);c.lineTo(right,yy+rh);c.stroke();
+  for(let i=0;i<cells.length;i++){c.fillStyle=head[i]==='WINNER'&&String(row[i])!=='—'?'#12714b':'#20364e';c.font=(head[i]==='WINNER'||head[i]==='Match / Players'?'bold ':'')+'19px Arial,sans-serif';cells[i].forEach((txt,li)=>c.fillText(txt,x[i]+5,yy+25+li*26,Math.max(25,cw[i]-10)))}p.y+=rh+gap;
+ }
+ if(rows.length>limitRows)throw Error('Report too large. Select a category or group first.');
+ pages.forEach((cv,i)=>{const c=cv.getContext('2d');c.font='16px Arial,sans-serif';c.fillStyle='#627b93';c.fillText('App created by Usthad · A4 '+orient.toUpperCase(),44,cv.height-31);c.textAlign='right';c.fillText('Page '+(i+1)+' / '+pages.length,cv.width-44,cv.height-31);c.textAlign='left'});return pages;
+}
+function mbaV34RasterSection(target){
+ const clone=target.cloneNode(true);clone.querySelectorAll('button,input,select,textarea,.noprint,script,style').forEach(el=>el.remove());
+ const str=clone.textContent.replace(/[ \t]+/g,' ').split(/\n+/).map(t=>t.trim()).filter(Boolean).join(' · ');
+ const title=active()?.name||'MBA Tournaments',words=str.split(/\s*·\s*/).filter(Boolean);if(!words.length)throw Error('There is no report content to export.');
+ const orient=mbaPrintPaper(),[w,h]=mbaV34Widths[orient],pages=[];let p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);
+ let text=words.join('  |  '),lineWidth=w-94,c=p.ctx;c.font='22px Arial,sans-serif';const lines=mbaV34Wrap(c,text,lineWidth);
+ for(const line of lines){if(p.y+38>h-70){if(pages.length>=25)throw Error('Report too large. Select a smaller section.');p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);c=p.ctx;c.font='22px Arial,sans-serif'}c.fillStyle='#263c55';c.fillText(line,46,p.y+26);p.y+=36}
+ pages.forEach((cv,i)=>{const ct=cv.getContext('2d');ct.font='16px Arial,sans-serif';ct.fillStyle='#627b93';ct.fillText('MBA Tournaments · A4 '+orient.toUpperCase(),44,cv.height-30);ct.textAlign='right';ct.fillText('Page '+(i+1)+' / '+pages.length,cv.width-44,cv.height-30)});return pages;
+}
+
+const mbaExportScriptReady=()=>true;
 function mbaShareMenu(){
  return `<details class="mba-share-menu noprint"><summary>↗ Share</summary><div class="mba-share-choices"><button type="button" data-mba-export="pdf">📄 PDF</button><button type="button" data-mba-export="png">🖼 PNG</button><button type="button" data-mba-export="whatsapp">🟢 WhatsApp</button><button type="button" data-mba-export="link">🔗 Copy Link</button></div></details>`;
 }
@@ -2146,10 +2343,10 @@ function mbaEnhanceShares(){
   item.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
   const control=document.createElement('div');control.className='mba-share-mini';control.innerHTML=mbaShareMenu();item.appendChild(control);
  }
- if(page==='fixtures')for(const item of view.querySelectorAll('table tbody tr')){
+ if(page==='fixtures')for(const item of view.querySelectorAll('.mba-fixture-item')){
   if(item.dataset.mbaShareTarget)continue;
   item.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
-  const cell=document.createElement('td');cell.className='mba-share-fixture-cell noprint';cell.innerHTML=mbaShareMenu();item.appendChild(cell);
+  const dock=document.createElement('div');dock.className='mba-share-mini noprint';dock.innerHTML=mbaShareMenu();item.appendChild(dock);
  }
  const modal=document.querySelector('#profile-layer .profile-dialog');if(modal&&!modal.dataset.mbaShareTarget){
   modal.dataset.mbaShareTarget='mba-share-'+(++mbaShareCount);
@@ -2220,24 +2417,29 @@ async function mbaCanvasForElement(element,orient){
  return pages;
 }
 async function mbaCaptureReport(target){
- const orient=mbaPrintPaper();
- if(page==='print'&&target.closest('.card')?.querySelector('#print-preview')){
-  const existing=[...document.querySelectorAll('#print-preview .print-sheet')];if(!existing.length)throw Error('No A4 pages in this report.');
-  const canvases=[];for(const element of existing){
-   const raw=await window.html2canvas(element,{scale:1.5,backgroundColor:'#fff',useCORS:true,logging:false});
-   const [width,height]=mbaA4PagePixels(orient),canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
-   const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,width,height);c.drawImage(raw,0,0,width,height);canvases.push(canvas);
-  }return canvases;
- }
- return mbaCanvasForElement(target,orient);
+ if(page==='print'){const t=active();if(!t)return [];const {head,rows}=reportData(t,printReport,printCategory,printGroup);return mbaV34RasterReport(head,rows,t.name,printReport.toUpperCase()+' · '+dateShow(t.date))}
+ return mbaV34RasterSection(target);
 }
+
 function mbaPdfFromCanvases(pages,orient){
- const {jsPDF}=window.jspdf;
- const pdf=new jsPDF({orientation:orient,unit:'mm',format:'a4',compress:true});
- const w=orient==='portrait'?210:297,h=orient==='portrait'?297:210;
- pages.forEach((canvas,i)=>{if(i)pdf.addPage('a4',orient);pdf.addImage(canvas.toDataURL('image/jpeg',.88),'JPEG',0,0,w,h,undefined,'FAST')});
- return pdf.output('blob');
+ const enc=new TextEncoder(),arr=[],offsets=[0];let length=0;
+ const write=x=>{const b=typeof x==='string'?enc.encode(x):x;arr.push(b);length+=b.length};
+ const obj=(id,bodies)=>{offsets[id]=length;write(id+' 0 obj\n');for(const body of bodies)write(body);write('\nendobj\n')};
+ const n=pages.length,last=2+n*3;
+ write('%PDF-1.4\n%MBA\n');obj(1,['<< /Type /Catalog /Pages 2 0 R >>']);
+ obj(2,['<< /Type /Pages /Kids [',pages.map((_,i)=>(5+i*3)+' 0 R').join(' '),'] /Count '+n+' >>']);
+ const dims=orient==='portrait'?[595.28,841.89]:[841.89,595.28];
+ pages.forEach((canvas,i)=>{const im=3+i*3,contents=4+i*3,pg=5+i*3,jpeg=canvas.toDataURL('image/jpeg',.82).split(',')[1],binary=atob(jpeg),bytes=new Uint8Array(binary.length);for(let k=0;k<binary.length;k++)bytes[k]=binary.charCodeAt(k);
+  obj(im,[`<< /Type /XObject /Subtype /Image /Width ${canvas.width} /Height ${canvas.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${bytes.length} >>\nstream\n`,bytes,'\nendstream']);
+  const commands=`q ${dims[0]} 0 0 ${dims[1]} 0 0 cm /Im0 Do Q\n`;
+  obj(contents,[`<< /Length ${enc.encode(commands).length} >>\nstream\n`,commands,'endstream']);
+  obj(pg,[`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${dims[0]} ${dims[1]}] /Resources << /XObject << /Im0 ${im} 0 R >> >> /Contents ${contents} 0 R >>`]);
+ });
+ const xref=length;write(`xref\n0 ${last+1}\n0000000000 65535 f \n`);for(let i=1;i<=last;i++)write(String(offsets[i]).padStart(10,'0')+' 00000 n \n');
+ write(`trailer\n<< /Size ${last+1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
+ return new Blob(arr,{type:'application/pdf'});
 }
+
 async function mbaFilesFromCanvases(canvases,format){
  if(format==='pdf'){return [new File([mbaPdfFromCanvases(canvases,mbaPrintPaper())],mbaFileStem(active()?.name)+'-Report.pdf',{type:'application/pdf'})]}
  const out=[];for(let i=0;i<canvases.length;i++)out.push(new File([await mbaCanvasBlob(canvases[i])],mbaFileStem(active()?.name)+`-A4-page-${i+1}.png`,{type:'image/png'}));return out;
@@ -2251,26 +2453,24 @@ async function mbaSaveFiles(files){
  for(const f of files)await mbaDownloadBlob(f,f.name);
 }
 async function mbaExportClicked(button){
- if(mbaShareBusy)throw Error('Another report is being created.');
- if(!authUser||!canPrint())throw Error('Your account needs Print access.');
+ if(mbaShareBusy)throw Error('An export is already in progress.');
+ if(!authUser||!canPrint())throw Error('Super Admin must grant Print access.');
  const kind=button.dataset.mbaExport;
- if(kind==='link'){const url=window.location.href;try{await navigator.clipboard.writeText(url);alert('App link copied. You can paste it in WhatsApp. Private tournament/finance details still need login permission.')}catch{prompt('Copy this app link:',url)}return}
- if(page==='finance'&&!confirm('This finance report may contain private amounts and payment details. Continue exporting or sharing it?'))return;
- if(!mbaExportScriptReady())throw Error('PDF/image libraries did not load. Connect to the internet, refresh and try again, or use Chrome Print → Save as PDF.');
- const menu=button.closest('.mba-share-menu'),target=menu?.closest('[data-mba-share-target]');if(!target)throw Error('Share target not found. Refresh the page.');
- mbaShareBusy=true;const txt=button.textContent;button.disabled=true;button.textContent='Preparing…';
- try{
-  const pages=await mbaCaptureReport(target),format=kind==='png'?'png':'pdf';const files=await mbaFilesFromCanvases(pages,format);
-  if(kind==='whatsapp'){
-   const text=`MBA Tournaments — ${active()?.name||'Tournament'} report`;
-   try{if(navigator.canShare?.({files})&&navigator.share){await navigator.share({files,title:'MBA Tournaments',text});return}}catch(e){if(e.name==='AbortError')return;console.warn('Native share failed:',e)}
-   await mbaSaveFiles(files);alert('The report file was downloaded. Open WhatsApp and attach the PDF/PNG from Downloads. Direct file sharing is not supported in this browser.');
-   return;
-  }
-  if(navigator.canShare?.({files})&&navigator.share){try{await navigator.share({files,title:'MBA Tournaments report'});return}catch(e){if(e.name==='AbortError')return}}
-  await mbaSaveFiles(files);alert(files.length>1?'A4 PNG pages saved. Share the downloaded ZIP / images in WhatsApp.':'File downloaded. Open WhatsApp and attach it from Downloads.');
- }finally{mbaShareBusy=false;button.disabled=false;button.textContent=txt}
+ if(kind==='link'){const url=location.href;try{await navigator.clipboard.writeText(url);alert('App link copied.')}catch{prompt('Copy link:',url)}return}
+ if(page==='finance'&&!confirm('This report contains private finance information. Export only to trusted recipients. Continue?'))return;
+ const target=button.closest('.mba-share-menu')?.closest('[data-mba-share-target]');if(!target)throw Error('Report section not found.');
+ mbaShareBusy=true;const old=button.textContent;button.disabled=true;button.textContent='Creating file…';
+ try{const canvases=await mbaCaptureReport(target);if(!canvases.length)throw Error('No data to export');
+  const orient=mbaPrintPaper(),base=mbaFileStem(active()?.name||'MBA-Tournaments');let files=[];
+  if(kind==='png'){for(let i=0;i<canvases.length;i++)files.push(new File([await mbaCanvasBlob(canvases[i])],base+'-A4-'+(i+1)+'.png',{type:'image/png'}));}
+  else files=[new File([mbaPdfFromCanvases(canvases,orient)],base+'-Report.pdf',{type:'application/pdf'})];
+  if(kind==='whatsapp'&&navigator.canShare?.({files})&&navigator.share){try{await navigator.share({files,title:'MBA Tournaments'});return}catch(err){if(err.name==='AbortError')return;console.warn('Android share failed:',err)}}
+  for(const f of files)await mbaDownloadBlob(f,f.name);
+  if(kind==='whatsapp')alert('PDF saved to Downloads. Open WhatsApp and attach the PDF from Downloads.');
+  else alert(files.length===1?'File saved to Downloads.':'A4 image pages saved to Downloads.');
+ }finally{button.disabled=false;button.textContent=old;mbaShareBusy=false}
 }
+
 document.addEventListener('click',async ev=>{
  if(ev.target.closest('#mba-global-share-link')){
   try{await navigator.clipboard.writeText(location.href);alert('App link copied for WhatsApp.')}catch{prompt('Copy this app link:',location.href)}return;
@@ -2280,6 +2480,40 @@ document.addEventListener('click',async ev=>{
  try{await mbaExportClicked(b)}catch(error){alert('Share / Export: '+(error?.message||String(error)))}
 });
 
+async function mbaV34UploadVoice(file){
+ if(!mbaMakerCanNotice())throw Error('Admin permission required.');
+ if(!file)return;
+ if(file.size>73000)throw Error('This audio file is too large for free realtime storage. Use a smaller or compressed file.');
+ const supported={'audio/webm':'audio/webm','audio/ogg':'audio/ogg','audio/mp4':'audio/mp4','audio/mpeg':'audio/mpeg','audio/x-m4a':'audio/mp4'};
+ const mime=supported[file.type]||(/\.m4a$/i.test(file.name)?'audio/mp4':/\.mp3$/i.test(file.name)?'audio/mpeg':null);
+ if(!mime)throw Error('Use MP3, M4A, WebM or OGG audio.');
+ const buffer=await file.arrayBuffer(),blob=new Blob([buffer],{type:mime});
+ const data=await new Promise((resolve,reject)=>{const rd=new FileReader();rd.onload=()=>resolve(rd.result);rd.onerror=()=>reject(Error('Could not load file'));rd.readAsDataURL(blob)});
+ if(!mbaVoiceIsSafe(data))throw Error('Unsupported format or file is too large.');
+ mbaResetVoice();mbaVoiceData=data;mbaUpdateVoicePreview();
+}
+document.addEventListener('change',async e=>{if(e.target?.id==='mba-voice-upload'){try{await mbaV34UploadVoice(e.target.files?.[0])}catch(err){alert('Voice upload: '+errText(err))}}});
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-mba-ann-toggle]');if(!b)return;if(!isSuper())return alert('Only Super Admin can hide / show notices.');const id=b.dataset.mbaAnnToggle;try{const next=!(mbaVisibilityMap[id]?.hidden===true);await set(ref(db,'v3/noticeVisibility/'+id),{hidden:next,updatedAt:Date.now(),updatedBy:authUser.uid})}catch(err){alert('Hide / Show failed: '+errText(err))}});
+
+document.addEventListener('click',e=>{if(e.target.closest('#mba-set-default-tournament')){const t=active();if(!t||!authUser)return;try{localStorage.setItem('mba-default-tournament-'+authUser.uid,t.id);alert('Default tournament saved for this account on this device.')}catch(error){alert(error.message)}}});
+document.addEventListener('click',event=>{
+ const btn=event.target.closest('[data-mba-v35-autofill]');if(!btn)return;
+ const t=active(),cat=t?.categories.find(c=>c.id===btn.dataset.mbaV35Autofill);
+ if(!t||!cat||!['league','combined'].includes(effectiveFormat(t,cat)))return;
+ if(!(can('categoriesWrite')&&can('fixturesWrite')&&editScope(t.id))){alert('Category and Fixture Edit permissions required.');return}
+ if(cat.entrants.length||(cat.groups||[]).length){alert('Category already has entries or groups. Add players manually.');return}
+ const candidates=t.teams.filter(team=>team.players.length===1||team.players.length===2);
+ if(candidates.length<2){alert('At least two teams with 1 or 2 players are needed. For larger teams, select the correct playing pair in Categories.');return}
+ if(!confirm('Add '+candidates.length+' team entries to '+cat.name+' and generate ALL league category fixtures? Each eligible team is treated as ONE entry with all its players. This saves to Production.'))return;
+ op(()=>{
+  need(!writePending,'Previous update still pending.');
+  for(const team of candidates)addEntry(t,cat.id,team.id,team.players.map(p=>p.id),null);
+  need(t.categories.filter(c=>['league','combined'].includes(effectiveFormat(t,c))).flatMap(makeRoundRobin).length>0,'Not enough entries to generate fixtures.');
+  scheduleLeague(t,{seed:Date.now(),minimumRestSlots:t.settings?.minRestSlots??1});
+  const check=fixturesCheck(t);need(check.valid,check.problems.join('; '));
+  notice='Teams added to category and '+t.fixtures.filter(m=>m.stage==='league').length+' matches generated. Saved online.';
+ });
+});
 mbaInitUi();
 wireAuth();
 document.getElementById('print-page').addEventListener('click',()=>{if(!canPrint())return;page='print';profile=null;editor=null;render();document.getElementById('view').scrollIntoView({behavior:'smooth'});});
