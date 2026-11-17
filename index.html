@@ -1,0 +1,1568 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101f3a"><meta name="description" content="MBA Tournaments: live badminton fixtures, scores, standings and role-based management."><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="MBA Tournaments"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/png" sizes="192x192" href="./mba-icon-192.png"><link rel="apple-touch-icon" href="./mba-icon-192.png"><title>MBA Tournaments</title>
+<style>
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#17253d;background:#f2f5fa;color-scheme:light}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.container{max-width:1200px;margin:auto;padding:16px}header{background:linear-gradient(125deg,#102345,#26447b);color:#fff;padding:20px 0 15px}
+header h1{font-size:clamp(22px,4vw,34px);letter-spacing:-.02em;margin:0 0 4px}header p{margin:0;color:#c7d8f8}
+.header-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tag{background:#e4edff;color:#20386a;font-size:12px;font-weight:800;display:inline-block;border-radius:100px;padding:6px 12px}
+.banner{background:#fff1c6;border:1px solid #e4b850;color:#624000;padding:11px 15px;border-radius:12px;margin:18px auto;line-height:1.4}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0}
+.toolbar select{background:white;border:1px solid #ccd5e4;padding:11px 13px;border-radius:12px;max-width:100%;min-width:min(100%,340px)}
+nav{display:flex;gap:8px;overflow:auto;padding:1px 0 14px}nav button{border:1px solid #d5deeb;background:white;border-radius:10px;padding:10px 14px;white-space:nowrap;color:#203759;font-weight:650}nav button.selected{background:#173c75;color:white;border-color:#173c75}
+#view{display:grid;gap:14px}.card{background:#fff;border:1px solid #dae3ef;border-radius:16px;box-shadow:0 4px 22px #182c5008;padding:18px;min-width:0}
+.card h2{font-size:19px;margin:0}.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.section-head h3{margin:0;font-size:17px}.actions{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid #ced8e7;background:#f7f9fd;color:#20416b;padding:9px 12px;border-radius:10px;font-size:13px;font-weight:750}
+.btn.primary{background:#1e559b;color:#fff;border-color:#1e559b}.btn.danger-outline{border-color:#dba3ad;background:#fff5f5;color:#9f233b}
+.btn:hover{filter:brightness(.96)}.detail{background:#f4f7fc;border:1px solid #e2eaf5;border-radius:12px;padding:18px}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;color:#5b6e88;font-size:11px;font-weight:800}.detail h3{font-size:25px;margin:7px 0}
+.detail-lines{display:flex;gap:15px;flex-wrap:wrap;color:#39506d}.helper{font-size:13px;color:#6c7b90;line-height:1.5;margin:9px 0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field span{font-size:13px;font-weight:700;color:#42536f}
+.field input,.field select,.field textarea{width:100%;border:1px solid #ccd6e7;background:#fff;color:#17253d;border-radius:9px;padding:11px;min-height:44px}
+textarea{resize:vertical}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.full{grid-column:1/-1}
+.team-box{border:1px solid #e1e6ef;background:#fbfcfe;border-radius:12px;padding:14px;margin:14px 0}.team-box h3{margin:0 0 8px}
+.players{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:7px 13px}.player{display:flex;align-items:center;gap:10px;padding:8px;border:1px solid #e5ebf3;border-radius:8px;font-weight:600}
+.player-num{width:25px;height:25px;display:grid;place-items:center;border-radius:8px;background:#e9effa;color:#254b80;font-size:12px}
+.entries{display:grid;gap:7px}.entry-line{border-bottom:1px solid #e9eef5;padding:8px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}.entry-line small{display:block;color:#687a91;margin-top:3px}
+.sub-form{margin:14px 0;border:1px dashed #adc0da;border-radius:12px;padding:14px;display:grid;gap:10px;background:#f6f9ff}.choice{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:650;margin:6px 9px 6px 0}.choice input{width:17px;height:17px;flex:none}.checklist{display:flex;flex-wrap:wrap;gap:5px 13px}
+.scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #e7edf5;padding:11px 9px}th{background:#eff4fa;color:#39506e;font-size:12px;white-space:nowrap}
+.match-row{padding:15px 0;border-bottom:1px solid #e7edf5}.pair-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:17px;font-weight:800;margin:8px 0}.vs{color:#8796ab;font-size:12px;font-weight:700}
+.score-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.score-line .btn{margin-left:auto}.winner{color:#0a7b4a}.loser{color:#b4273f}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 16px}.metrics>div{background:#f0f5fc;padding:14px;border-radius:10px}.metrics b{display:block;font-size:26px;color:#183c72}.metrics span{font-size:12px;color:#63768f}.validation{padding:10px 13px;border-radius:9px;margin:14px 0;font-size:13px;font-weight:650}.validation.ok{background:#e5f7ed;color:#13784a}.validation.bad{background:#ffedef;color:#a63248}
+.notice{padding:10px 12px;border:1px solid #c6dae7;background:#e6f5fd;border-radius:10px;margin:10px 0;color:#234c69}
+footer{font-size:12px;color:#708099;text-align:center;padding:15px 0 30px}
+@media (max-width:680px){.container{padding:12px}.card{padding:12px}.form-grid{grid-template-columns:1fr}.detail h3{font-size:20px}.toolbar select{width:100%}nav button{font-size:13px}}
+@media print{header,.banner,nav,.toolbar,.noprint,footer,#notice{display:none!important}.container{max-width:none;margin:0;padding:0}.card{box-shadow:none;border:0;page-break-inside:avoid;padding:4mm 0}.team-box{page-break-inside:avoid}table{font-size:inherit}.btn{display:none}th,td{padding:5px}.pair-row{font-size:inherit}}
+
+/* Beta 4: interactive profiles, category groups and true A4 print sheets */
+.name-link{background:transparent;border:0;color:inherit;font:inherit;font-weight:inherit;cursor:pointer;padding:2px 1px;border-bottom:1px dotted #6287ba;text-align:left;white-space:normal}
+.name-link:hover,.name-link:focus-visible{color:#18549c;text-decoration:underline}
+.name-link.team-link{font-weight:800}
+.player .name-link{font-weight:700}
+.entry-line .name-link{font-weight:750}
+.and{color:#7b8ba5;font-weight:600}
+td small{display:block;color:#748398;font-size:11px;margin-top:4px}
+.group-box{padding:12px;border:1px solid #dde7f1;border-radius:10px;margin:11px 0;background:#fff}
+.group-box h4{margin:0;font-size:15px}
+.group-member{border-top:1px dashed #e5eaf2;padding:9px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.small-field select{min-height:34px;padding:6px 9px;max-width:200px}
+.profile-overlay{position:fixed;inset:0;z-index:2000;background:#07182eca;display:flex;align-items:center;justify-content:center;padding:15px}
+.profile-dialog{background:#fff;color:#182742;border-radius:15px;max-width:920px;width:100%;max-height:90vh;overflow:auto;padding:20px;box-shadow:0 25px 85px #0005}
+.profile-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.profile-head h2{font-size:25px;margin:4px 0 9px}
+.profile-stats{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.profile-stats span{flex:1;min-width:110px;background:#f0f5fc;border:1px solid #dfe8f6;padding:12px;border-radius:10px}
+.profile-stats b{font-size:24px;display:block}
+.profile-roster{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.profile-roster .name-link{border:1px solid #dce6f3;border-radius:8px;padding:8px;background:#f8fafe}
+.print-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end;gap:10px;margin-bottom:14px}
+.print-controls .btn{min-height:44px}
+.print-preview{overflow-x:auto;background:#e9eef5;border:1px solid #d5dfe9;padding:14px;border-radius:12px}
+.print-sheet{width:297mm;height:210mm;margin:12px auto;background:#fff;color:#1a2b43;padding:8mm 9mm 7mm;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:5mm;box-sizing:border-box;box-shadow:0 8px 26px #263e5d28;overflow:hidden;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.print-sheet.portrait{width:210mm;height:297mm}
+.print-head{border-bottom:2px solid #173b70;padding-bottom:4mm;display:flex;justify-content:space-between;gap:8mm;align-items:flex-start}
+.print-head strong{font-size:11px;letter-spacing:.18em;color:#32629e}
+.print-head h2{font-size:calc(var(--p-font)*1.45);margin:2mm 0 1mm}
+.print-head p{margin:0;font-size:calc(var(--p-font)*.85);color:#4e6076}
+.print-mark{font-size:10px;white-space:nowrap;border:1px solid #cfd9e6;padding:5px 7px;border-radius:6px;color:#56718d}
+.print-body{min-height:0;overflow:hidden}
+.print-table{width:100%;height:100%;border-collapse:collapse;font-size:var(--p-font);table-layout:fixed}
+.print-table th{font-size:calc(var(--p-font)*.72);text-transform:uppercase;letter-spacing:.035em;text-align:left;background:#eaf1fa;color:#2b4b73;border:1px solid #d4e0ee;padding:2mm}
+.print-table td{border:1px solid #d9e3ed;padding:2mm 2.5mm;vertical-align:middle;line-height:1.25;overflow-wrap:anywhere;color:#1e2e42}
+.print-table td.print-main{font-weight:700}
+.print-table tr:nth-child(even) td{background:#f7f9fd}
+.print-foot{border-top:1px solid #bed0e7;display:flex;justify-content:space-between;gap:5mm;color:#566e8c;font-size:11px;padding-top:3mm}
+@media(max-width:680px){.profile-dialog{padding:12px}.profile-stats span{min-width:70px}.print-preview{padding:5px}.print-sheet{margin:6px auto}}
+@media print{
+ html,body{background:#fff!important;width:auto!important;margin:0!important;padding:0!important}
+ .container{max-width:none!important;margin:0!important;padding:0!important}
+ .card{margin:0!important;box-shadow:none!important;border:0!important;padding:0!important}
+ .card>.section-head{display:none!important}
+ .print-preview{display:block!important;overflow:visible!important;border:0!important;background:transparent!important;padding:0!important;margin:0!important}
+ .print-sheet{box-shadow:none!important;margin:0!important;border:0!important;break-after:page;page-break-after:always;break-inside:avoid;page-break-inside:avoid}
+ .print-sheet:last-child{break-after:auto;page-break-after:auto}
+ .print-sheet .print-table{font-size:var(--p-font)!important}
+ .print-sheet .print-table th,.print-sheet .print-table td{padding:2mm!important}
+ .print-sheet .print-head h2{font-size:calc(var(--p-font)*1.45)!important}
+ .print-sheet .print-foot{font-size:11px!important}
+ .profile-overlay{display:none!important}
+}
+
+/* Beta 4: reusable player directory and full category details */
+.category-link{font-size:inherit;font-weight:800;color:#194e84;border-bottom:1px dashed #6a9dc9}
+.category-dialog{max-width:1000px}
+.category-rule{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 17px}
+.category-rule span,.category-rule b{background:#e9f1fb;padding:7px 10px;border-radius:8px;border:1px solid #cfdeed;font-size:13px}
+.category-group{border:1px solid #dce6f2;background:#fafcff;border-radius:12px;padding:12px;margin:12px 0}
+.category-group h4{margin:0 0 10px;color:#234c7c}
+.category-entries{display:grid;gap:4px}
+.category-entries .entry-line{gap:8px;flex-wrap:wrap}
+.reuse-section{background:#f5f9ff;border:1px dashed #aec8e5;padding:14px;border-radius:12px}
+.reuse-section h3{margin:0 0 8px}
+.reuse-section details,.reusable-picker{margin-top:12px}
+details>summary{cursor:pointer;color:#244e83;font-weight:700;padding:9px}
+.reuse-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:8px 0}
+.reuse-grid .choice{display:flex;align-items:flex-start;border:1px solid #dce6f3;border-radius:10px;padding:10px;background:#fff;line-height:1.35}
+.reuse-grid .choice input{margin-top:2px;flex-shrink:0}
+.reuse-grid .choice small{font-size:11px;color:#5e718e;display:block;margin-top:3px;line-height:1.35}
+.reusable-picker{border:1px solid #e0e8f2;padding:10px;border-radius:12px;background:#fff}
+@media(max-width:680px){.reuse-grid{grid-template-columns:1fr}.category-dialog{max-height:96vh}}
+
+/* Beta 5 — persistent vertical tournament library, details and match-history column */
+.tournament-grid{display:grid;grid-template-columns:minmax(225px,.86fr) minmax(0,1.64fr);gap:16px;align-items:start}
+.tournament-column{display:grid;gap:10px}
+.tournament-pane{background:#f8fafd;border:1px solid #dce6f2;border-radius:13px;padding:15px;min-width:0}
+.tournament-pane h3{margin:3px 0 12px;font-size:18px}
+.tournament-pick{display:block;text-align:left;width:100%;border-radius:12px;padding:14px;border:1.5px solid #d9e4f0;background:#fff;color:#17253d;cursor:pointer;line-height:1.45;overflow-wrap:anywhere}
+.tournament-pick strong{display:block;font-size:16px;margin-bottom:5px}
+.tournament-pick small{display:block;color:#5f708a}
+.tournament-pick[aria-pressed="true"]{border-color:#1e559b;background:#eef4ff;box-shadow:inset 4px 0 #1e559b}
+.tournament-pick .tour-badge{display:inline-block;font-size:11px;font-weight:750;margin-top:8px;color:#214d85;background:#e2ecf9;border-radius:100px;padding:3px 9px}
+.tour-pane-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 17px}
+.tour-pane-tabs .btn[aria-pressed="true"]{background:#173c75;color:#fff;border-color:#173c75}
+.tour-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}
+.tour-fact{background:#fff;border:1px solid #e0e8f1;border-radius:10px;padding:12px}
+.tour-fact b{display:block;font-size:22px;color:#1e467f}.tour-fact span{font-size:12px;color:#5a6e88}
+.tour-section{border-top:1px solid #e0e7f0;padding-top:14px;margin-top:15px}
+.tour-section h4{font-size:15px;margin:0 0 10px}
+.tour-history{overflow-x:auto;background:#fff;border-radius:10px;border:1px solid #e0e7f0}
+.tour-history table{min-width:570px;font-size:13px}
+.tour-history td{padding:10px 9px}
+.tour-history th{padding:9px}
+.tour-history .pending{color:#667991}.tour-history .win{color:#077a49;font-weight:750}
+.tour-detail-roster{display:grid;gap:7px}
+.tour-detail-line{display:flex;justify-content:space-between;align-items:flex-start;gap:9px;flex-wrap:wrap;border-bottom:1px solid #e8edf5;padding:8px 0}
+.tour-file-import{border:1px dashed #9ab2d1;border-radius:12px;padding:12px;background:#f6f9ff;margin-top:16px}
+.tour-file-import label{display:block;font-size:14px;font-weight:750;margin-bottom:8px}
+.tour-file-import input{max-width:100%;font-size:13px}
+@media(max-width:760px){.tournament-grid{grid-template-columns:1fr}.tour-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.tournament-pane{padding:12px}}
+@media print{.tournament-grid{display:block}.tournament-column,.tour-pane-tabs,.tour-file-import{display:none!important}}
+
+.finance-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.finance-stat{border:1px solid #d7e3f2;border-radius:12px;padding:13px;background:#f6f9ff}.finance-stat strong{display:block;font-size:23px;color:#173c75}.finance-stat small{color:#5d708d}.payment-paid{color:#0b8050;font-weight:800}.payment-unpaid{color:#b1263e;font-weight:800}.payment-partial{color:#ad6b0b;font-weight:800}.payment-unknown{color:#66758e;font-weight:750}.fin-table td{word-break:break-word}.fin-actions{display:flex;gap:8px;flex-wrap:wrap}.hide-only-viewer{display:none}
+@media(max-width:680px){.finance-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{#v2-auth-panel,.finance-edit,.finance-private,.access-panel{display:none!important}}
+
+/* Production header: the tagline aligns with the title, not with the badminton icon. */
+.brand-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:start}
+.brand-head .brand-mark{grid-column:1;grid-row:1 / 3;font-size:clamp(22px,4vw,34px);line-height:1.15}
+.brand-head h1{grid-column:2;grid-row:1}
+.brand-head p{grid-column:2;grid-row:2}
+/* Venue Location QR: responsive, viewable by every signed-in tournament viewer */
+.venue-strip{display:flex;align-items:center;justify-content:flex-end;margin:0 0 12px}
+.venue-location{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border:1px solid #d1deee;border-radius:14px;padding:12px 16px;box-shadow:0 4px 14px #182c5009;color:#17253d;max-width:520px}
+.venue-location strong{display:block;font-size:15px}.venue-location small{display:block;color:#5c6e87;margin:3px 0 8px;line-height:1.35}
+.venue-location a{color:#16569b;font-weight:800;text-decoration:underline}.venue-location .venue-qr{width:112px;min-height:112px;display:flex;justify-content:center;align-items:center;background:#fff;border:1px solid #e2e9f1;padding:4px}
+.venue-location .venue-qr canvas,.venue-location .venue-qr img{width:102px!important;height:102px!important}
+@media(max-width:680px){.venue-strip{justify-content:stretch}.venue-location{width:100%;justify-content:space-between}.venue-location .venue-qr{min-width:112px}}
+@media print{.venue-strip{display:none!important}}
+
+/* Universal tournament switcher — available inside every dashboard */
+.global-tournament-switcher{position:sticky;top:8px;z-index:90;background:#fff;border:1px solid #bccfe7;border-radius:14px;padding:11px 14px;box-shadow:0 7px 26px #14274222;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.global-tournament-switcher .switch-copy{flex:0 0 auto;min-width:170px}
+.global-tournament-switcher .switch-copy strong{font-size:13px;display:block;color:#153860}
+.global-tournament-switcher .switch-copy small{color:#62738b;font-size:11px}
+.global-tournament-switcher select{flex:1;min-width:190px;border:1px solid #aac0df;color:#152b48;background:#f5f9ff;border-radius:9px;padding:11px;font-size:15px;font-weight:750;max-width:100%}
+.global-tournament-switcher .scope-label{background:#e9f0fa;border-radius:25px;padding:6px 10px;font-size:11px;color:#284974;font-weight:800}
+.visibility-grid{display:grid;gap:8px}.visibility-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f8fafd;border:1px solid #dbe5f1;border-radius:10px;padding:12px;flex-wrap:wrap}
+.visibility-row .btn{min-width:120px}.scope-grid{display:grid;gap:7px}.scope-line{display:grid;grid-template-columns:minmax(0,1fr) 95px 95px;gap:7px;align-items:center;border-bottom:1px solid #e0e8f1;padding:8px 3px}
+.scope-line .choice{margin:0}.scope-help{color:#5b6d85;font-size:12px}
+.fixture-payment-status{display:flex;gap:5px;flex-wrap:wrap;margin:5px 0 8px}
+.fixture-pay-pill{display:inline-block;border:1px solid #d9e4ef;background:#f4f7fb;padding:3px 7px;border-radius:8px;font-size:11px;line-height:1.3}
+.fixture-pay-pill.payment-paid{background:#e3f6ec;border-color:#b2dfc6}
+.fixture-pay-pill.payment-unpaid{background:#fff0f1;border-color:#efc6ce}
+.fixture-pay-pill.payment-partial{background:#fff5dd;border-color:#efdcab}
+.fixture-payment-control{padding:9px 12px;background:#f5f9ff;border:1px solid #dbe6f2;border-radius:10px}
+@media print{.fixture-payment-status,.fixture-payment-control{display:none!important}}
+@media(max-width:680px){.global-tournament-switcher{top:0;padding:10px}.global-tournament-switcher .switch-copy{min-width:auto}.global-tournament-switcher select{width:100%;flex-basis:100%}.scope-line{grid-template-columns:minmax(0,1fr) 60px 60px}.scope-line .choice{font-size:11px}}
+@media print{.global-tournament-switcher,.visibility-panel{display:none!important}}
+</style><style id="print-rule"></style></head>
+<body><header><div class="container header-top"><div class="brand-head"><span class="brand-mark" aria-hidden="true">🏸</span><h1>MBA Tournaments</h1><p>Badminton Tournament Manager</p></div></div></header>
+<main class="container">
+<section class="card noprint" id="v2-auth-panel" style="margin:0 0 14px"><h2>🔐 MBA Tournaments Account</h2><div id="auth-status" class="helper">Checking login…</div>
+ <div id="auth-login" hidden><button id="google-login" class="btn primary">Continue with Google</button><button class="btn" id="toggle-email">Email / Password</button>
+ <form id="email-form" hidden class="sub-form"><label class="field">Email<input id="email" type="email" autocomplete="email" required></label><label class="field">Password<input id="password" type="password" autocomplete="current-password" required minlength="6"></label><div class="actions"><button class="btn primary" type="submit">Sign In</button><button id="signup" class="btn" type="button">Create Viewer Account</button><button id="reset-password" class="btn" type="button">Reset Password</button></div></form></div>
+ <div id="auth-account" hidden><button class="btn" id="copy-uid">Copy my User UID</button><button class="btn" id="request-access">Request an Editing Role</button><button class="btn danger-outline" id="logout">Logout</button>
+</div>
+ <div id="auth-message" class="helper" role="status"></div></section>
+<section id="global-tour-control" class="global-tournament-switcher noprint" hidden aria-label="Active tournament switcher"></section>
+<div class="toolbar noprint"><span class="helper" style="margin:0">Only Super Admin-published tournaments appear to viewers. The Super Admin assigns separate View / Edit access per tournament. Finance remains private.</span><span class="actions"><button id="pwa-install" class="btn primary" type="button" hidden>📲 Install App</button><button id="print-page" class="btn">🖨 Print A4</button></span></div>
+<nav class="noprint" aria-label="Tournament management"><button data-page="tournaments" class="selected">🏆 Tournaments</button><button data-page="teams">👥 Teams</button><button data-page="categories">🗂 Categories</button><button data-page="groups">🧩 Groups</button><button data-page="fixtures">🔀 Fixtures</button><button data-page="results">✅ Results</button><button data-page="standings">📊 Standings</button><button data-page="settings">⚙ Settings</button><button data-page="finance">💰 Finance</button><button data-page="access">🛡 User Roles</button><button data-page="print">🖨 Print Center</button></nav>
+<div id="connection-status" class="banner noprint" hidden>📡 Internet connection lost. Live scores, payments, permissions and changes require internet. Please reconnect before editing.</div><div id="venue-public" class="venue-strip noprint"></div><div id="notice"></div><div id="view"></div></main><div id="profile-layer"></div><footer>MBA Tournaments • Tournament Management</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getAuth,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getDatabase,ref,onValue,get,update,runTransaction,set } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js';
+const firebaseConfig={
+ apiKey:'AIzaSyAVxitsfI-_nJ4-GwYHHwafExrY99N7tJ0',
+ authDomain:'mba-tournaments-production.firebaseapp.com',
+ databaseURL:'https://mba-tournaments-production-default-rtdb.asia-southeast1.firebasedatabase.app',
+ projectId:'mba-tournaments-production',storageBucket:'mba-tournaments-production.firebasestorage.app',
+ messagingSenderId:'1072532890274',appId:'1:1072532890274:web:8687524cc30f473361adfb'
+};
+const fapp=initializeApp(firebaseConfig),auth=getAuth(fapp),db=getDatabase(fapp);
+const VERSION='3.0.0-production';
+const deep=x=>JSON.parse(JSON.stringify(x));
+const clean=s=>String(s??'').trim();
+const need=(v,msg)=>{if(!v)throw Error(msg)};
+const uid=(prefix='id')=>`${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,9)}`;
+const uniq=x=>[...new Set(x)];
+const defaultRules=()=>({target:21,winByTwo:true,cutoff:30,winPoints:3,lossPoints:0,bestOf:1});
+function validateRules(r){
+ const numbers=['target','winPoints','lossPoints','bestOf'];
+ for(const k of numbers)need(Number.isSafeInteger(+r[k])&&(k==='target'||k==='bestOf'?+r[k]>=1:true),`${k}: invalid number`);
+ need(Number(r.bestOf)%2===1,'Best of must be odd');
+ if(r.cutoff!=='' && r.cutoff!=null)need(Number.isSafeInteger(+r.cutoff)&&+r.cutoff>=+r.target,'Cutoff must be at least target');
+ return true;
+}
+function makeTournament({name='New Tournament',date='',courts=2,format='league'}={}){
+ need(clean(name),'Tournament name is required');
+ need(Number.isSafeInteger(+courts)&&+courts>=1,'Courts must be a positive integer');
+ need(['league','knockout','combined'].includes(format),'Invalid format');
+ return {schemaVersion:2,id:uid('t'),name:clean(name),date,courts:+courts,format,
+  rules:defaultRules(),teams:[],categories:[],fixtures:[],results:{},settings:{printOrientation:'landscape',printFontSize:17,minRestSlots:1},createdAt:new Date().toISOString()};
+}
+// Reusable *names* are suggestions, not global player identities.
+// Tournament rosters always get fresh IDs, so historic fixtures are unaffected.
+function reusablePlayerNames(tournaments,saved=[]){
+ const map=new Map();
+ for(const name of [...saved,...tournaments.flatMap(t=>(t.teams||[]).flatMap(team=>(team.players||[]).map(p=>p.name)))]){
+  const n=clean(name),key=n.normalize('NFKC').toLocaleLowerCase();
+  if(key&&!map.has(key))map.set(key,n);
+ }
+ return [...map.values()].sort((a,b)=>a.localeCompare(b));
+}
+function copyPreviousTeams(destination,source,teamIds=[]){
+ need(destination.id!==source.id,'Cannot copy a tournament into itself');
+ const ids=new Set(teamIds);let copied=0;
+ for(const team of source.teams){
+  if(!ids.has(team.id))continue;
+  addTeam(destination,team.name,team.players.map(p=>p.name));copied++;
+ }
+ need(copied===ids.size,'Selected source team no longer exists');
+ return copied;
+}
+function addTeam(t,name,playerNames=[]){
+ need(clean(name),'Team name is required');
+ const team={id:uid('team'),name:clean(name),players:playerNames.map(p=>({id:uid('player'),name:clean(p)}))};
+ t.teams.push(team);return team;
+}
+function updateTeam(t,id,changes){
+ const team=t.teams.find(x=>x.id===id);need(team,'Team not found');
+ if(changes.name!==undefined){need(clean(changes.name),'Team name required');team.name=clean(changes.name)}
+ if(changes.players!==undefined){
+   need(Array.isArray(changes.players),'Players must be an array');
+   const existingById=new Map(team.players.map(p=>[p.id,p]));
+   const removed=new Set(team.players.map(p=>p.id));
+   team.players=changes.players.map(p=>{
+     const id=p.id&&existingById.has(p.id)?p.id:uid('player');removed.delete(id);
+     need(clean(p.name),'Player name required');return {id,name:clean(p.name)};
+   });
+   for(const cat of t.categories)for(const entrant of cat.entrants){
+     if(entrant.teamId!==id)continue;
+     need(!entrant.playerIds.some(pid=>removed.has(pid)),'Remove player from category before deleting their roster entry');
+   }
+ }
+ return team;
+}
+function addCategory(t,name,{format=null,qualifiers=4,rules=null}={}){
+ need(clean(name),'Category name required');
+ const cat={id:uid('cat'),name:clean(name),format:format||null,qualifiers:+qualifiers,qualifierMode:'per-group', rules:rules?{...rules}:null,groups:[],entrants:[]};
+ t.categories.push(cat);return cat;
+}
+function addGroup(t,categoryId,name){
+ const cat=t.categories.find(c=>c.id===categoryId);need(cat,'Category not found');need(clean(name),'Group name required');
+ need(!cat.groups?.some(g=>g.name.toLowerCase()===clean(name).toLowerCase()),'Group name already exists');
+ need(!t.fixtures.some(m=>m.categoryId===categoryId&&t.results[m.id]),'Cannot edit groups after results');
+ const g={id:uid('group'),name:clean(name)};(cat.groups ||= []).push(g);return g;
+}
+function renameGroup(t,categoryId,groupId,name){
+ const cat=t.categories.find(c=>c.id===categoryId),g=cat?.groups?.find(x=>x.id===groupId);need(g,'Group not found');need(clean(name),'Group name required');g.name=clean(name);return g;
+}
+function removeGroup(t,categoryId,groupId){
+ const cat=t.categories.find(c=>c.id===categoryId),g=cat?.groups?.find(x=>x.id===groupId);need(g,'Group not found');
+ need(!cat.entrants.some(e=>e.groupId===groupId),'Move the group entries before deleting this group');
+ cat.groups=cat.groups.filter(x=>x.id!==groupId);
+}
+function assignEntryGroup(t,categoryId,entryId,groupId=null){
+ const cat=t.categories.find(c=>c.id===categoryId),e=cat?.entrants.find(x=>x.id===entryId);need(e,'Entry not found');
+ need(!groupId||cat.groups?.some(g=>g.id===groupId),'Unknown group');
+ need(!t.fixtures.some(m=>m.categoryId===categoryId&&t.results[m.id]),'Cannot move entries after results');
+ need(!t.fixtures.some(m=>m.categoryId===categoryId&&m.stage==='knockout'),'Clear knockout bracket before moving entries');
+ // Any old fixtures become stale when entrants switch groups; rebuild league fixtures.
+ t.fixtures=t.fixtures.filter(m=>m.categoryId!==categoryId||m.stage!=='league');
+ e.groupId=groupId||null;return e;
+}
+function addEntry(t,categoryId,teamId,playerIds,groupId=null){
+ const cat=t.categories.find(c=>c.id===categoryId),team=t.teams.find(x=>x.id===teamId);
+ need(cat&&team,'Unknown category or team');
+ need(!groupId||cat.groups?.some(g=>g.id===groupId),'Unknown group');
+ need(Array.isArray(playerIds)&&playerIds.length>=1,'Select at least one player');
+ need(playerIds.every(pid=>team.players.some(p=>p.id===pid)),'Selected players must belong to the team');
+ need(uniq(playerIds).length===playerIds.length,'Player repeated in entry');
+ need(!cat.entrants.some(e=>e.playerIds.some(pid=>playerIds.includes(pid))),'This player already belongs to another entry in the same category');
+ need(!t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id]),'Category already has completed matches; cannot add an entry');
+ need(!t.fixtures.some(m=>m.categoryId===cat.id&&m.stage==='knockout'),'Clear the category knockout bracket before changing entries');
+ const e={id:uid('entry'),teamId,playerIds:[...playerIds],groupId:groupId||null};cat.entrants.push(e);return e;
+}
+function removeEntry(t,catId,entryId){
+ const cat=t.categories.find(c=>c.id===catId);need(cat,'Category not found');
+ const prior=cat.entrants.find(e=>e.id===entryId);need(prior,'Entry not found');
+ need(!t.fixtures.some(m=>m.categoryId===catId&&t.results[m.id]),'Category has completed matches: cannot remove an entry');
+ need(!t.fixtures.some(m=>m.categoryId===catId&&m.stage==='knockout'),'Clear the category knockout bracket before removing an entry');
+ cat.entrants=cat.entrants.filter(e=>e.id!==entryId);
+ t.fixtures=t.fixtures.filter(m=>m.categoryId!==catId||m.a!==entryId&&m.b!==entryId);
+}
+function removeTeam(t,teamId){
+ need(t.teams.some(x=>x.id===teamId),'Team not found');
+ for(const cat of t.categories){
+   const ids=cat.entrants.filter(e=>e.teamId===teamId).map(e=>e.id);
+   need(!t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id])||!ids.length,'Category contains completed matches: team cannot be deleted');
+   need(!ids.length||!t.fixtures.some(m=>m.categoryId===cat.id&&m.stage==='knockout'),'Clear knockout bracket before removing a participating team');
+ }
+ for(const cat of t.categories){
+   const ids=cat.entrants.filter(e=>e.teamId===teamId).map(e=>e.id);
+   cat.entrants=cat.entrants.filter(e=>e.teamId!==teamId);
+   t.fixtures=t.fixtures.filter(m=>m.categoryId!==cat.id||(!ids.includes(m.a)&&!ids.includes(m.b)));
+ }
+ t.teams=t.teams.filter(x=>x.id!==teamId);
+}
+function removeCategory(t,catId){
+ need(t.categories.some(c=>c.id===catId),'Category not found');
+ need(!t.fixtures.some(m=>m.categoryId===catId&&t.results[m.id]),'Completed matches: category cannot be deleted');
+ t.fixtures=t.fixtures.filter(m=>m.categoryId!==catId);
+ t.categories=t.categories.filter(c=>c.id!==catId);
+}
+const effectiveRules=(t,cat)=>({...t.rules,...(cat.rules||{})});
+const effectiveFormat=(t,cat)=>cat.format||t.format;
+function scoreWinner(result,rules){
+ if(!result)return null;
+ if(result.mode==='winner')return result.winner==='a'||result.winner==='b'?result.winner:null;
+ const a=Number(result.a),b=Number(result.b),target=Number(rules.target),cap=rules.cutoff===''||rules.cutoff==null?Infinity:Number(rules.cutoff);
+ if(result.a===''||result.b===''||!Number.isSafeInteger(a)||!Number.isSafeInteger(b)||a<0||b<0||a===b||Math.max(a,b)>cap)return null;
+ const top=Math.max(a,b),diff=Math.abs(a-b);
+ const won=top>=target && (!rules.winByTwo||diff>=2||(top===cap&&diff>=1));
+ if(!won)return null;
+ // Winner may not continue scoring once the set is already over.
+ if(top>target){
+   if(!rules.winByTwo)return null;
+   if(top!==cap&&diff!==2)return null;
+   if(top===cap&&diff>2)return null;
+ }
+ return a>b?'a':'b';
+}
+function validateResult(result,rules){
+ validateRules(rules);
+ need(scoreWinner(result,rules)!==null,'Invalid result for this category’s scoring rules');
+ return true;
+}
+function entryLabel(t,cat,entryId){
+ const entry=cat.entrants.find(e=>e.id===entryId);if(!entry)return 'TBD';
+ const team=t.teams.find(x=>x.id===entry.teamId);
+ return entry.playerIds.map(id=>team?.players.find(p=>p.id===id)?.name||'?').join(' & ')||team?.name||'?';
+}
+function fixtureId(catId,entryA,entryB){return `${catId}__${[entryA,entryB].sort().join('__')}`}
+function makeRoundRobin(cat){
+ // Group stage: each pair meets the other pairs in its own group only.
+ // Existing Beta1/2 entrants have no groupId, so they share the default group.
+ const pools=new Map(),matches=[];
+ for(const e of cat.entrants){const k=e.groupId||'default';if(!pools.has(k))pools.set(k,[]);pools.get(k).push(e.id)}
+ for(const [groupId,entries] of pools)for(let i=0;i<entries.length;i++)for(let j=i+1;j<entries.length;j++)
+   matches.push({id:fixtureId(cat.id,entries[i],entries[j]),categoryId:cat.id,groupId:groupId==='default'?null:groupId,a:entries[i],b:entries[j],stage:'league'});
+ return matches;
+}
+function seededRandom(seed){let a=(seed>>>0)||0x12345678;return()=>{a+=0x6d2b79f5;let z=a;z=Math.imul(z^z>>>15,z|1);z^=z+Math.imul(z^z>>>7,z|61);return((z^z>>>14)>>>0)/4294967296}}
+function shuffle(items,rng){const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function entrantPlayers(t,catId,entryId){const cat=t.categories.find(c=>c.id===catId);return cat?.entrants.find(e=>e.id===entryId)?.playerIds||[]}
+function fixtureConflicts(t,m1,m2){
+ // A player cannot appear simultaneously on two courts, even through different categories.
+ const players=m=>[...entrantPlayers(t,m.categoryId,m.a),...entrantPlayers(t,m.categoryId,m.b)];
+ const a=new Set(players(m1));return players(m2).some(id=>a.has(id));
+}
+// Court scheduling checks actual player IDs, across all categories and entries.
+// A rest gap of 1 means at least one complete slot between two matches.
+function scheduleLeague(t,{seed=Date.now(),minimumRestSlots=t.settings?.minRestSlots??1}={}){
+ need(Number.isSafeInteger(+t.courts)&&+t.courts>=1,'At least one court required');
+ need(Number.isSafeInteger(+minimumRestSlots)&&+minimumRestSlots>=0,'Rest gap must be a nonnegative whole number');
+ need(!Object.keys(t.results).some(id=>t.fixtures.some(m=>m.id===id&&m.stage==='league')),'Fixtures already contain recorded results; cannot shuffle completed league');
+ need(!t.fixtures.some(m=>m.stage==='knockout'),'Clear the existing knockout bracket before shuffling league fixtures');
+ let pool=t.categories.filter(cat=>['league','combined'].includes(effectiveFormat(t,cat))).flatMap(makeRoundRobin);
+ const rng=seededRandom(Number(seed)||1);pool=shuffle(pool,rng);
+ const scheduled=[],lastPlayed=new Map();let slot=1;
+ const players=m=>[...entrantPlayers(t,m.categoryId,m.a),...entrantPlayers(t,m.categoryId,m.b)];
+ while(pool.length){
+  const chosen=[];
+  for(let court=1;court<=t.courts&&pool.length;court++){
+   let best=-1,bestScore=-Infinity;
+   for(let i=0;i<pool.length;i++){
+    const m=pool[i],ids=players(m);
+    if(new Set(ids).size!==ids.length)throw Error('Player appears on both sides of a match');
+    if(chosen.some(ch=>fixtureConflicts(t,m,ch)))continue;
+    const last=Math.max(...ids.map(id=>lastPlayed.get(id)??-1000000));
+    const rest=slot-last-1;
+    if(rest<minimumRestSlots)continue;
+    // Prefer the longest-waiting players, with a seeded tie-breaker.
+    const weight=Math.min(500,rest)*20+rng()*8;
+    if(weight>bestScore){best=i;bestScore=weight}
+   }
+   if(best<0)break;
+   const m=pool.splice(best,1)[0];chosen.push({...m,slot,court,order:slot*t.courts+court});
+  }
+  if(!chosen.length){
+   // Fast-forward over intentionally unused slots when everyone must rest.
+   const earliest=Math.min(...pool.map(m=>Math.max(slot+1,...players(m).map(id=>(lastPlayed.get(id)??-1000000)+minimumRestSlots+1))));
+   slot=earliest;
+   continue;
+  }
+  scheduled.push(...chosen);
+  for(const m of chosen)for(const id of players(m))lastPlayed.set(id,slot);
+  slot++;
+ }
+ t.fixtures=[...t.fixtures.filter(m=>m.stage!=='league'),...scheduled];return scheduled;
+}
+function fixturesCheck(t){
+ const problems=[],seen=new Set();
+ for(const m of t.fixtures){
+  if(seen.has(m.id))problems.push(`Duplicate: ${m.id}`);seen.add(m.id);
+  if(m.a&&m.b&&m.a===m.b)problems.push(`Self-match: ${m.id}`);
+  const cat=t.categories.find(c=>c.id===m.categoryId);
+  if(!cat||(m.stage!=='knockout'&&(!cat.entrants.some(e=>e.id===m.a)||!cat.entrants.some(e=>e.id===m.b)))||(m.stage==='knockout'&&((m.a&&!cat.entrants.some(e=>e.id===m.a))||(m.b&&!cat.entrants.some(e=>e.id===m.b)))))problems.push(`Unknown entry: ${m.id}`);
+  if(m.court<1||m.court>t.courts)problems.push(`Invalid court: ${m.id}`);
+  if(m.a&&m.b){
+   const all=[...entrantPlayers(t,m.categoryId,m.a),...entrantPlayers(t,m.categoryId,m.b)];
+   if(new Set(all).size!==all.length)problems.push(`Same player on both sides: ${m.id}`);
+  }
+ }
+ for(const cat of t.categories){
+  if(!['league','combined'].includes(effectiveFormat(t,cat)))continue;
+  for(const m of makeRoundRobin(cat))if(!seen.has(m.id))problems.push(`Missing: ${m.id}`);
+ }
+ for(let i=0;i<t.fixtures.length;i++)for(let j=i+1;j<t.fixtures.length;j++){
+  const a=t.fixtures[i],b=t.fixtures[j];if(a.slot!==b.slot)continue;
+  if(a.court===b.court)problems.push(`Court clash: slot ${a.slot}, court ${a.court}`);
+  if(fixtureConflicts(t,a,b))problems.push(`Player clash: slot ${a.slot}`);
+ }
+ // Check rest between matches for the same real player, not only a category entry.
+ const restAlerts=[],lastByPlayer=new Map(),minRest=t.settings?.minRestSlots??1;
+ const ordered=[...t.fixtures].sort((a,b)=>a.slot-b.slot||a.court-b.court);
+ const playerNames=new Map(t.teams.flatMap(team=>team.players.map(p=>[p.id,p.name])));
+ for(const m of ordered){
+  if(!m.a||!m.b)continue; // future knockout entries are not determined yet
+  const ids=new Set([...entrantPlayers(t,m.categoryId,m.a),...entrantPlayers(t,m.categoryId,m.b)]);
+  for(const pid of ids){
+   if(lastByPlayer.has(pid)&&m.slot-lastByPlayer.get(pid)-1<minRest)restAlerts.push(`${playerNames.get(pid)||'Player'}: slot ${lastByPlayer.get(pid)} → ${m.slot}`);
+   lastByPlayer.set(pid,m.slot);
+  }
+ }
+ return {valid:problems.length===0,problems,restAlerts};
+}
+function recordResult(t,matchId,result){
+ const m=t.fixtures.find(x=>x.id===matchId);need(m,'Match not found');
+ if(m.stage==='knockout')need(m.a&&m.b,'Finish previous knockout round first');
+ const cat=t.categories.find(c=>c.id===m.categoryId);need(cat,'Category not found');
+ const rules=effectiveRules(t,cat);validateResult(result,rules);
+ const before=t.results[matchId];
+ t.results[matchId]=result.mode==='winner'?{mode:'winner',winner:result.winner}:{a:+result.a,b:+result.b};
+ if(m.stage==='knockout'){try{advanceKnockout(t,m.categoryId)}catch(e){if(before)t.results[matchId]=before;else delete t.results[matchId];throw e}}
+ return t.results[matchId];
+}
+function standings(t,categoryId,groupId=undefined){
+ const cat=t.categories.find(c=>c.id===categoryId);need(cat,'Unknown category');
+ const rule=effectiveRules(t,cat);
+ const rows=cat.entrants.filter(e=>groupId===undefined||(e.groupId||null)===(groupId||null)).map(e=>({id:e.id,name:entryLabel(t,cat,e.id),p:0,w:0,l:0,pts:0,for:0,against:0}));
+ const map=new Map(rows.map(x=>[x.id,x]));
+ for(const m of t.fixtures.filter(m=>m.categoryId===cat.id&&m.stage==='league'&&(groupId===undefined||(m.groupId||null)===(groupId||null)))){
+  const result=t.results[m.id],side=scoreWinner(result,rule);if(!side)continue;
+  for(const sideKey of ['a','b']){
+   const row=map.get(m[sideKey]);if(!row)continue;
+   row.p++;row.w+=+(side===sideKey);row.l+=+(side!==sideKey);row.pts+= side===sideKey?+rule.winPoints:+rule.lossPoints;
+   if(result.mode!=='winner'){
+    row.for+=+result[sideKey];row.against+=+result[sideKey==='a'?'b':'a'];
+   }
+  }
+ }
+ // For ties with missing numeric results, point difference includes only recorded scores.
+ return rows.sort((a,b)=>b.pts-a.pts||b.w-a.w||(b.for-b.against)-(a.for-a.against)||a.name.localeCompare(b.name));
+}
+function seedOrder(size){
+ // Balanced bracket: 1 vs last, 4 vs 5, 2 vs 7, 3 vs 6 for eight seeds.
+ let seeds=[1,2];
+ while(seeds.length<size){const next=seeds.length*2;seeds=seeds.flatMap(s=>[s,next+1-s]);}
+ return seeds;
+}
+function advanceKnockout(t,categoryId){
+ const matches=t.fixtures.filter(m=>m.categoryId===categoryId&&m.stage==='knockout').sort((a,b)=>a.round-b.round||a.bracketIndex-b.bracketIndex);
+ const cat=t.categories.find(c=>c.id===categoryId);need(cat,'Category not found');
+ const winnerOf=source=>{
+  if(!source)return null;
+  if(source.type==='entry')return source.id;
+  const earlier=matches.find(m=>m.id===source.id);if(!earlier)return null;
+  const side=scoreWinner(t.results[earlier.id],effectiveRules(t,cat));
+  return side?earlier[side]:null;
+ };
+ for(const m of matches){
+  const a=winnerOf(m.sourceA),b=winnerOf(m.sourceB);
+  const prior=t.results[m.id];
+  if(prior&&(a!==m.a||b!==m.b)){
+   throw Error('A previous knockout result has changed. Clear downstream results before advancing.');
+  }
+  m.a=a;m.b=b;
+ }
+ return matches;
+}
+function generateKnockout(t,categoryId,{qualifiers=null}={}){
+ const cat=t.categories.find(c=>c.id===categoryId);need(cat,'Unknown category');
+ const fmt=effectiveFormat(t,cat);need(fmt==='knockout'||fmt==='combined','Category is not knockout format');
+ need(!t.fixtures.some(m=>m.categoryId===categoryId&&m.stage==='knockout'&&t.results[m.id]),'Cannot regenerate knockout after results');
+ const requested=Number(qualifiers||cat.qualifiers||4);
+ need(Number.isSafeInteger(requested)&&requested>=2,'Qualifiers must be at least two');
+ let entries=cat.entrants.map(x=>x.id);
+ if(fmt==='combined'){
+   const overall=standings(t,categoryId).map(r=>r.id),limit=Math.min(requested,overall.length);
+   const groups=[...(cat.groups||[]).map(g=>g.id)];
+   if(cat.entrants.some(e=>!e.groupId))groups.unshift(null);
+   if(groups.length>1&&cat.qualifierMode!=='overall'){
+     const quota=Math.floor(limit/groups.length),selected=[];
+     for(const groupId of groups)selected.push(...standings(t,categoryId,groupId).slice(0,quota).map(r=>r.id));
+     selected.push(...overall.filter(id=>!selected.includes(id)).slice(0,limit-selected.length));
+     entries=selected;
+   }else entries=overall.slice(0,limit);
+ }
+ need(entries.length>=2,'Knockout needs at least two entries');
+ if(fmt==='combined'){
+  const matches=t.fixtures.filter(m=>m.categoryId===categoryId&&m.stage==='league');
+  need(matches.length===makeRoundRobin(cat).length,'League fixtures incomplete');
+  need(matches.every(m=>scoreWinner(t.results[m.id],effectiveRules(t,cat))),'Finish category league before selecting knockout qualifiers');
+ }
+ const bracketSize=2**Math.ceil(Math.log2(entries.length)),byes=bracketSize-entries.length;
+ need(bracketSize<=1024,'A single knockout bracket supports up to 1024 entries');
+ t.fixtures=t.fixtures.filter(m=>!(m.categoryId===categoryId&&m.stage==='knockout'));
+ const bracketSeed=seedOrder(bracketSize);
+ let sources=bracketSeed.map(seed=>entries[seed-1]?{type:'entry',id:entries[seed-1]}:null);
+ const rounds=[],all=[],base=Math.max(0,...t.fixtures.map(m=>m.slot||0));
+ let startSlot=base+1;
+ for(let round=1;sources.length>1;round++){
+  const next=[],made=[],count=sources.length/2;
+  for(let i=0;i<count;i++){
+   const left=sources[2*i],right=sources[2*i+1];
+   if(!left&&!right){next.push(null);continue}
+   if(!left||!right){next.push(left||right);continue} // automatic bye
+   const match={id:`ko__${cat.id}__r${round}__m${i+1}`,categoryId:cat.id,stage:'knockout',round,
+     bracketIndex:i,sourceA:left,sourceB:right,a:left.type==='entry'?left.id:null,b:right.type==='entry'?right.id:null};
+   made.push(match);all.push(match);next.push({type:'match',id:match.id});
+  }
+  for(let i=0;i<made.length;i++){
+   made[i].slot=startSlot+Math.floor(i/t.courts);made[i].court=i%t.courts+1;
+  }
+  if(made.length)startSlot+=Math.ceil(made.length/t.courts)+(t.settings?.minRestSlots??1);
+  rounds.push(made);sources=next;
+ }
+ t.fixtures.push(...all);advanceKnockout(t,cat.id);
+ return {roundMatches:rounds[0]||[],allMatches:all,byes,bracketSize,rounds};
+}
+function legacyToV2(legacy,legacyScores={}){
+ need(legacy&&Array.isArray(legacy.teams)&&legacy.teams.length===4,'Legacy importer currently requires the original four-team format');
+ const t=makeTournament({name:legacy.name||'Imported Tournament',date:legacy.date||'',courts:2,format:'league'});
+ // Existing app used 30 as winning score, with no win-by-two requirement.
+ t.rules={target:30,winByTwo:false,cutoff:30,winPoints:3,lossPoints:0,bestOf:1};
+ for(const team of legacy.teams)addTeam(t,team.name,team.players||[]);
+ const cats=['AB','CD','EF'].map((label,k)=>{
+  const cat=addCategory(t,label);
+  for(const team of t.teams)addEntry(t,cat.id,team.id,team.players.slice(k*2,k*2+2).map(p=>p.id));
+  return cat;
+ });
+ const schedule=[[0,1,2,3],[0,2,1,3],[0,3,1,2]];
+ let assigned=0;
+ for(let round=0;round<3;round++)for(let p=0;p<3;p++)for(let court=1;court<=2;court++){
+  const perm=schedule[round],a=perm[court===1?0:2],b=perm[court===1?1:3],cat=cats[p];
+  const ea=cat.entrants[a].id,eb=cat.entrants[b].id;
+  const match={id:fixtureId(cat.id,ea,eb),legacyId:`c${court}s${round*3+p+1}`,categoryId:cat.id,a:ea,b:eb,slot:round*3+p+1,court,stage:'league'};
+  t.fixtures.push(match);
+  const existing=legacyScores[match.legacyId];
+  if(existing){
+    // Keep historical score records verbatim. Do not discard imperfect legacy results.
+    t.results[match.id]=deep(existing);assigned++;
+  }
+ }
+ return {tournament:t,importedResults:assigned,legacyIds:t.fixtures.map(x=>[x.legacyId,x.id])};
+}
+function playerHistory(t,playerId){
+ const team=t.teams.find(team=>team.players.some(p=>p.id===playerId));need(team,'Player not found');
+ const player=team.players.find(p=>p.id===playerId),matches=[];
+ for(const m of [...t.fixtures].sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court)){
+  const cat=t.categories.find(c=>c.id===m.categoryId);if(!cat)continue;
+  const involved=['a','b'].find(side=>cat.entrants.some(e=>e.id===m[side]&&e.playerIds.includes(playerId)));
+  if(!involved)continue;
+  const e=cat.entrants.find(x=>x.id===m[involved]);const opponent=involved==='a'?'b':'a';
+  const r=t.results[m.id],winner=scoreWinner(r,effectiveRules(t,cat));
+  matches.push({id:m.id,categoryId:cat.id,category:cat.name,group:cat.groups?.find(g=>g.id===e?.groupId)?.name||'General',stage:m.stage,round:m.round||null,slot:m.slot,court:m.court,opponent:entryLabel(t,cat,m[opponent]),score:r?(r.mode==='winner'?'Score not recorded':`${r.a} – ${r.b}`):'Not played',scoreFor:r&&r.mode!=='winner'?+r[involved]:null,scoreAgainst:r&&r.mode!=='winner'?+r[opponent]:null,outcome:!winner?'pending':winner===involved?'win':'loss'});
+ }
+ return {name:player.name,teamId:team.id,team:team.name,matches,played:matches.filter(m=>m.outcome!=='pending').length,wins:matches.filter(m=>m.outcome==='win').length,losses:matches.filter(m=>m.outcome==='loss').length,pointsFor:matches.reduce((a,m)=>a+(m.scoreFor||0),0),pointsAgainst:matches.reduce((a,m)=>a+(m.scoreAgainst||0),0),withoutNumericScore:matches.filter(m=>m.outcome!=='pending'&&m.scoreFor===null).length};
+}
+function teamHistory(t,teamId){
+ const team=t.teams.find(x=>x.id===teamId);need(team,'Team not found');const matches=[];
+ for(const m of [...t.fixtures].sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court)){
+  const cat=t.categories.find(c=>c.id===m.categoryId);if(!cat)continue;
+  const side=['a','b'].find(side=>cat.entrants.some(e=>e.id===m[side]&&e.teamId===teamId));if(!side)continue;
+  const e=cat.entrants.find(x=>x.id===m[side]),opponent=side==='a'?'b':'a';
+  const r=t.results[m.id],winner=scoreWinner(r,effectiveRules(t,cat));
+  matches.push({id:m.id,category:cat.name,group:cat.groups?.find(g=>g.id===e?.groupId)?.name||'General',stage:m.stage,slot:m.slot,court:m.court,players:entryLabel(t,cat,m[side]),opponent:entryLabel(t,cat,m[opponent]),score:r?(r.mode==='winner'?'Score not recorded':`${r.a} – ${r.b}`):'Not played',scoreFor:r&&r.mode!=='winner'?+r[side]:null,scoreAgainst:r&&r.mode!=='winner'?+r[opponent]:null,outcome:!winner?'pending':winner===side?'win':'loss'});
+ }
+ return {name:team.name,players:team.players,played:matches.filter(m=>m.outcome!=='pending').length,wins:matches.filter(m=>m.outcome==='win').length,losses:matches.filter(m=>m.outcome==='loss').length,pointsFor:matches.reduce((a,m)=>a+(m.scoreFor||0),0),pointsAgainst:matches.reduce((a,m)=>a+(m.scoreAgainst||0),0),withoutNumericScore:matches.filter(m=>m.outcome!=='pending'&&m.scoreFor===null).length,matches};
+}
+function sampleTournament(){
+ const t=makeTournament({name:'MBA Tournament — Demo',date:'2026-11-14',courts:2,format:'league'});
+ const roster=[['Team Ameen Ashan',['Ameen Ashan','Askar','Janshar','Salam','Shuhaib','Marcelo']],['Team Nithin',['Nithin','Ameen BH','Hakkeem','Irshad','Anil','Hari']],['Team Faisal',['Faisal','Jaisal','Rashid','Sabir','Anoop','Nipun']],['Thunder Smash',['Mubarak','Jafar','Shameer','Nabhan','Bava','Mohamed']]];
+ for(const [name,players] of roster)addTeam(t,name,players);
+ for(let k=0;k<3;k++){
+  const cat=addCategory(t,['AB','CD','EF'][k]);
+  for(const team of t.teams)addEntry(t,cat.id,team.id,team.players.slice(2*k,2*k+2).map(p=>p.id));
+ }
+ scheduleLeague(t,{seed:1986});return t;
+}
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const h=(strings,...vars)=>strings.reduce((s,x,i)=>s+x+(vars[i]??''),'');
+let store={tournaments:[],selected:null,playerLibrary:[]},page='tournaments',editor=null,mode='score',notice='',profile=null,printReport='fixtures',printCategory='all',printGroup='all',tournamentPanel='details';
+function active(){return store.tournaments.find(x=>x.id===store.selected)||store.tournaments[0]}
+function libraryNames(){return reusablePlayerNames(store.tournaments,store.playerLibrary||[])}
+function remember(){
+ try{if(authUser&&store.selected)localStorage.setItem('mba-v3-selected-'+authUser.uid,store.selected)}catch{}
+} // Only the selected tournament ID is saved locally, never financial data.
+/* V3 uses normalized Firebase paths. Viewer data and private financial records never share a readable ancestor. */
+const permissionsList=[
+ ['scoresWrite','Enter / correct match scores'],
+ ['teamsWrite','Add / edit teams and players'],
+ ['categoriesWrite','Manage categories, entries and groups'],
+ ['fixturesWrite','Generate and edit league / knockout fixtures'],
+ ['settingsWrite','Edit tournament rules and settings'],
+ ['tournamentWrite','Create / delete tournaments'],
+ ['paymentsRead','See player payments and payment status'],
+ ['paymentsWrite','Record payments, refunds and collectors'],
+ ['financeRead','See expense entries only (no income or full dashboard)'],
+ ['financeWrite','Record expenses and transfers (no full dashboard)'],
+ ['feesWrite','Set ground fee and individual waivers'],
+ ['financeDashboardRead','View FULL tournament income, expenses, profit & collector dashboard (Super Admin grants only)'],
+ ['usersWrite','Manage users / permissions']
+];
+const rolePresets={
+ viewer:{},
+ scorer:{scoresWrite:true},
+ team_admin:{teamsWrite:true,categoriesWrite:true},
+ payment_manager:{paymentsRead:true,paymentsWrite:true},
+ finance_manager:{financeRead:true,financeWrite:true},
+ admin:{scoresWrite:true,teamsWrite:true,categoriesWrite:true,fixturesWrite:true,settingsWrite:true},
+ super:Object.fromEntries(permissionsList.map(([k])=>[k,true]))
+};
+let authUser=null,legacySuper=false,accessRecord=null,accessList={},accessRequests={},remoteReady=false,readError='',writePending=false;
+let stopListeners=[],finListeners=[],financeFor='',finance={config:null,payments:{},overrides:{},expenses:{},transfers:{}};
+const isSuper=()=>legacySuper||!!(accessRecord?.active&&accessRecord?.role==='super');
+/* Read permission and editing permission are independent per tournament.
+   A global role never grants access to unassigned private tournaments. */
+let publicTournaments={},userTournamentScopes={},superTournamentListener=null,personalTournamentListeners=new Map(),stopCatalog=[],lastTournamentSource='';
+let unsavedFormChanges=false;
+const viewScope=id=>isSuper()||Boolean(publicTournaments[id]||userTournamentScopes[id]?.view===true||userTournamentScopes[id]?.edit===true);
+const editScope=id=>isSuper()||userTournamentScopes[id]?.edit===true;
+const can=key=>!!(authUser&&remoteReady&&!readError&&(isSuper()||(accessRecord?.active===true&&accessRecord.role!=='viewer'&&accessRecord.permissions?.[key]===true&&(key.endsWith('Read')?viewScope(active()?.id):editScope(active()?.id))&&key!=='usersWrite'&&key!=='tournamentWrite'&&(!['paymentsRead','paymentsWrite','financeRead','financeWrite','feesWrite','financeDashboardRead'].includes(key)||accessRecord.role!=='viewer'))));
+const canSeePayments=()=>isSuper()||can('paymentsRead')||can('financeDashboardRead');
+const canSeeExpenses=()=>isSuper()||can('financeRead')||can('financeDashboardRead');
+const canFullFinance=()=>isSuper()||can('financeDashboardRead');
+const canViewFinance=()=>canSeePayments()||canSeeExpenses()||can('paymentsWrite')||can('financeWrite')||can('feesWrite');
+/* A Viewer account must never receive finance values, statuses, reports, or navigation. */
+const allowedToEdit=()=>!!(authUser&&remoteReady&&!readError&&(isSuper()||permissionsList.some(([k])=>!k.endsWith('Read')&&can(k))));
+function authorized(action){
+ const mapping={
+  'edit-tournament':'settingsWrite','new-tournament':'tournamentWrite','delete-tournament':'tournamentWrite',
+  'new-team':'teamsWrite','edit-team':'teamsWrite','remove-team':'teamsWrite',
+  'new-category':'categoriesWrite','edit-category':'categoriesWrite','remove-category':'categoriesWrite',
+  'new-group':'categoriesWrite','rename-group':'categoriesWrite','remove-group':'categoriesWrite',
+  'add-entry':'categoriesWrite','remove-entry':'categoriesWrite',
+  'shuffle':'fixturesWrite','clear-knockout':'fixturesWrite','knockout':'fixturesWrite',
+  'edit-result':'scoresWrite','clear-result':'scoresWrite'
+ };
+ return !mapping[action]||can(mapping[action]);
+}
+const dataObj=x=>x&&typeof x==='object'?x:{};
+const makeMap=items=>Object.fromEntries((items||[]).map(x=>[x.id,x]));
+function tournamentToDb(t){
+ const {teams,categories,fixtures,results,...meta}=t;
+ return {meta,teams:makeMap(teams),categories:makeMap(categories),fixtures:makeMap(fixtures),results:results||{}};
+}
+function dbToTournament(rec,id){
+ const x=dataObj(rec),meta=dataObj(x.meta);
+ const arrays=o=>Object.values(dataObj(o));
+ const t={...meta,id,teams:arrays(x.teams).map(team=>({...team,players:team.players||[]})),categories:arrays(x.categories).map(c=>({...c,groups:c.groups||[],entrants:c.entrants||[]})),fixtures:arrays(x.fixtures).sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court),results:dataObj(x.results),settings:meta.settings||{printOrientation:'landscape',printFontSize:17,minRestSlots:1}};
+ for(const c of t.categories)if(t.fixtures.some(m=>m.stage==='knockout'&&m.categoryId===c.id))try{advanceKnockout(t,c.id)}catch(e){console.warn('Knockout advancement needs admin review:',e.message)}
+ return t;
+}
+function cloudToStore(raw){
+ const list=Object.entries(dataObj(raw)).map(([id,rec])=>dbToTournament(rec,id));
+ let saved=null;try{saved=localStorage.getItem('mba-v3-selected-'+authUser.uid)}catch{}
+ const selected=list.some(x=>x.id===store.selected)?store.selected:list.some(x=>x.id===saved)?saved:list[0]?.id||null;
+ return {tournaments:list,selected,playerLibrary:store.playerLibrary||[]};
+}
+let rawTournamentData={};
+function setCloud(raw){rawTournamentData=dataObj(raw);store=cloudToStore(rawTournamentData);remoteReady=true;writePending=false;watchFinance();render()}
+function errText(e){return e?.code||e?.message||String(e)}
+function clearListeners(items){while(items.length){try{items.pop()()}catch{}}}
+function watchFinance(){
+ const t=active();if(financeFor===t?.id)return;
+ clearListeners(finListeners);financeFor=t?.id||'';
+ finance={config:null,payments:{},overrides:{},expenses:{},transfers:{}};
+ if(!t||!authUser)return;
+ const p=`v3/finance/${t.id}`;
+ function watch(part){const off=onValue(ref(db,p+'/'+part),snap=>{finance[part]=snap.val()|| (part==='config'?null:{});if(page==='finance'||page==='fixtures'||page==='teams'||page==='tournaments'||page==='print')render()},e=>{document.getElementById('auth-message').textContent='Finance read: '+errText(e)});finListeners.push(off)}
+ if(canSeePayments()||can('feesWrite')){watch('config');watch('overrides')}
+ if(canSeePayments())watch('payments');
+ if(canSeeExpenses())watch('expenses');
+ if(canFullFinance())watch('transfers');
+}
+let authGeneration=0;
+function authState(){
+ const status=document.getElementById('auth-status');document.getElementById('auth-login').hidden=!!authUser;document.getElementById('auth-account').hidden=!authUser;
+ if(!authUser){status.textContent='Please sign in. Only tournaments approved by Super Admin are visible.';return}
+ const roles=isSuper()?'🛡 Super Admin':accessRecord?.active?(accessRecord.role||'Custom Admin'):'👁 Viewer';
+ status.textContent=(authUser.email||'Signed in')+' • '+roles+(remoteReady?' • Cloud connected':' • Loading cloud…');
+}
+function clearTournamentListeners(){
+ if(superTournamentListener){superTournamentListener();superTournamentListener=null}
+ for(const off of personalTournamentListeners.values())off();
+ personalTournamentListeners.clear();
+}
+/* Super Admin can read all tournaments. Everyone else subscribes only to
+   approved/public IDs, because Firebase rules deny reading the entire collection. */
+function syncTournamentListeners(){
+ if(!authUser)return;
+ const gen=authGeneration;
+ if(isSuper()){
+  if(lastTournamentSource!=='super'){
+   clearTournamentListeners();lastTournamentSource='super';rawTournamentData={};remoteReady=false;
+   superTournamentListener=onValue(ref(db,'v3/tournaments'),s=>{
+    if(gen!==authGeneration||!isSuper())return;
+    if(!writePending)setCloud(s.val());
+   },e=>{if(gen!==authGeneration)return;readError=errText(e);render()});
+  }
+  return;
+ }
+ if(lastTournamentSource==='super'){
+  clearTournamentListeners();rawTournamentData={};store.playerLibrary=[];remoteReady=false;
+  clearListeners(finListeners);financeFor='';finance={config:null,payments:{},overrides:{},expenses:{},transfers:{}};
+ }
+ lastTournamentSource='scoped';
+ const desired=new Set([...Object.keys(publicTournaments),...Object.entries(userTournamentScopes).filter(([,v])=>v?.view===true||v?.edit===true).map(([id])=>id)]);
+ for(const [id,off] of personalTournamentListeners){if(!desired.has(id)){
+  off();personalTournamentListeners.delete(id);delete rawTournamentData[id];
+ }}
+ for(const id of desired){if(personalTournamentListeners.has(id))continue;
+  // Placeholder prevents duplicate listener registration while an initial snapshot arrives.
+  const off=onValue(ref(db,'v3/tournaments/'+id),snap=>{
+    if(gen!==authGeneration||isSuper())return;
+    if(snap.exists())rawTournamentData[id]=snap.val();else delete rawTournamentData[id];
+    if(!writePending)setCloud(rawTournamentData);
+  },e=>{
+    if(gen!==authGeneration)return;
+    delete rawTournamentData[id];personalTournamentListeners.delete(id);
+    // Do not expose a hidden tournament after its access is revoked.
+    setCloud(rawTournamentData);
+  });
+  personalTournamentListeners.set(id,off);
+ }
+ if(!writePending)setCloud(rawTournamentData);
+}
+function watchCatalog(gen){
+ stopCatalog.push(onValue(ref(db,'v3/publicTournaments'),s=>{
+  if(gen!==authGeneration)return;publicTournaments=dataObj(s.val());syncTournamentListeners();render();
+ },e=>{if(gen===authGeneration){readError=errText(e);render()}}));
+ stopCatalog.push(onValue(ref(db,'v3/tournamentAccess/'+authUser.uid),s=>{
+  if(gen!==authGeneration)return;userTournamentScopes=dataObj(s.val());syncTournamentListeners();render();
+ },e=>{if(gen===authGeneration){readError=errText(e);render()}}));
+}
+function beginSession(user){
+ const gen=++authGeneration;
+ clearListeners(stopListeners);clearListeners(stopCatalog);clearTournamentListeners();clearListeners(finListeners);
+ financeFor='';lastTournamentSource='';publicTournaments={};userTournamentScopes={};unsavedFormChanges=false;
+ authUser=user;legacySuper=false;accessRecord=null;accessList={};accessRequests={};readError='';remoteReady=false;
+ rawTournamentData={};store={tournaments:[],selected:null,playerLibrary:[]};page='tournaments';editor=null;profile=null;notice='';
+ authState();render();if(!user)return;
+ const on=(path,cb)=>{stopListeners.push(onValue(ref(db,path),s=>{if(gen===authGeneration)cb(s.val())},e=>{if(gen!==authGeneration)return;readError=errText(e);render();document.getElementById('auth-message').textContent='Database error: '+readError}))};
+ on('admins/'+user.uid,v=>{legacySuper=v?.active===true&&v?.role==='super';authState();syncTournamentListeners();watchFinance();render();if(isSuper())watchAccess();else clearAccess()});
+ on('v3/access/'+user.uid,v=>{accessRecord=v||null;authState();syncTournamentListeners();financeFor='';watchFinance();render();if(isSuper())watchAccess();else clearAccess()});
+ watchCatalog(gen);
+ // The shared player library includes names from PRIVATE tournaments: Super Admin only.
+ // Other users derive names from their visible tournament rosters.
+ // Player library deliberately not subscribed for non-Super users.
+}
+let stopAccess=[];let accessScopesByUid={};
+function watchAccess(){if(!isSuper()||stopAccess.length)return;
+ stopAccess.push(onValue(ref(db,'v3/access'),s=>{accessList=s.val()||{};if(page==='access')render()},()=>{}));
+ stopAccess.push(onValue(ref(db,'v3/accessRequests'),s=>{accessRequests=s.val()||{};if(page==='access')render()},()=>{}));
+ stopAccess.push(onValue(ref(db,'v3/tournamentAccess'),s=>{accessScopesByUid=s.val()||{};if(page==='access')render()},()=>{}));
+}
+function clearAccess(){clearListeners(stopAccess);accessScopesByUid={}}
+const roleLabel=()=>isSuper()?'Super Admin':accessRecord?.active?accessRecord.role:'Viewer';
+function eq(a,b){return JSON.stringify(a)===JSON.stringify(b)}
+function patchesForMutation(before,after){
+ const patches={},prev=Object.fromEntries(before.tournaments.map(t=>[t.id,t])),next=Object.fromEntries(after.tournaments.map(t=>[t.id,t]));
+ for(const id of new Set([...Object.keys(prev),...Object.keys(next)])){
+  const a=prev[id],b=next[id],p=`v3/tournaments/${id}`;
+  if(!a||!b){if(!can('tournamentWrite'))throw Error('Tournament creation/deletion requires Super Admin permission.');patches[p]=b?tournamentToDb(b):null;continue}
+  const x=tournamentToDb(a),y=tournamentToDb(b);
+  if(!eq(x.meta,y.meta)){if(!can('settingsWrite'))throw Error('Settings permission required.');patches[p+'/meta']=y.meta}
+  for(const [type,permission] of [['teams','teamsWrite'],['categories','categoriesWrite'],['fixtures','fixturesWrite'],['results','scoresWrite']]){
+   const o=dataObj(x[type]),n=dataObj(y[type]);
+   for(const key of new Set([...Object.keys(o),...Object.keys(n)])){
+    if(eq(o[key],n[key]))continue;
+    if(type==='fixtures'&&!can('fixturesWrite')&&can('scoresWrite')){
+      const old=o[key],modified=n[key];
+      if(old?.stage==='knockout'&&modified?.stage==='knockout'&&eq({...old,a:null,b:null},{...modified,a:null,b:null}))continue;
+    }
+    if(!can(permission))throw Error(permission+' permission required for this edit.');
+    patches[p+'/'+type+'/'+key]=n[key]??null;
+   }
+  }
+ }
+ if(!eq(before.playerLibrary,after.playerLibrary)){if(can('teamsWrite')||isSuper())patches['v3/playerLibrary']=after.playerLibrary;else throw Error('Player library write permission required')}
+ return patches;
+}
+async function op(fn){
+ if(!allowedToEdit()){alert('No editing access for this tournament. Ask Super Admin for permission.');return}
+ if(writePending){alert('Previous save still pending.');return}
+ const previous=deep(store);
+ try{fn();if(can('teamsWrite'))store.playerLibrary=libraryNames();const patches=patchesForMutation(previous,store);
+  if(!Object.keys(patches).length){render();return}
+  writePending=true;notice='Saving to Production Firebase…';render();
+  const changed=Object.entries(patches);
+  if(changed.length===1&&/v3\/tournaments\/[^/]+\/results\/[^/]+$/.test(changed[0][0])){
+    const key=changed[0][0],parts=key.split('/'),orig=previous.tournaments.find(t=>t.id===parts[2])?.results?.[parts[4]]??null;
+    const tx=await runTransaction(ref(db,key),current=>eq(current??null,orig)?changed[0][1]:undefined,{applyLocally:false});
+    if(!tx.committed)throw Error('Another device updated the same match. Latest result loaded; please review then retry.');
+  }else await update(ref(db),patches);
+  if(isSuper()){
+    const existingIds=new Set(store.tournaments.map(t=>t.id));
+    const catalogPatch={};for(const id of Object.keys(publicTournaments)){
+     const current=store.tournaments.find(t=>t.id===id);
+     if(!current)catalogPatch['v3/publicTournaments/'+id]=null;
+     else if(publicTournaments[id].name!==current.name||publicTournaments[id].date!==(current.date||''))catalogPatch['v3/publicTournaments/'+id]={name:current.name,date:current.date||'',visible:true};
+    }
+    if(Object.keys(catalogPatch).length)await update(ref(db),catalogPatch);
+   }
+   notice='Saved online to Production Firebase.';
+ }catch(e){store=previous;notice='Not saved: '+errText(e);alert(notice)}finally{
+  writePending=false;
+  try{const updated=await get(ref(db,'v3/tournaments'));setCloud(updated.val())}catch{render()}
+ }
+ render();
+}
+function wireAuth(){
+ onAuthStateChanged(auth,u=>{clearAccess();beginSession(u)});
+ const msg=document.getElementById('auth-message');
+ document.getElementById('google-login').onclick=async()=>{try{msg.textContent='Opening Google login…';await signInWithPopup(auth,new GoogleAuthProvider());msg.textContent=''}catch(e){msg.textContent=errText(e)}};
+ document.getElementById('toggle-email').onclick=()=>{const f=document.getElementById('email-form');f.hidden=!f.hidden};
+ document.getElementById('email-form').onsubmit=async e=>{e.preventDefault();try{await signInWithEmailAndPassword(auth,document.getElementById('email').value.trim(),document.getElementById('password').value);msg.textContent=''}catch(e){msg.textContent=errText(e)}document.getElementById('password').value=''};
+ document.getElementById('signup').onclick=async()=>{if(!confirm('Create a new, read-only Viewer account with this email and password?'))return;try{await createUserWithEmailAndPassword(auth,document.getElementById('email').value.trim(),document.getElementById('password').value);msg.textContent='Viewer account created.'}catch(e){msg.textContent=errText(e)}};
+ document.getElementById('reset-password').onclick=async()=>{const email=document.getElementById('email').value.trim();if(!email){msg.textContent='Enter email first';return}try{await sendPasswordResetEmail(auth,email);msg.textContent='If this email has a password account, check your inbox.'}catch(e){msg.textContent=errText(e)}};
+ document.getElementById('logout').onclick=async()=>{try{await signOut(auth)}catch(e){msg.textContent=errText(e)}};
+ document.getElementById('copy-uid').onclick=async()=>{if(!authUser)return;try{await navigator.clipboard.writeText(authUser.uid);msg.textContent='User UID copied.'}catch{msg.textContent='Your UID: '+authUser.uid}};
+ document.getElementById('request-access').onclick=async()=>{if(!authUser)return;const note=prompt('Which editing access do you need? (Super Admin will approve.)','Score / Teams / Payments / Finance');if(note===null)return;
+  try{await set(ref(db,`v3/accessRequests/${authUser.uid}`),{email:authUser.email||'',name:authUser.displayName||'',note:String(note).slice(0,160),requestedAt:Date.now()});msg.textContent='Request sent to Super Admin.'}catch(e){msg.textContent=errText(e)}
+ };
+
+}
+
+/* Financial data: separate from public tournament data, append-only receipts and expenses. */
+const expenseCategories=['Court Fee','Shuttlecock','Trophy / Medals','Food','Drinking Water','Transport','Printing / Banner','Equipment','Other / Custom'];
+const payModes=['Cash','UPI / GPay','PhonePe','Paytm','Bank Transfer','Card','Other'];
+const money=n=>{const v=Math.round((+n||0)*100)/100;return(v<0?'-₹':'₹')+Math.abs(v).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})};
+const today=()=>{const d=new Date(),z=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`};
+const safeAmount=(n,allowZero=false)=>{const x=Number(n);if(!Number.isFinite(x)||x<0||(!allowZero&&x===0)||x>100000000||Math.round(x*100)!==x*100)throw Error('Enter a valid INR amount with up to 2 decimals.');return x};
+const playersOf=t=>t.teams.flatMap(team=>team.players.map(p=>({id:p.id,name:p.name,team:team.name})));
+const financesReady=()=>!!finance.config&&finance.config.feePerPlayer!==undefined;
+const playerFee=p=>!financesReady()?null:Number(finance.overrides?.[p]?.fee??finance.config.feePerPlayer);
+const receipts=()=>Object.entries(dataObj(finance.payments)).map(([id,x])=>({...x,id}));
+const expenseEvents=()=>Object.entries(dataObj(finance.expenses)).map(([id,x])=>({...x,id}));
+const transfers=()=>Object.entries(dataObj(finance.transfers)).map(([id,x])=>({...x,id}));
+function paidForPlayer(pid){return receipts().filter(x=>x.playerId===pid).reduce((sum,x)=>sum+Number(x.amount||0)*(x.kind==='refund'?-1:1),0)}
+function paymentStatus(pid){
+ const fee=playerFee(pid);if(fee===null)return {text:'FEE NOT SET',cls:'payment-unknown',fee:null,paid:paidForPlayer(pid),due:null};
+ const paid=paidForPlayer(pid),due=Math.max(0,fee-paid);
+ return {text:paid>fee?'OVERPAID':paid===fee?'PAID':paid>0?'PARTIAL':'UNPAID',cls:paid>=fee?'payment-paid':paid>0?'payment-partial':'payment-unpaid',paid,fee,due};
+}
+function financeTotals(t){
+ const ppl=playersOf(t),hasFee=financesReady();const expected=hasFee?ppl.reduce((v,p)=>v+Math.max(0,playerFee(p.id)||0),0):null;
+ const paid=receipts().reduce((sum,x)=>sum+(x.kind==='refund'?-1:1)*Number(x.amount||0),0);
+ const dueRecords=expenseEvents().filter(x=>x.status==='due');const settled=new Set(expenseEvents().filter(x=>x.status==='paid'&&x.settledDueId).map(x=>x.settledDueId));
+ const unpaidBills=dueRecords.filter(x=>!settled.has(x.id)).reduce((a,x)=>a+Number(x.amount||0),0);
+ const expensesPaid=expenseEvents().filter(x=>x.status==='paid').reduce((a,x)=>a+Number(x.amount||0),0);
+ const owed=expected===null?null:Math.max(0,expected-paid),cashBalance=paid-expensesPaid;
+ const projected=expected===null?null:expected-expensesPaid-unpaidBills;
+ return {expected,paid,owed,expensesPaid,unpaidBills,cashBalance,projected,players:ppl.length};
+}
+function collectorSummary(){const map={};const add=(who,n)=>{const key=(who||'Not specified').trim();map[key]=(map[key]||0)+n};
+ for(const r of receipts())add(r.receivedBy,Number(r.amount)*(r.kind==='refund'?-1:1));
+ for(const e of expenseEvents())if(e.status==='paid')add(e.paidBy,-Number(e.amount));
+ for(const x of transfers()){add(x.from,-Number(x.amount));add(x.to,Number(x.amount))}
+ return Object.entries(map).sort((a,b)=>b[1]-a[1]);
+}
+function dropdown(name,values,selected=''){return `<select name="${name}" required>${values.map(x=>`<option value="${esc(x)}" ${selected===x?'selected':''}>${esc(x)}</option>`).join('')}</select>`}
+function playerDropdown(t,name='playerId'){return `<select name="${name}" required>${playersOf(t).map(p=>`<option value="${esc(p.id)}">${esc(p.name)} — ${esc(p.team)}</option>`).join('')}</select>`}
+function receiptForm(t){return `<form class="sub-form finance-edit" data-form="fin-receipt"><h3>＋ Record Player Payment / Refund</h3><div class="form-grid">
+ <label class="field"><span>Player</span>${playerDropdown(t)}</label><label class="field"><span>Entry Type</span>${dropdown('kind',['payment','refund'])}</label>
+ ${field('Amount (₹)','amount','','number','min="0.01" step="0.01" required')}
+ <label class="field"><span>Payment Mode</span>${dropdown('mode',payModes)}</label>
+ ${field('Received By (committee member)','receivedBy','','text','required maxlength="100"')}
+ ${field('Payment Date','date',today(),'date','required')}
+ ${field('Reference / UPI transaction ID (optional)','reference','','text','maxlength="120"')}
+ <label class="field"><span>Notes</span><input name="notes" maxlength="160"></label></div>
+ <div class="actions"><button class="btn primary" type="submit">Save Receipt</button></div>
+ <p class="helper">Refund is a separate negative ledger entry; old receipts are never overwritten.</p></form>`}
+function expenseForm(){return `<form class="sub-form finance-edit" data-form="fin-expense"><h3>＋ Add Tournament Expense</h3><div class="form-grid">
+ <label class="field"><span>Expense Category</span>${dropdown('category',expenseCategories)}</label>
+ ${field('Custom Expense / Description','description','','text','maxlength="160"')}
+ ${field('Amount (₹)','amount','','number','min="0.01" step="0.01" required')}
+ <label class="field"><span>Expense Status</span>${dropdown('status',['paid','due'])}</label>
+ <label class="field"><span>Payment Mode</span>${dropdown('mode',payModes)}</label>
+ ${field('Paid By / Responsible Person','paidBy','','text','maxlength="100" required')}
+ ${field('Expense Date','date',today(),'date','required')}
+ ${field('Vendor / Recipient (optional)','vendor','','text','maxlength="100"')}
+ </div><button class="btn primary" type="submit">Record Expense</button><p class="helper">Due bills do not reduce cash in hand until marked paid. Never record the same bill as two unrelated expenses.</p></form>`}
+function financeView(t){
+ if(!canViewFinance())return card('Tournament Overview','<p>Use the navigation above to view fixtures, results, and standings.</p>');
+ const f=financeTotals(t),full=canFullFinance(),canPay=can('paymentsWrite'),canFin=can('financeWrite'),canFees=can('feesWrite'),seePay=canSeePayments(),seeExp=canSeeExpenses();
+ const summary=full?[['Players',f.players],['Expected fees',f.expected===null?'Not configured':money(f.expected)],['Collected (net)',money(f.paid)],['Player balances due',f.owed===null?'Not configured':money(f.owed)],['Expenses paid',money(f.expensesPaid)],['Bills still due',money(f.unpaidBills)],['Cash / bank net balance',money(f.cashBalance)],['Projected final surplus',f.projected===null?'Not configured':money(f.projected)]]:[];
+ const cashTotal=receipts().filter(r=>r.mode==='Cash').reduce((v,r)=>v+(r.kind==='refund'?-1:1)*Number(r.amount||0),0);
+ const digitalTotal=f.paid-cashTotal;
+ if(full)summary.push(['Cash collected (net)',money(cashTotal)],['UPI / Other collected (net)',money(digitalTotal)]);
+ const cards=`<div class="finance-stats">${summary.map(([name,value])=>`<div class="finance-stat"><small>${esc(name)}</small><strong>${esc(value)}</strong></div>`).join('')}</div>`;
+ const options=playersOf(t).map(p=>{const v=paymentStatus(p.id);return `<tr><td>${esc(p.name)}<small>${esc(p.team)}</small></td><td>${v.fee===null?'—':money(v.fee)}</td><td>${money(v.paid)}</td><td class="${v.cls}">${v.text}</td><td>${v.due===null?'—':money(v.due)}</td></tr>`}).join('');
+ const playerTable=seePay?card('Player Fee & Payment Status',`<div class="scroll"><table class="fin-table"><thead><tr><th>Player</th><th>Fee</th><th>Received</th><th>Status</th><th>Balance</th></tr></thead><tbody>${options||'<tr><td colspan="5">Add players first</td></tr>'}</tbody></table></div>`):'';
+ const receiptsRows=receipts().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0)).map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(playersOf(t).find(p=>p.id===x.playerId)?.name||'Player removed')}</td><td>${x.kind==='refund'?'-':''}${money(x.amount)}</td><td>${esc(x.mode)}</td><td>${esc(x.receivedBy)}</td><td>${esc(x.createdByEmail||x.createdBy||'')}</td></tr>`).join('');
+ const receiptsTable=seePay?card('Payment Register (Immutable Ledger)',`<div class="scroll"><table><thead><tr><th>Date</th><th>Player</th><th>Amount</th><th>Mode</th><th>Received By</th><th>Recorded By</th></tr></thead><tbody>${receiptsRows||'<tr><td colspan="6">No payments yet</td></tr>'}</tbody></table></div>`):'';
+ const expenseList=expenseEvents().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+ const outstanding=expenseList.filter(e=>e.status==='due'&&!expenseList.some(x=>x.status==='paid'&&x.settledDueId===e.id));
+ const expenseRows=expenseList.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.category)}${x.description?`<small>${esc(x.description)}</small>`:''}</td><td>${money(x.amount)}</td><td>${esc(x.status)}</td><td>${esc(x.paidBy)}</td><td>${esc(x.vendor||'')}</td><td>${esc(x.createdByEmail||x.createdBy||'')}</td></tr>`).join('');
+ const expenseTable=seeExp?card('Expense Register & Outstanding Bills',`<div class="scroll"><table><thead><tr><th>Date</th><th>Expense</th><th>Amount</th><th>Status</th><th>Paid / handled By</th><th>Vendor</th><th>Recorded By</th></tr></thead><tbody>${expenseRows||'<tr><td colspan="7">No expenses yet</td></tr>'}</tbody></table></div>${canFin&&outstanding.length?`<form data-form="fin-settle" class="sub-form finance-edit"><h3>Mark Outstanding Bill as Paid</h3><div class="form-grid"><label class="field"><span>Bill</span><select name="dueId" required>${outstanding.map(e=>`<option value="${esc(e.id)}">${esc(e.category)} — ${money(e.amount)} — ${esc(e.description||'')}</option>`).join('')}</select></label>${field('Paid By','paidBy','','text','required maxlength="100"')}<label class="field"><span>Payment Mode</span>${dropdown('mode',payModes)}</label>${field('Paid Date','date',today(),'date','required')}</div><button class="btn primary" type="submit">Mark Bill Paid</button></form>`:''}`):'';
+ const categoryTotals=full?card('Expense Totals by Category',`<div class="scroll"><table><thead><tr><th>Category</th><th>Paid</th><th>Due</th></tr></thead><tbody>${expenseCategories.filter(cat=>expenseEvents().some(e=>e.category===cat)).map(cat=>`<tr><td>${esc(cat)}</td><td>${money(expenseEvents().filter(e=>e.category===cat&&e.status==='paid').reduce((n,e)=>n+Number(e.amount),0))}</td><td>${money(outstanding.filter(e=>e.category===cat).reduce((n,e)=>n+Number(e.amount),0))}</td></tr>`).join('')||'<tr><td colspan="3">No expenses yet</td></tr>'}</tbody></table></div>`):'';
+ const transferRegister=full?card('Internal Transfers Register',`<div class="scroll"><table><thead><tr><th>Date</th><th>From</th><th>To</th><th>Amount</th><th>Entered By</th></tr></thead><tbody>${transfers().map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.from)}</td><td>${esc(x.to)}</td><td>${money(x.amount)}</td><td>${esc(x.createdByEmail||x.createdBy||'')}</td></tr>`).join('')||'<tr><td colspan="5">No internal transfers</td></tr>'}</tbody></table></div>`):'';
+ const collector=full?card('Collector / Committee Member Balances',`<p class="helper">Collected money minus expenses paid personally, adjusted for internal transfers. Reconcile these totals against actual Cash / UPI accounts.</p><div class="scroll"><table><thead><tr><th>Person</th><th>Net held</th></tr></thead><tbody>${collectorSummary().map(([name,balance])=>`<tr><td>${esc(name)}</td><td>${money(balance)}</td></tr>`).join('')||'<tr><td colspan="2">No transactions</td></tr>'}</tbody></table></div>`):'';
+ const config=canFees?card('Tournament Ground Fee Settings',`<form data-form="fin-fee" class="sub-form finance-edit"><div class="form-grid">${field('Default fee per player (₹)','fee',finance.config?.feePerPlayer??200,'number','min="0" step="0.01" required')}<div class="field"><span>&nbsp;</span><button class="btn primary" type="submit">Save Default Fee</button></div></div><p class="helper">A new tournament shows NOT RECORDED until a fee is explicitly saved. Fee can be ₹0 when waived.</p></form><form data-form="fin-override" class="sub-form finance-edit"><h3>Individual Fee Override / Waiver</h3><div class="form-grid"><label class="field"><span>Player</span>${playerDropdown(t)}</label>${field('Special fee (₹)','fee','','number','min="0" step="0.01" required')}${field('Reason','reason','','text','maxlength="160"')}</div><button class="btn" type="submit">Save Individual Fee</button></form>`):'';
+ const transfer=canFin?card('Internal Cash / UPI Transfer',`<form data-form="fin-transfer" class="form-grid finance-edit">${field('From (collector)','from','','text','required maxlength="100"')}${field('To (collector)','to','','text','required maxlength="100"')}${field('Amount (₹)','amount','','number','min="0.01" step="0.01" required')}${field('Date','date',today(),'date','required')}<div class="full"><button class="btn primary" type="submit">Record Internal Transfer</button></div></form><p class="helper">Transfer only reallocates money between collectors; it does not change tournament income or profit.</p>`):'';
+ return `${full?`<section class="card"><h2>💰 Full Finance Dashboard · ${esc(t.name)}</h2><p class="helper">Super Admin has specifically granted the full finance view. Projected surplus is not cash already available.</p>${cards}</section>`:`<section class="card"><h2>💰 Finance · Limited Access</h2><p class="helper">You can access only the specific payment or expense functions granted by the Super Admin. Full income, expenditure, profit, collector balances and aggregate dashboard are private.</p></section>`}${config}${playerTable}${canPay?card('Record Payment',receiptForm(t)):''}${receiptsTable}${canFin?card('Record Expense',expenseForm()):''}${expenseTable}${categoryTotals}${collector}${transfer}${transferRegister}`;
+}
+function accessView(){if(!isSuper())return card('User Roles','<p>Only Super Admin can manage user permissions. Use “Request an Editing Role” above.</p>');
+ const list=Object.entries(accessList).sort((a,b)=>String(a[1].email||'').localeCompare(String(b[1].email||''))).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(id)}</small></td><td>${esc(x.role||'viewer')}</td><td>${x.active?'Active':'Disabled'}</td><td>${Object.entries(x.permissions||{}).filter(([,v])=>v).map(([k])=>esc(k)).join(', ')||'View only'}<small>Assigned tournaments: ${Object.values(accessScopesByUid[id]||{}).filter(v=>v.view||v.edit).length}</small></td><td><button class="btn" type="button" data-action="manage-user" data-id="${esc(id)}">Edit</button></td></tr>`).join('');
+ const req=Object.entries(accessRequests).map(([id,x])=>`<tr><td>${esc(x.email||id)}<small>${esc(x.name||'')} · ${esc(x.note||'')}</small></td><td><button class="btn" data-action="manage-user" data-id="${esc(id)}" type="button">Set Rights</button></td></tr>`).join('');
+ const selected=editor?.kind==='access'?editor.id:'';const existing=accessList[selected]||{};const selectedScopes=selected?(accessScopesByUid[selected]||{}):{};
+ const form=`<form data-form="access" class="sub-form access-panel"><h3>Assign or Revoke User Permissions</h3>
+ ${field('Firebase User UID (from their Copy UID button)','userUid',selected,'text','required maxlength="128"')}
+ ${field('User email (label)','userEmail',existing.email||accessRequests[selected]?.email||'','email','maxlength="160"')}
+ <label class="field"><span>Role Preset (then customize individual rights below)</span><select name="role" id="role-preset">${Object.keys(rolePresets).map(role=>`<option value="${esc(role)}" ${existing.role===role?'selected':''}>${esc(role)}</option>`).join('')}</select></label>
+ <label class="choice"><input name="active" type="checkbox" ${existing.active===false?'':'checked'}> Account role active</label>
+ <div class="checklist">${permissionsList.map(([key,label])=>`<label class="choice"><input name="perm" type="checkbox" value="${esc(key)}" ${existing.permissions?.[key]?'checked':''}> ${esc(label)}</label>`).join('')}</div>
+ <section class="full"><h4>🏆 Per-Tournament View / Edit Access</h4><p class="scope-help">Super Admin chooses exactly which tournaments this account can see, and which it can change. A role alone cannot edit any tournament unless Edit is granted here. Published tournaments are visible to all signed-in viewers regardless of private assignment.</p>
+ <div class="scope-grid">${store.tournaments.map(t=>{const scope=selectedScopes[t.id]||{};return `<div class="scope-line"><b>${esc(t.name)}</b><label class="choice"><input type="checkbox" name="scopeView" value="${esc(t.id)}" ${scope.view||scope.edit?'checked':''}> View</label><label class="choice"><input type="checkbox" name="scopeEdit" value="${esc(t.id)}" ${scope.edit?'checked':''}> Edit</label></div>`}).join('')||'<p>No tournaments yet</p>'}</div></section>
+ <div class="actions"><button type="button" data-action="apply-role-preset" class="btn">Fill Permissions from Role</button><button class="btn primary" type="submit">Save User Permissions & Tournament Access</button></div>
+ <p class="helper">Original Super Admin access under admins/&lt;uid&gt; is preserved. Grant Super Admin rights only to trusted committee owners.</p></form>`;
+ return card('Super Admin · User & Roles Dashboard',`<h3>Pending Access Requests</h3><div class="scroll"><table><tbody>${req||'<tr><td>No pending requests</td></tr>'}</tbody></table></div>${form}<h3>Users with Explicit Permissions</h3><div class="scroll"><table><thead><tr><th>User</th><th>Role</th><th>Status</th><th>Permissions</th><th>Actions</th></tr></thead><tbody>${list||'<tr><td colspan="5">No managed users yet</td></tr>'}</tbody></table></div>`);
+}
+async function createFinanceEvent(kind,payload,forcedId=null){
+ if(!authUser||!active()||!editScope(active().id))throw Error('You need tournament-specific Edit access to save payments.');
+ const p=`v3/finance/${active().id}`;
+ const branch=kind==='receipt'?'payments':kind==='expense'?'expenses':'transfers';
+ const right=kind==='receipt'?'paymentsWrite':'financeWrite';if(!can(right))throw Error('You do not have '+right+' permission');
+ const id=forcedId||uid('fin');const record={...payload,createdBy:authUser.uid,createdByEmail:authUser.email||'',createdAt:Date.now()};
+ await set(ref(db,`${p}/${branch}/${id}`),record);
+ notice='Financial entry saved online. Other devices will update automatically.';render();
+}
+async function financeSubmit(kind,data){
+ const t=active(),get=x=>String(data.get(x)||'').trim();if(!t)throw Error('No tournament selected');
+ if(kind==='fin-fee'){
+  if(!can('feesWrite'))throw Error('Ground fee settings and tournament Edit permission required');const fee=safeAmount(data.get('fee'),true);
+  await update(ref(db,`v3/finance/${t.id}/config`),{feePerPlayer:fee,updatedBy:authUser.uid,updatedAt:Date.now()});return;
+ }
+ if(kind==='fin-override'){
+  if(!can('feesWrite'))throw Error('Ground fee settings and tournament Edit permission required');const id=get('playerId');if(!playersOf(t).some(p=>p.id===id))throw Error('Player not found');
+  await set(ref(db,`v3/finance/${t.id}/overrides/${id}`),{fee:safeAmount(data.get('fee'),true),reason:get('reason'),updatedBy:authUser.uid,updatedAt:Date.now()});return;
+ }
+ if(kind==='fin-receipt'){
+  const id=get('playerId');if(!playersOf(t).some(p=>p.id===id))throw Error('Player not found');
+  const mode=get('mode'),kind=get('kind'),receivedBy=get('receivedBy');if(!payModes.includes(mode)||!['payment','refund'].includes(kind)||!receivedBy)throw Error('Missing payment details');
+  const amount=safeAmount(data.get('amount'));
+  if(receipts().some(r=>r.playerId===id&&r.kind===kind&&Number(r.amount)===amount&&r.mode===mode&&r.receivedBy===receivedBy&&r.date===get('date'))&&!confirm('A matching payment already exists for this player today. Record a second separate transaction?'))return;
+  await createFinanceEvent('receipt',{playerId:id,kind,amount,mode,receivedBy,date:get('date'),reference:get('reference'),notes:get('notes')});return;
+ }
+ if(kind==='fin-expense'){
+  const cat=get('category'),status=get('status');if(!expenseCategories.includes(cat)||!['due','paid'].includes(status)||!get('paidBy'))throw Error('Missing expense details');
+  if(cat==='Other / Custom'&&!get('description'))throw Error('Describe the custom expense');
+  await createFinanceEvent('expense',{category:cat,description:get('description'),amount:safeAmount(data.get('amount')),status,mode:get('mode'),paidBy:get('paidBy'),vendor:get('vendor'),date:get('date')});return;
+ }
+ if(kind==='fin-settle'){
+  const dueId=get('dueId'),bill=finance.expenses?.[dueId];if(!bill||bill.status!=='due')throw Error('Pending bill not found');
+  if(expenseEvents().some(x=>x.status==='paid'&&x.settledDueId===dueId))throw Error('This bill is already marked paid');
+  await createFinanceEvent('expense',{...(({category,description,vendor,amount})=>({category,description,vendor,amount}))(bill),status:'paid',settledDueId:dueId,mode:get('mode'),paidBy:get('paidBy'),date:get('date')},dueId+'_settled');return;
+ }
+ if(kind==='fin-transfer'){
+  if(!get('from')||!get('to')||get('from')===get('to'))throw Error('Choose two different collector names');
+  await createFinanceEvent('transfer',{from:get('from'),to:get('to'),amount:safeAmount(data.get('amount')),date:get('date')});return;
+ }
+}
+async function accessSubmit(data){
+ if(!isSuper())throw Error('Super Admin only');
+ const uidString=String(data.get('userUid')||'').trim(),role=String(data.get('role')||'viewer');
+ if(!/^[A-Za-z0-9_-]{8,128}$/.test(uidString))throw Error('Invalid Firebase User UID');
+ if(!(role in rolePresets))throw Error('Unknown role');
+ const permitted=new Set(data.getAll('perm').map(String));
+ if(permitted.has('paymentsRead')&&permitted.has('financeRead')&&!permitted.has('financeDashboardRead'))throw Error('Full accounts would be reconstructable from both ledgers. Grant the explicit Full Finance Dashboard permission or choose one ledger only.');
+ const permissions=Object.fromEntries(permissionsList.map(([key])=>[key,permitted.has(key)]));
+ if(role==='super'&&!confirm('Give this person FULL Super Admin control, including finance and user permissions?'))return;
+ const views=new Set(data.getAll('scopeView').map(String)),edits=new Set(data.getAll('scopeEdit').map(String));
+ if(role==='viewer'&&(edits.size||permitted.size))throw Error('Viewer Only must have no editing or finance permissions. Select a different role first.');
+ const userScopes=Object.fromEntries(store.tournaments.filter(t=>views.has(t.id)||edits.has(t.id)).map(t=>[t.id,{view:true,edit:edits.has(t.id)}]));
+ const updates={['v3/access/'+uidString]:{role,active:data.has('active'),permissions,email:String(data.get('userEmail')||'').trim(),updatedBy:authUser.uid,updatedAt:Date.now()},['v3/accessRequests/'+uidString]:null};
+ // A single multi-path update makes the assigned role and its tournament scopes consistent.
+ const oldScopes=dataObj(accessScopesByUid[uidString]);
+ for(const id of new Set([...Object.keys(oldScopes),...Object.keys(userScopes)]))updates['v3/tournamentAccess/'+uidString+'/'+id]=userScopes[id]||null;
+ await update(ref(db),updates);
+ editor=null;notice='User permissions saved to V3 Firebase.';render();
+}
+
+function playerPicker(){const names=libraryNames();return names.length?`<div class="reusable-picker"><p class="helper">Choose saved player names. These are copied as new, independent tournament players.</p><div class="reuse-grid">${names.map(name=>`<label class="choice"><input type="checkbox" name="reusePlayer" value="${esc(name)}"> ${esc(name)}</label>`).join('')}</div></div>`:'<p class="helper">No saved players yet. Add players to a team first.</p>'}
+function sourceTeamPicker(){const src=store.tournaments.find(t=>t.id===document.querySelector('form[data-form="tournament"] [name="copyFrom"]')?.value);const target=document.getElementById('source-team-picker');if(!target)return;target.innerHTML=src?`<div class="reuse-grid">${src.teams.map(team=>`<label class="choice"><input type="checkbox" name="copyTeam" value="${esc(team.id)}" checked><span><b>${esc(team.name)}</b> · ${team.players.length} players<small>${esc(team.players.map(p=>p.name).join(', '))}</small></span></label>`).join('')}</div><p class="helper">Only names and rosters will be copied. Previous categories, fixtures and results stay in the original tournament.</p>`:'<p class="helper">Choose a previous tournament above to select its teams.</p>'}
+
+function dateShow(d){return /^\d{4}-\d{2}-\d{2}$/.test(d||'')?`${d.slice(8,10)}-${d.slice(5,7)}-${d.slice(0,4)}`:'Date not set'}
+function lookup(t,id){return t.categories.find(c=>c.id===id)}
+function participants(t,m){const c=lookup(t,m.categoryId);return [entryLabel(t,c,m.a),entryLabel(t,c,m.b)]}
+function personLink(player){return `<button type="button" class="name-link" data-action="view-player" data-id="${esc(player.id)}" title="See player match history">${esc(player.name)}</button>`}
+function teamLink(team){return `<button type="button" class="name-link team-link" data-action="view-team" data-id="${esc(team.id)}" title="See team results">${esc(team.name)}</button>`}
+function categoryLink(cat){return `<button type="button" class="name-link category-link" data-action="view-category" data-id="${esc(cat.id)}" title="View category groups, players, fixtures, results and standings">${esc(cat.name)}</button>`}
+
+function linkedEntry(t,cat,entryId){
+ const e=cat?.entrants?.find(e=>e.id===entryId);if(!e)return '<span class="helper">TBD</span>';
+ const team=t.teams.find(x=>x.id===e.teamId);
+ return e.playerIds.map(pid=>{const p=team?.players.find(p=>p.id===pid);return p?personLink(p):'?'}).join(' <span class="and">&amp;</span> ');
+}
+function groupLabel(cat,groupId){return cat?.groups?.find(g=>g.id===groupId)?.name||'General'}
+function categoryDetailModal(t,c){
+ const rule=effectiveRules(t,c),format=effectiveFormat(t,c);
+ const matches=t.fixtures.filter(m=>m.categoryId===c.id).sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court);
+ const done=matches.filter(m=>scoreWinner(t.results[m.id],rule)).length;
+ const allGroups=[{id:null,name:'General / Ungrouped'},...(c.groups||[])];
+ const groupBlocks=allGroups.map(g=>{
+  const entries=c.entrants.filter(e=>(e.groupId||null)===g.id);
+  if(!entries.length&&g.id===null)return '';
+  const ranks=['league','combined'].includes(format)?standings(t,c.id,g.id):[];
+  const table=ranks.length?`<div class="scroll"><table><thead><tr><th>#</th><th>Players / Entry</th><th>P</th><th>W</th><th>L</th><th>PTS</th></tr></thead><tbody>${ranks.map((r,i)=>`<tr><td>${i+1}</td><td>${linkedEntry(t,c,r.id)}</td><td>${r.p}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}</tbody></table></div>`:'<p class="helper">No league standings for this group.</p>';
+  return `<section class="category-group"><h4>${esc(g.name)} — ${entries.length} entries</h4><div class="category-entries">${entries.map(e=>{const team=t.teams.find(x=>x.id===e.teamId);return `<div class="entry-line"><span>${linkedEntry(t,c,e.id)}</span><span>${team?teamLink(team):'—'}</span></div>`}).join('')||'<p class="helper">No entries assigned.</p>'}</div>${table}</section>`;
+ }).join('');
+ const matchRows=matches.map(m=>{
+  const r=t.results[m.id],win=scoreWinner(r,rule),[a,b]=participants(t,m);
+  const outcome=!win?'Pending':r.mode==='winner'?`WON: ${win==='a'?a:b} · Score not recorded`:`${r.a} – ${r.b} · WON: ${win==='a'?a:b}`;
+  return `<tr><td>${m.stage==='knockout'?esc(koRoundLabel(t,m)):'League'}<small>Slot ${esc(m.slot||'—')} · Court ${esc(m.court||'—')}</small></td><td>${esc(groupLabel(c,m.groupId))}</td><td>${linkedEntry(t,c,m.a)} <span class="vs">VS</span> ${linkedEntry(t,c,m.b)}</td><td class="${win?'winner':''}">${esc(outcome)}</td></tr>`;
+ }).join('');
+ return `<div class="profile-overlay noprint" data-action="close-profile" role="presentation"><section class="profile-dialog category-dialog" role="dialog" aria-modal="true" aria-label="Category ${esc(c.name)} full details"><div class="profile-head"><div><span class="eyebrow">Category Details · ${esc(t.name)} · ${esc(dateShow(t.date))}</span><h2>${esc(c.name)}</h2></div>${button('✕ Close','close-profile','','danger-outline')}</div><div class="profile-stats"><span><b>${c.entrants.length}</b> Entries</span><span><b>${new Set(c.entrants.map(e=>e.teamId)).size}</b> Teams</span><span><b>${c.groups?.length||0}</b> Groups</span><span><b>${matches.length}</b> Fixtures</span><span><b class="winner">${done}</b> Completed</span><span><b>${matches.length-done}</b> Pending</span></div><div class="category-rule"><b>${esc(format.toUpperCase())}</b><span>Target: ${rule.target}</span><span>${rule.winByTwo?'Win by 2':'No win-by-2'}</span><span>Cutoff: ${rule.cutoff??'None'}</span><span>Win/Loss points: ${rule.winPoints}/${rule.lossPoints}</span></div><h3>Groups · Teams · Players · Points Table</h3>${groupBlocks||'<p class="helper">No groups or entries yet.</p>'}<h3>All Matches, Courts, Scores & Winners</h3><div class="scroll"><table><thead><tr><th>Stage / Slot</th><th>Group</th><th>Players</th><th>Result / Score</th></tr></thead><tbody>${matchRows||'<tr><td colspan="4">Generate fixtures to see match details.</td></tr>'}</tbody></table></div></section></div>`;
+}
+function detailModal(t){
+ if(!profile)return '';
+ if(profile.kind==='category'){const c=lookup(t,profile.id);return c?categoryDetailModal(t,c):''}
+ let d,isPlayer=profile.kind==='player';try{d=isPlayer?playerHistory(t,profile.id):teamHistory(t,profile.id)}catch{return ''}
+ const roster=isPlayer?`<div class="profile-summary">Team: ${teamLink(t.teams.find(x=>x.id===d.teamId))}</div>`:
+  `<div class="profile-roster">${d.players.map(p=>personLink(p)).join('')}</div>`;
+ const rows=d.matches.map(m=>`<tr><td>${esc(m.category)}<small>${esc(m.group)}</small></td><td>${esc(m.stage==='knockout'?'Knockout':'League')}<small>Slot ${esc(m.slot||'—')} · Court ${esc(m.court||'—')}</small></td><td>${isPlayer?'':`<small>${esc(m.players)}</small>`}${esc(m.opponent)}</td><td><b>${esc(m.score)}</b></td><td class="${m.outcome==='win'?'winner':m.outcome==='loss'?'loser':''}">${m.outcome==='win'?'WON':m.outcome==='loss'?'LOST':'Pending'}</td></tr>`).join('');
+ return `<div class="profile-overlay noprint" data-action="close-profile" role="presentation"><section class="profile-dialog" role="dialog" aria-modal="true" aria-label="${esc(d.name)} match details"><div class="profile-head"><div><span class="eyebrow">${isPlayer?'Player':'Team'} Profile · ${esc(t.name)}</span><h2>${esc(d.name)}</h2></div>${button('✕ Close','close-profile','','danger-outline')}</div>${roster}<div class="profile-stats"><span><b>${d.matches.length}</b> Matches</span><span><b>${d.played}</b> Played</span><span><b class="winner">${d.wins}</b> Won</span><span><b class="loser">${d.losses}</b> Lost</span><span><b>${d.pointsFor}–${d.pointsAgainst}</b> Recorded Score For–Against</span></div><p class="helper">Scores are the pair / team match scores, not individual rally points. ${d.withoutNumericScore?d.withoutNumericScore+' result(s) have no recorded numeric score.':''}</p><h3>Match History, Scores & Opponents</h3><div class="scroll"><table><thead><tr><th>Category / Group</th><th>Match</th><th>Opponent</th><th>Score</th><th>Result</th></tr></thead><tbody>${rows||'<tr><td colspan="5">No fixtures for this player/team yet.</td></tr>'}</tbody></table></div></section></div>`;
+}
+
+function button(label,action,data='',kind=''){return `<button class="btn ${kind}" type="button" data-action="${esc(action)}" ${data}>${label}</button>`}
+function field(label,name,value='',type='text',other=''){return `<label class="field"><span>${label}</span><input name="${name}" type="${type}" value="${esc(value)}" ${other}></label>`}
+function selectField(label,name,values,selected){return `<label class="field"><span>${label}</span><select name="${name}">${values.map(([value,text])=>`<option value="${esc(value)}" ${value===selected?'selected':''}>${esc(text)}</option>`).join('')}</select></label>`}
+function card(title,body,tools=''){return `<section class="card"><div class="section-head"><h2>${esc(title)}</h2><div class="actions noprint">${tools}</div></div>${body}</section>`}
+function tournamentVisibilityPanel(){
+ if(!isSuper())return '';
+ return `<section class="card visibility-panel"><div class="section-head"><h2>🔒 Super Admin · Tournament Visibility</h2></div>
+ <p class="helper">PRIVATE is the default. Publish an individual tournament to show it to signed-in viewers. Unpublishing hides its roster, results, fixtures and standings from viewers; authorized private users can still see it. Only Super Admin can change publication.</p>
+ <div class="visibility-grid">${store.tournaments.map(t=>`<div class="visibility-row"><div><b>${esc(t.name)}</b><small style="display:block;color:#62738b">${esc(dateShow(t.date))} · ${publicTournaments[t.id]?'Published to viewers':'Private / Not published'}</small></div>
+ <button type="button" class="btn ${publicTournaments[t.id]?'danger-outline':'primary'}" data-action="toggle-tournament-public" data-id="${esc(t.id)}">${publicTournaments[t.id]?'Hide from Viewers':'Show to Viewers'}</button></div>`).join('')}</div>
+ <p class="helper">To choose WHICH PERSON may edit WHICH tournament, open 🛡 User Roles → Select user → Per-Tournament View / Edit Access.</p></section>`;
+}
+function renderTournamentSwitcher(){
+ const root=document.getElementById('global-tour-control');
+ if(!authUser||!remoteReady||!store.tournaments.length){root.hidden=true;root.innerHTML='';return}
+ root.hidden=false;
+ const t=active();
+ root.innerHTML=`<div class="switch-copy"><strong>🏆 ACTIVE TOURNAMENT</strong><small>Switch anywhere — current tab stays open</small></div>
+ <select id="tournament-switcher" aria-label="Choose active tournament">${store.tournaments.map(x=>`<option value="${esc(x.id)}" ${x.id===t?.id?'selected':''}>${esc(x.name)} · ${esc(dateShow(x.date))}</option>`).join('')}</select>
+ <span class="scope-label">${isSuper()?'SUPER ADMIN':editScope(t?.id)?'EDIT ACCESS':'VIEW ONLY'}</span>`;
+}
+function switchTournament(id){
+ if(!store.tournaments.some(t=>t.id===id)||id===store.selected)return;
+ if(writePending){alert('Finish saving the current change before switching tournaments.');render();return}
+ if(unsavedFormChanges&&!confirm('You have unsaved form entries. Switch tournament and discard those unsaved entries?')){render();return}
+ unsavedFormChanges=false;store.selected=id;remember();editor=null;profile=null;printCategory='all';printGroup='all';
+ financeFor='';watchFinance();render();
+}
+const viewerActions=new Set(['open-tournament','tournament-section','close-profile','view-player','view-team','view-category','print-now','export','cancel','manage-user','apply-role-preset']);
+function render(){
+ authState();
+ const nav=document.querySelector('nav[aria-label="Tournament management"]'),content=document.getElementById('view');
+ renderTournamentSwitcher();
+ document.querySelectorAll('[data-page]').forEach(el=>el.classList.toggle('selected',el.dataset.page===page));
+ document.getElementById('notice').innerHTML=notice?`<div class="notice">${esc(notice)}</div>`:'';
+ document.querySelector('[data-page="access"]').hidden=!isSuper();
+ document.querySelector('[data-page="finance"]').hidden=!canViewFinance();
+ if(!canViewFinance()){if(page==='finance')page='tournaments';}
+ if(!canSeePayments()&&printReport==='payments')printReport='fixtures';
+ document.getElementById('venue-public').innerHTML=authUser&&remoteReady&&active()?venueCard(active()):'';drawVenueQr();
+ if(!authUser){nav.hidden=true;content.innerHTML='<section class="card"><h2>Sign in to view online tournaments</h2><p>Use Google or Email/Password login above. All new users are Viewer by default.</p></section>';document.getElementById('profile-layer').innerHTML='';return}
+ if(readError){nav.hidden=true;content.innerHTML=`<section class="card"><h2>Firebase Read Error</h2><p>${esc(readError)}</p><p>Check the Production Firebase Database Rules before using this app.</p></section>`;return}
+ if(!remoteReady){nav.hidden=true;content.innerHTML='<section class="card"><h2>Connecting to Production Firebase…</h2></section>';return}
+ nav.hidden=false;
+ const t=active();if(!t&&page!=='access'){
+   content.innerHTML=editor?.kind==='create'?tournamentView(null):isSuper()?`<section class="card"><h2>No tournaments in Production</h2><p>There are no tournaments in this database. Create a tournament, or restore a verified backup through Firebase Console.</p>${button('Create New Tournament','new-tournament')}</section>`:
+   '<section class="card"><h2>No tournaments available to this account</h2><p>Super Admin must publish a tournament or grant you private View access. Hidden tournaments cannot be opened directly.</p></section>';
+   document.getElementById('profile-layer').innerHTML='';return;
+ }
+ const views={tournaments:tournamentView,teams:teamView,categories:categoryView,groups:groupView,fixtures:fixtureView,results:resultView,standings:standingsView,settings:settingsView,finance:financeView,access:accessView,print:printView};
+ content.innerHTML=page==='access'?accessView():((page==='tournaments'&&isSuper()?tournamentVisibilityPanel():'')+(views[page]?.(t)||''));
+ document.getElementById('profile-layer').innerHTML=t?detailModal(t):'';
+ if(t)document.getElementById('print-rule').textContent=`@page{size:A4 ${t.settings?.printOrientation==='portrait'?'portrait':'landscape'};margin:0}@media print{.print-sheet{font-size:${t.settings?.printFontSize||17}px}}`;
+ document.querySelectorAll('[data-action]').forEach(el=>{if(!authorized(el.dataset.action))el.hidden=true});
+ document.querySelectorAll('form[data-form]').forEach(form=>{
+  const kind=form.dataset.form;
+  const k=kind==='result'?'scoresWrite':kind==='settings'?'settingsWrite':kind==='tournament'?(editor?.kind==='create'?'tournamentWrite':'settingsWrite'):
+    ['new-team','team'].includes(kind)?'teamsWrite':['new-category','category','entry','new-group','rename-group'].includes(kind)?'categoriesWrite':null;
+  if(k&&!can(k))form.querySelectorAll('button[type=submit],input,select,textarea').forEach(el=>el.disabled=true);
+ });
+ if(writePending)document.querySelectorAll('form[data-form] button[type="submit"]').forEach(el=>el.disabled=true);
+}
+function tournamentSummary(t){
+ const total=t.fixtures?.length||0,played=(t.fixtures||[]).filter(m=>{const c=lookup(t,m.categoryId);return c&&scoreWinner(t.results[m.id],effectiveRules(t,c))}).length;
+ return {total,played,remaining:total-played,teams:t.teams.length,players:t.teams.reduce((n,x)=>n+x.players.length,0),categories:t.categories.length,groups:t.categories.reduce((n,c)=>n+(c.groups||[]).length,0)};
+}
+function tournamentHistoryPanel(t){
+ const arr=[...t.fixtures].sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court);
+ const items=arr.map(m=>{
+  const c=lookup(t,m.categoryId);if(!c)return '';
+  const names=participants(t,m),r=t.results[m.id],win=scoreWinner(r,effectiveRules(t,c));
+  const score=!win?'Not played':r.mode==='winner'?'Score not recorded':`${r.a} – ${r.b}`;
+  const winner=win?names[win==='a'?0:1]:'';
+  return `<tr><td>Slot ${m.slot||'—'}<small>Court ${m.court||'—'}</small></td><td>${categoryLink(c)}<small>${esc(groupLabel(c,m.groupId))} · ${esc(m.stage)}</small></td><td>${esc(names[0])}<br><span class="muted">VS</span><br>${esc(names[1])}</td><td><b>${esc(score)}</b></td><td>${winner?`<span class="win">🏆 ${esc(winner)}</span>`:'<span class="pending">Pending</span>'}</td></tr>`;
+ }).join('');
+ const s=tournamentSummary(t);
+ return `<h3>📜 Full Tournament History</h3><p class="helper">${s.played} completed of ${s.total} matches. History covers every category, group and court in this tournament.</p><div class="tour-history"><table><thead><tr><th>Slot / Court</th><th>Category / Group</th><th>Players / Pair</th><th>Score</th><th>Winner</th></tr></thead><tbody>${items||'<tr><td colspan="5">No fixtures yet. Create categories and fixtures first.</td></tr>'}</tbody></table></div>`;
+}
+const PROVIDED_VENUE_URL='https://maps.app.goo.gl/CzEkGAamLzLemngVA';
+function safeVenueUrl(raw){
+ const value=String(raw||'').trim();if(!value)return '';
+ let url;try{url=new URL(value)}catch{throw Error('Enter a valid HTTPS location link, for example a Google Maps share link.')}
+ if(url.protocol!=='https:'||!url.hostname)throw Error('Location link must begin with https://');
+ return url.href;
+}
+function venueCard(t){
+ const url=t.venueUrl||'';if(!url)return '';
+ let valid='';try{valid=safeVenueUrl(url)}catch{return ''}
+ return `<aside class="venue-location"><div><strong>📍 Tournament Location</strong><small>Scan me for location · Open in Maps</small><a href="${esc(valid)}" target="_blank" rel="noopener noreferrer">📍 Open Location</a></div><div class="venue-qr" data-venue-url="${esc(valid)}" aria-label="QR code for tournament location"><small>Scan me</small></div></aside>`;
+}
+function drawVenueQr(){
+ const root=document.getElementById('venue-public');if(!root)return;
+ for(const box of root.querySelectorAll('[data-venue-url]')){
+   const url=box.dataset.venueUrl;
+   if(typeof window.QRCode==='function'){
+     box.textContent='';try{new window.QRCode(box,{text:url,width:102,height:102,colorDark:'#101f3a',colorLight:'#ffffff',correctLevel:window.QRCode.CorrectLevel.M})}catch(e){box.textContent='Open location link';}
+   }else if(url===PROVIDED_VENUE_URL)box.innerHTML='<img src="./venue-location-qr.png" width="102" height="102" alt="Scan for tournament location">';else box.innerHTML='<small>QR unavailable; use Open Location link.</small>';
+ }
+}
+function tournamentDetailsPanel(t){
+ const s=tournamentSummary(t);
+ const facts=[['Teams',s.teams],['Players',s.players],['Categories',s.categories],['Groups',s.groups],['Matches',s.total],['Completed',s.played],['Pending',s.remaining],['Courts',t.courts]];
+ return `<span class="eyebrow">Selected tournament</span><h3 style="font-size:22px">${esc(t.name)}</h3><p class="helper">📅 ${esc(dateShow(t.date))} · 🏆 ${esc(t.format.toUpperCase())} · ${t.courts} court(s)</p>
+ ${!t.venueUrl&&isSuper()?`<p class="helper">📍 Location link not added. Click Edit Tournament to add a Google Maps URL; the QR code will then appear automatically for all viewers.</p>`:''}
+ <div class="tour-facts">${facts.map(([label,value])=>`<div class="tour-fact"><b>${value}</b><span>${label}</span></div>`).join('')}</div>
+ <div class="tour-section"><h4>🗂 Categories & Groups</h4>${t.categories.map(c=>`<div class="tour-detail-line"><div>${categoryLink(c)} <small class="helper">${c.entrants.length} entries · ${(c.groups||[]).length} group(s)</small></div><span class="helper">${esc(effectiveFormat(t,c))} · Target ${effectiveRules(t,c).target}</span></div>`).join('')||'<p class="helper">No categories added yet.</p>'}</div>
+ <div class="tour-section"><h4>👥 Teams & Players</h4><div class="tour-detail-roster">${t.teams.map(team=>`<div class="tour-detail-line"><div>${teamLink(team)}<small class="helper">${team.players.map(p=>esc(p.name)).join(' · ')||'No players'}</small></div><span class="helper">${team.players.length} player(s)</span></div>`).join('')||'<p class="helper">No teams added yet.</p>'}</div></div>
+ <div class="tour-section"><h4>📊 Scoring Settings</h4><p class="helper">Target ${t.rules.target}; ${t.rules.winByTwo?'Win by 2':'No 2-point lead required'}; Cutoff ${t.rules.cutoff??'None'}; League win ${t.rules.winPoints} pts, loss ${t.rules.lossPoints} pts.</p></div>`;
+}
+function tournamentLibrary(t){
+ return `<div class="tournament-grid"><section class="tournament-column" aria-label="All tournaments">
+ <div class="tournament-pane"><h3>🏆 All Tournaments (${store.tournaments.length})</h3><p class="helper">All available production tournaments are listed.</p>
+ ${store.tournaments.map(one=>{const s=tournamentSummary(one);return `<button class="tournament-pick" type="button" data-action="open-tournament" data-id="${esc(one.id)}" aria-pressed="${one.id===t.id?'true':'false'}"><strong>${esc(one.name)}</strong><small>📅 ${esc(dateShow(one.date))}</small><small>👥 ${s.teams} teams · 🗂 ${s.categories} categories · 🏟 ${one.courts} courts</small><span class="tour-badge">${s.played} / ${s.total} matches completed</span></button>`}).join('')}
+ </div>
+ </section><section class="tournament-pane" aria-label="Tournament details and history"><div class="tour-pane-tabs"><button class="btn" type="button" data-action="tournament-section" data-section="details" aria-pressed="${tournamentPanel==='details'}">📋 Full Details</button><button class="btn" type="button" data-action="tournament-section" data-section="history" aria-pressed="${tournamentPanel==='history'}">📜 History & Scores</button></div>${tournamentPanel==='history'?tournamentHistoryPanel(t):tournamentDetailsPanel(t)}</section></div>`;
+}
+// Handles a local Realtime Database root JSON export with {tournaments:{...},scores:{...}}.
+// No Firebase credentials are read or required. Admin/user data is ignored.
+function legacyJsonForImport(payload){
+ const root=payload?.data&&payload.data.tournaments?payload.data:payload;
+ if(!root||!root.tournaments||Array.isArray(root.tournaments))throw Error('Expected Firebase JSON with a tournaments object at the root.');
+ const records=Object.entries(root.tournaments).filter(([key,x])=>x&&Array.isArray(x.teams));
+ need(records.length,'No compatible tournaments found. Use the Firebase Realtime Database root JSON export.');
+ const add=[];
+ for(const [key,old] of records){
+  if(store.tournaments.some(t=>t.legacySourceId===key))continue;
+  const converted=legacyToV2(old,root.scores?.[key]||{});
+  converted.tournament.legacySourceId=key;
+  converted.tournament.importedFrom='firebase-json-backup';
+  add.push(converted.tournament);
+ }
+ return add;
+}
+function tournamentView(t){
+ if(editor?.kind==='tournament'||editor?.kind==='create'){
+  const isNew=editor.kind==='create',d=isNew?{name:'',date:'',courts:2,format:'league'}:t;
+  return card(isNew?'Create New Tournament':'Edit Tournament',`<form data-form="tournament" class="form-grid">
+   ${field('Tournament name','name',d.name,'text','required maxlength="100"')}
+   ${field('Tournament date','date',d.date,'date')}
+   ${field('Venue Location URL (HTTPS Google Maps link; QR code auto-generates)','venueUrl',d.venueUrl||'','url','placeholder="https://maps.app.goo.gl/..."')}
+   <div class="full actions">${button('📍 Use supplied Maps location','use-provided-venue')}<small class="helper">Sets this link only for the tournament you are editing. Save Tournament to publish its location and QR. Existing venues are not overwritten automatically.</small></div>
+   ${field('Number of courts','courts',d.courts,'number','min="1" required')}
+   ${selectField('Tournament format','format',[['league','League'],['knockout','Knockout'],['combined','League + Knockout']],d.format)}
+   ${isNew?`<div class="full reuse-section"><h3>Reuse Existing Teams & Players</h3><p class="helper">Start blank or import selected team rosters from an earlier tournament. This will not copy scores, fixtures or categories.</p>${selectField('Copy teams from tournament','copyFrom',[['','Start blank'],...store.tournaments.map(x=>[x.id,x.name+' · '+dateShow(x.date)])],'')}<div id="source-team-picker"><p class="helper">Choose a source tournament to see its teams.</p></div><details><summary>Or select saved individual player names</summary>${field('Team name for these selected players','poolName','Selected Players','text')}${playerPicker()}</details></div>`:''}
+   <div class="full actions"> <button class="btn primary" type="submit">Save Tournament</button>${button('Cancel','cancel')}</div>
+  </form>`);
+ }
+ return card('Tournament Management',`${tournamentLibrary(t)}<p class="helper noprint" style="margin-top:14px">Read-only view. To change the tournament name or date, choose Edit Tournament; player/team names can be edited only from their own Edit buttons.</p>`,
+ `${button('✏ Edit Tournament','edit-tournament')}${button('＋ New Tournament','new-tournament')}${button('🗑 Delete Tournament','delete-tournament','','danger-outline')}`);
+}
+function teamView(t){
+ const list=t.teams.map(team=>{
+  const roster=team.players.map((p,i)=>`<div class="player"><span class="player-num">${i+1}</span>${personLink(p)}</div>`).join('');
+  if(editor?.kind==='team'&&editor.id===team.id){
+   return `<div class="team-box"><form data-form="team" data-id="${esc(team.id)}">
+    ${field('Team name','teamName',team.name,'text','required')}
+    <label class="field"><span>Player names — one name per line</span><textarea name="players" rows="8">${esc(team.players.map(p=>p.name).join('\n'))}</textarea></label>
+    <p class="helper">Keeping the same lines in the same order preserves existing player IDs. A completed match may prevent removing a player from a category.</p>
+    <div class="actions"><button class="btn primary" type="submit">Save Team & Players</button>${button('Cancel','cancel')}</div>
+   </form></div>`;
+  }
+  return `<div class="team-box"><div class="section-head"><h3>${teamLink(team)}</h3><div class="actions noprint">${button('✏ Edit Team & Players','edit-team',`data-id="${esc(team.id)}"`)}${button('Remove','remove-team',`data-id="${esc(team.id)}"`,'danger-outline')}</div></div>
+  <div class="players">${roster||'<span class="helper">No players</span>'}</div></div>`;
+ }).join('');
+ const add=editor?.kind==='new-team'?`<form data-form="new-team" class="team-box"><h3>Add New Team</h3>${field('Team name','teamName','','text','required')}<label class="field"><span>Players — one name per line (any number)</span><textarea name="players" rows="5" placeholder="Player One&#10;Player Two"></textarea></label><details class="reusable-picker"><summary>＋ Select Existing Player Names (no retyping)</summary>${playerPicker()}</details><div class="actions"><button class="btn primary" type="submit">Save New Team</button>${button('Cancel','cancel')}</div></form>`:'';
+ return card(`Teams & Players (${t.teams.length})`,`${add}${list}`,button('＋ Add New Team','new-team'));
+}
+function categoryView(t){
+ const catCards=t.categories.map(c=>{
+  const rows=c.entrants.map(e=>{let team=t.teams.find(x=>x.id===e.teamId);return `<div class="entry-line"><span><strong>${linkedEntry(t,c,e.id)}</strong><small>${team?teamLink(team):''} · ${esc(groupLabel(c,e.groupId))}</small></span>${button('Remove','remove-entry',`data-id="${esc(e.id)}" data-cat="${esc(c.id)}"`,'danger-outline')}</div>`}).join('');
+  const rule=effectiveRules(t,c);
+  const edit=editor?.kind==='category'&&editor.id===c.id;
+  const editorForm=edit?`<form data-form="category" data-id="${esc(c.id)}" class="sub-form">
+   ${field('Category name','name',c.name,'text','required')}
+   ${selectField('Format','format',[['','Inherit tournament format'],['league','League'],['knockout','Knockout'],['combined','League + Knockout']],c.format||'')}
+   <label class="choice"><input type="checkbox" name="override" ${c.rules?'checked':''}> Custom rules for this category (otherwise tournament defaults)</label>
+   <div class="form-grid">${field('Target score','target',rule.target,'number','min="1"')}${field('Cutoff (blank = no cap)','cutoff',rule.cutoff??'','number','min="1"')}${field('League win points','winPoints',rule.winPoints,'number','')}${field('League loss points','lossPoints',rule.lossPoints,'number','')}</div>
+   <label class="choice"><input type="checkbox" name="winByTwo" ${rule.winByTwo?'checked':''}> Win by 2</label>
+   ${field('Combined format qualifiers','qualifiers',c.qualifiers||4,'number','min="2"')}
+   ${selectField('Qualification from groups','qualifierMode',[['per-group','Top entries from every group (balanced)'],['overall','Highest overall standings points']],c.qualifierMode||'per-group')}
+   <div class="actions"><button class="btn primary" type="submit">Save Category</button>${button('Cancel','cancel')}</div></form>`:'';
+  let addEntry='';
+  if(editor?.kind==='entry'&&editor.id===c.id){
+   addEntry=`<form class="sub-form" data-form="entry" data-id="${esc(c.id)}"><h4>Add Pair / Entry</h4>
+   ${selectField('Team','teamId',t.teams.map(team=>[team.id,team.name]),t.teams[0]?.id||'')}
+   ${selectField('Group','groupId',[['','General / Ungrouped'],...(c.groups||[]).map(g=>[g.id,g.name])],'')}
+   <div id="entry-player-list" class="checklist"></div>
+   <div class="actions"><button class="btn primary" type="submit">Add Entry</button>${button('Cancel','cancel')}</div></form>`;
+  }
+  return `<div class="team-box"><div class="section-head"><div><h3>${categoryLink(c)}</h3><p class="helper">${esc(effectiveFormat(t,c))} • Target ${rule.target} • ${c.entrants.length} entries</p></div><div class="actions noprint">${button('✏ Edit','edit-category',`data-id="${esc(c.id)}"`)}${button('Remove','remove-category',`data-id="${esc(c.id)}"`,'danger-outline')}</div></div>${editorForm}<div class="entries">${rows||'<p class="helper">No entries yet.</p>'}</div>${addEntry}<div class="actions noprint">${button('＋ Add Players / Pair','add-entry',`data-id="${esc(c.id)}"`)}</div></div>`;
+ }).join('');
+ const form=editor?.kind==='new-category'?`<form data-form="new-category" class="team-box">${field('New category name','name','New Category','text','required')}<div class="actions"><button class="btn primary" type="submit">Create Category</button>${button('Cancel','cancel')}</div></form>`:'';
+ return card(`Categories (${t.categories.length})`,`${form}${catCards}`,button('＋ Add Category','new-category'));
+}
+function groupView(t){
+ return card('Groups — Category-wise',`<p class="helper">Groups belong to the selected tournament and to a category. Entries in Group A play only Group A entries in the league. Create any number of groups. Teams & players belong only to this tournament.</p>${t.categories.map(c=>{
+  const groups=c.groups||[];
+  const create=editor?.kind==='new-group'&&editor.id===c.id?`<form data-form="new-group" data-id="${esc(c.id)}" class="sub-form">${field('Group name','name','Group A','text','required')}<div class="actions"><button type="submit" class="btn primary">Save Group</button>${button('Cancel','cancel')}</div></form>`:'';
+  const rows=[{id:null,name:'General / Ungrouped'},...groups].map(g=>{
+   const members=c.entrants.filter(e=>(e.groupId||null)===g.id);
+   const rename=editor?.kind==='rename-group'&&editor.id===g.id?`<form data-form="rename-group" data-id="${esc(g.id)}" data-cat="${esc(c.id)}" class="sub-form">${field('Group name','name',g.name,'text','required')}<div class="actions"><button class="btn primary" type="submit">Save</button>${button('Cancel','cancel')}</div></form>`:'';
+   return `<div class="group-box"><div class="section-head"><div><h4>${esc(g.name)} · ${members.length} entries</h4></div><div class="actions noprint">${g.id?button('Edit Name','rename-group',`data-id="${esc(g.id)}" data-cat="${esc(c.id)}"`)+button('Delete Group','remove-group',`data-id="${esc(g.id)}" data-cat="${esc(c.id)}"`,'danger-outline'):''}</div></div>${rename}${members.map(e=>`<div class="group-member"><span>${linkedEntry(t,c,e.id)}</span><label class="field small-field"><span>Move to group</span><select data-change="move-entry" data-cat="${esc(c.id)}" data-id="${esc(e.id)}"><option value="" ${!e.groupId?'selected':''}>General</option>${groups.map(x=>`<option value="${esc(x.id)}" ${e.groupId===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label></div>`).join('')||'<p class="helper">No entries</p>'}</div>`;
+  }).join('');
+  return `<div class="team-box"><div class="section-head"><h3>${categoryLink(c)}</h3><div class="actions noprint">${button('＋ Add Group','new-group',`data-id="${esc(c.id)}"`)}</div></div>${create}${rows}</div>`;
+ }).join('')||'<p>Create a category first.</p>'}`);
+}
+
+/* Private fixture payment badges. Never render for Viewer-only accounts. */
+let showFixturePaymentStatus=true;
+function fixtureEntryPaymentStatus(t,cat,entryId){
+ if(!showFixturePaymentStatus||!canSeePayments()||!financesReady())return '';
+ const entry=cat?.entrants?.find(e=>e.id===entryId);
+ const team=t.teams.find(team=>team.id===entry?.teamId);
+ if(!entry||!team)return '';
+ const rows=entry.playerIds.map(pid=>{
+  const player=team.players.find(p=>p.id===pid);if(!player)return '';
+  const status=paymentStatus(pid);
+  if(status.fee===null)return '';
+  return `<span class="fixture-pay-pill ${esc(status.cls)}">${esc(player.name)}: ${esc(status.text)}</span>`;
+ }).filter(Boolean).join('');
+ return rows?`<div class="fixture-payment-status">${rows}</div>`:'';
+}
+function fixtureView(t){
+ const checked=fixturesCheck(t),league=t.fixtures.filter(m=>m.stage==='league').sort((a,b)=>a.slot-b.slot||a.court-b.court);
+ const rows=league.map(m=>{const c=lookup(t,m.categoryId);return `<tr><td>${m.slot}</td><td>Court ${m.court}</td><td>${c?categoryLink(c):''}<small>${esc(groupLabel(c,m.groupId))}</small></td><td>${linkedEntry(t,c,m.a)}${fixtureEntryPaymentStatus(t,c,m.a)} <span class="vs"> VS </span>${linkedEntry(t,c,m.b)}${fixtureEntryPaymentStatus(t,c,m.b)}</td></tr>`}).join('');
+ const ko=t.fixtures.filter(m=>m.stage==='knockout').sort((a,b)=>a.slot-b.slot||a.court-b.court);
+ const privatePaymentToggle=canSeePayments()?`<label class="choice noprint fixture-payment-control"><input type="checkbox" id="fixture-payment-toggle" ${showFixturePaymentStatus?'checked':''}> Show Player Payment Status (Private)</label>${showFixturePaymentStatus&&!financesReady()?'<p class="helper noprint">Ground fee is not configured yet; set it in Finance to show paid/unpaid statuses.</p>':''}`:'';
+ return card('Fixtures & Shuffle',`<div class="metrics"><div><b>${league.length}</b><span>League matches</span></div><div><b>${new Set(league.map(x=>x.slot)).size}</b><span>Slots</span></div><div><b>${t.courts}</b><span>Courts</span></div></div>
+  <p class="helper">Shuffle changes only the order, preserves match identities, and enforces <strong>${t.settings?.minRestSlots??1} rest slot(s)</strong> between matches for the same player, including across categories. Shuffle is blocked after results. Knockout brackets must be cleared before league reshuffling.</p>
+  <div class="actions noprint">${button('Generate / Shuffle Fixtures','shuffle','','primary')}${t.categories.filter(c=>['knockout','combined'].includes(effectiveFormat(t,c))).map(c=>button(`Generate ${esc(c.name)} Knockout Bracket`,'knockout',`data-id="${esc(c.id)}"`)).join('')}${ko.length?button('Clear Unplayed Knockout Brackets','clear-knockout','','danger-outline'):''}</div>
+  ${privatePaymentToggle}
+  <div class="validation ${checked.valid?'ok':'bad'}">${checked.valid?'✓ No missing, duplicate, or simultaneous player-clash matches':'⚠ '+checked.problems.length+' fixture problems'}${checked.restAlerts.length?` • ${checked.restAlerts.length} rest-gap warnings`:''}</div>
+  ${checked.problems.length?`<div class="helper">${checked.problems.slice(0,5).map(esc).join('; ')}</div>`:''}
+  ${checked.restAlerts.length?`<details><summary>Rest-gap warnings</summary>${checked.restAlerts.slice(0,12).map(x=>`<p class="helper">${esc(x)}</p>`).join('')}</details>`:''}
+  <div class="scroll"><table><thead><tr><th>Slot</th><th>Court</th><th>Category / Group</th><th>Match</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Generate fixtures to start.</td></tr>'}</tbody></table></div>
+  ${ko.length?`<h3>Knockout Bracket — Semis & Finals</h3><div class="scroll"><table><tbody>${ko.map(m=>`<tr><td>${esc(lookup(t,m.categoryId)?.name)}</td><td>${esc(koRoundLabel(t,m))}</td><td>${linkedEntry(t,lookup(t,m.categoryId),m.a)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.a)} <span class="vs">VS</span> ${linkedEntry(t,lookup(t,m.categoryId),m.b)}${fixtureEntryPaymentStatus(t,lookup(t,m.categoryId),m.b)}</td></tr>`).join('')}</tbody></table></div>`:''}`);
+}
+function koRoundLabel(t,m){const max=Math.max(...t.fixtures.filter(x=>x.stage==='knockout'&&x.categoryId===m.categoryId).map(x=>x.round));return m.round===max?'Final':m.round===max-1?'Semi-final':m.round===max-2?'Quarter-final':`Knockout Round ${m.round}`;}
+function resultView(t){
+ const list=[...t.fixtures].sort((a,b)=>a.slot-b.slot||a.court-b.court);
+ const done=list.filter(m=>scoreWinner(t.results[m.id],effectiveRules(t,lookup(t,m.categoryId)))).length;
+ return card(`Match Results (${done}/${list.length} completed)`,list.map(m=>{
+ const c=lookup(t,m.categoryId),rules=effectiveRules(t,c),w=scoreWinner(t.results[m.id],rules),names=participants(t,m),result=t.results[m.id];
+ const score=result?(result.mode==='winner'?'Score not recorded':`${result.a} – ${result.b}`):'Not played';
+ const edit=editor?.kind==='result'&&editor.id===m.id;
+ const form=edit?`<form data-form="result" data-id="${esc(m.id)}" class="sub-form"><div class="actions"><label class="choice"><input type="radio" name="mode" value="score" ${mode==='score'?'checked':''}> Numeric score</label><label class="choice"><input type="radio" name="mode" value="winner" ${mode==='winner'?'checked':''}> WIN / LOSS Only</label></div>
+ ${mode==='score'?`<div class="form-grid">${field(names[0],'a',result?.mode==='winner'?'':result?.a??'','number','')}${field(names[1],'b',result?.mode==='winner'?'':result?.b??'','number','')}</div><p class="helper">Target ${rules.target}; Win by 2: ${rules.winByTwo?'Yes':'No'}; Cutoff: ${rules.cutoff??'None'}</p>`:
+ `<div class="choices"><label class="choice"><input type="radio" name="winner" value="a" ${result?.winner!=='b'?'checked':''}> ${esc(names[0])} WON</label><label class="choice"><input type="radio" name="winner" value="b" ${result?.winner==='b'?'checked':''}> ${esc(names[1])} WON</label></div>`}
+ <div class="actions"><button type="submit" class="btn primary">Save Result</button>${button('Cancel','cancel')}${result?button('Clear Result','clear-result',`data-id="${esc(m.id)}"`,'danger-outline'):''}</div></form>`:'';
+ return `<div class="match-row"><span class="helper">Slot ${m.slot} • Court ${m.court} • ${categoryLink(c)} • ${esc(groupLabel(c,m.groupId))} ${m.stage==='knockout'?'• '+esc(koRoundLabel(t,m)):''}</span><div class="pair-row"><span class="${w==='a'?'winner':w==='b'?'loser':''}">${linkedEntry(t,c,m.a)}</span><span class="vs">VS</span><span class="${w==='b'?'winner':w==='a'?'loser':''}">${linkedEntry(t,c,m.b)}</span></div><div class="score-line"><b>${esc(score)}</b><span>${w?`🏆 ${esc(names[w==='a'?0:1])} WON`:''}</span>${m.a&&m.b?button(result?'✏ Edit Result':'＋ Enter Result','edit-result',`data-id="${esc(m.id)}"`):'<span class="helper">Awaiting previous round</span>'}</div>${form}</div>`;
+ }).join('')||'<p class="helper">Generate a league fixture first.</p>');
+}
+function standingsView(t){return t.categories.map(c=>{
+ if(!['league','combined'].includes(effectiveFormat(t,c)))return card(c.name,`<p>${categoryLink(c)}</p><p class="helper">Knockout categories do not have a league standings table.</p>`);
+ const groups=c.groups?.length?[{id:null,name:'General / Ungrouped'},...c.groups]:[{id:undefined,name:'All Entries'}];
+ return groups.map(g=>{
+  const rows=standings(t,c.id,g.id);
+  if(!rows.length)return '';
+  return card(`${c.name} · ${g.name} — Points Table`,`<p class="helper">Category: ${categoryLink(c)}</p><div class="scroll"><table><thead><tr><th>#</th><th>Entry / Players</th><th>P</th><th>W</th><th>L</th><th>PTS</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${i+1}</td><td><b>${linkedEntry(t,c,r.id)}</b></td><td>${r.p}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td></tr>`).join('')}</tbody></table></div>`);
+ }).join('');
+ }).join('')||card('Standings','<p>No categories configured.</p>')}
+function reportData(t,kind,catId='all',groupId='all'){
+ const cats=t.categories.filter(c=>catId==='all'||c.id===catId),rows=[];
+ const hasGroup=(c,e)=>groupId==='all'||(e?.groupId||'general')===groupId;
+ if(kind==='payments'&&canSeePayments()){for(const team of t.teams)for(const p of team.players){const v=paymentStatus(p.id);rows.push([team.name,p.name,v.fee===null?'Not set':money(v.fee),money(v.paid),v.due===null?'—':money(v.due),v.text])}return {head:['Team','Player','Fee','Received','Due','Status'],rows}}
+ if(kind==='payments')return reportData(t,'fixtures',catId,groupId); // No finance headings even for a stale viewer print selection.
+ if(kind==='teams'){
+  for(const team of t.teams)for(const p of team.players)rows.push([team.name,p.name,`${t.categories.filter(c=>c.entrants.some(e=>e.teamId===team.id&&e.playerIds.includes(p.id))).map(c=>c.name).join(', ')||'—'}`]);
+  return {head:['Team','Player','Categories'],rows};
+ }
+ if(kind==='standings'){
+  for(const c of cats){
+   const members=standings(t,c.id).filter(r=>{const e=c.entrants.find(e=>e.id===r.id);return hasGroup(c,e)});
+   for(const r of members){const e=c.entrants.find(e=>e.id===r.id);
+    rows.push([c.name,groupLabel(c,e?.groupId),r.name,String(r.p),String(r.w),String(r.l),String(r.pts)]);
+   }
+  }
+  return {head:['Category','Group','Player(s)','P','W','L','PTS'],rows};
+ }
+ for(const m of [...t.fixtures].sort((a,b)=>(a.slot||0)-(b.slot||0)||a.court-b.court)){
+  const c=lookup(t,m.categoryId);if(!cats.includes(c))continue;
+  const e=c.entrants.find(e=>e.id===m.a);
+  if(!hasGroup(c,e)&&!(m.stage==='knockout'&&groupId==='all'))continue;
+  const names=participants(t,m),r=t.results[m.id],win=scoreWinner(r,effectiveRules(t,c));
+  const match=names.join('   VS   '),result=!r?'Pending':r.mode==='winner'?`WIN: ${names[win==='a'?0:1]}`:`${r.a} – ${r.b}`;
+  if(kind==='fixtures')rows.push([`#${m.slot||'—'}`,String(m.court||'—'),c.name,groupLabel(c,m.groupId),match]);
+  else rows.push([`#${m.slot||'—'}`,c.name,groupLabel(c,m.groupId),match,result]);
+ }
+ return kind==='fixtures'?{head:['Slot','Court','Category','Group','Match / Players'],rows}:{head:['Slot','Category','Group','Match / Players','Score / Winner'],rows};
+}
+function printSheets(t,kind,catId='all',groupId='all'){
+ const {head,rows}=reportData(t,kind,catId,groupId),orientation=t.settings?.printOrientation||'landscape';
+ const size=Math.min(24,Math.max(11,+t.settings?.printFontSize||17)),max=Math.max(5,Math.floor((orientation==='landscape'?200:275)/(size*.50+2.0)));
+ const pageCount=Math.max(1,Math.ceil(rows.length/max)),perPage=Math.ceil(rows.length/pageCount);
+ let html='';
+ for(let n=0;n<pageCount;n++){
+  const chunk=rows.slice(n*perPage,(n+1)*perPage);
+  const widths=kind==='fixtures'?[8,10,15,14,53]:kind==='results'?[8,15,13,43,21]:kind==='standings'?[14,12,38,9,9,9,9]:kind==='payments'?[19,27,13,13,13,15]:[27,38,35];
+  html+=`<article class="print-sheet ${orientation}" style="--p-font:${size}px"><div class="print-head"><div><strong>MBA TOURNAMENTS</strong><h2>${esc(t.name)}</h2><p>📅 ${esc(dateShow(t.date))} · ${esc(kind.toUpperCase())}${catId==='all'?'':' · '+esc(lookup(t,catId)?.name||'')}${groupId==='all'?'':' · '+esc(groupId==='general'?'General':lookup(t,catId)?.groups?.find(g=>g.id===groupId)?.name||'Group')}</p></div><span class="print-mark">${esc(orientation==='portrait'?'A4 PORTRAIT':'A4 LANDSCAPE')}</span></div><div class="print-body"><table class="print-table"><colgroup>${widths.map(w=>`<col style="width:${w}%">`).join('')}</colgroup><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${chunk.map((row,i)=>`<tr>${row.map((cell,j)=>`<td class="${j===(kind==='fixtures'?4:kind==='results'?3:kind==='standings'?2:1)?'print-main':''}">${esc(cell)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${head.length}">No records for this selection</td></tr>`}</tbody></table></div><div class="print-foot"><span>${esc(t.name)} · ${esc(dateShow(t.date))}</span><span>Page ${n+1} / ${pageCount} · ${rows.length} records</span></div></article>`;
+ }
+ return html;
+}
+function printView(t){
+ if(printCategory!=='all'&&!t.categories.some(c=>c.id===printCategory)){printCategory='all';printGroup='all'}
+ const options=[['fixtures','Fixtures'],['results','Results & Scores'],['standings','Points Tables'],['teams','Teams & Players'],...(canSeePayments()?[['payments','Players Fee & Paid Status']]:[])];
+ const groups=printCategory==='all'?[]:lookup(t,printCategory)?.groups||[];
+ return card('A4 Print Center',`<div class="print-controls noprint">${selectField('Report','printType',options,printReport)}${selectField('Category','printCat',[['all','All Categories'],...t.categories.map(c=>[c.id,c.name])],printCategory)}${selectField('Group','printGroup',[['all','All Groups'],['general','General'],...groups.map(g=>[g.id,g.name])],printGroup)}${selectField('Orientation','printOrientation',[['landscape','A4 Landscape'],['portrait','A4 Portrait']],t.settings?.printOrientation||'landscape')}${field('Font size (11–24 px)','printSize',t.settings?.printFontSize||17,'number','min="11" max="24"')}<button class="btn primary" type="button" data-action="print-now">🖨 Print All Pages</button></div><p class="helper noprint">Preview pages use the complete A4 paper area with moderate, legible names and repeating headers. Use Chrome's Print settings → Paper A4 / Scale 100% / Margins None, and disable browser headers and footers if they appear.</p><div id="print-preview" class="print-preview">${printSheets(t,printReport,printCategory,printGroup)}</div>`);
+}
+function settingsView(t){const r=t.rules,s=t.settings||{};return card('Tournament Settings',`<form data-form="settings" class="form-grid">
+ ${field('Target score (any positive number)','target',r.target,'number','min="1" required')}
+ ${field('Cutoff (blank = unlimited)','cutoff',r.cutoff??'','number','min="1"')}
+ ${field('Winning league points','winPoints',r.winPoints,'number','required')}
+ ${field('Losing league points','lossPoints',r.lossPoints,'number','required')}
+ <label class="choice"><input name="winByTwo" type="checkbox" ${r.winByTwo?'checked':''}> Win by 2 points</label>
+ ${field('Courts','courts',t.courts,'number','min="1" required')}
+ ${field('Rest between a player’s matches (slots)','minRestSlots',s.minRestSlots??1,'number','min="0" required')}
+ ${selectField('Print paper orientation','orientation',[['landscape','A4 Landscape'],['portrait','A4 Portrait']],s.printOrientation||'landscape')}
+ ${field('Print font size (px)','fontSize',s.printFontSize||16,'number','min="10" max="36" required')}
+ <div class="full actions"><button type="submit" class="btn primary">Save Settings</button>${button('Download JSON Backup','export')}</div>
+ <p class="full helper">Match rules cannot be changed after recorded results until results are intentionally cleared. Category-specific rules override tournament defaults.</p>
+ </form>`)}
+function setNotice(s){notice=s;render()}
+function maybeWarnChanges(t){if(Object.keys(t.results).length)throw Error('There are recorded results. Changing scoring/court rules could invalidate them. Create a fresh tournament or deliberately clear results first.')}
+function entryPlayerForm(){const t=active(),selector=document.querySelector('form[data-form="entry"] [name="teamId"]'),list=document.getElementById('entry-player-list');if(!selector||!list)return;const team=t.teams.find(x=>x.id===selector.value);list.innerHTML=`<p class="helper">Select players (one or more):</p>${team?.players.map(p=>`<label class="choice"><input type="checkbox" name="playerId" value="${esc(p.id)}"> ${esc(p.name)}</label>`).join('')||'No players'}`}
+document.addEventListener('click',async ev=>{
+ const b=ev.target.closest('[data-action]');if(!b)return;
+ if(b.classList.contains('profile-overlay')&&ev.target!==b)return;
+ const t=active(),id=b.dataset.id,catId=b.dataset.cat,action=b.dataset.action;
+ const safe=(fn)=>op(fn);
+ if(action==='toggle-tournament-public'){
+  if(!isSuper())return;
+  const target=store.tournaments.find(x=>x.id===id);if(!target)return;
+  const currently=!!publicTournaments[id];
+  if(!confirm(currently?`Hide "${target.name}" from ordinary viewers? Previously granted private View access is not affected.`:`Publish "${target.name}" to ALL signed-in Viewer accounts? Its teams, fixtures, scores and standings will be readable.`))return;
+  try{
+   const path=ref(db,'v3/publicTournaments/'+id);
+   if(currently)await set(path,null);else await set(path,{name:target.name,date:target.date||'',visible:true});
+   notice=currently?'Tournament made private.':'Tournament published to signed-in viewers.';render();
+  }catch(e){alert('Visibility not changed: '+errText(e))}
+  return;
+ }
+ if(action==='manage-user'){if(!isSuper())return;editor={kind:'access',id};page='access';render();return}
+ if(action==='apply-role-preset'){if(!isSuper())return;const form=b.closest('form'),role=form?.querySelector('[name=role]')?.value||'viewer',preset=rolePresets[role]||{};form?.querySelectorAll('[name=perm]').forEach(el=>el.checked=!!preset[el.value]);return}
+ if(!authorized(action)){alert('Your role does not allow this action.');return}
+ if(writePending&&!viewerActions.has(action)){alert('Previous change is still saving.');return}
+ if(action==='use-provided-venue'){const input=document.querySelector('form[data-form="tournament"] [name="venueUrl"]');if(input){input.value=PROVIDED_VENUE_URL;input.focus()}return}
+ if(action==='open-tournament'){if(store.tournaments.some(x=>x.id===id)){switchTournament(id);tournamentPanel='details';render()}return}
+ if(action==='tournament-section'){if(['details','history'].includes(b.dataset.section)){tournamentPanel=b.dataset.section;render()}return}
+ if(action==='close-profile'){if(b.closest('.profile-dialog')||b.classList.contains('profile-overlay')){profile=null;render()}return}
+ if(['view-player','view-team','view-category'].includes(action)){profile={kind:action.slice(5),id};render();return}
+ if(action==='print-now'){window.print();return}
+ if(action==='cancel'){editor=null;render();return}
+ if(action==='edit-tournament'){editor={kind:'tournament'};render();return}
+ if(action==='new-tournament'){editor={kind:'create'};page='tournaments';render();return}
+ if(action==='delete-tournament')return safe(()=>{const typed=prompt(`Type the exact name to DELETE this Production tournament and all records:\n${t.name}`);if(typed!==t.name)return;store.tournaments=store.tournaments.filter(x=>x.id!==t.id);store.selected=store.tournaments[0]?.id||null;editor=null;notice='Production tournament deleted.'});
+ if(action==='new-team'||action==='new-category'){editor={kind:action};render();return}
+ if(action==='new-group'){editor={kind:'new-group',id};render();return}
+ if(action==='rename-group'){editor={kind:'rename-group',id,cat:catId};render();return}
+ if(action==='remove-group')return safe(()=>{const c=lookup(t,catId),g=c?.groups?.find(x=>x.id===id);if(!confirm(`Delete group ${g?.name}? Entries must first be moved.`))return;removeGroup(t,catId,id);notice='Group removed in Production.'});
+ if(action==='edit-team'){editor={kind:'team',id};render();return}
+ if(action==='edit-category'){editor={kind:'category',id};render();return}
+ if(action==='add-entry'){editor={kind:'entry',id};render();entryPlayerForm();return}
+ if(action==='remove-team')return safe(()=>{const team=t.teams.find(x=>x.id===id);if(!confirm(`Remove ${team?.name}? Existing results will be protected.`))return;removeTeam(t,id);notice='Team removed from demo.'});
+ if(action==='remove-category')return safe(()=>{const cat=lookup(t,id);if(!confirm(`Remove category ${cat?.name}?`))return;removeCategory(t,id)});
+ if(action==='remove-entry')return safe(()=>{if(!confirm('Remove this category entry?'))return;removeEntry(t,catId,id)});
+ if(action==='shuffle')return safe(()=>{scheduleLeague(t,{seed:Date.now(),minimumRestSlots:t.settings?.minRestSlots??1});const check=fixturesCheck(t);need(check.valid,check.problems.join(', '));notice=`Generated ${t.fixtures.filter(m=>m.stage==='league').length} league matches. ${check.restAlerts.length} rest warnings.`});
+ if(action==='clear-knockout')return safe(()=>{const kos=t.fixtures.filter(m=>m.stage==='knockout');need(!kos.some(m=>t.results[m.id]),'Recorded knockout results: cannot clear the bracket');if(!confirm('Clear all unplayed knockout brackets in this DEMO tournament? League scores stay untouched.'))return;t.fixtures=t.fixtures.filter(m=>m.stage!=='knockout');notice='Unplayed knockout brackets cleared in Production.'});
+ if(action==='knockout')return safe(()=>{const out=generateKnockout(t,id);notice=`Knockout bracket created: ${out.allMatches.length} matches across ${out.rounds.length} rounds, ${out.byes} byes. Winners advance automatically.`});
+ if(action==='edit-result'){editor={kind:'result',id};mode=t.results[id]?.mode==='winner'?'winner':'score';render();return}
+ if(action==='clear-result')return safe(()=>{if(!confirm('Clear this result?'))return;const match=t.fixtures.find(m=>m.id===id);delete t.results[id];if(match?.stage==='knockout')advanceKnockout(t,match.categoryId);editor=null;notice='Production result cleared.'});
+ if(action==='export'){
+  const blob=new Blob([JSON.stringify({version:VERSION,exportedAt:new Date().toISOString(),tournaments:store.tournaments},null,2)],{type:'application/json'});
+  const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='MBA-Tournaments-Production-Backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);return;
+ }
+});
+document.addEventListener('input',e=>{if(e.target.closest('#view form[data-form]'))unsavedFormChanges=true});
+document.addEventListener('change',async e=>{
+ if(e.target.id==='tournament-switcher'){switchTournament(e.target.value);return}
+ if(e.target.id==='fixture-payment-toggle'){if(!canSeePayments())return;showFixturePaymentStatus=!!e.target.checked;render();return}
+ if(e.target.name==='scopeEdit'&&e.target.checked){const form=e.target.closest('form');const linked=[...form.querySelectorAll('[name=scopeView]')].find(x=>x.value===e.target.value);if(linked)linked.checked=true}
+
+ if(e.target.dataset.change==='move-entry'){
+  const catId=e.target.dataset.cat,entryId=e.target.dataset.id,to=e.target.value;
+  op(()=>{assignEntryGroup(active(),catId,entryId,to||null);notice='Entry group updated. Re-generate league fixtures.'});return;
+ }
+ if(['printType','printCat','printGroup','printOrientation','printSize'].includes(e.target.name)){
+   const v=e.target.value;
+   if(e.target.name==='printType')printReport=v==='payments'&&!canSeePayments()?'fixtures':v;
+   if(e.target.name==='printCat'){printCategory=v;printGroup='all'}
+   if(e.target.name==='printGroup')printGroup=v;
+   if(e.target.name==='printOrientation'){active().settings.printOrientation=v;remember()}
+   if(e.target.name==='printSize'){active().settings.printFontSize=Math.min(24,Math.max(11,Number(v)||17));remember()}
+   render();return;
+ }
+ if(e.target.name==='copyFrom'&&e.target.closest('form[data-form="tournament"]')){sourceTeamPicker();return}
+ if(e.target.name==='teamId'&&e.target.closest('form[data-form="entry"]')){entryPlayerForm();return}
+ if(e.target.name==='mode'&&e.target.closest('form[data-form="result"]')){mode=e.target.value;render();return}
+});
+document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>{if(unsavedFormChanges&&!confirm('Discard unsaved changes to switch tabs?'))return;unsavedFormChanges=false;if(el.dataset.page==='finance'&&!canViewFinance())return;if(el.dataset.page==='access'&&!isSuper())return;page=el.dataset.page;editor=null;render()}));
+document.addEventListener('submit',async ev=>{
+ const form=ev.target.closest('form[data-form]');if(!form)return;ev.preventDefault();
+ const data=new FormData(form),kind=form.dataset.form,t=active();unsavedFormChanges=false;
+ if(kind.startsWith('fin-')||kind==='access'){
+  const btn=form.querySelector('button[type="submit"]');if(btn)btn.disabled=true;
+  try{if(kind==='access')await accessSubmit(data);else await financeSubmit(kind,data);notice='Saved online to Production Firebase.';render()}
+  catch(e){alert('Not saved: '+errText(e));if(btn)btn.disabled=false}return;
+ }
+ if(!allowedToEdit()){alert('Viewer is read-only.');return}
+ op(()=>{
+  if(kind==='new-group'){
+   addGroup(t,form.dataset.id,String(data.get('name')));
+  }else if(kind==='rename-group'){
+   renameGroup(t,form.dataset.cat,form.dataset.id,String(data.get('name')));
+  }else if(kind==='tournament'){
+   const name=String(data.get('name')||'').trim();need(name,'Tournament name required');
+   if(editor?.kind==='create'){
+    const n=makeTournament({name,date:String(data.get('date')||''),courts:+data.get('courts'),format:String(data.get('format'))});
+    n.venueUrl=safeVenueUrl(data.get('venueUrl'));
+    const src=store.tournaments.find(x=>x.id===String(data.get('copyFrom')||''));const sourceIds=data.getAll('copyTeam').map(String);
+    if(src)copyPreviousTeams(n,src,sourceIds);
+    const picked=[...new Set(data.getAll('reusePlayer').map(x=>String(x).trim()).filter(Boolean))];
+    const existing=new Set(n.teams.flatMap(te=>te.players.map(p=>p.name.normalize('NFKC').toLocaleLowerCase())));
+    const extra=picked.filter(x=>!existing.has(x.normalize('NFKC').toLocaleLowerCase()));
+    if(extra.length)addTeam(n,String(data.get('poolName')||'Selected Players'),extra);
+    store.tournaments.push(n);store.selected=n.id;page='tournaments';tournamentPanel='details';
+   }
+   else{t.venueUrl=safeVenueUrl(data.get('venueUrl'));t.name=name;t.date=String(data.get('date')||'');if(t.format!==String(data.get('format')))maybeWarnChanges(t);t.format=String(data.get('format'));const courts=+data.get('courts');if(t.courts!==courts){maybeWarnChanges(t);t.courts=courts}}
+  }else if(kind==='new-team'){
+   const typed=String(data.get('players')||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean),picked=data.getAll('reusePlayer').map(s=>String(s).trim()).filter(Boolean);
+   const merged=[...new Map([...typed,...picked].map(name=>[name.normalize('NFKC').toLocaleLowerCase(),name])).values()];
+   addTeam(t,String(data.get('teamName')),merged);
+  }else if(kind==='team'){
+   const team=t.teams.find(x=>x.id===form.dataset.id),names=String(data.get('players')||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+   const players=names.map((name,i)=>({id:team.players[i]?.id,name}));updateTeam(t,team.id,{name:String(data.get('teamName')),players});
+  }else if(kind==='new-category'){addCategory(t,String(data.get('name')))}
+  else if(kind==='category'){
+   const cat=lookup(t,form.dataset.id);cat.name=String(data.get('name')).trim();need(cat.name,'Category name required');
+   if(cat.format!==(String(data.get('format'))||null)&&t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id]))throw Error('Cannot change category format after recorded results');
+   cat.format=String(data.get('format'))||null;cat.qualifiers=+data.get('qualifiers');cat.qualifierMode=String(data.get('qualifierMode'))||'per-group';
+   if(data.has('override')){
+    const rules={target:+data.get('target'),cutoff:data.get('cutoff')===''?null:+data.get('cutoff'),winByTwo:data.has('winByTwo'),winPoints:+data.get('winPoints'),lossPoints:+data.get('lossPoints'),bestOf:1};validateRules(rules);
+    if(JSON.stringify(cat.rules)!==JSON.stringify(rules)&&t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id]))throw Error('Cannot change category scoring rules after a match result');
+    cat.rules=rules;
+   }else {
+    if(cat.rules&&t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id]))throw Error('Cannot remove category scoring overrides after a match result');
+    cat.rules=null;
+   }
+  }else if(kind==='entry'){
+   addEntry(t,form.dataset.id,String(data.get('teamId')),[...data.getAll('playerId')].map(String),String(data.get('groupId')||'')||null);
+  }else if(kind==='result'){
+   const m=t.fixtures.find(m=>m.id===form.dataset.id);need(m,'Match not found');const res=mode==='winner'?{mode:'winner',winner:String(data.get('winner')||'a')}:{a:String(data.get('a')||''),b:String(data.get('b')||'')};recordResult(t,m.id,res);
+  }else if(kind==='settings'){
+   const rules={target:+data.get('target'),cutoff:data.get('cutoff')===''?null:+data.get('cutoff'),winByTwo:data.has('winByTwo'),winPoints:+data.get('winPoints'),lossPoints:+data.get('lossPoints'),bestOf:1};validateRules(rules);
+   const courts=+data.get('courts');need(Number.isSafeInteger(courts)&&courts>=1,'Invalid courts');
+   if(JSON.stringify(rules)!==JSON.stringify(t.rules)||courts!==t.courts)maybeWarnChanges(t);
+   t.rules=rules;t.courts=courts;
+   const minRestSlots=+data.get('minRestSlots');need(Number.isSafeInteger(minRestSlots)&&minRestSlots>=0&&minRestSlots<=10000,'Enter a rest gap between 0 and 10000 slots');
+   const previousRest=t.settings?.minRestSlots??1;
+   if(previousRest!==minRestSlots&&t.fixtures.length&&Object.keys(t.results).length)throw Error('Rest settings cannot change after results have been recorded');
+   t.settings={...t.settings,printOrientation:String(data.get('orientation')),printFontSize:+data.get('fontSize'),minRestSlots};
+  }
+  editor=null;notice='Saving changes to Production Firebase…';
+ });
+});
+// Installable Android PWA. Authentication and Firebase always remain online-only.
+let mbaInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',event=>{
+  event.preventDefault();mbaInstallPrompt=event;
+  document.getElementById('pwa-install').hidden=false;
+});
+window.addEventListener('appinstalled',()=>{mbaInstallPrompt=null;document.getElementById('pwa-install').hidden=true});
+document.getElementById('pwa-install').addEventListener('click',async()=>{
+  if(!mbaInstallPrompt)return;
+  const event=mbaInstallPrompt;mbaInstallPrompt=null;
+  document.getElementById('pwa-install').hidden=true;
+  try{await event.prompt();await event.userChoice}catch(error){console.warn('Install prompt:',error)}
+});
+function mbaOnlineNotice(){
+  const el=document.getElementById('connection-status');if(!el)return;
+  el.hidden=navigator.onLine;
+}
+window.addEventListener('online',mbaOnlineNotice);
+window.addEventListener('offline',mbaOnlineNotice);
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(error=>console.warn('PWA service worker:',error));
+  });
+}
+wireAuth();
+document.getElementById('print-page').addEventListener('click',()=>{page='print';profile=null;editor=null;render();document.getElementById('view').scrollIntoView({behavior:'smooth'});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&profile){profile=null;render()}});
+render();
+mbaOnlineNotice();
+
+</script></body></html>
