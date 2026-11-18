@@ -420,6 +420,74 @@ header .brand-head p{grid-column:2;grid-row:2;text-align:center}
 @media(max-width:480px){.mba-v35-fixture-actions .btn{width:100%;max-width:100%;font-size:14px}.mba-v35-category-status .btn{width:100%}}
 @media print{.mba-v35-fixture-setup,.mba-v35-category-tables{display:none!important}}
 
+/* MBA_V36_STYLE — Direct Registration / bracket / umpire / safe gallery controls */
+.mba36-tournament-config{border:1px solid #d4e2ef;background:#f6f9fe;border-radius:14px;padding:14px;margin:10px 0}
+.mba36-tournament-config h3{margin:4px 0 10px;font-size:1rem}
+.mba36-registration-category{background:#f8fbff;border:1px solid #d8e3f0;border-radius:13px;padding:14px;margin:12px 0}
+.mba36-registration-category h3{margin:0;font-size:1.05rem}
+.mba36-registration-category .section-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between}
+.mba36-roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:7px;margin:12px 0}
+.mba36-roster-item{border:1px solid #e0e6ee;background:#fff;padding:9px 12px;border-radius:8px;overflow-wrap:anywhere}
+.mba36-roster-item b{font-size:.91rem}.mba36-roster-item small{display:block;color:#526681;margin-top:3px}
+.mba36-bulk{border-top:1px solid #d8e3f0;padding-top:12px}
+.mba36-bulk textarea{min-height:115px;width:100%;font-family:inherit;line-height:1.65}
+.mba36-ko-setup{padding:9px 0;border-bottom:1px solid #e1e9f2;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.mba36-bracket-section .section-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px;justify-content:space-between}
+.mba36-bracket-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:10px 2px 18px}
+.mba36-bracket{display:flex;gap:32px;align-items:stretch;width:max-content;min-width:100%}
+.mba36-bracket-column{display:flex;flex-direction:column;gap:11px;width:228px;flex:none;justify-content:space-around;position:relative}
+.mba36-bracket-column h4{text-align:center;margin:0 0 6px;color:#20436a;background:#e8f1fa;border-radius:7px;padding:8px}
+.mba36-bracket-match{background:#fff;border:1px solid #bfd0e1;border-radius:10px;box-shadow:0 2px 8px #19325111;min-height:79px;position:relative}
+.mba36-bracket-column:not(:last-child) .mba36-bracket-match:after{content:'';position:absolute;left:100%;top:50%;width:32px;border-top:2px solid #7a9ebf}
+.mba36-bracket-row{display:flex;justify-content:space-between;gap:6px;padding:8px 10px;font-size:.88rem;line-height:1.3;overflow-wrap:anywhere;min-height:29px}
+.mba36-bracket-row+.mba36-bracket-row{border-top:1px solid #e3e8ef}
+.mba36-bracket-row.won{background:#e5f6ed;color:#096b37;font-weight:750}
+.mba36-bracket-row.won span{color:#0e9751}
+.mba36-bracket-foot{border-top:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center;gap:5px;background:#f5f8fd;border-radius:0 0 9px 9px;padding:5px 9px;font-size:.72rem}
+.mba36-bracket-foot .btn{font-size:.72rem;padding:5px 7px}
+.mba36-champion .mba36-bracket-match{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:#875a04;background:#fff7d8;border:2px solid #eab94d;font-size:1.1rem;font-weight:700}
+.mba36-umpire-reset-actions{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0 0}
+.mba36-gallery-admin-item{border:1px solid #dae4ef;background:#f7faff;border-radius:11px;padding:12px;margin:10px 0;display:grid;gap:8px;word-break:break-word}
+.mba36-gallery-admin-item small{font-size:.7rem;color:#627693}
+.mba36-gallery-admin-item .field{margin:1px 0}
+@media(max-width:600px){.mba36-tournament-config{padding:11px}.mba36-bracket-column{width:212px}.mba36-bracket{gap:24px}.mba36-bracket-column:not(:last-child) .mba36-bracket-match:after{width:24px}}
+@media print{.mba36-bulk,.mba36-gallery-admin-item,.mba36-umpire-reset-actions,.mba36-ko-setup{display:none!important}.mba36-bracket-scroll{overflow:visible}.mba36-bracket{transform-origin:top left;gap:9px}.mba36-bracket-column{width:38mm}.mba36-bracket-column:not(:last-child) .mba36-bracket-match:after{width:9px}}
+
+.mba36-user-choices{max-height:210px;overflow-y:auto;border:1px solid #dbe5f1;padding:10px;border-radius:9px;display:grid;gap:4px;background:#fff}
+
+/* MBA_V37_LAYOUT: mobile-first, compact header/location, registration, pairing */
+.mba37-config{border:1px solid #cbdcf0;background:#f5f9ff;border-radius:13px;padding:12px;margin:11px 0}
+.mba37-config h3{margin:2px 0 9px;font-size:1.02rem}
+.mba37-prize-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid #e1e8f1}
+.mba37-prize-row .btn{font-size:.8rem}
+.mba37-reg-form{border:1px solid #c6d9ea;background:#f6fafe;padding:13px;border-radius:12px;margin:10px 0 19px}
+.mba37-reg-form h3{margin-top:0}
+.mba37-reg-form textarea{width:100%;min-height:112px;font:inherit}
+.mba37-finance-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:9px;padding:10px;border-radius:10px;background:#eaf3ff;margin:12px 0}
+.mba37-pending{color:#a11d35}.mba37-done{color:#0c8449}
+.mba37-stat{font-weight:650;padding:10px;background:#eaf3ff;border-radius:9px}
+.mba37-seed-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:8px;margin:12px 0}
+.mba37-manual-seeds,.mba37-manual-next{padding:12px;border:1px solid #d7e2ee;background:#fbfcff;margin:9px 0;border-radius:10px}
+.mba37-manual-seeds select,.mba37-manual-next select{max-width:100%}
+.mba37-umpire-mode{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:9px 0 12px}
+#mba-umpire-overlay.mba37-mode-plus .mba-point-grid{display:none!important}
+#mba-umpire-overlay.mba37-mode-tick .mba-point-actions [data-mba-point*=':1']{display:none!important}
+#mba-umpire-overlay.mba37-mode-tick .mba-point-grid{display:grid}
+#mba-umpire-overlay.mba37-mode-both .mba-point-grid{display:grid}
+/* Keep location compact on mobile, with map link LEFT and QR RIGHT */
+.venue-location{display:grid!important;grid-template-columns:minmax(0,1fr) 92px!important;gap:12px!important;align-items:center!important;padding:12px 13px!important;min-height:0!important}
+.venue-location>div:first-child{min-width:0!important}.venue-location strong{font-size:1rem!important}.venue-location small{font-size:.76rem!important}
+.venue-location .venue-qr{width:86px!important;height:86px!important;min-width:86px!important;max-width:86px!important;padding:0!important;display:flex!important;align-items:center;justify-content:center}
+.venue-location .venue-qr img,.venue-location .venue-qr canvas{width:84px!important;height:84px!important;max-width:84px!important;max-height:84px!important}
+/* Clock left + Share right, no unused banner-height */
+.mba-header-controls{display:flex!important;flex-direction:row!important;justify-content:space-between!important;align-items:center!important;gap:10px!important;flex-wrap:nowrap!important;margin:8px auto 0!important;padding:0!important;min-height:0!important}
+#mba-global-share-link{margin:0 0 0 auto!important;min-width:0!important;white-space:nowrap!important}
+.mba-header-controls .time-chip{margin:0!important}
+@media(max-width:480px){.mba-header-controls{width:100%!important}.mba-header-controls .btn{font-size:.78rem!important;padding:9px!important}.venue-location{grid-template-columns:minmax(0,1fr) 86px!important}.mba37-prize-row{gap:7px}}
+.mba37-name-quick{display:flex;align-items:end;gap:8px;flex-wrap:wrap;margin:8px 0}.mba37-name-quick .field{min-width:180px;flex:1}.mba37-name-quick .btn{flex:none}
+.mba37-lucky{border:1px solid #d2dde9;border-radius:10px;padding:12px;background:#fff9e9;margin:10px 0}.mba37-lucky h3{font-size:1rem;margin:5px 0}.mba37-lucky button{margin:7px 0}
+.mba37-gallery-acl{padding:12px;border-bottom:1px solid #dfebf3;display:grid;gap:8px}.mba37-gallery-acl .field{margin:0}.mba37-gallery-acl textarea{width:100%}
+
 </style><style id="print-rule"></style></head>
 <body><header><div class="container header-top"><div class="brand-head"><span class="brand-mark" aria-hidden="true">🏸</span><h1>MBA Tournaments</h1><p>Badminton Tournament Manager</p><span class="mba-maker-credit">App created by <strong>Usthad</strong></span></div></div>
 <div class="container mba-header-controls noprint" aria-label="Display preferences and time"><label class="mba-ui-control"><span>🎨 Color Theme</span><select id="mba-theme-select" aria-label="Color Theme"><option value="classic">Classic Blue</option><option value="light">Light</option><option value="dark">Dark</option><option value="navy">Navy &amp; Gold</option></select></label><label class="mba-ui-control"><span>🌐 Language</span><select id="mba-lang-select" aria-label="Language"><option value="en">English</option><option value="ml">മലയാളം</option></select></label><div class="mba-clock" role="timer" aria-label="Current time"><span class="mba-clock-label">🕒 Time</span><strong id="mba-clock-time">--:--:--</strong></div></div></header>
@@ -432,7 +500,7 @@ header .brand-head p{grid-column:2;grid-row:2;text-align:center}
  <div id="auth-message" class="helper" role="status"></div></section>
 <section id="global-tour-control" class="global-tournament-switcher noprint" hidden aria-label="Active tournament switcher"></section><section id="mba-important-notices" class="noprint" aria-label="Important tournament notices" hidden></section>
 <div class="toolbar noprint" style="justify-content:flex-end"><span class="actions"><button id="print-page" class="btn">🖨 Print A4</button></span></div>
-<nav class="noprint" aria-label="Tournament management"><button data-page="tournaments" class="selected">🏆<span class="mba-nav-text" data-short-en="Events" data-short-ml="ടൂർണി">Tournaments</span></button><button data-page="teams">👥<span class="mba-nav-text" data-short-en="Teams" data-short-ml="ടീം">Teams</span></button><button data-page="categories">🗂<span class="mba-nav-text" data-short-en="Cats" data-short-ml="വിഭാഗം">Categories</span></button><button data-page="groups">🧩<span class="mba-nav-text" data-short-en="Groups" data-short-ml="ഗ്രൂപ്പ്">Groups</span></button><button data-page="fixtures">🔀<span class="mba-nav-text" data-short-en="Fixtures" data-short-ml="ക്രമം">Fixtures</span></button><button data-page="results">✅<span class="mba-nav-text" data-short-en="Results" data-short-ml="ഫലം">Results</span></button><button data-page="standings">📊<span class="mba-nav-text" data-short-en="Table" data-short-ml="പട്ടിക">Standings</span></button><button data-page="settings">⚙<span class="mba-nav-text" data-short-en="Settings" data-short-ml="സെറ്റിംഗ്">Settings</span></button><button data-page="finance">💰<span class="mba-nav-text" data-short-en="Finance" data-short-ml="ഫിനാൻസ്">Finance</span></button><button data-page="access">🛡<span class="mba-nav-text" data-short-en="Roles" data-short-ml="റോളുകൾ">User Roles</span></button><button data-page="print">🖨<span class="mba-nav-text" data-short-en="Print" data-short-ml="പ്രിന്റ്">Print Center</span></button><button data-page="gallery">📷<span class="mba-nav-text" data-short-en="Photos" data-short-ml="ഫോട്ടോ">Gallery</span></button></nav>
+<nav class="noprint" aria-label="Tournament management"><button data-page="tournaments" class="selected">🏆<span class="mba-nav-text" data-short-en="Events" data-short-ml="ടൂർണി">Tournaments</span></button><button data-page="registration">📝<span class="mba-nav-text" data-short-en="Register" data-short-ml="രജിസ്ട്രേഷൻ">Registration</span></button><button data-page="teams">👥<span class="mba-nav-text" data-short-en="Teams" data-short-ml="ടീം">Teams</span></button><button data-page="categories">🗂<span class="mba-nav-text" data-short-en="Cats" data-short-ml="വിഭാഗം">Categories</span></button><button data-page="groups">🧩<span class="mba-nav-text" data-short-en="Groups" data-short-ml="ഗ്രൂപ്പ്">Groups</span></button><button data-page="fixtures">🔀<span class="mba-nav-text" data-short-en="Fixtures" data-short-ml="ക്രമം">Fixtures</span></button><button data-page="results">✅<span class="mba-nav-text" data-short-en="Results" data-short-ml="ഫലം">Results</span></button><button data-page="standings">📊<span class="mba-nav-text" data-short-en="Table" data-short-ml="പട്ടിക">Standings</span></button><button data-page="settings">⚙<span class="mba-nav-text" data-short-en="Settings" data-short-ml="സെറ്റിംഗ്">Settings</span></button><button data-page="finance">💰<span class="mba-nav-text" data-short-en="Finance" data-short-ml="ഫിനാൻസ്">Finance</span></button><button data-page="access">🛡<span class="mba-nav-text" data-short-en="Roles" data-short-ml="റോളുകൾ">User Roles</span></button><button data-page="print">🖨<span class="mba-nav-text" data-short-en="Print" data-short-ml="പ്രിന്റ്">Print Center</span></button><button data-page="gallery">📷<span class="mba-nav-text" data-short-en="Photos" data-short-ml="ഫോട്ടോ">Gallery</span></button></nav>
 <div id="connection-status" class="banner noprint" hidden>📡 Internet connection lost. Live scores, payments, permissions and changes require internet. Please reconnect before editing.</div><div id="venue-public" class="venue-strip noprint"></div><div id="notice"></div><div id="view"></div></main>
 <section class="container noprint" aria-label="Access information"><details class="mba-permission-details"><summary>ℹ️ Access information</summary><div class="mba-permission-inside"><p class="helper">Only Super Admin-published tournaments appear to viewers. The Super Admin assigns separate View / Edit access per tournament. Finance remains private.</p></div></details></section>
 <div id="profile-layer"></div><div id="mba-umpire-overlay" hidden></div><footer>MBA Tournaments • Tournament Management</footer>
@@ -450,13 +518,13 @@ const firebaseConfig={
  messagingSenderId:'1072532890274',appId:'1:1072532890274:web:8687524cc30f473361adfb'
 };
 const fapp=initializeApp(firebaseConfig),auth=getAuth(fapp),db=getDatabase(fapp);
-const VERSION='3.5.0-overall-team-fixture-wizard';
+const VERSION='3.7.1-registration-finance-share-table-fix';
 const deep=x=>JSON.parse(JSON.stringify(x));
 const clean=s=>String(s??'').trim();
 const need=(v,msg)=>{if(!v)throw Error(msg)};
 const uid=(prefix='id')=>`${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,9)}`;
 const uniq=x=>[...new Set(x)];
-const defaultRules=()=>({target:21,winByTwo:true,cutoff:30,winPoints:3,lossPoints:0,bestOf:1});
+const defaultRules=()=>({target:21,winByTwo:true,cutoff:null,winPoints:3,lossPoints:0,bestOf:1});
 function validateRules(r){
  const numbers=['target','winPoints','lossPoints','bestOf'];
  for(const k of numbers)need(Number.isSafeInteger(+r[k])&&(k==='target'||k==='bestOf'?+r[k]>=1:true),`${k}: invalid number`);
@@ -706,7 +774,7 @@ function fixturesCheck(t){
  return {valid:problems.length===0,problems,restAlerts};
 }
 function recordResult(t,matchId,result){
- const m=t.fixtures.find(x=>x.id===matchId);need(m,'Match not found');
+ const m=t.fixtures.find(x=>x.id===matchId);need(m,'Match not found');if(t.results[matchId]&&!mba37CanEditSaved())throw Error('Saved result Edit permission required.');
  if(m.stage==='knockout')need(m.a&&m.b,'Finish previous knockout round first');
  const cat=t.categories.find(c=>c.id===m.categoryId);need(cat,'Category not found');
  const rules=effectiveRules(t,cat);validateResult(result,rules);
@@ -880,7 +948,7 @@ function remember(){
 } // Only the selected tournament ID is saved locally, never financial data.
 /* V3 uses normalized Firebase paths. Viewer data and private financial records never share a readable ancestor. */
 const permissionsList=[
- ['scoresWrite','Enter / correct match scores'],
+ ['scoresWrite','Umpire Scoring — create match score'],['umpireEdit','Umpire — correct saved score'],['umpireDelete','Umpire — delete saved score'],
  ['teamsWrite','Add / edit teams and players'],
  ['categoriesWrite','Manage categories, entries and groups'],
  ['fixturesWrite','Generate and edit league / knockout fixtures'],
@@ -963,7 +1031,7 @@ function watchFinance(){
  finance={config:null,payments:{},overrides:{},expenses:{},transfers:{}};
  if(!t||!authUser)return;
  const p=`v3/finance/${t.id}`;
- function watch(part){const off=onValue(ref(db,p+'/'+part),snap=>{finance[part]=snap.val()|| (part==='config'?null:{});if(page==='finance'||page==='fixtures'||page==='teams'||page==='tournaments'||page==='print')render()},e=>{document.getElementById('auth-message').textContent='Finance read: '+errText(e)});finListeners.push(off)}
+ function watch(part){const off=onValue(ref(db,p+'/'+part),snap=>{finance[part]=snap.val()|| (part==='config'?null:{});if(page==='finance'||page==='fixtures'||page==='registration'||page==='teams'||page==='tournaments'||page==='print')render()},e=>{document.getElementById('auth-message').textContent='Finance read: '+errText(e)});finListeners.push(off)}
  if(canSeePayments()||can('feesWrite')){watch('config');watch('overrides')}
  if(canSeePayments())watch('payments');
  if(canSeeExpenses())watch('expenses');
@@ -1140,14 +1208,14 @@ function wireAuth(){
 }
 
 /* Financial data: separate from public tournament data, append-only receipts and expenses. */
-const expenseCategories=['Court Fee','Shuttlecock','Trophy / Medals','Food','Drinking Water','Transport','Printing / Banner','Equipment','Other / Custom'];
+const expenseCategories=['Prize Money','Court Fee','Shuttlecock','Trophy / Medals','Food','Drinking Water','Transport','Printing / Banner','Equipment','Other / Custom'];
 const payModes=['Cash','UPI / GPay','PhonePe','Paytm','Bank Transfer','Card','Other'];
 const money=n=>{const v=Math.round((+n||0)*100)/100;return(v<0?'-₹':'₹')+Math.abs(v).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})};
 const today=()=>{const d=new Date(),z=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`};
 const safeAmount=(n,allowZero=false)=>{const x=Number(n);if(!Number.isFinite(x)||x<0||(!allowZero&&x===0)||x>100000000||Math.round(x*100)!==x*100)throw Error('Enter a valid INR amount with up to 2 decimals.');return x};
 const playersOf=t=>t.teams.flatMap(team=>team.players.map(p=>({id:p.id,name:p.name,team:team.name})));
-const financesReady=()=>!!finance.config&&finance.config.feePerPlayer!==undefined;
-const playerFee=p=>!financesReady()?null:Number(finance.overrides?.[p]?.fee??finance.config.feePerPlayer);
+const financesReady=()=>!!finance.config&&finance.config.feePerPlayer!==undefined||active()?.registrationFeePerPlayer!=null;
+const playerFee=p=>!financesReady()?null:Number(finance.overrides?.[p]?.fee??finance.config?.feePerPlayer??active()?.registrationFeePerPlayer??0);
 const receipts=()=>Object.entries(dataObj(finance.payments)).map(([id,x])=>({...x,id}));
 const expenseEvents=()=>Object.entries(dataObj(finance.expenses)).map(([id,x])=>({...x,id}));
 const transfers=()=>Object.entries(dataObj(finance.transfers)).map(([id,x])=>({...x,id}));
@@ -1486,7 +1554,7 @@ function render(){
    '<section class="card"><h2>No tournaments available to this account</h2><p>Super Admin must publish a tournament or grant you private View access. Hidden tournaments cannot be opened directly.</p></section>';
    document.getElementById('profile-layer').innerHTML='';return;
  }
- const views={tournaments:tournamentView,teams:teamView,categories:categoryView,groups:groupView,fixtures:fixtureView,results:resultView,standings:standingsView,settings:settingsView,finance:financeView,access:accessView,print:printView,gallery:mbaGalleryView};
+ const views={tournaments:tournamentView,registration:mba37RegistrationView,teams:teamView,categories:categoryView,groups:groupView,fixtures:fixtureView,results:resultView,standings:standingsView,settings:settingsView,finance:financeView,access:accessView,print:printView,gallery:mbaGalleryView};
  content.innerHTML=page==='access'?accessView():((views[page]?.(t)||'')+(page==='tournaments'&&isSuper()?tournamentVisibilityPanel():''));
  document.getElementById('profile-layer').innerHTML=t?detailModal(t):'';
  if(t)document.getElementById('print-rule').textContent=`@page{size:A4 ${t.settings?.printOrientation==='portrait'?'portrait':'landscape'};margin:0}@media print{.print-sheet{font-size:${t.settings?.printFontSize||17}px}}`;
@@ -1871,9 +1939,9 @@ document.addEventListener('click',async ev=>{
  if(action==='remove-entry')return safe(()=>{if(!confirm('Remove this category entry?'))return;removeEntry(t,catId,id)});
  if(action==='shuffle')return safe(()=>{need(t.categories.filter(cat=>['league','combined'].includes(effectiveFormat(t,cat))).flatMap(makeRoundRobin).length>0,'No league matches possible: open Categories and add at least two pairs/entries in the same category and group.');scheduleLeague(t,{seed:Date.now(),minimumRestSlots:t.settings?.minRestSlots??1});const check=fixturesCheck(t);need(check.valid,check.problems.join(', '));notice=`Generated ${t.fixtures.filter(m=>m.stage==='league').length} league matches. ${check.restAlerts.length} rest warnings.`});
  if(action==='clear-knockout')return safe(()=>{const kos=t.fixtures.filter(m=>m.stage==='knockout');need(!kos.some(m=>t.results[m.id]),'Recorded knockout results: cannot clear the bracket');if(!confirm('Clear all unplayed knockout brackets in this tournament? League scores stay untouched.'))return;t.fixtures=t.fixtures.filter(m=>m.stage!=='knockout');notice='Unplayed knockout brackets cleared in Production.'});
- if(action==='knockout')return safe(()=>{const out=generateKnockout(t,id);notice=`Knockout bracket created: ${out.allMatches.length} matches across ${out.rounds.length} rounds, ${out.byes} byes. Winners advance automatically.`});
- if(action==='edit-result'){editor={kind:'result',id};mode=t.results[id]?.mode==='winner'?'winner':'score';render();return}
- if(action==='clear-result')return safe(()=>{if(!confirm('Clear this result?'))return;const match=t.fixtures.find(m=>m.id===id);delete t.results[id];if(match?.stage==='knockout')advanceKnockout(t,match.categoryId);editor=null;notice='Production result cleared.'});
+ if(action==='knockout')return safe(()=>{if(t.fixtures.some(m=>m.categoryId===id&&m.stage==='knockout')&&!confirm('Regenerate this bracket? All unplayed knockout pairing positions will be shuffled. Saved results are protected.'))return;const out=generateKnockout(t,id);notice=`Knockout bracket created: ${out.allMatches.length} matches across ${out.rounds.length} rounds, ${out.byes} byes. Winners advance automatically.`});
+ if(action==='edit-result'){if(t.results[id]&&!mba37CanEditSaved()){alert('Super Admin must grant Umpire Edit permission for saved results.');return}editor={kind:'result',id};mode=t.results[id]?.mode==='winner'?'winner':'score';render();return}
+ if(action==='clear-result')return safe(()=>{need(mba37CanDeleteSaved(),'Super Admin must grant Umpire Delete permission');if(!confirm('Clear this result?'))return;const match=t.fixtures.find(m=>m.id===id);delete t.results[id];if(match?.stage==='knockout')advanceKnockout(t,match.categoryId);editor=null;notice='Production result cleared.'});
  if(action==='export'){
   const blob=new Blob([JSON.stringify({version:VERSION,exportedAt:new Date().toISOString(),tournaments:store.tournaments},null,2)],{type:'application/json'});
   const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='MBA-Tournaments-Production-Backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);return;
@@ -1922,7 +1990,7 @@ document.addEventListener('submit',async ev=>{
    const name=String(data.get('name')||'').trim();need(name,'Tournament name required');
    if(editor?.kind==='create'){
     const n=makeTournament({name,date:String(data.get('date')||''),courts:+data.get('courts'),format:String(data.get('format'))});
-    n.venueUrl=safeVenueUrl(data.get('venueUrl'));
+    n.venueUrl=safeVenueUrl(data.get('venueUrl'));n.registrationMode=String(data.get('mba36-registration-mode')||'team');need(['team','direct'].includes(n.registrationMode),'Invalid registration mode');n.rules=mba36RulesFromForm(data);mba37ReadSettings(data,n);
     const src=store.tournaments.find(x=>x.id===String(data.get('copyFrom')||''));const sourceIds=data.getAll('copyTeam').map(String);
     if(src)copyPreviousTeams(n,src,sourceIds);
     const picked=[...new Set(data.getAll('reusePlayer').map(x=>String(x).trim()).filter(Boolean))];
@@ -1931,7 +1999,7 @@ document.addEventListener('submit',async ev=>{
     if(extra.length)addTeam(n,String(data.get('poolName')||'Selected Players'),extra);
     store.tournaments.push(n);store.selected=n.id;page='tournaments';tournamentPanel='details';
    }
-   else{t.venueUrl=safeVenueUrl(data.get('venueUrl'));t.name=name;t.date=String(data.get('date')||'');if(t.format!==String(data.get('format')))maybeWarnChanges(t);t.format=String(data.get('format'));const courts=+data.get('courts');if(t.courts!==courts){maybeWarnChanges(t);t.courts=courts}}
+   else{t.venueUrl=safeVenueUrl(data.get('venueUrl'));t.name=name;t.date=String(data.get('date')||'');if(t.format!==String(data.get('format')))maybeWarnChanges(t);t.format=String(data.get('format'));const mba36NewMode=String(data.get('mba36-registration-mode')||'team');need(['team','direct'].includes(mba36NewMode),'Invalid registration mode');if(mba36NewMode!==(t.registrationMode||'team')&&(t.categories.some(c=>c.entrants.length)||t.fixtures.length))throw Error('Cannot change registration type after entries/fixtures exist. Create a new tournament instead.');t.registrationMode=mba36NewMode;const mba36NewRules=mba36RulesFromForm(data);if(JSON.stringify(mba36NewRules)!==JSON.stringify(t.rules)){need(!t.fixtures.some(m=>t.results[m.id]),'Cannot change tournament scoring rules after any results are saved.');maybeWarnChanges(t);t.rules=mba36NewRules;}mba37ReadSettings(data,t);const courts=+data.get('courts');if(t.courts!==courts){maybeWarnChanges(t);t.courts=courts}}
   }else if(kind==='new-team'){
    const typed=String(data.get('players')||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean),picked=data.getAll('reusePlayer').map(s=>String(s).trim()).filter(Boolean);
    const merged=[...new Map([...typed,...picked].map(name=>[name.normalize('NFKC').toLocaleLowerCase(),name])).values()];
@@ -2209,7 +2277,7 @@ async function mbaUploadPoster(){
  if(Object.keys(mbaGalleryItems).length>=8)throw Error('Maximum 8 gallery images per tournament. Remove an old image to add another.');
  if(title.length>80)throw Error('Title is too long.');
  const data=await mbaCompressPoster(file),record={title,imageData:data,createdAt:Date.now(),createdBy:authUser.uid};
- await set(ref(db,'v3/posters/'+t.id+'/'+uid('poster')),record);alert('Photo uploaded. It will appear in this tournament gallery.');
+ await set(ref(db,'v3/posters/'+t.id+'/'+uid('poster')),record);alert('Photo uploaded. Super Admin must approve the audience before other viewers can see it.');
 }
 function mbaDraftKey(tid,mid){return 'mba-umpire-draft-'+tid+'-'+mid}
 function mbaLoadDraft(tid,mid){try{const v=JSON.parse(sessionStorage.getItem(mbaDraftKey(tid,mid))||'null');return v&&Number.isSafeInteger(v.a)&&Number.isSafeInteger(v.b)?v:null}catch{return null}}
@@ -2217,7 +2285,7 @@ function mbaSaveDraft(){if(!mbaUmpire)return;try{sessionStorage.setItem(mbaDraft
 function mbaOpenUmpire(mid){
  const t=active();if(!t||!authUser||!can('scoresWrite')||!editScope(t.id))throw Error('Umpire needs Score Edit access to this tournament.');
  const m=t.fixtures.find(x=>x.id===mid);if(!m||!m.a||!m.b)throw Error('This match is not ready.');
- const res=t.results[mid],draft=mbaLoadDraft(t.id,mid);
+ const res=t.results[mid],draft=mbaLoadDraft(t.id,mid);if(res&&!mba37CanEditSaved())throw Error('Super Admin must grant Umpire Edit permission for this saved result.');
  if(res&&res.mode==='winner'&&!confirm('A Win/Loss-only result already exists. Convert it to a numeric result?'))return;
  if(res&&res.mode!=='winner'&&!confirm('This match already has a saved score. Open umpire editor to review/change it?'))return;
  mbaUmpire={tournamentId:t.id,matchId:mid,a:res?.mode==='winner'?(draft?.a||0):res?Number(res.a):draft?.a||0,b:res?.mode==='winner'?(draft?.b||0):res?Number(res.b):draft?.b||0};mbaRenderUmpire();
@@ -2227,9 +2295,9 @@ function mbaRenderUmpire(){
  if(!mbaUmpire){host.hidden=true;host.innerHTML='';return}
  const t=active(),m=t?.fixtures.find(x=>x.id===mbaUmpire.matchId);if(!m||t.id!==mbaUmpire.tournamentId){mbaUmpire=null;host.hidden=true;return}
  const c=lookup(t,m.categoryId),r=effectiveRules(t,c),names=participants(t,m);
- const cap=r.cutoff==null?Math.max(r.target+6,Math.max(mbaUmpire.a,mbaUmpire.b)+3):Number(r.cutoff);
- const count=Math.min(70,Math.max(r.target,cap)),winner=scoreWinner({a:mbaUmpire.a,b:mbaUmpire.b},r);
- const grid=(key,name)=>{const current=mbaUmpire[key];return `<div class="mba-point-team"><h4>${esc(name)}</h4><div class="mba-point-score">${current}</div><div class="mba-point-actions"><button type="button" class="btn" data-mba-point="${key}:-1">− Undo</button><button type="button" class="btn primary" data-mba-point="${key}:1" ${winner?'disabled':''}>+ Point</button></div><div class="mba-point-grid">${Array.from({length:count},(_,i)=>`<button type="button" class="mba-point ${i<current?'is-marked':''}" data-mba-check="${key}:${i+1}" aria-label="${esc(name)} point ${i+1}" ${i>current||winner&&i>=current?'disabled':''}>${i+1}</button>`).join('')}</div></div>`};
+ const cap=r.cutoff==null?Math.max(r.target,Number(mbaUmpire.tickLimit||r.target),Math.max(mbaUmpire.a,mbaUmpire.b)):Number(r.cutoff);
+ const count=Math.min(250,Math.max(r.target,cap)),winner=scoreWinner({a:mbaUmpire.a,b:mbaUmpire.b},r);
+ const grid=(key,name)=>{const current=mbaUmpire[key];return `<div class="mba-point-team"><h4>${esc(name)}</h4><div class="mba-point-score">${current}</div><div class="mba-point-actions"><button type="button" class="btn" data-mba-point="${key}:-1">− Undo</button><button type="button" class="btn primary" data-mba-point="${key}:1" ${winner?'disabled':''}>+ Point</button></div><div class="mba-point-grid">${Array.from({length:count},(_,i)=>`<button type="button" class="mba-point ${i<current?'is-marked':''}" data-mba-check="${key}:${i+1}" aria-label="${esc(name)} point ${i+1}" ${winner&&i>=current?'disabled':''}>${i+1}</button>`).join('')}</div></div>`};
  host.hidden=false;host.innerHTML=`<div class="mba-umpire-backdrop" role="presentation"></div><section class="mba-umpire-card" role="dialog" aria-modal="true" aria-label="Umpire Score"><div class="mba-umpire-head"><div><h2>🏸 Umpire Score · Court ${esc(m.court)}</h2><p>Target ${esc(r.target)} · ${r.winByTwo?'Win by 2':'No win-by-2'} · Cap ${r.cutoff??'none'}</p></div><button class="btn" type="button" id="mba-umpire-close">✕ Close</button></div><div class="mba-point-teams">${grid('a',names[0])}${grid('b',names[1])}</div><div class="mba-umpire-footer"><b>${winner?'🏆 '+esc(names[winner==='a'?0:1])+' WON':'Match in progress · not yet a valid final result'}</b><button type="button" class="btn primary" id="mba-umpire-final" ${winner?'':'disabled'}>✅ Finish Match &amp; Save Result</button><p class="helper">Each tick records one point on this device. Undo is available. Only after Finish & Save will the confirmed score be sent to Firebase and update Results/Standings. Manual Score or Win/Loss in Results remains available.</p></div></section>`;
 }
 function mbaUmpirePoint(key,change,point){
@@ -2239,14 +2307,14 @@ function mbaUmpirePoint(key,change,point){
  if(change>0&&scoreWinner({a:mbaUmpire.a,b:mbaUmpire.b},rules))return;
  if(point!==undefined){if(point===mbaUmpire[key]+1)mbaUmpire[key]++;else if(point<=mbaUmpire[key])mbaUmpire[key]=point-1;else return}
  else mbaUmpire[key]=Math.max(0,mbaUmpire[key]+change);
- const limit=rules.cutoff==null?70:Number(rules.cutoff);
+ const limit=rules.cutoff==null?999:Number(rules.cutoff);
  mbaUmpire[key]=Math.min(limit,mbaUmpire[key]);mbaSaveDraft();mbaRenderUmpire();
 }
 async function mbaFinishUmpire(){
  if(!mbaUmpire)throw Error('Umpire score not open.');
  const u={...mbaUmpire},t=active(),m=t?.fixtures.find(x=>x.id===u.matchId);if(!m||t.id!==u.tournamentId)throw Error('The tournament or match changed.');
  const w=scoreWinner({a:u.a,b:u.b},effectiveRules(t,lookup(t,m.categoryId)));
- if(!w)throw Error('Finish the match according to its scoring rules.');
+ if(!w)throw Error('Finish the match according to its scoring rules.');if(t.results[u.matchId]&&!mba37CanEditSaved())throw Error('Super Admin did not grant permission to EDIT a saved score.');
  if(!confirm('Save '+u.a+' – '+u.b+' as the FINAL result? Points Table will update automatically.'))return;
  const btn=document.getElementById('mba-umpire-final');if(btn)btn.disabled=true;
  await op(()=>{const current=active();if(current?.id!==u.tournamentId)throw Error('Tournament changed');recordResult(current,u.matchId,{a:u.a,b:u.b});notice='Final Umpire Result saved to Production Firebase.'});
@@ -2308,13 +2376,63 @@ function mbaV34RasterReport(head,rows,title,subtitle){
  pages.forEach((cv,i)=>{const c=cv.getContext('2d');c.font='16px Arial,sans-serif';c.fillStyle='#627b93';c.fillText('App created by Usthad · A4 '+orient.toUpperCase(),44,cv.height-31);c.textAlign='right';c.fillText('Page '+(i+1)+' / '+pages.length,cv.width-44,cv.height-31);c.textAlign='left'});return pages;
 }
 function mbaV34RasterSection(target){
- const clone=target.cloneNode(true);clone.querySelectorAll('button,input,select,textarea,.noprint,script,style').forEach(el=>el.remove());
- const str=clone.textContent.replace(/[ \t]+/g,' ').split(/\n+/).map(t=>t.trim()).filter(Boolean).join(' · ');
- const title=active()?.name||'MBA Tournaments',words=str.split(/\s*·\s*/).filter(Boolean);if(!words.length)throw Error('There is no report content to export.');
- const orient=mbaPrintPaper(),[w,h]=mbaV34Widths[orient],pages=[];let p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);
- let text=words.join('  |  '),lineWidth=w-94,c=p.ctx;c.font='22px Arial,sans-serif';const lines=mbaV34Wrap(c,text,lineWidth);
- for(const line of lines){if(p.y+38>h-70){if(pages.length>=25)throw Error('Report too large. Select a smaller section.');p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);c=p.ctx;c.font='22px Arial,sans-serif'}c.fillStyle='#263c55';c.fillText(line,46,p.y+26);p.y+=36}
- pages.forEach((cv,i)=>{const ct=cv.getContext('2d');ct.font='16px Arial,sans-serif';ct.fillStyle='#627b93';ct.fillText('MBA Tournaments · A4 '+orient.toUpperCase(),44,cv.height-30);ct.textAlign='right';ct.fillText('Page '+(i+1)+' / '+pages.length,cv.width-44,cv.height-30)});return pages;
+ /* MBA_V371_SHARE_TABLE_FIX: Keep actual columns and rows when sharing a section as PDF/PNG/WhatsApp. */
+ const plain=el=>String(el?.textContent||'').replace(/\s+/g,' ').trim();
+ const title=active()?.name||'MBA Tournaments';
+ const tables=[...target.querySelectorAll('table')].filter(table=>{
+   const closed=table.closest('details:not([open])');
+   return !closed||!target.contains(closed);
+ });
+ if(tables.length){
+   const pages=[];
+   for(let j=0;j<tables.length;j++){
+     const table=tables[j];
+     const ths=[...table.querySelectorAll('thead tr:last-child th')];
+     let head=ths.map(plain);
+     const trs=[...table.querySelectorAll('tbody tr')];
+     if(!head.length&&trs.length){head=[...trs[0].querySelectorAll('td,th')].map((_,i)=>'Column '+(i+1))}
+     if(!head.length)continue;
+     const rows=trs.map(tr=>[...tr.querySelectorAll(':scope > td,:scope > th')].map(plain))
+       .filter(row=>row.length)
+       .map(row=>Array.from({length:head.length},(_,i)=>row[i]||''));
+     const sectionLabel=plain(target.querySelector('h2,h3,h4'))||'Tournament Table';
+     const label=sectionLabel+(tables.length>1?' · '+(j+1)+'/'+tables.length:'');
+     pages.push(...mbaV34RasterReport(head,rows,title,label));
+     if(pages.length>30)throw Error('Too many pages. Share a smaller section.');
+   }
+   if(pages.length)return pages;
+ }
+ // Non-table items (for example a match card) are drawn paragraph by paragraph.
+ // Never collapse an entire page into one unbroken string.
+ const clone=target.cloneNode(true);
+ clone.querySelectorAll('button,input,select,textarea,.noprint,script,style,.mba-share-menu,.mba-share-dock,.mba-share-mini')
+   .forEach(el=>el.remove());
+ let blocks=[...clone.querySelectorAll('h2,h3,h4,p,li,.mba-fixture-meta,.mba-fixture-pairs,.mba-fixture-result,.entry-line,.player,.tour-detail-line')]
+   .filter(el=>!el.closest('table'))
+   .map(plain).filter(Boolean);
+ if(!blocks.length){
+   blocks=String(clone.textContent||'').split(/\n+/).map(x=>x.replace(/\s+/g,' ').trim()).filter(Boolean);
+ }
+ if(!blocks.length)throw Error('There is no content to share.');
+ const orient=mbaPrintPaper(),[w,h]=mbaV34Widths[orient],pages=[];
+ let p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);
+ for(let i=0;i<blocks.length;i++){
+   let c=p.ctx;c.font='20px Arial,sans-serif';
+   const lines=mbaV34Wrap(c,blocks[i],w-100);
+   if(p.y+lines.length*30+14>h-80){
+     if(pages.length>=30)throw Error('Too many pages. Select a smaller report.');
+     p=mbaV34Page(w,h,title,'Section: '+page.toUpperCase());pages.push(p.canvas);c=p.ctx;
+   }
+   c.font='20px Arial,sans-serif';c.fillStyle='#243f5b';
+   for(const ln of lines){c.fillText(ln,48,p.y+24);p.y+=29}
+   p.y+=10;
+ }
+ pages.forEach((cv,i)=>{
+   const c=cv.getContext('2d');c.font='16px Arial,sans-serif';c.fillStyle='#627b93';
+   c.fillText('MBA Tournaments · A4 '+orient.toUpperCase(),44,cv.height-30);
+   c.textAlign='right';c.fillText('Page '+(i+1)+' / '+pages.length,cv.width-44,cv.height-30)
+ });
+ return pages;
 }
 
 const mbaExportScriptReady=()=>true;
@@ -2514,6 +2632,814 @@ document.addEventListener('click',event=>{
   notice='Teams added to category and '+t.fixtures.filter(m=>m.stage==='league').length+' matches generated. Saved online.';
  });
 });
+/* MBA_V36_REGISTRATION_KNOCKOUT - source patch for Production V3.5.
+   Does not migrate or delete existing fixtures, teams, or saved scores. */
+const mba36RegistrationType = c => c?.playType || (/double|ഡബിൾ/i.test(c?.name||'')?'doubles':'singles');
+function mba36RulesFromForm(data){
+ const rules={target:Number(data.get('mba36-target')||21),winByTwo:data.has('mba36-win-two'),
+   cutoff:data.get('mba36-cutoff')===''?null:Number(data.get('mba36-cutoff')),winPoints:Number(data.get('mba36-winpoints')||0),lossPoints:Number(data.get('mba36-losspoints')||0),bestOf:1};
+ validateRules(rules);return rules;
+}
+function mba36ParseRegistrations(text,type){
+ const lines=String(text||'').split(/\r?\n/).map((line,i)=>({line:line.trim(),lineNo:i+1})).filter(x=>x.line);
+ if(lines.length<1||lines.length>256)throw Error('Enter 1 to 256 registrations at a time.');
+ const entries=[],seen=new Set();
+ for(const {line,lineNo} of lines){
+  const fields=line.split('|').map(s=>s.trim());
+  if(fields.length>2)throw Error('Line '+lineNo+': use only one | before the optional club name.');
+  if(type==='singles'&&fields[0].includes('&'))throw Error('Line '+lineNo+': Singles requires exactly one name (without &).');
+  const club=fields[1]||'',players=type==='doubles'?fields[0].split('&').map(s=>s.trim()):[fields[0]];
+  if(players.length!==(type==='singles'?1:2)||players.some(n=>!n||n.length>80))throw Error('Line '+lineNo+': '+(type==='singles'?'one player name':'exactly 2 names joined by &')+' required.');
+  if(club.length>80)throw Error('Line '+lineNo+': club name must be 80 characters or less.');
+  const names=players.map(n=>n.normalize('NFKC').toLocaleLowerCase());
+  if(new Set(names).size!==names.length)throw Error('Line '+lineNo+': same player repeated in doubles pair.');
+  const key=names.slice().sort().join(' & ')+'|'+club.normalize('NFKC').toLocaleLowerCase();
+  if(seen.has(key))throw Error('Line '+lineNo+': duplicate registration.');
+  seen.add(key);entries.push({players,club,key});
+ }
+ return entries;
+}
+
+/* Show tournament modes and score rules where users actually create tournaments. */
+const mba36TournamentViewOriginal=tournamentView;
+tournamentView=function(t){
+ let html=mba36TournamentViewOriginal(t);
+ if(editor?.kind!=='tournament'&&editor?.kind!=='create')return html;
+ const isNew=editor.kind==='create',r=isNew?{target:21,cutoff:null,winByTwo:true,winPoints:3,lossPoints:0}:t.rules||defaultRules();
+ const mode=isNew?'team':t.registrationMode||'team';
+ const fields=`<div class="full mba36-tournament-config"><h3>🏸 Competition Registration & Scoring</h3>
+  <label class="field"><span>Registration type</span><select name="mba36-registration-mode"><option value="team" ${mode==='team'?'selected':''}>Team-based Tournament (League / Combined / Knockout)</option><option value="direct" ${mode==='direct'?'selected':''}>Direct Registration (Keralaotsavam / Individuals & Clubs)</option></select></label>
+  <p class="helper">Direct Registration lets you enter Singles and Doubles lists in Categories. Clubs are optional; no team names required.</p>
+  <div class="form-grid"><label class="field"><span>Target / winning points</span><input name="mba36-target" type="number" min="1" max="999" required value="${esc(r.target)}"></label>
+   <label class="field"><span>Cutoff points (optional)</span><input name="mba36-cutoff" type="number" min="1" max="999" placeholder="No cutoff" value="${r.cutoff==null?'':esc(r.cutoff)}"></label>
+   <label class="field"><span>League points for WIN</span><input name="mba36-winpoints" type="number" required value="${esc(r.winPoints)}"></label>
+   <label class="field"><span>League points for LOSS</span><input name="mba36-losspoints" type="number" required value="${esc(r.lossPoints)}"></label></div>
+  <label class="choice"><input type="checkbox" name="mba36-win-two" ${r.winByTwo?'checked':''}> Must win by 2 points</label>
+  <p class="helper">Court count and League / Knockout format are above. A blank cutoff means no preset cap. Existing results cannot be silently rescored.</p></div>`;
+ const anchor='<div class="full actions"> <button class="btn primary" type="submit">Save Tournament</button>';
+ if(!html.includes(anchor))throw Error('V3.6: Tournament form anchor missing');
+ return html.replace(anchor,fields+anchor);
+};
+
+/* Direct registration deliberately does NOT require creating named teams manually.
+   Internal singleton/pair team records preserve compatibility with existing scorer and Firebase data schema. */
+const mba36CategoryViewOriginal=categoryView;
+categoryView=function(t){
+ const base=mba36CategoryViewOriginal(t);
+ if(t.registrationMode!=='direct')return base;
+ const manage=!!(can('teamsWrite')&&can('categoriesWrite')&&editScope(t.id));
+ const categories=t.categories.map(c=>{
+  const type=mba36RegistrationType(c),isDouble=type==='doubles';
+  const sample=isDouble?'Shamil & Nithin | Tirur Club\nAmeen & Askar':'Shamil | Tirur Club\nNithin';
+  const names=c.entrants.map((entry,i)=>`<div class="mba36-roster-item"><b>${i+1}. ${esc(entryLabel(t,c,entry.id))}</b>${entry.clubName?`<small>🏠 ${esc(entry.clubName)}</small>`:''}</div>`).join('');
+  const ready=t.fixtures.some(m=>m.categoryId===c.id&&m.stage==='knockout');
+  const form=manage?`<form class="mba36-bulk" data-form="mba36-bulk" data-cat="${esc(c.id)}"><label class="field"><span>Paste ${isDouble?'one PAIR':'one PLAYER'} per line · optional Club after |</span><textarea name="registrations" rows="5" placeholder="${esc(sample)}" required></textarea></label><div class="actions"><button class="btn primary" type="submit">✅ Add All ${isDouble?'Doubles Pairs':'Singles Players'}</button></div>${ready?'<p class="helper">⚠ Existing knockout bracket must be cleared before adding entries.</p>':''}</form>`:'';
+  return `<div class="mba36-registration-category"><div class="section-head"><h3>${esc(c.name)} · ${isDouble?'Doubles (2 players)':'Singles (1 player)'}</h3><span>${c.entrants.length} entries</span></div><div class="mba36-roster">${names||'<p>No registrations yet.</p>'}</div>${form}</div>`;
+ }).join('');
+ const newCats=manage?`<div class="actions"><button type="button" class="btn primary" data-mba36-new="singles">＋ Singles Segment</button><button type="button" class="btn primary" data-mba36-new="doubles">＋ Doubles Segment</button></div>`:'<p>Super Admin or an authorized Tournament Editor can register players.</p>';
+ return card('📝 Direct Sports Registration · Singles / Doubles',`<p class="helper">Keralaotsavam-style registration: no team names required. Club is optional. Singles = one player per line; Doubles = two names separated by <b>&amp;</b>. Separate Categories are scheduled independently.</p>${newCats}${categories}`)+base;
+};
+
+/* Keep legacy team lists intact but avoid confusing synthetic 'Registration 1' labels. */
+const mba36TeamViewOriginal=teamView;
+teamView=function(t){
+ if(t.registrationMode!=='direct')return mba36TeamViewOriginal(t);
+ return card('Direct Registration',`<p>For this tournament, register the player names under <b>Categories → Singles / Doubles</b>. You do not need to create team names first.</p><p class="helper">${t.teams.filter(team=>team.isDirectRegistration).length} registration record(s) maintained internally for score and fixture compatibility. Clubs are optional.</p>`);
+};
+
+/* Shuffle first-round entrants only for pure knockout; retain existing bracket structure and winner progression. */
+const mba36GenerateKnockoutOriginal=generateKnockout;
+generateKnockout=function(t,categoryId,options={}){
+ const cat=t.categories.find(c=>c.id===categoryId);if(!cat)return mba36GenerateKnockoutOriginal(t,categoryId,options);
+ if(effectiveFormat(t,cat)!=='knockout')return mba36GenerateKnockoutOriginal(t,categoryId,options);
+ const previous=cat.entrants;
+ cat.entrants=shuffle(previous,seededRandom(Date.now() ^ Math.floor(Math.random()*2147483647)));
+ try{return mba36GenerateKnockoutOriginal(t,categoryId,options)}finally{cat.entrants=previous}
+};
+
+function mba36Bracket(t,c){
+ const matches=t.fixtures.filter(m=>m.categoryId===c.id&&m.stage==='knockout');
+ if(!matches.length)return '';
+ const rounds=new Map();for(const m of matches){const key=m.round??1;if(!rounds.has(key))rounds.set(key,[]);rounds.get(key).push(m)}
+ const roundsOrdered=[...rounds.entries()].sort((a,b)=>a[0]-b[0]);
+ const maxRound=Math.max(...rounds.keys());
+ const labelFor=(m,side)=>{if(m[side]){const e=c.entrants.find(x=>x.id===m[side]);return entryLabel(t,c,m[side])+(e?.clubName?' · '+e.clubName:'')}return m['source'+side.toUpperCase()]?.type==='match'?'Winner of previous match':'Awaiting winner'};
+ const cols=roundsOrdered.map(([round,list])=>{
+  const heading=round===0?'Qualifiers / Re-entry':round===maxRound?'🏆 Final':round===maxRound-1?'Semi-finals':round===maxRound-2?'Quarter-finals':`Round ${round}`;
+  return `<div class="mba36-bracket-column"><h4>${heading}</h4>${list.sort((a,b)=>(a.bracketIndex||0)-(b.bracketIndex||0)).map(m=>{
+   const winner=scoreWinner(t.results[m.id],effectiveRules(t,c)),result=t.results[m.id];
+   const score=result?(result.mode==='winner'?'Winner saved':`${result.a} – ${result.b}`):m.a&&m.b?'Not played':'Waiting';
+   return `<div class="mba36-bracket-match"><div class="mba36-bracket-row ${winner==='a'?'won':''}">${esc(labelFor(m,'a'))}${winner==='a'?'<span>✓</span>':''}</div><div class="mba36-bracket-row ${winner==='b'?'won':''}">${esc(labelFor(m,'b'))}${winner==='b'?'<span>✓</span>':''}</div><div class="mba36-bracket-foot"><small>Court ${esc(m.court)} · ${esc(score)}</small>${m.a&&m.b&&can('scoresWrite')&&editScope(t.id)?`<button type="button" data-mba-score-match="${esc(m.id)}" class="btn">✍ Score</button>`:''}</div></div>`;
+  }).join('')}</div>`;
+ }).join('');
+ const finalMatch=roundsOrdered.at(-1)?.[1]?.[0],win=finalMatch?scoreWinner(t.results[finalMatch.id],effectiveRules(t,c)):null;
+ const champion=win?entryLabel(t,c,finalMatch[win]):'';
+ const byes=2**Math.ceil(Math.log2(Math.max(2,c.entrants.length)))-c.entrants.length;
+ return `<section class="card mba36-bracket-section"><div class="section-head"><h2>🏸 ${esc(c.name)} — Knockout Bracket</h2><span>${c.entrants.length} entries · ${byes} bye(s)</span></div><p class="helper">Swipe sideways to see the rounds. Winners automatically advance after an authorized umpire saves a valid result.</p><div class="mba36-bracket-scroll"><div class="mba36-bracket">${cols}${champion?`<div class="mba36-bracket-column mba36-champion"><h4>Champion</h4><div class="mba36-bracket-match">🏆 ${esc(champion)}</div></div>`:''}</div></div></section>`;
+}
+const mba36FixtureViewOriginal=fixtureView;
+fixtureView=function(t){
+ const base=mba36FixtureViewOriginal(t);
+ const ko=t.categories.filter(c=>['knockout','combined'].includes(effectiveFormat(t,c)));
+ const guidance=ko.length?card('🏆 Knockout Setup',`<p class="helper">Singles/Doubles categories each have their own shuffled bracket. Enter names in Categories first. Generate the bracket for the desired Category, then record winners to advance automatically. Regenerate only before results are saved.</p>${ko.map(c=>`<div class="mba36-ko-setup"><b>${esc(c.name)}</b> · ${c.entrants.length} entries · ${t.fixtures.filter(m=>m.categoryId===c.id&&m.stage==='knockout').length} knockout matches ${can('fixturesWrite')&&editScope(t.id)?button('🎲 Shuffle / Generate Bracket','knockout',`data-id="${esc(c.id)}"`):''}</div>`).join('')}`):'';
+ return base+guidance+ko.map(c=>mba36Bracket(t,c)).join('');
+};
+
+/* Keep the clickable scoring ticks and expose separate local reset versus saved-result deletion. */
+const mba36RenderUmpireOriginal=mbaRenderUmpire;
+mbaRenderUmpire=function(){
+ mba36RenderUmpireOriginal();
+ if(!mbaUmpire)return;
+ const footer=document.querySelector('#mba-umpire-overlay .mba-umpire-footer');if(!footer||footer.querySelector('#mba36-reset-local'))return;
+ const saved=!!active()?.results?.[mbaUmpire.matchId];
+ const actions=document.createElement('div');actions.className='mba36-umpire-reset-actions';
+ actions.innerHTML=`<button id="mba36-reset-local" class="btn" type="button">↺ Reset Ticks (0–0)</button>${saved&&mba37CanDeleteSaved()?'<button id="mba36-delete-final" class="btn danger-outline" type="button">🗑 Delete Saved Result</button>':''}`;
+ footer.appendChild(actions);
+};
+
+/* Gallery privacy: only Super Admin publishes each photo to an audience. Existing
+   uploaded photos remain visible to Super Admin; regular users see approved items only.
+   Enforced by the separate Firebase Rules installer, not merely CSS filtering. */
+let mba36GalleryPrivilege=null,mba36GalleryPermissions={},mba36GalleryPermissionsOff=null,mba36GalleryFetchSeq=0;
+const mba36GalleryWatchOriginal=mbaWatchGallery;
+mbaWatchGallery=function(t){
+ if(!t)return;
+ const priv=isSuper();if(mbaGalleryTournament===t.id&&mba36GalleryPrivilege===priv)return;
+ if(mbaGalleryOff){try{mbaGalleryOff()}catch{}mbaGalleryOff=null}
+ if(mba36GalleryPermissionsOff){try{mba36GalleryPermissionsOff()}catch{}mba36GalleryPermissionsOff=null}
+ mbaGalleryTournament=t.id;mba36GalleryPrivilege=priv;mbaGalleryItems={};mbaGalleryError='';mba36GalleryPermissions={};++mba36GalleryFetchSeq;
+ if(priv){
+  mbaGalleryOff=onValue(ref(db,'v3/posters/'+t.id),snap=>{mbaGalleryItems=snap.val()||{};mbaGalleryError='';if(page==='gallery'&&active()?.id===t.id)render()},error=>{mbaGalleryError=errText(error);if(page==='gallery')render()});
+  mba36GalleryPermissionsOff=onValue(ref(db,'v3/galleryPermissions/'+t.id),snap=>{mba36GalleryPermissions=snap.val()||{};if(page==='gallery'&&active()?.id===t.id)render()},error=>console.warn('Gallery privacy settings:',errText(error)));
+ }else{
+  mbaGalleryOff=onValue(ref(db,'v3/galleryCatalog/'+t.id),async snap=>{
+   const gen=++mba36GalleryFetchSeq,ids=Object.keys(snap.val()||{}).slice(0,30),result={};
+   await Promise.all(ids.map(async id=>{
+    try{const one=await get(ref(db,'v3/posters/'+t.id+'/'+id));if(one.exists())result[id]=one.val()}
+    catch(e){if(e.code!=='PERMISSION_DENIED')console.warn('Gallery item:',errText(e))}
+   }));
+   if(gen!==mba36GalleryFetchSeq||mbaGalleryTournament!==t.id)return;
+   mbaGalleryItems=result;mbaGalleryError='';if(page==='gallery'&&active()?.id===t.id)render();
+  },error=>{mbaGalleryError=errText(error);if(page==='gallery')render()});
+ }
+};
+const mba36GalleryViewOriginal=mbaGalleryView;
+mbaGalleryView=function(t){
+ const base=mba36GalleryViewOriginal(t);
+ if(!isSuper())return base;
+ const items=Object.entries(mbaGalleryItems||{});
+ const selects=items.map(([id,p])=>{
+  const access=mba36GalleryPermissions[id]||{},mode=access.audience||'hidden',uids=Object.keys(access.allowedUids||{}).join(', ');
+  const users=Object.entries(accessList||{}).filter(([,r])=>r&&r.active!==false).sort((a,b)=>String(a[1].email||a[0]).localeCompare(String(b[1].email||b[0]))).map(([userId,user])=>`<label class="choice"><input type="checkbox" data-mba36-photo-user="${esc(id)}" value="${esc(userId)}" ${access.allowedUids?.[userId]?'checked':''}> ${esc(user.email||userId)}</label>`).join('');
+  return `<div class="mba36-gallery-admin-item"><b>${esc(p.title||'Photo')}</b><small> · ${esc(id)}</small><label class="field">Show to<select data-mba36-photo-mode="${esc(id)}">
+   ${[['hidden','Super Admin only (Hidden)'],['all','All approved viewers of this tournament'],['editors','Tournament editors only'],['selected','Selected User UIDs only']].map(([v,l])=>`<option value="${v}" ${mode===v?'selected':''}>${esc(l)}</option>`).join('')}</select></label>
+   <details><summary>Choose approved users from User Roles</summary><div class="mba36-user-choices">${users||'<p>No activated users listed.</p>'}</div></details>
+   <label class="field">Or enter selected UIDs (comma separated)<input data-mba36-photo-uids="${esc(id)}" value="${esc(uids)}" placeholder="UID1, UID2"></label>
+   <button class="btn primary" type="button" data-mba36-gallery-save="${esc(id)}">Save photo visibility</button>
+   <label class="field">Copy this photo to a different tournament<select data-mba36-photo-target="${esc(id)}"><option value="">Choose tournament</option>${store.tournaments.filter(x=>x.id!==t.id).map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</select></label>
+   <button class="btn" type="button" data-mba36-gallery-copy="${esc(id)}">Copy to selected tournament</button>
+  </div>`;
+ }).join('');
+ return base+card('🔐 Super Admin · Gallery Audience & Tournament',`<p class="helper">All photos are private until you approve their audience here. Uploaded photos are not automatically visible to ordinary viewers. You can copy an image to another tournament, then approve it separately there. Each viewer must also have tournament View access.</p>${selects||'<p>No photos uploaded yet.</p>'}`);
+};
+
+async function mba36GalleryVisibility(id){
+ if(!isSuper())throw Error('Only Super Admin may set Gallery visibility.');
+ const t=active(),p=mbaGalleryItems[id];if(!t||!p)throw Error('Photo not found.');
+ const mode=document.querySelector(`[data-mba36-photo-mode="${CSS.escape(id)}"]`)?.value||'hidden';
+ if(!['hidden','all','editors','selected'].includes(mode))throw Error('Invalid visibility mode.');
+ const input=document.querySelector(`[data-mba36-photo-uids="${CSS.escape(id)}"]`)?.value||'';
+ const selectedCheck=[...document.querySelectorAll(`[data-mba36-photo-user="${CSS.escape(id)}"]:checked`)].map(x=>x.value);
+ const allowed={};if(mode==='selected')for(const uidValue of [...new Set([...selectedCheck,...input.split(/[\s,]+/).filter(Boolean)])]){
+  if(!/^[A-Za-z0-9_-]{8,128}$/.test(uidValue))throw Error('Invalid Firebase UID: '+uidValue);
+  allowed[uidValue]=true;
+ }
+ if(mode==='selected'&&!Object.keys(allowed).length)throw Error('Enter at least one allowed Firebase UID.');
+ const rec={audience:mode,updatedAt:Date.now(),updatedBy:authUser.uid};
+ if(Object.keys(allowed).length)rec.allowedUids=allowed;
+ await update(ref(db),{['v3/galleryPermissions/'+t.id+'/'+id]:rec,['v3/galleryCatalog/'+t.id+'/'+id]:Date.now()});
+ alert('Gallery visibility saved for this tournament.');
+}
+async function mba36CopyPhoto(id){
+ if(!isSuper())throw Error('Only Super Admin may copy photos between tournaments.');
+ const src=active(),p=mbaGalleryItems[id],targetId=document.querySelector(`[data-mba36-photo-target="${CSS.escape(id)}"]`)?.value;
+ if(!src||!p||!targetId||targetId===src.id)throw Error('Choose another tournament.');
+ const target=store.tournaments.find(t=>t.id===targetId);if(!target)throw Error('Target tournament not found.');
+ if(!confirm(`Copy ${p.title||'photo'} to ${target.name}? It will remain hidden there until you approve its audience.`))return;
+ const current=await get(ref(db,'v3/posters/'+targetId));if(Object.keys(current.val()||{}).length>=8)throw Error('Target tournament already has 8 images.');
+ await set(ref(db,'v3/posters/'+targetId+'/'+uid('poster')),{title:p.title,imageData:p.imageData,createdAt:Date.now(),createdBy:authUser.uid});
+ alert('Photo copied. Switch to the other tournament Gallery to set who can see it.');
+}
+
+/* Additional UI actions deliberately check Firebase-granted permissions in addition to
+   client checks. The matching database rules must still be deployed and tested. */
+document.addEventListener('click',async event=>{
+ const b=event.target.closest('button');if(!b)return;
+ try{
+  if(b.dataset.mba36New){
+   if(!(can('categoriesWrite')&&editScope(active()?.id)))throw Error('Category Edit permission required.');
+   const type=b.dataset.mba36New,name=type==='singles'?'Singles':'Doubles',t=active();
+   if(t.categories.some(c=>c.name.toLowerCase()===name.toLowerCase()))throw Error(name+' category already exists.');
+   await op(()=>{const c=addCategory(t,name,{format:'knockout'});c.playType=type;notice=name+' category created.'});return;
+  }
+  if(b.id==='mba36-reset-local'){
+   if(!mbaUmpire||!(can('scoresWrite')&&editScope(active()?.id)))throw Error('Score Edit permission required.');
+   if(!confirm('Reset the current umpire ticks to 0–0? Saved Firebase result will NOT be deleted.'))return;
+   mbaUmpire.a=0;mbaUmpire.b=0;mbaSaveDraft();mbaRenderUmpire();return;
+  }
+  if(b.id==='mba36-delete-final'){
+   const tid=mbaUmpire?.tournamentId,mid=mbaUmpire?.matchId,t=active();
+   if(!t||tid!==t.id||!(can('scoresWrite')&&editScope(t.id))||!mba37CanDeleteSaved())throw Error('Super Admin did not grant permission to DELETE saved scores.');
+   const m=t.fixtures.find(x=>x.id===mid);if(!m||!t.results[mid])throw Error('No saved result.');
+   if(m.stage==='knockout'&&t.fixtures.some(x=>x.stage==='knockout'&&x.categoryId===m.categoryId&&t.results[x.id]&&(x.sourceA?.id===mid||x.sourceB?.id===mid)))throw Error('A next-round result has been saved. Clear that result first to avoid deleting valid winners.');
+   if(!confirm('Permanently DELETE this SAVED match result from Firebase? Standings/knockout progress will be updated.'))return;
+   await op(()=>{const current=active();delete current.results[mid];if(m.stage==='knockout')advanceKnockout(current,m.categoryId);notice='Saved result deleted; score can be entered again.'});
+   mbaUmpire=null;mbaRenderUmpire();return;
+  }
+  if(b.dataset.mba36GallerySave){await mba36GalleryVisibility(b.dataset.mba36GallerySave);return}
+  if(b.dataset.mba36GalleryCopy){await mba36CopyPhoto(b.dataset.mba36GalleryCopy);return}
+ }catch(error){alert('MBA V3.6: '+errText(error))}
+});
+
+/* Atomic deletion also revokes catalog and audience permissions for that photo. */
+document.addEventListener('click',event=>{
+ const b=event.target.closest('button[data-mba-poster-delete]');if(!b||!isSuper())return;
+ event.preventDefault();event.stopImmediatePropagation();
+ (async()=>{
+  const t=active(),id=b.dataset.mbaPosterDelete;
+  if(!t||!mbaGalleryItems[id])throw Error('Photo no longer exists.');
+  if(!confirm('Delete this photo AND revoke its Gallery visibility for all users?'))return;
+  await update(ref(db),{['v3/posters/'+t.id+'/'+id]:null,['v3/galleryCatalog/'+t.id+'/'+id]:null,['v3/galleryPermissions/'+t.id+'/'+id]:null});
+ })().catch(error=>alert('Gallery: '+errText(error)));
+},true);
+
+document.addEventListener('submit',event=>{
+ const f=event.target.closest('form[data-form="mba36-bulk"]');if(!f)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ (async()=>{
+  const t=active(),cat=t?.categories.find(c=>c.id===f.dataset.cat);
+  if(!t||!cat||t.registrationMode!=='direct')throw Error('Direct Registration category not selected.');
+  if(!(can('teamsWrite')&&can('categoriesWrite')&&editScope(t.id)))throw Error('Super Admin approval for Team and Category Edit is required.');
+  if(t.fixtures.some(m=>m.categoryId===cat.id&&m.stage==='knockout'))throw Error('Clear existing unplayed knockout bracket before adding more names.');
+  if(t.fixtures.some(m=>m.categoryId===cat.id&&t.results[m.id]))throw Error('Cannot add entries after category results were saved.');
+  const type=mba36RegistrationType(cat),entries=mba36ParseRegistrations(f.querySelector('[name="registrations"]').value,type);
+  const existing=new Set(cat.entrants.map(e=>entryLabel(t,cat,e.id).split(' & ').map(s=>s.trim().normalize('NFKC').toLocaleLowerCase()).sort().join(' & ')+'|'+String(e.clubName||'').normalize('NFKC').toLocaleLowerCase()));
+  for(const e of entries)if(existing.has(e.key))throw Error('Already registered: '+e.players.join(' & '));
+  if(cat.entrants.length+entries.length>256)throw Error('Category limit is 256 entries.');
+  if(!confirm('Save '+entries.length+' '+type+' registration(s) in '+cat.name+'?'))return;
+  await op(()=>{
+   for(const e of entries){const team=addTeam(t,'Registration '+(t.teams.length+1),e.players);team.isDirectRegistration=true;const item=addEntry(t,cat.id,team.id,team.players.map(p=>p.id),null);item.clubName=e.club;item.directRegistration=true}
+   notice=entries.length+' registrations added to '+cat.name+'.';
+  });
+ })().catch(error=>alert('Registration: '+errText(error)));
+},true);
+
+/* MBA_V37_PRODUCTION_UPDATE. Augments verified V3.5 + V3.6, never alters old records on load. */
+const mba37CanRegister=()=>!!authUser&&!!active()&&(isSuper()||(can('teamsWrite')&&can('categoriesWrite')&&editScope(active().id)));
+const mba37CanTakePayment=()=>isSuper()||can('paymentsWrite');
+const mba37Money=s=>Number.isFinite(Number(s))&&Number(s)>=0&&Number(s)<=100000000&&Math.abs(Math.round(Number(s)*100)-Number(s)*100)<0.0000001;
+const mba37Num=(fd,k)=>{const v=String(fd.get(k)||'').trim();if(!v)return null;if(!mba37Money(v))throw Error(k+': enter a nonnegative amount.');return Number(v)};
+function mba37ReadSettings(fd,t){
+ t.playType=String(fd.get('mba37-play-type')||'other');
+ if(!['singles','doubles','both','other'].includes(t.playType))throw Error('Unknown play type');
+ t.registrationFeePerPlayer=mba37Num(fd,'mba37-fee');
+ t.prizeWinner=mba37Num(fd,'mba37-winner-prize');
+ t.prizeRunner=mba37Num(fd,'mba37-runner-prize');
+ t.trophyWinner=fd.has('mba37-trophy-winner');t.trophyRunner=fd.has('mba37-trophy-runner');
+ t.umpireInputMode=String(fd.get('mba37-umpire-mode')||'plus');
+ if(!['plus','tick','both'].includes(t.umpireInputMode))throw Error('Invalid umpire control');
+}
+const mba37OriginalTournament=tournamentView;
+tournamentView=function(t){
+ const base=mba37OriginalTournament(t);
+ if(editor?.kind!=='tournament'&&editor?.kind!=='create')return base;
+ const n=editor?.kind==='create'?{}:t||{};
+ const choice=(v,label,val)=>`<option value="${v}" ${val===v?'selected':''}>${label}</option>`;
+ const cash=v=>v==null?'':esc(v);
+ const markup=`<div class="full mba37-config"><h3>📝 Registration, Prize & Umpire (optional)</h3>
+ <label class="field">Type of play<select name="mba37-play-type">${choice('other','Other / not selected',n.playType||'other')}${choice('singles','Singles',n.playType)}${choice('doubles','Doubles',n.playType)}${choice('both','Singles & Doubles',n.playType)}</select></label>
+ <div class="form-grid"><label class="field">Ground / entry fee per PLAYER (₹)<input type="number" min="0" step="0.01" name="mba37-fee" value="${cash(n.registrationFeePerPlayer)}" placeholder="Optional: 500"></label>
+ <label class="field">Winner cash prize (₹)<input type="number" min="0" step="0.01" name="mba37-winner-prize" value="${cash(n.prizeWinner)}" placeholder="Optional: 2000"></label>
+ <label class="field">Runner-up cash prize (₹)<input type="number" min="0" step="0.01" name="mba37-runner-prize" value="${cash(n.prizeRunner)}" placeholder="Optional: 1000"></label></div>
+ <label class="choice"><input type="checkbox" name="mba37-trophy-winner" ${n.trophyWinner?'checked':''}> Winner trophy</label>
+ <label class="choice"><input type="checkbox" name="mba37-trophy-runner" ${n.trophyRunner?'checked':''}> Runner trophy</label>
+ <label class="field">Umpire Score Input Mode<select name="mba37-umpire-mode">${choice('plus','+ button only (safe live default)',n.umpireInputMode||'plus')}${choice('tick','Tick grid only',n.umpireInputMode)}${choice('both','Both + and Tick grid',n.umpireInputMode)}</select></label>
+ <p class="helper">Cash Prize Date removed. Fees/prizes/trophies are optional. Prize amounts appear as planned expenses until payout is recorded. Existing payouts are never overwritten.</p></div>`;
+ const anchor='<div class="full actions"> <button class="btn primary" type="submit">Save Tournament</button>';
+ return base.includes(anchor)?base.replace(anchor,markup+anchor):base;
+};
+/* A fee entered in Tournament Setup is the default fee in Finance; existing custom Finance fee configuration wins. */
+const mba37OriginalFinancesReady=financesReady;
+const mba37OriginalPlayerFee=playerFee;
+// financesReady/playerFee are const functions in V3.5. The builder replaces their definitions directly.
+
+/* Prize commitments: derived virtual PLANNED expenses, not cash paid. An actual immutable payout records payment. */
+const mba37OriginalFinanceTotals=financeTotals;
+const mba37PrizeAmount=(t,k)=>Number(t?.[k==='winner'?'prizeWinner':'prizeRunner']||0);
+const mba37PrizeLabel=k=>k==='winner'?'Winner':'Runner-up';
+const mba37PrizeAlreadyPaid=(t,k)=>expenseEvents().filter(x=>x.prizeKey===k&&x.prizeTournament===t.id&&x.status==='paid').reduce((n,x)=>n+Number(x.amount||0),0);
+const mba37PrizeRemaining=(t,k)=>Math.max(0,mba37PrizeAmount(t,k)-mba37PrizeAlreadyPaid(t,k));
+const mba37PrizePaid=(t,k)=>mba37PrizeAmount(t,k)>0&&mba37PrizeRemaining(t,k)<.005;
+financeTotals=function(t){
+ const x=mba37OriginalFinanceTotals(t);
+ const planned=['winner','runner'].reduce((n,k)=>n+mba37PrizeRemaining(t,k),0);
+ x.unpaidBills+=planned;
+ if(x.projected!=null)x.projected-=planned;
+ x.prizeCommittedDue=planned;
+ return x;
+};
+const mba37OriginalFinanceView=financeView;
+financeView=function(t){
+ const body=mba37OriginalFinanceView(t);
+ if(!canSeeExpenses())return body;
+ const rows=['winner','runner'].filter(k=>mba37PrizeAmount(t,k)>0).map(k=>{
+  const done=mba37PrizePaid(t,k),amount=mba37PrizeAmount(t,k),balance=mba37PrizeRemaining(t,k);
+  const pay=(isSuper()||can('financeWrite'))&&!done?`<button type="button" class="btn" data-mba37-pay-prize="${k}">Record paid</button>`:'';
+  return `<div class="mba37-prize-row"><b>${mba37PrizeLabel(k)} Prize</b><span>${esc(money(amount))}</span><span>${done?'✅ PAID':mba37PrizeAlreadyPaid(t,k)?'PARTIAL: '+esc(money(balance))+' DUE':'⏳ PLANNED / DUE'}</span>${pay}</div>`;
+ }).join('');
+ return rows?card('🏆 Cash Prize → Tournament Expenses',`<p class="helper">Planned prize commitments are included in projected outstanding expenses, but not deducted from cash until payment is recorded. Changes to amounts update the plan, not past payments. Do not enter the same payout again as a separate expense.</p>${rows}`)+body:body;
+};
+async function mba37PayPrize(kind){
+ const t=active();if(!t||!(isSuper()||can('financeWrite')))throw Error('Expense Write permission required.');
+ if(!['winner','runner'].includes(kind))throw Error('Invalid prize');
+ const amount=mba37PrizeRemaining(t,kind);
+ if(!amount||mba37PrizePaid(t,kind))throw Error('Prize already recorded or not configured.');
+ const paidBy=prompt('Committee member who paid the '+mba37PrizeLabel(kind)+' prize:');
+ if(!paidBy?.trim())return;
+ if(!confirm('Record actual '+mba37PrizeLabel(kind)+' prize PAYOUT of '+money(amount)+' in Finance?'))return;
+ await createFinanceEvent('expense',{category:'Prize Money',description:mba37PrizeLabel(kind)+' Prize',amount,status:'paid',mode:'Cash',paidBy:paidBy.trim(),vendor:'',date:today(),prizeKey:kind,prizeTournament:t.id});
+ alert('Prize payout added to the immutable Finance Expenses ledger.');render();
+}
+
+/* Registration private details (mobile and payment method) are NEVER written to public teams/category data. */
+let mba37PrivateItems={},mba37PrivateOff=null,mba37PrivateTournament='';
+function mba37WatchPrivate(t){
+ const tid=t?.id||'';
+ if(mba37PrivateTournament===tid)return;
+ if(mba37PrivateOff){mba37PrivateOff();mba37PrivateOff=null}
+ mba37PrivateTournament=tid;mba37PrivateItems={};
+ if(!tid||!authUser||!(isSuper()||canSeePayments()||mba37CanTakePayment()))return;
+ mba37PrivateOff=onValue(ref(db,'v3/privateRegistrations/'+tid),s=>{mba37PrivateItems=s.val()||{};if(page==='registration')render()},e=>console.warn('Private Registration records:',errText(e)));
+}
+function mba37RegType(c){if(['singles','doubles','other'].includes(c.playType))return c.playType;
+ const sizes=[...new Set((c.entrants||[]).map(e=>e.playerIds.length))];if(sizes.length===1)return sizes[0]===1?'singles':sizes[0]===2?'doubles':'other';
+ return mba36RegistrationType(c)}
+function mba37CategoryOptions(t,type=''){return t.categories.map(c=>`<option value="${esc(c.id)}" ${c.id===type?'selected':''}>${esc(c.name)} · ${esc(mba37RegType(c))}</option>`).join('')}
+function mba37Names(){return [...new Set([...store.tournaments.flatMap(x=>x.teams.flatMap(y=>y.players.map(p=>p.name))),...(store.playerLibrary||[])])].filter(Boolean).sort((a,b)=>a.localeCompare(b));}
+function mba37RegistrationView(t){
+ mba37WatchPrivate(t);
+ const editor=mba37CanRegister(),paymentAccess=isSuper()||canSeePayments()||mba37CanTakePayment();
+ const entryCount=t.categories.reduce((n,c)=>n+c.entrants.length,0);
+ const players=t.categories.reduce((n,c)=>n+c.entrants.reduce((a,e)=>a+e.playerIds.length,0),0);
+ const rows=t.categories.flatMap(c=>c.entrants.map(e=>{
+  const row=mba37PrivateItems[e.id]||{},names=entryLabel(t,c,e.id),count=e.playerIds.length;
+  const outcomes=t.fixtures.filter(m=>m.categoryId===c.id&&(m.a===e.id||m.b===e.id));
+  const done=outcomes.some(m=>!!scoreWinner(t.results[m.id],effectiveRules(t,c)));
+  const team=t.teams.find(x=>x.id===e.teamId);
+  const latest=receipts().filter(x=>e.playerIds.includes(x.playerId)).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0))[0]||null;
+  const fees=e.playerIds.reduce((n,p)=>n+Math.max(0,Number(playerFee(p)||0)),0);
+  const paid=e.playerIds.reduce((n,p)=>n+paidForPlayer(p),0);
+  return `<tr><td><b class="${done?'mba37-done':'mba37-pending'}">${esc(names)}</b><small>${esc(c.name)}${e.clubName?' · '+esc(e.clubName):''}</small></td><td>${count} ${count===1?'player':'players'}</td>${paymentAccess?`<td>${esc(row.mobile||'—')}</td><td>${esc(money(paid))} / ${esc(money(fees))}</td><td>${paid>=fees&&fees>0?'✅ PAID':paid>0?'PARTIAL':'UNPAID'}</td><td>${esc(latest?.mode||'—')}</td><td>${esc(latest?.receivedBy||'—')}</td>`:''}<td><label><input type="checkbox" data-mba37-complete="${esc(c.id)}:${esc(e.id)}" ${done?'checked':''} ${!can('scoresWrite')?'disabled':''} aria-label="Mark match completed by recording winner"> ${done?'Completed':'Pending'}</label></td></tr>`;
+ })).join('');
+ const typeOptions=[['singles','Singles (1 player)'],['doubles','Doubles (2 players)'],['other','Other / Custom']].map(([v,l])=>`<option value="${v}">${l}</option>`).join('');
+ const form=editor?`<form class="mba37-reg-form" id="mba37-register-form"><h3>＋ Register directly to Category & Fixtures</h3>
+  <label class="field">Event Type<select id="mba37-reg-type" name="eventType">${typeOptions}</select></label>
+  <label class="field">Category (optional — creates Singles/Doubles automatically)<select id="mba37-reg-category" name="categoryId"><option value="">Create / select matching category automatically</option>${mba37CategoryOptions(t)}</select></label>
+  <label class="field">For OTHER only: Custom Event Name<input name="customEvent" maxlength="70" placeholder="Mixed Doubles / Triples"></label>
+  <label class="field">Players per side for Other<input name="customCount" type="number" min="1" max="8" value="3"></label>
+  <label class="field">Player(s) / Pair(s), one entry per line<textarea name="players" rows="5" required placeholder="Singles: Shamil\nDoubles: Nithin & Shamil\nOptional Club: Jafar & Mubarak | Tirur Club"></textarea></label>
+  <div class="mba37-name-quick"><label class="field">Saved player name suggestions<input id="mba37-quick-name" list="mba37-saved-names" placeholder="Start typing a previously saved player name"></label><button type="button" class="btn" id="mba37-add-saved-name">＋ Insert Saved Name</button></div>
+  <p class="helper">Each line becomes one tournament entry in the selected Category automatically; ready to generate Fixtures without retyping. Bulk registrations are saved as UNPAID unless an amount is collected. Club after | is optional.</p>
+  ${paymentAccess?`<div class="mba37-finance-fields"><label class="field">Mobile number (optional, for SINGLE ENTRY only)<input name="mobile" inputmode="tel" maxlength="20" placeholder="Private — not public"></label>
+  <label class="field">Amount received TOTAL (₹, optional)<input type="number" name="received" min="0" step="0.01" value="0"></label>
+  <label class="field">Payment Method<select name="mode">${payModes.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('')}</select></label>
+  <label class="field">Paid to committee member<input name="receivedBy" maxlength="100" placeholder="Required when received > ₹0"></label></div>`:''}
+  <datalist id="mba37-saved-names">${mba37Names().slice(0,160).map(n=>`<option value="${esc(n)}"></option>`).join('')}</datalist>
+  <div class="actions"><button type="submit" class="btn primary">💾 Save Registration & Sync Finance</button></div></form>`:'<p class="helper">View only. Super Admin must grant Team + Category editing access for Registration.</p>';
+ const hint=`<div class="mba37-stat">${entryCount} entries · ${players} player seats · ${t.categories.length} categories</div>`;
+ return card('📝 Team & Player Registration',`<p class="helper">Singles, Doubles, Club / Custom and paid Cash Prize registration. Player contacts and receipts are private. Completed match names turn green; pending entries stay red.</p>${hint}${form}<div class="scroll"><table><thead><tr><th>Entry / Club</th><th>Type</th>${paymentAccess?'<th>Mobile (private)</th><th>Collected / Fee</th><th>Paid</th><th>Mode</th><th>Paid to whom</th>':''}<th>Match</th></tr></thead><tbody>${rows||'<tr><td colspan="6">No registrations yet.</td></tr>'}</tbody></table></div><div class="actions"><button class="btn" type="button" data-mba37-open-fixtures="1">🏸 Go to Fixtures</button></div>`);
+}
+function mba37ParseEntries(value,type,customCount){
+ const lines=String(value||'').split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+ if(!lines.length||lines.length>100)throw Error('Enter 1–100 registration lines.');
+ return lines.map((line,i)=>{
+  const spl=line.split('|').map(x=>x.trim());if(spl.length>2)throw Error('Line '+(i+1)+': one optional | Club only.');
+  const players=type==='singles'?[spl[0]]:spl[0].split('&').map(s=>s.trim());
+  const count=type==='singles'?1:type==='doubles'?2:customCount;
+  if(players.length!==count||players.some(x=>!x||x.length>80))throw Error('Line '+(i+1)+' requires '+count+' player name(s), separated by &.');
+  if(new Set(players.map(x=>x.toLowerCase())).size!==players.length)throw Error('Line '+(i+1)+': same player twice.');
+  if(spl[1]?.length>80)throw Error('Club cannot exceed 80 characters.');
+  return {players,club:spl[1]||'',key:players.map(x=>x.toLowerCase()).sort().join('&')+'|'+(spl[1]||'').toLowerCase()};
+ });
+}
+/* Single atomic, cross-path update of teams, category entries, private contacts and payment receipts.
+ * A compare-before-write check catches most stale clients; Firebase Rules enforce permissions. */
+async function mba37Register(form){
+ if(!mba37CanRegister())throw Error('Team + Category Edit permission is required.');
+ if(writePending)throw Error('Another save in progress.');
+ const fd=new FormData(form),t=active(),type=String(fd.get('eventType')||'singles'),cid=String(fd.get('categoryId')||'');
+ if(!['singles','doubles','other'].includes(type))throw Error('Invalid category type.');
+ const count=type==='other'?Number(fd.get('customCount')):type==='doubles'?2:1;
+ if(!Number.isInteger(count)||count<1||count>8)throw Error('Invalid players per side.');
+ const custom=String(fd.get('customEvent')||'').trim(),catName=type==='singles'?'Singles':type==='doubles'?'Doubles':custom;
+ const c=t.categories.find(c=>c.id===cid)||t.categories.find(c=>c.name.toLowerCase()===catName.toLowerCase());
+ if(type==='other'&&!catName)throw Error('For Other, enter an event name.');
+ if(c&&mba37RegType(c)!==type)throw Error('The selected Category has a different play type.');
+ if(c&&c.playersPerSide&&c.playersPerSide!==count)throw Error('Category requires '+c.playersPerSide+' players per side.');
+ if(c&&t.fixtures.some(m=>m.categoryId===c.id))throw Error('This category has fixtures. Clear unplayed fixtures BEFORE registering more players; scored fixtures cannot be cleared.');
+ const entries=mba37ParseEntries(fd.get('players'),type,count);
+ const namesSeen=new Set((c?.entrants||[]).map(e=>entryLabel(t,c,e.id).split(' & ').map(v=>v.toLowerCase()).sort().join('&')+'|'+(e.clubName||'').toLowerCase()));
+ for(const e of entries){if(namesSeen.has(e.key))throw Error('Duplicate registration: '+e.players.join(' & '));namesSeen.add(e.key)}
+ if((c?.entrants.length||0)+entries.length>256)throw Error('Max 256 entries per category.');
+ const received=Number(fd.get('received')||0);if(!mba37Money(received))throw Error('Invalid amount received.');
+ const mobile=String(fd.get('mobile')||'').trim();if(mobile&&!/^[0-9+()\s-]{6,20}$/.test(mobile))throw Error('Check mobile number format.');
+ if(mobile&&entries.length>1)throw Error('Enter mobile number only when adding a single registration. For bulk, leave mobile blank.');
+ if(received>0&&!mba37CanTakePayment())throw Error('Payments Write permission required to record collected cash.');
+ const receivedBy=String(fd.get('receivedBy')||'').trim();if(received>0&&!receivedBy)throw Error('Enter the committee member who received the payment.');
+ if(received>0&&entries.length!==1)throw Error('Record collected amount for ONE entry at a time; bulk names can be saved unpaid.');
+ const now=Date.now(),cat=c?deep(c):{id:uid('cat'),name:catName,format:t.format==='league'?'league':'knockout',qualifiers:4,qualifierMode:'per-group',rules:null,groups:[],entrants:[]};
+ cat.playType=type;cat.playersPerSide=count;
+ const patch={},newTeamIds=[];
+ let remaining=received;
+ entries.forEach(entry=>{
+  const teamId=uid('team'),players=entry.players.map(name=>({id:uid('player'),name}));
+  const team={id:teamId,name:entry.players.join(' & '),players,isDirectRegistration:true};
+  const entrantId=uid('entry');newTeamIds.push(teamId);
+  cat.entrants.push({id:entrantId,teamId,playerIds:players.map(p=>p.id),groupId:null,clubName:entry.club,directRegistration:true});
+  patch['v3/tournaments/'+t.id+'/teams/'+teamId]=team;
+  const privateRec={categoryId:cat.id,club:entry.club,mobile,createdBy:authUser.uid,createdAt:now};
+  patch['v3/privateRegistrations/'+t.id+'/'+entrantId]=privateRec;
+  for(const p of players){const part=Math.min(remaining,Number(finance.config?.feePerPlayer??t.registrationFeePerPlayer??received)||received);if(part>0){
+   const id=uid('receipt');patch['v3/finance/'+t.id+'/payments/'+id]={playerId:p.id,kind:'payment',amount:Math.round(part*100)/100,mode:String(fd.get('mode')||'Cash'),receivedBy,date:today(),reference:'',notes:'Registration: '+cat.name,createdBy:authUser.uid,createdByEmail:authUser.email||'',createdAt:now};remaining=Math.round((remaining-part)*100)/100;
+  }}
+ });
+ if(remaining>0)throw Error('Collected amount exceeds configured player fee; record extra separately in Finance.');
+ patch['v3/tournaments/'+t.id+'/categories/'+cat.id]=cat;
+ if(!confirm('Register '+entries.length+' entry/entries in '+cat.name+'? '+(received?money(received)+' will be recorded in Finance.':'No payment will be recorded.')))return;
+ const live=await get(ref(db,'v3/tournaments/'+t.id+'/categories/'+cat.id));
+ const liveValue=live.val();if(c){
+  const pack=x=>JSON.stringify({id:x?.id,name:x?.name,format:x?.format||null,groups:Object.values(x?.groups||{}),entrants:Object.values(x?.entrants||{}),rules:x?.rules||null,playType:x?.playType||null,playersPerSide:x?.playersPerSide||null});
+  if(pack(liveValue)!==pack(c))throw Error('Category changed on another device. Refresh and retry.');
+ }
+ if(!c&&live.exists())throw Error('Category was just created on another device. Refresh.');
+ writePending=true;
+ try{await update(ref(db),patch);
+  const updated=await get(ref(db,'v3/tournaments'));setCloud(updated.val());
+  notice='Registrations synced to Categories, Fixtures and Finance.';render();
+ }finally{writePending=false}
+}
+
+/* Knockout: manually assign entrants / BYEs to round-one seed slots, or draw at random. */
+function mba37Power2(n){let p=2;while(p<n)p*=2;return p}
+function mba37BracketFromLeafSlots(t,cat,slots,allowQualifiers=false){
+ const entries=cat.entrants.map(x=>x.id),ids=slots.filter(Boolean);
+ need(ids.length>=2&&new Set(ids).size===ids.length&&ids.every(id=>entries.includes(id))&&(allowQualifiers||ids.length===entries.length),'Each qualified / registered entry must be selected exactly once.');
+ need(!t.fixtures.some(m=>m.categoryId===cat.id&&m.stage==='knockout'&&t.results[m.id]&&(!allowQualifiers||m.round!==0)),'Recorded main knockout results are protected.');
+ need(!t.fixtures.some(m=>m.categoryId===cat.id&&m.stage==='knockout'&&(!allowQualifiers||m.round!==0)),'Clear existing unplayed main bracket before building a new one.');
+ const all=[],rounds=[],base=Math.max(0,...t.fixtures.map(m=>m.slot||0));let slotNo=base+1;
+ let sources=slots.map(id=>id?{type:'entry',id}:null);
+ for(let r=1;sources.length>1;r++){
+  const next=[],made=[];
+  for(let i=0;i<sources.length;i+=2){const a=sources[i],b=sources[i+1];if(!a&&!b){next.push(null);continue}if(!a||!b){next.push(a||b);continue}
+   const m={id:`ko__${cat.id}__r${r}__m${i/2+1}`,categoryId:cat.id,stage:'knockout',round:r,bracketIndex:i/2,sourceA:a,sourceB:b,a:a.type==='entry'?a.id:null,b:b.type==='entry'?b.id:null};
+   made.push(m);all.push(m);next.push({type:'match',id:m.id});
+  }
+  made.forEach((m,i)=>{m.slot=slotNo+Math.floor(i/t.courts);m.court=i%t.courts+1});
+  if(made.length)slotNo+=Math.ceil(made.length/t.courts)+(t.settings?.minRestSlots??1);
+  rounds.push(made);sources=next;
+ }
+ t.fixtures.push(...all);advanceKnockout(t,cat.id);
+ return {allMatches:all,byes:slots.filter(x=>!x).length,rounds};
+}
+function mba37ManualSeedPanel(t,c){
+ if(!can('fixturesWrite')||!editScope(t.id)||effectiveFormat(t,c)!=='knockout')return '';
+ const entries=c.entrants,sz=mba37Power2(entries.length||2),existing=t.fixtures.some(m=>m.categoryId===c.id&&m.stage==='knockout');
+ const possible=entries.map(e=>`<option value="${esc(e.id)}">${esc(entryLabel(t,c,e.id))}${e.clubName?' · '+esc(e.clubName):''}</option>`).join('');
+ const selects=Array.from({length:sz},(_,i)=>`<label class="field">Position ${i+1} · ${i%2===0?'Side A':'Side B'}<select name="seed"><option value="">BYE (empty position)</option>${possible}</select></label>`).join('');
+ const special=existing?'<p class="helper">Existing bracket cannot be overwritten. Clear unplayed Knockout Brackets first. Recorded results are never cleared automatically.</p>':'';
+ return `<details class="mba37-manual-seeds"><summary>✍️ Manual Draw & BYE Positions · ${esc(c.name)}</summary>${special}<form data-mba37-manual-bracket="${esc(c.id)}"><p class="helper">Every registered entry must appear exactly once. Leave one position empty for a BYE. For a seeded manual match, choose the two sides in adjacent positions.</p><div class="mba37-seed-grid">${selects}</div><button class="btn primary" type="submit" ${entries.length<2||existing?'disabled':''}>Build Manual Knockout Fixture</button></form></details>`;
+}
+function mba37ManualNextRound(t,c){
+ const matches=t.fixtures.filter(m=>m.categoryId===c.id&&m.stage==='knockout');if(!matches.length||!can('fixturesWrite')||!editScope(t.id))return '';
+ const highest=Math.max(...matches.map(m=>m.round||1));const options=[];
+ for(let round=2;round<=highest;round++){
+  const target=matches.filter(m=>m.round===round),pool=target.flatMap(m=>[m.sourceA,m.sourceB]).filter(Boolean);
+  if(!target.length||pool.length<2)continue;
+  if(target.some(m=>t.results[m.id]))continue;
+  const previous=matches.filter(m=>m.round===round-1),prevReady=previous.every(m=>!!scoreWinner(t.results[m.id],effectiveRules(t,c)));
+  if(!prevReady)continue;
+  options.push(`<option value="${round}">Round ${round} · ${pool.length} qualified sources</option>`);
+ }
+ if(!options.length)return '';
+ return `<details class="mba37-manual-next"><summary>✍️ Manually arrange NEXT round winners</summary><form id="mba37-manual-round" data-mba37-manual-round="${esc(c.id)}"><label class="field">Select ready round<select name="round">${options.join('')}</select></label><div id="mba37-round-pairs"></div><button class="btn primary" type="submit">Save next round pairings</button></form><p class="helper">Only qualified winners / automatic BYEs can be selected. Saved next-round scores lock the pairing.</p></details>`;
+}
+const mba37OriginalFixtureView=fixtureView;
+fixtureView=function(t){
+ const body=mba37OriginalFixtureView(t);
+ const cats=t.categories.filter(c=>['knockout','combined'].includes(effectiveFormat(t,c)));
+ return cats.length?card('🎲 Knockout Draw Setup — Random or Manual',`<p class="helper">Random lottery is optional. You may choose each first-round pairing and BYE manually, or choose standard auto draw. For pure knockout, manual next-round winner pairings can also be changed before saving their results.</p>${cats.map(c=>mba37ManualSeedPanel(t,c)+mba37ManualNextRound(t,c)).join('')}`)+body:body;
+};
+function mba37RoundOptions(t,catId,round){
+ const c=lookup(t,catId),matches=t.fixtures.filter(m=>m.categoryId===catId&&m.stage==='knockout'&&m.round===round),pool=matches.flatMap(m=>[m.sourceA,m.sourceB]).filter(Boolean);
+ const seen=new Set();const unique=pool.filter(s=>{const key=s.type+':'+s.id;if(seen.has(key))return false;seen.add(key);return true});
+ const label=s=>s.type==='entry'?entryLabel(t,c,s.id):(()=>{const p=t.fixtures.find(m=>m.id===s.id),w=p&&scoreWinner(t.results[p.id],effectiveRules(t,c));return w?'Winner: '+entryLabel(t,c,p[w]):'Winner of '+s.id})();
+ return {matches,pool:unique,labels:Object.fromEntries(unique.map(s=>[s.type+':'+s.id,label(s)]))};
+}
+function mba37RenderRoundPairs(form){
+ const t=active(),catId=form.dataset.mba37ManualRound,round=Number(form.querySelector('[name="round"]').value),box=form.querySelector('#mba37-round-pairs');if(!box)return;
+ const {matches,pool,labels}=mba37RoundOptions(t,catId,round);
+ const opts=pool.map(s=>`<option value="${esc(s.type+':'+s.id)}">${esc(labels[s.type+':'+s.id])}</option>`).join('');
+ box.innerHTML=`<div class="mba37-seed-grid">${matches.flatMap(m=>[m.sourceA,m.sourceB].filter(Boolean).map((s,i)=>`<label class="field">Match ${m.bracketIndex+1} · ${i?'B':'A'}<select name="source" data-original="${esc(s.type+':'+s.id)}">${opts}</select></label>`)).join('')}</div>`;
+ [...box.querySelectorAll('select[name="source"]')].forEach(el=>el.value=el.dataset.original);
+}
+async function mba37SaveRound(form){
+ const t=active(),id=form.dataset.mba37ManualRound,round=Number(new FormData(form).get('round'));
+ if(!can('fixturesWrite')||!editScope(t.id))throw Error('Fixtures Write needed.');
+ const {matches,pool}=mba37RoundOptions(t,id,round),all=[...form.querySelectorAll('select[name="source"]')].map(x=>x.value);
+ const expected=pool.map(s=>s.type+':'+s.id);
+ if(all.length!==expected.length||new Set(all).size!==expected.length||all.some(x=>!expected.includes(x)))throw Error('Each qualified source must be selected exactly once.');
+ if(matches.some(m=>t.results[m.id]))throw Error('A next-round score already exists. No changes allowed.');
+ if(!confirm('Save new manual match pairing for Round '+round+'?'))return;
+ await op(()=>{const live=active();const targets=live.fixtures.filter(m=>m.categoryId===id&&m.round===round&&m.stage==='knockout').sort((a,b)=>a.bracketIndex-b.bracketIndex);let k=0;
+  const sources=Object.fromEntries(pool.map(s=>[s.type+':'+s.id,s]));
+  for(const m of targets){if(m.sourceA)m.sourceA=sources[all[k++]];if(m.sourceB)m.sourceB=sources[all[k++]]}
+  advanceKnockout(live,id);notice='Manually rearranged knockout round '+round+'.';
+ });
+}
+
+/* Umpire: point-only is the default, with Super Admin-selectable tick/both modes. */
+const mba37OriginalUmpireRender=mbaRenderUmpire;
+mbaRenderUmpire=function(){
+ mba37OriginalUmpireRender();if(!mbaUmpire)return;
+ const host=document.querySelector('#mba-umpire-overlay .mba-umpire-footer');if(!host)return;
+ const mode=active()?.umpireInputMode||'plus';
+ const el=document.getElementById('mba-umpire-overlay');el.classList.remove('mba37-mode-plus','mba37-mode-tick','mba37-mode-both');el.classList.add('mba37-mode-'+mode);
+ const label=document.createElement('div');label.className='mba37-umpire-mode';label.innerHTML=`<small>Super Admin Input Mode: ${esc(mode.toUpperCase())}</small> <button class="btn" id="mba37-add-next" type="button" ${active()?.rules?.cutoff!=null?'disabled':''}>＋ Add Next 2 Tick Columns</button>`;
+ host.insertBefore(label,host.firstChild);
+};
+
+/* Login and render can use these existing permissions. Separate Edit/Delete require explicit grant and server Rules. */
+const mba37CanEditSaved=()=>isSuper()||can('umpireEdit');
+const mba37CanDeleteSaved=()=>isSuper()||can('umpireDelete');
+
+/* Capture-first event handlers stop the old default processing when an action is managed here. */
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('button');if(!btn)return;
+ if(btn.id==='mba37-add-saved-name'){
+  e.preventDefault();e.stopImmediatePropagation();const form=btn.closest('form'),input=form?.querySelector('#mba37-quick-name'),area=form?.querySelector('textarea[name=players]');if(!input||!area)return;
+  const name=input.value.trim();if(!name)return;
+  area.value+=(area.value.trim()?'\n':'')+name;input.value='';area.focus();return;
+ }
+ if(btn.dataset.mba37OpenFixtures){e.preventDefault();e.stopImmediatePropagation();page='fixtures';render();document.getElementById('view')?.scrollIntoView();return}
+ if(btn.id==='mba37-add-next'){
+  e.preventDefault();e.stopImmediatePropagation();if(!mbaUmpire)return;
+  mbaUmpire.tickLimit=Math.min(250,Math.max(mbaUmpire.tickLimit||active()?.rules?.target||21,Math.max(mbaUmpire.a,mbaUmpire.b))+2);
+  mbaRenderUmpire();return;
+ }
+ if(btn.dataset.mba37PayPrize){e.preventDefault();e.stopImmediatePropagation();mba37PayPrize(btn.dataset.mba37PayPrize).catch(x=>alert('Prize: '+errText(x)));return}
+ const tick=btn.dataset.mbaCheck;
+ if(tick&&mbaUmpire){
+  e.preventDefault();e.stopImmediatePropagation();
+  const mode=active()?.umpireInputMode||'plus';if(mode==='plus')return;
+  const [key,p]=tick.split(':'),n=Number(p),old=mbaUmpire[key];
+  if(n>old+1&&!confirm('Jump '+(n-old)+' points? Confirm the umpire score.'))return;
+  if(n>0&&n<=250){mbaUmpire[key]=n>old?n:n-1;mbaSaveDraft();mbaRenderUmpire()}
+  return;
+ }
+ const point=btn.dataset.mbaPoint;
+ if(point&&mbaUmpire&&(active()?.umpireInputMode||'plus')==='tick'){
+  e.preventDefault();e.stopImmediatePropagation();return;
+ }
+},true);
+
+document.addEventListener('submit',e=>{
+ const form=e.target;
+ if(form.id==='mba37-register-form'){
+  e.preventDefault();e.stopImmediatePropagation();
+  const btn=form.querySelector('button[type="submit"]');if(btn)btn.disabled=true;
+  mba37Register(form).catch(x=>alert('Registration: '+errText(x))).finally(()=>{if(btn?.isConnected)btn.disabled=false});return;
+ }
+ if(form.dataset.mba37ManualBracket){
+  e.preventDefault();e.stopImmediatePropagation();
+  const t=active(),cat=t?.categories.find(c=>c.id===form.dataset.mba37ManualBracket);
+  if(!cat||!(can('fixturesWrite')&&editScope(t.id))){alert('Fixture permission required.');return}
+  const slots=[...form.querySelectorAll('select[name="seed"]')].map(x=>x.value||null);
+  if(!confirm('Build manual knock-out bracket for '+cat.name+'?'))return;
+  op(()=>{mba37BracketFromLeafSlots(t,cat,slots);notice='Manual KO Draw saved online.'});return;
+ }
+ if(form.dataset.mba37ManualRound){e.preventDefault();e.stopImmediatePropagation();mba37SaveRound(form).catch(x=>alert('Manual round: '+errText(x)));return}
+},true);
+
+document.addEventListener('change',e=>{
+ if(e.target.matches('#mba37-manual-round [name="round"]'))mba37RenderRoundPairs(e.target.closest('form'));
+});
+const mba37OldRender=render;
+render=function(){mba37OldRender();if(page==='fixtures')document.querySelectorAll('#mba37-manual-round').forEach(mba37RenderRoundPairs)};
+
+/* Optional special re-entry: QUALIFIERS -> lottery/manual pick of one losing entry ->
+   possible waiting-vs-loser qualifier -> normal KO of winners + qualified wildcard.
+   It is NOT the default knockout format and must be approved before the competition. */
+function mba37LuckyState(t,c){return c.luckyMode||null}
+function mba37LuckyQualifiers(t,c){return t.fixtures.filter(m=>m.categoryId===c.id&&m.stage==='knockout'&&m.round===0&&m.id.startsWith('koq__'))}
+function mba37LuckyReplay(t,c){return t.fixtures.find(m=>m.id==='kol__'+c.id)}
+function mba37LuckyLosers(t,c){return mba37LuckyQualifiers(t,c).map(m=>{
+ const side=scoreWinner(t.results[m.id],effectiveRules(t,c));return side?{id:m[side==='a'?'b':'a'],from:m.id}:null;
+ }).filter(Boolean)}
+function mba37LuckyAllDone(t,c){const list=mba37LuckyQualifiers(t,c);return list.length>0&&list.every(m=>!!scoreWinner(t.results[m.id],effectiveRules(t,c)))}
+function mba37LuckyControls(t,c){
+ const a=mba37LuckyState(t,c),n=c.entrants.length,edit=can('fixturesWrite')&&can('categoriesWrite')&&editScope(t.id);
+ if(!edit||effectiveFormat(t,c)!=='knockout'||n<5)return '';
+ if(!a)return `<details class="mba37-lucky"><summary>🎟 Optional Lucky Loser / Re-entry — ${esc(c.name)}</summary><p class="helper">SPECIAL RULE (not standard KO): play qualification matches, draw one losing entry back into the competition; with odd entry count, that loser plays the waiting entrant. This adds games. Participants must agree before starting.</p><label class="field">If odd entries, who waits?<select data-mba37-wait="${esc(c.id)}"><option value="">Draw waiting entrant randomly</option>${c.entrants.map(e=>`<option value="${esc(e.id)}">${esc(entryLabel(t,c,e.id))}</option>`).join('')}</select></label><button class="btn primary" type="button" data-mba37-lucky-start="${esc(c.id)}">Start Special Re-entry Qualifiers</button></details>`;
+ const qs=mba37LuckyQualifiers(t,c),losers=mba37LuckyLosers(t,c),replay=mba37LuckyReplay(t,c);
+ const winnerOf=m=>{const x=scoreWinner(t.results[m.id],effectiveRules(t,c));return x?m[x]:null};
+ const all=mba37LuckyAllDone(t,c);
+ const state=a.mainGenerated?'✅ Main knockout started':a.pickedLoserId?'Qualified loser selected':'Qualifier matches in progress';
+ let actions='';
+ if(all&&!a.pickedLoserId){
+  actions=`<label class="field">Choose losing entry (manual option)<select data-mba37-loser-choice="${esc(c.id)}"><option value="">Draw one loser randomly</option>${losers.map(v=>`<option value="${esc(v.id)}">${esc(entryLabel(t,c,v.id))}</option>`).join('')}</select></label><button class="btn primary" data-mba37-lucky-pick="${esc(c.id)}">🎲 Draw / Select Lucky Loser</button>`;
+ }else if(a.pickedLoserId&&!a.mainGenerated){
+  const ready=!a.waitingId||replay&&winnerOf(replay);
+  actions=`<p class="helper">Lucky Loser: <b>${esc(entryLabel(t,c,a.pickedLoserId))}</b>${a.waitingId?' · Waiting entry: '+esc(entryLabel(t,c,a.waitingId)):''}</p>${ready?`<button class="btn primary" data-mba37-lucky-main="${esc(c.id)}">🏆 Generate MAIN Knockout from qualified winners</button>`:'<p class="helper">Score the extra waiting-vs-loser match first.</p>'}`;
+ }
+ return `<section class="mba37-lucky"><h3>🎟 ${esc(c.name)} — Special Re-entry</h3><p>${qs.length} qualifier(s), ${losers.length} known loser(s). ${state}.</p>${actions}<p class="helper">Qualifiers and drawn losers remain in tournament history. No automatic re-entry for standard knockout.</p></section>`;
+}
+const mba37FixturesBeforeLucky=fixtureView;
+fixtureView=function(t){return mba37FixturesBeforeLucky(t)+t.categories.map(c=>mba37LuckyControls(t,c)).join('')};
+function mba37ShuffleStrong(xs){
+ const a=[...xs];for(let i=a.length-1;i>0;i--){let k;if(globalThis.crypto?.getRandomValues){const v=new Uint32Array(1);crypto.getRandomValues(v);k=v[0]%(i+1)}else{k=Math.floor(Math.random()*(i+1))}[a[i],a[k]]=[a[k],a[i]]}return a;
+}
+async function mba37LuckyStart(id){
+ const t=active(),c=t?.categories.find(x=>x.id===id);if(!c||!(can('fixturesWrite')&&can('categoriesWrite')&&editScope(t.id)))throw Error('Fixture + Category editing permission needed.');
+ if(effectiveFormat(t,c)!=='knockout'||c.entrants.length<5)throw Error('Special re-entry requires 5 or more knockout entries.');
+ if(t.fixtures.some(m=>m.categoryId===id)||c.luckyMode)throw Error('This category already has fixtures. Never replace recorded results.');
+ if(!confirm('Activate SPECIAL Lucky Loser / Re-entry instead of standard knockout for '+c.name+'? Participants must be informed in advance.'))return;
+ const ids=mba37ShuffleStrong(c.entrants.map(e=>e.id));let waiter=null;
+ if(ids.length%2){const wanted=document.querySelector(`[data-mba37-wait="${CSS.escape(id)}"]`)?.value;
+  if(wanted){const i=ids.indexOf(wanted);if(i<0)throw Error('Waiting entrant unavailable');waiter=ids.splice(i,1)[0]}
+  else waiter=ids.pop();
+ }
+ await op(()=>{
+  const now=active(),cat=now.categories.find(x=>x.id===id),base=Math.max(0,...now.fixtures.map(m=>m.slot||0))+1;
+  const qualifiers=[];for(let i=0;i<ids.length;i+=2){const a=ids[i],b=ids[i+1];const m={id:'koq__'+id+'__'+(i/2+1),categoryId:id,stage:'knockout',round:0,bracketIndex:i/2,sourceA:{type:'entry',id:a},sourceB:{type:'entry',id:b},a,b,slot:base+Math.floor(i/2/now.courts),court:i/2%now.courts+1};qualifiers.push(m)}
+  now.fixtures.push(...qualifiers);cat.luckyMode={waitingId:waiter,pickedLoserId:null,mainGenerated:false,mode:'reentry',createdAt:Date.now()};notice='Special Re-entry qualifier draw created.';
+ });
+}
+async function mba37LuckyPick(id){
+ const t=active(),c=t?.categories.find(x=>x.id===id);if(!c?.luckyMode||!(can('fixturesWrite')&&can('categoriesWrite')&&editScope(t.id)))throw Error('No permission.');
+ if(!mba37LuckyAllDone(t,c)||c.luckyMode.pickedLoserId)throw Error('Complete all qualifiers before selecting a loser.');
+ const list=mba37LuckyLosers(t,c),choose=document.querySelector(`[data-mba37-loser-choice="${CSS.escape(id)}"]`)?.value;
+ const picked=choose?list.find(x=>x.id===choose)?.id:mba37ShuffleStrong(list)[0]?.id;
+ if(!picked)throw Error('No eligible losing entrant.');
+ if(!confirm('Select '+entryLabel(t,c,picked)+' as the one eligible Lucky Loser?'))return;
+ await op(()=>{
+  const now=active(),cat=now.categories.find(x=>x.id===id);cat.luckyMode.pickedLoserId=picked;
+  if(cat.luckyMode.waitingId){const base=Math.max(...now.fixtures.map(x=>x.slot||0))+1;
+   const a=cat.luckyMode.waitingId,b=picked;
+   now.fixtures.push({id:'kol__'+id,categoryId:id,stage:'knockout',round:0,bracketIndex:10000,sourceA:{type:'entry',id:a},sourceB:{type:'entry',id:b},a,b,slot:base,court:1});
+  }
+  notice='Lucky Loser selection recorded.';
+ });
+}
+async function mba37LuckyMain(id){
+ const t=active(),c=t?.categories.find(x=>x.id===id);if(!c?.luckyMode||c.luckyMode.mainGenerated||!(can('fixturesWrite')&&can('categoriesWrite')&&editScope(t.id)))throw Error('No permission / main bracket already exists.');
+ if(!mba37LuckyAllDone(t,c)||!c.luckyMode.pickedLoserId)throw Error('Qualifiers and Lucky Loser draw incomplete.');
+ const replay=mba37LuckyReplay(t,c);
+ if(c.luckyMode.waitingId&&!replay)throw Error('Waiting player qualifier missing.');
+ const repWinner=replay?scoreWinner(t.results[replay.id],effectiveRules(t,c)):null;
+ if(replay&&!repWinner)throw Error('Finish the waiting-vs-loser game first.');
+ const qualifiers=mba37LuckyQualifiers(t,c),ids=qualifiers.map(m=>{const side=scoreWinner(t.results[m.id],effectiveRules(t,c));return m[side]});
+ if(replay)ids.push(replay[repWinner]);else ids.push(c.luckyMode.pickedLoserId);
+ if(new Set(ids).size!==ids.length)throw Error('Duplicate qualified entry; review results.');
+ const size=mba37Power2(ids.length),slots=mba37ShuffleStrong([...ids,...Array(size-ids.length).fill(null)]);
+ if(!confirm('Generate Main Knockout ('+ids.length+' qualifiers, '+(size-ids.length)+' BYEs)? This preserves all qualifier scores.'))return;
+ await op(()=>{
+  const now=active(),cat=now.categories.find(x=>x.id===id);
+  mba37BracketFromLeafSlots(now,cat,slots,true);cat.luckyMode.mainGenerated=true;notice='Main Re-entry Knockout ready.';
+ });
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ const id=b.dataset.mba37LuckyStart||b.dataset.mba37LuckyPick||b.dataset.mba37LuckyMain;if(!id)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ const promise=b.dataset.mba37LuckyStart?mba37LuckyStart(id):b.dataset.mba37LuckyPick?mba37LuckyPick(id):mba37LuckyMain(id);
+ promise.catch(err=>alert('Lucky Loser: '+errText(err)));
+},true);
+
+/* Ticking completion records a winner-only result, never a fabricated numeric score. */
+document.addEventListener('change',e=>{
+ const check=e.target.closest('input[data-mba37-complete]');if(!check)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ const [catId,entryId]=check.dataset.mba37Complete.split(':'),t=active();
+ if(!t||!(can('scoresWrite')&&editScope(t.id))){check.checked=!check.checked;alert('Umpire scoring permission required.');return}
+ const cat=t.categories.find(c=>c.id===catId);
+ const related=t.fixtures.filter(m=>m.categoryId===catId&&(m.a===entryId||m.b===entryId));
+ const completed=related.some(m=>!!scoreWinner(t.results[m.id],effectiveRules(t,cat)));
+ if(completed){check.checked=true;alert('Completed matches cannot be unchecked here. Use Results → Edit / Delete (Super Admin permission required).');return}
+ const m=related.find(x=>x.a&&x.b&&!t.results[x.id]);
+ if(!m){check.checked=false;alert('First generate a fixture with both opponents, then mark it completed.');return}
+ const teamName=entryLabel(t,cat,entryId),response=prompt('RESULT for '+teamName+' vs '+participants(t,m).join(' / ')+'\nType WIN or LOSS for '+teamName+'. No numeric score will be invented.');
+ if(response==null){check.checked=false;return}
+ const reply=response.trim().toUpperCase();if(!['WIN','LOSS'].includes(reply)){check.checked=false;alert('Please type WIN or LOSS.');return}
+ const side=m.a===entryId?'a':'b',winner=reply==='WIN'?side:(side==='a'?'b':'a');
+ if(!confirm('Mark WINNER: '+entryLabel(t,cat,m[winner])+'? This updates the knockout automatically.')){check.checked=false;return}
+ op(()=>{recordResult(active(),m.id,{mode:'winner',winner});notice='Winner-only result saved online.'});
+},true);
+
+/* PRIVATE GALLERY: authorization comes from per-image Firebase .read, never a UI-only filter.
+   Existing images without ACL stay Super Admin-only until explicitly approved. */
+let mba37GalleryUnsubscribe=[],mba37GalleryCollection='',mba37GalleryACL={};
+function mba37UnwatchGallery(){for(const f of mba37GalleryUnsubscribe){try{f()}catch{}}mba37GalleryUnsubscribe=[];mba37GalleryCollection=''}
+function mba37WatchGallery(t){
+ const tid=t?.id||'';if(!tid||!authUser)return;
+ const scope=tid+':'+(isSuper()?'super':'viewer');
+ if(mba37GalleryCollection===scope)return;
+ mba37UnwatchGallery();mba37GalleryCollection=scope;mbaGalleryItems={};mbaGalleryError='';mba37GalleryACL={};
+ const notify=()=>{if(page==='gallery'&&active()?.id===tid)render()};
+ if(isSuper()){
+  mba37GalleryUnsubscribe.push(onValue(ref(db,'v3/posters/'+tid),s=>{mbaGalleryItems=s.val()||{};mbaGalleryError='';notify()},err=>{mbaGalleryError=errText(err);notify()}));
+  mba37GalleryUnsubscribe.push(onValue(ref(db,'v3/galleryPermissions/'+tid),s=>{mba37GalleryACL=s.val()||{};notify()},e=>console.warn('Gallery ACL:',errText(e))));
+ }else{
+  mba37GalleryUnsubscribe.push(onValue(ref(db,'v3/galleryCatalog/'+tid),async snap=>{
+   const ids=Object.keys(snap.val()||{}).slice(0,40),latest={};
+   await Promise.all(ids.map(async id=>{
+    try{const result=await get(ref(db,'v3/posters/'+tid+'/'+id));if(result.exists())latest[id]=result.val()}
+    catch(e){/* Permission denied means user is NOT authorized for this particular image. */}
+   }));
+   if(mba37GalleryCollection===scope){mbaGalleryItems=latest;mbaGalleryError='';notify()}
+  },e=>{mbaGalleryError='Gallery index unavailable: '+errText(e);notify()}));
+ }
+}
+mbaWatchGallery=mba37WatchGallery;
+const mba37OriginalGalleryView=mbaGalleryView;
+mbaGalleryView=function(t){
+ const base=mba37OriginalGalleryView(t);
+ if(!isSuper())return base;
+ const opts=[['hidden','Hidden until approved'],['all','All authorized tournament viewers'],['editors','Tournament editors only'],['selected','Only selected user UIDs']];
+ const rows=Object.entries(mbaGalleryItems).map(([id,item])=>{
+  const acl=mba37GalleryACL[id]||{},aud=acl.audience||'hidden';
+  return `<div class="mba37-gallery-acl"><b>${esc(item.title||'Photo')}</b><label class="field">Who may view this photo?<select data-mba37-photo-aud="${esc(id)}">${opts.map(([k,v])=>`<option value="${k}" ${k===aud?'selected':''}>${v}</option>`).join('')}</select></label><label class="field">Selected user UIDs (comma-separated; only for Selected)<textarea rows="2" data-mba37-photo-uids="${esc(id)}" placeholder="Firebase user UID">${esc(Object.entries(acl.allowedUids||{}).filter(([,v])=>v).map(([x])=>x).join(', '))}</textarea></label><button type="button" class="btn" data-mba37-photo-save="${esc(id)}">Save photo visibility</button><label class="field">Copy photo to another tournament<select data-mba37-photo-target="${esc(id)}"><option value="">Choose destination (optional)</option>${store.tournaments.filter(t=>t.id!==active()?.id).map(t=>`<option value="${esc(t.id)}">${esc(t.name)}</option>`).join('')}</select></label><button type="button" class="btn" data-mba37-photo-copy="${esc(id)}">Copy privately to selected tournament</button></div>`;
+ }).join('');
+ return base+card('🔐 Gallery Audience — Super Admin',`<p class="helper">New photos begin HIDDEN. Old photos remain Super Admin-only until manually approved here. Authorized viewers see images only when the Firebase Rules allow them.</p>${rows||'<p>No photos yet.</p>'}`);
+};
+async function mba37UploadPoster(){
+ if(!mbaMakerCanGallery())throw Error('Photo upload requires settings permission and tournament editing access.');
+ const t=active(),file=document.getElementById('mba-poster-file')?.files?.[0],title=document.getElementById('mba-poster-title')?.value.trim()||'Tournament Photo';
+ if(!file)throw Error('Choose a photo first.');if(Object.keys(mbaGalleryItems).length>=8)throw Error('Maximum 8 gallery images per tournament.');
+ if(title.length>80)throw Error('Title too long.');
+ const data=await mbaCompressPoster(file),id=uid('poster'),time=Date.now();
+ await update(ref(db),{
+  ['v3/posters/'+t.id+'/'+id]:{title,imageData:data,createdAt:time,createdBy:authUser.uid},
+  ['v3/galleryCatalog/'+t.id+'/'+id]:time,
+  ['v3/galleryPermissions/'+t.id+'/'+id]:{audience:'hidden',updatedAt:time,updatedBy:authUser.uid}
+ });
+ alert('Photo uploaded privately. Super Admin can choose who may see it.');
+}
+async function mba37SaveAudience(id){
+ if(!isSuper())throw Error('Only Super Admin can approve gallery viewers.');
+ const tid=active()?.id,select=document.querySelector(`[data-mba37-photo-aud="${CSS.escape(id)}"]`),field=document.querySelector(`[data-mba37-photo-uids="${CSS.escape(id)}"]`);
+ const audience=select?.value;if(!tid||!['hidden','all','editors','selected'].includes(audience))throw Error('Invalid photo audience.');
+ const allowed={};String(field?.value||'').split(/[\s,;]+/).filter(Boolean).forEach(u=>{if(!/^[A-Za-z0-9_-]{4,128}$/.test(u))throw Error('Invalid Firebase UID: '+u);allowed[u]=true});
+ if(audience==='selected'&&!Object.keys(allowed).length)throw Error('Enter at least one selected user UID.');
+ if(!confirm('Apply "'+audience+'" visibility to this photo?'))return;
+ const time=Date.now();
+ await update(ref(db),{
+  ['v3/galleryCatalog/'+tid+'/'+id]:time,
+  ['v3/galleryPermissions/'+tid+'/'+id]:{audience,updatedAt:time,updatedBy:authUser.uid,allowedUids:audience==='selected'?allowed:{}}
+ });
+ alert('Photo audience saved. Reopen Gallery on viewer phone to refresh.');
+}
+async function mba37CopyPhoto(id){
+ if(!isSuper())throw Error('Only Super Admin can copy gallery photos to other tournaments.');
+ const from=active(),target=document.querySelector(`[data-mba37-photo-target="${CSS.escape(id)}"]`)?.value;
+ if(!from||!store.tournaments.some(t=>t.id===target)||from.id===target)throw Error('Choose another authorized tournament.');
+ const photo=mbaGalleryItems[id];if(!photo?.imageData)throw Error('Source photo unavailable.');
+ if(!confirm('Copy this photo privately (hidden) to the selected tournament?'))return;
+ const existing=await get(ref(db,'v3/posters/'+target));
+ if(Object.keys(existing.val()||{}).length>=8)throw Error('Destination already has 8 photos.');
+ const now=Date.now(),newId=uid('poster');
+ await update(ref(db),{
+  ['v3/posters/'+target+'/'+newId]:{...photo,createdAt:now,createdBy:authUser.uid,copiedFrom:from.id},
+  ['v3/galleryCatalog/'+target+'/'+newId]:now,
+  ['v3/galleryPermissions/'+target+'/'+newId]:{audience:'hidden',updatedAt:now,updatedBy:authUser.uid}
+ });
+ alert('Photo copied privately. Switch to destination Gallery to approve viewers.');
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.id==='mba-poster-upload'){
+  e.preventDefault();e.stopImmediatePropagation();b.disabled=true;
+  mba37UploadPoster().catch(x=>alert('Gallery Upload: '+errText(x))).finally(()=>{if(b.isConnected)b.disabled=false});return;
+ }
+ if(b.dataset.mba37PhotoSave){e.preventDefault();e.stopImmediatePropagation();mba37SaveAudience(b.dataset.mba37PhotoSave).catch(x=>alert('Gallery Audience: '+errText(x)));return}
+ if(b.dataset.mba37PhotoCopy){e.preventDefault();e.stopImmediatePropagation();mba37CopyPhoto(b.dataset.mba37PhotoCopy).catch(x=>alert('Gallery Copy: '+errText(x)));return}
+ if(b.dataset.mbaPosterDelete){
+  e.preventDefault();e.stopImmediatePropagation();if(!mbaMakerCanGallery())return;
+  if(!confirm('Delete photo permanently?'))return;
+  const tid=active()?.id,id=b.dataset.mbaPosterDelete;
+  update(ref(db),{['v3/posters/'+tid+'/'+id]:null,['v3/galleryCatalog/'+tid+'/'+id]:null,['v3/galleryPermissions/'+tid+'/'+id]:null}).catch(x=>alert('Photo Delete: '+errText(x)));return;
+ }
+},true);
+
 mbaInitUi();
 wireAuth();
 document.getElementById('print-page').addEventListener('click',()=>{if(!canPrint())return;page='print';profile=null;editor=null;render();document.getElementById('view').scrollIntoView({behavior:'smooth'});});
